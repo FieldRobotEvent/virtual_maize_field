@@ -24,7 +24,7 @@ if __name__ == "__main__":
     pk = Field2DGenerator(**args)
     
     # generate the template and write it to a file
-    pkg_path = rospkg.RosPack().get_path('simple_world')
+    pkg_path = rospkg.RosPack().get_path('virtual_maize_field')
     template_path = os.path.join(pkg_path, "scripts/field.world.template")
     template = open(template_path).read()
     generated_sdf = pk.render_to_template(template)
