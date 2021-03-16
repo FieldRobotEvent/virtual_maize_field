@@ -31,7 +31,7 @@ class Field2DGenerator():
         self.way_points = [position]
         self.world_T_local = np.identity(3)
         angles = []
-        self.pumpkins = []
+        self.placements = []
         
         for _ in range(self.num_plant_pairs):
             angle_variation = ((np.random.rand() * 2) - 1) * self.max_angle_variation
@@ -58,15 +58,15 @@ class Field2DGenerator():
             
             for i in range(self.num_rows_left):
                 width = self.row_width * (i + 0.5)
-                pumpkin_1 = self.world_T_local * np.matrix([[0],[ width],[1]])
-                self.pumpkins.append(pumpkin_1)
+                placement_l = self.world_T_local * np.matrix([[0],[ width],[1]])
+                self.placements.append(placement_l)
 
             for i in range(self.num_rows_right):
                 width = self.row_width * (i + 0.5)
-                pumpkin_2 = self.world_T_local * np.matrix([[0],[-width],[1]])
-                self.pumpkins.append(pumpkin_2)
+                placement_r = self.world_T_local * np.matrix([[0],[-width],[1]])
+                self.placements.append(placement_r)
 
-        self.pumpkins = np.array(np.stack([p.T for p in self.pumpkins])).T
+        self.placements = np.array(np.stack([p.T for p in self.placements])).T
         
     def get_distance_to_closest_pumpkin(self, x, y, theta):
         s = np.sin(theta)
@@ -76,9 +76,9 @@ class Field2DGenerator():
             [s,  c,                                         -x*s - y*c],
             [0,  0,                                                  1]])
 
-        LOCAL_pumpkins = LOCAL_T_WORLD * self.pumpkins
-        dist_pumpkin = np.linalg.norm(LOCAL_pumpkins[0:2], axis=0).min() - self.plant_radius
-        return dist_pumpkin
+        LOCAL_placements = LOCAL_T_WORLD * self.placements
+        dist_placement = np.linalg.norm(LOCAL_placements[0:2], axis=0).min() - self.plant_radius
+        return dist_placement
     
     def render_to_template(self, template):
         def into_dict(xy, radius, height, mass, index):
@@ -104,6 +104,6 @@ class Field2DGenerator():
             coordinate["name"] = "{}_{:04d}".format(coordinate["type"], index)
             coordinate["yaw"] = np.random.rand() * 2.0 * np.pi
             return coordinate
-        coordinates = [into_dict(row,self.plant_radius, self.plant_height, self.plant_mass, i) for i, row in enumerate(self.pumpkins.T[:,:-1])]
+        coordinates = [into_dict(row,self.plant_radius, self.plant_height, self.plant_mass, i) for i, row in enumerate(self.placements.T[:,:-1])]
         template = jinja2.Template(template)
         return template.render(coordinates=coordinates, package_path=rospkg.RosPack().get_path('virtual_maize_field'))
