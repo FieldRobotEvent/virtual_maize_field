@@ -20,7 +20,7 @@ sudo apt install ros-noetic-gazebo-ros-pkgs \
 ## Generating field worlds
 This package includes a script (`scripts/generate_world.py`) that can generate randomized agricultural worlds. All parameters are optional and have default values. You can call the script using
 ```bash
-rosrun virtual_maize_field generate_world.py --num_rows_left=2 --num_rows_right=2 --num_plant_pairs=20 --max_angle_variation=0.15 --types=maize_01,maize_02 --row_width 1.0 --plant_offset 0.5
+rosrun virtual_maize_field generate_world.py
 ```
 The resulting file will be placed in `worlds/generated.world`.
 ```
@@ -44,17 +44,17 @@ optional arguments:
   --plant_radius PLANT_RADIUS
                         default_value: 0.15
   --row_width ROW_WIDTH
-                        default_value: 0.7
+                        default_value: 1.0
   --plant_offset PLANT_OFFSET
-                        default_value: 0.6
+                        default_value: 0.5
   --max_angle_variation MAX_ANGLE_VARIATION
-                        default_value: 0.08726646259971647
+                        default_value: 0.15
   --num_plant_pairs NUM_PLANT_PAIRS
-                        default_value: 5
+                        default_value: 20
   --num_rows_left NUM_ROWS_LEFT
                         default_value: 2
   --num_rows_right NUM_ROWS_RIGHT
-                        default_value: 3
+                        default_value: 2
   --plant_height PLANT_HEIGHT
                         default_value: 0.3
   --plant_mass PLANT_MASS
@@ -62,7 +62,7 @@ optional arguments:
   --radius_noise_range RADIUS_NOISE_RANGE
                         default_value: 0.05
   --seed SEED           default_value: None
-  --types TYPES         default_value: pumpkin_01,pumpkin_02,pumpkin_03,cylinder,maize_01,maize_02,beans_01
+  --types TYPES         default_value: cylinder,maize_01,maize_02
 ```
 
 ## License info
