@@ -17,7 +17,7 @@ sudo apt install ros-noetic-gazebo-ros-pkgs \
                  python3-jinja2
 ```
 
-## Generating field worlds
+## Generating new maize field worlds
 This package includes a script (`scripts/generate_world.py`) that can generate randomized agricultural worlds. All parameters are optional and have default values. You can call the script using
 ```bash
 rosrun virtual_maize_field generate_world.py
@@ -44,7 +44,7 @@ optional arguments:
   --plant_radius PLANT_RADIUS
                         default_value: 0.15
   --row_width ROW_WIDTH
-                        default_value: 1.0
+                        default_value: 0.75
   --plant_offset PLANT_OFFSET
                         default_value: 0.5
   --max_angle_variation MAX_ANGLE_VARIATION
@@ -64,6 +64,16 @@ optional arguments:
   --seed SEED           default_value: None
   --types TYPES         default_value: cylinder,maize_01,maize_02
 ```
+
+## Sample Worlds
+| Name | Parameters | Description |
+|:---- |:--------- |:----------- |
+| *simple_row_level_1.world* | `--max_angle_variation=0` | One row with grad based plants. |
+| *simple_row_level_2.world* | TODO | One row with more natural plant placement. |
+| *simple_row_level_3.world* | default | One row with little curvature. |
+| *simple_row_level_4.world* | `--max_angle_variation=0.3` | One row with curvature. |
+| *simple_row_level_5.world* | TODO | Level 3 with gaps |
+| *simple_row_level_6.world* | TODO | Level 4 with gaps |
 
 ## License info
 Virtual Maize Field is copyright (C) 2021 *Farm Technology Group of Wageningen University & Research* and *Kamaro Engineering e.V.* and licensed under GPLv3 (see [`LICENSE`](LICENSE)).
