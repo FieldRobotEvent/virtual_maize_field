@@ -85,5 +85,5 @@ optional arguments:
 | *simple_row_level_5.world* | TODO | Level 3 with gaps |
 | *simple_row_level_6.world* | TODO | Level 4 with gaps |
 
-## License info
+## License
 Virtual Maize Field is copyright (C) 2021 *Farm Technology Group of Wageningen University & Research* and *Kamaro Engineering e.V.* and licensed under GPLv3 (see [`LICENSE`](LICENSE)).
