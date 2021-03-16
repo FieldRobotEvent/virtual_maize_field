@@ -8,8 +8,9 @@
   <img src="https://www.uni-hohenheim.de/typo3conf/ext/uni_layout/Resources/Public/Images/uni-logo-en.svg" width="250" style="margin: 10px;">
   <img src="https://kamaro-engineering.de/wp-content/uploads/2015/03/Kamaro_Logo-1.png" width="250" style="margin: 10px;">
 </p>
-
+<p align="middle">
 This is a package to procedurally generate randomized fields with rows of plants for Gazebo.
+</p>
 
 ![Screenshot of a generated map with maize plants and pumpkins](./misc/screenshot.png)
 
