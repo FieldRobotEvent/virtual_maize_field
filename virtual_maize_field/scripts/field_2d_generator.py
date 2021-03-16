@@ -9,17 +9,17 @@ AVAILABLE_TYPES = ["cylinder", "maize_01", "maize_02"]
 class Field2DGenerator():
     def __init__(self,
         plant_radius = .15,
-        row_width = .7,
-        plant_offset = .60,
-        max_angle_variation = np.deg2rad(5),
-        num_plant_pairs = 5, 
+        row_width = 1,
+        plant_offset = .50,
+        max_angle_variation = 0.15,
+        num_plant_pairs = 20, 
         num_rows_left = 2,
-        num_rows_right = 3,
+        num_rows_right = 2,
         plant_height = 0.3,
         plant_mass = 5.0,
         radius_noise_range = 0.05,
         seed = None,
-        types=",".join(AVAILABLE_TYPES)):
+        types=",".join(["maize_01", "maize_02"])):
         
         for k,v in locals().items():
             self.__setattr__(k,v)
