@@ -115,4 +115,4 @@ class Field2DGenerator():
             return coordinate
         coordinates = [into_dict(row,self.plant_radius, self.plant_height, self.plant_mass, i) for i, row in enumerate(self.placements.T[:,:-1])]
         template = jinja2.Template(template)
-        return template.render(coordinates=coordinates, seed=self.seed, package_path=rospkg.RosPack().get_path('virtual_maize_field'))
+        return template.render(coordinates=coordinates, seed=self.seed)

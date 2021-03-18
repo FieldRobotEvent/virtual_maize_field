@@ -202,7 +202,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>{{ package_path }}/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>{{ 2*coordinate.radius }} {{ 2*coordinate.radius }} {{ 2*coordinate.radius }}</scale>
             </mesh>
           </geometry>
@@ -254,7 +254,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>{{ package_path }}/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>{{ 2*coordinate.radius }} {{ 2*coordinate.radius }} {{ 2*coordinate.radius }}</scale>
             </mesh>
           </geometry>

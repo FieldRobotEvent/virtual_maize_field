@@ -147,7 +147,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.3852951143149175 0.3852951143149175 0.3852951143149175</scale>
             </mesh>
           </geometry>
@@ -201,7 +201,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.31334523517879986 0.31334523517879986 0.31334523517879986</scale>
             </mesh>
           </geometry>
@@ -255,7 +255,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.21680173748379472 0.21680173748379472 0.21680173748379472</scale>
             </mesh>
           </geometry>
@@ -309,7 +309,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.2452950183183552 0.2452950183183552 0.2452950183183552</scale>
             </mesh>
           </geometry>
@@ -363,7 +363,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.38955146758436354 0.38955146758436354 0.38955146758436354</scale>
             </mesh>
           </geometry>
@@ -417,7 +417,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.26275207215711976 0.26275207215711976 0.26275207215711976</scale>
             </mesh>
           </geometry>
@@ -471,7 +471,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.24519141364469652 0.24519141364469652 0.24519141364469652</scale>
             </mesh>
           </geometry>
@@ -525,7 +525,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.2087673908216538 0.2087673908216538 0.2087673908216538</scale>
             </mesh>
           </geometry>
@@ -579,7 +579,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.3197455240026944 0.3197455240026944 0.3197455240026944</scale>
             </mesh>
           </geometry>
@@ -633,7 +633,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.3735074051036137 0.3735074051036137 0.3735074051036137</scale>
             </mesh>
           </geometry>
@@ -687,7 +687,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.37241160265351597 0.37241160265351597 0.37241160265351597</scale>
             </mesh>
           </geometry>
@@ -741,7 +741,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.3793308981760165 0.3793308981760165 0.3793308981760165</scale>
             </mesh>
           </geometry>
@@ -795,7 +795,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.2006328425096624 0.2006328425096624 0.2006328425096624</scale>
             </mesh>
           </geometry>
@@ -849,7 +849,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.29572843245211644 0.29572843245211644 0.29572843245211644</scale>
             </mesh>
           </geometry>
@@ -903,7 +903,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.23474489586237016 0.23474489586237016 0.23474489586237016</scale>
             </mesh>
           </geometry>
@@ -957,7 +957,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.2904354683175823 0.2904354683175823 0.2904354683175823</scale>
             </mesh>
           </geometry>
@@ -1011,7 +1011,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.20503948640180047 0.20503948640180047 0.20503948640180047</scale>
             </mesh>
           </geometry>
@@ -1065,7 +1065,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.28668621658486343 0.28668621658486343 0.28668621658486343</scale>
             </mesh>
           </geometry>
@@ -1119,7 +1119,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.33295817172004655 0.33295817172004655 0.33295817172004655</scale>
             </mesh>
           </geometry>
@@ -1173,7 +1173,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.24131311388387822 0.24131311388387822 0.24131311388387822</scale>
             </mesh>
           </geometry>
@@ -1227,7 +1227,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.21024182935726105 0.21024182935726105 0.21024182935726105</scale>
             </mesh>
           </geometry>
@@ -1281,7 +1281,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.3898940314189795 0.3898940314189795 0.3898940314189795</scale>
             </mesh>
           </geometry>
@@ -1335,7 +1335,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.32690226073765 0.32690226073765 0.32690226073765</scale>
             </mesh>
           </geometry>
@@ -1389,7 +1389,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.25560025688887167 0.25560025688887167 0.25560025688887167</scale>
             </mesh>
           </geometry>
@@ -1443,7 +1443,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.2312746097577708 0.2312746097577708 0.2312746097577708</scale>
             </mesh>
           </geometry>
@@ -1497,7 +1497,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.36383501891848385 0.36383501891848385 0.36383501891848385</scale>
             </mesh>
           </geometry>
@@ -1551,7 +1551,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.34947545908508776 0.34947545908508776 0.34947545908508776</scale>
             </mesh>
           </geometry>
@@ -1605,7 +1605,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.36591346707446365 0.36591346707446365 0.36591346707446365</scale>
             </mesh>
           </geometry>
@@ -1659,7 +1659,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.23598345951758132 0.23598345951758132 0.23598345951758132</scale>
             </mesh>
           </geometry>
@@ -1713,7 +1713,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.3678019453988826 0.3678019453988826 0.3678019453988826</scale>
             </mesh>
           </geometry>
@@ -1767,7 +1767,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.2534628654910716 0.2534628654910716 0.2534628654910716</scale>
             </mesh>
           </geometry>
@@ -1821,7 +1821,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.2527693025076523 0.2527693025076523 0.2527693025076523</scale>
             </mesh>
           </geometry>
@@ -1875,7 +1875,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.24264711585194376 0.24264711585194376 0.24264711585194376</scale>
             </mesh>
           </geometry>
@@ -1929,7 +1929,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.35629953684464416 0.35629953684464416 0.35629953684464416</scale>
             </mesh>
           </geometry>
@@ -1983,7 +1983,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.29585538756442453 0.29585538756442453 0.29585538756442453</scale>
             </mesh>
           </geometry>
@@ -2037,7 +2037,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.34502615118707813 0.34502615118707813 0.34502615118707813</scale>
             </mesh>
           </geometry>
@@ -2091,7 +2091,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.3035483988927079 0.3035483988927079 0.3035483988927079</scale>
             </mesh>
           </geometry>
@@ -2145,7 +2145,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.30478044095042417 0.30478044095042417 0.30478044095042417</scale>
             </mesh>
           </geometry>
@@ -2199,7 +2199,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.200219600967453 0.200219600967453 0.200219600967453</scale>
             </mesh>
           </geometry>
@@ -2253,7 +2253,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.35306534777859716 0.35306534777859716 0.35306534777859716</scale>
             </mesh>
           </geometry>
@@ -2307,7 +2307,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.23778875960236917 0.23778875960236917 0.23778875960236917</scale>
             </mesh>
           </geometry>
@@ -2361,7 +2361,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.27960536294214794 0.27960536294214794 0.27960536294214794</scale>
             </mesh>
           </geometry>
@@ -2415,7 +2415,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.20215013485943945 0.20215013485943945 0.20215013485943945</scale>
             </mesh>
           </geometry>
@@ -2469,7 +2469,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.38859278848295836 0.38859278848295836 0.38859278848295836</scale>
             </mesh>
           </geometry>
@@ -2523,7 +2523,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.38357022994548007 0.38357022994548007 0.38357022994548007</scale>
             </mesh>
           </geometry>
@@ -2577,7 +2577,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.2489345550265494 0.2489345550265494 0.2489345550265494</scale>
             </mesh>
           </geometry>
@@ -2631,7 +2631,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.21011083880740838 0.21011083880740838 0.21011083880740838</scale>
             </mesh>
           </geometry>
@@ -2685,7 +2685,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.390637457739391 0.390637457739391 0.390637457739391</scale>
             </mesh>
           </geometry>
@@ -2739,7 +2739,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.32777946964421895 0.32777946964421895 0.32777946964421895</scale>
             </mesh>
           </geometry>
@@ -2793,7 +2793,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.24438261445377032 0.24438261445377032 0.24438261445377032</scale>
             </mesh>
           </geometry>
@@ -2847,7 +2847,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.295011402811081 0.295011402811081 0.295011402811081</scale>
             </mesh>
           </geometry>
@@ -2901,7 +2901,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.25297880531224226 0.25297880531224226 0.25297880531224226</scale>
             </mesh>
           </geometry>
@@ -2955,7 +2955,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.2946722723377089 0.2946722723377089 0.2946722723377089</scale>
             </mesh>
           </geometry>
@@ -3009,7 +3009,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.3437670612817978 0.3437670612817978 0.3437670612817978</scale>
             </mesh>
           </geometry>
@@ -3063,7 +3063,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.2619177197662558 0.2619177197662558 0.2619177197662558</scale>
             </mesh>
           </geometry>
@@ -3117,7 +3117,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.2789296736699331 0.2789296736699331 0.2789296736699331</scale>
             </mesh>
           </geometry>
@@ -3171,7 +3171,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.206520695659952 0.206520695659952 0.206520695659952</scale>
             </mesh>
           </geometry>
@@ -3225,7 +3225,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.290207673140546 0.290207673140546 0.290207673140546</scale>
             </mesh>
           </geometry>
@@ -3279,7 +3279,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.3788354294652359 0.3788354294652359 0.3788354294652359</scale>
             </mesh>
           </geometry>
@@ -3333,7 +3333,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.35989992123532877 0.35989992123532877 0.35989992123532877</scale>
             </mesh>
           </geometry>
@@ -3387,7 +3387,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.28343508562727904 0.28343508562727904 0.28343508562727904</scale>
             </mesh>
           </geometry>
@@ -3441,7 +3441,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.31332808998212336 0.31332808998212336 0.31332808998212336</scale>
             </mesh>
           </geometry>
@@ -3495,7 +3495,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.21574265399389325 0.21574265399389325 0.21574265399389325</scale>
             </mesh>
           </geometry>
@@ -3549,7 +3549,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.34030538408974065 0.34030538408974065 0.34030538408974065</scale>
             </mesh>
           </geometry>
@@ -3603,7 +3603,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.28185133428647874 0.28185133428647874 0.28185133428647874</scale>
             </mesh>
           </geometry>
@@ -3657,7 +3657,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.25696030256977254 0.25696030256977254 0.25696030256977254</scale>
             </mesh>
           </geometry>
@@ -3711,7 +3711,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.22905678305930632 0.22905678305930632 0.22905678305930632</scale>
             </mesh>
           </geometry>
@@ -3765,7 +3765,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.26749126651039573 0.26749126651039573 0.26749126651039573</scale>
             </mesh>
           </geometry>
@@ -3819,7 +3819,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.36095111258804397 0.36095111258804397 0.36095111258804397</scale>
             </mesh>
           </geometry>
@@ -3873,7 +3873,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.3382585820388668 0.3382585820388668 0.3382585820388668</scale>
             </mesh>
           </geometry>
@@ -3927,7 +3927,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.37525855135766883 0.37525855135766883 0.37525855135766883</scale>
             </mesh>
           </geometry>
@@ -3981,7 +3981,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.35723671391354217 0.35723671391354217 0.35723671391354217</scale>
             </mesh>
           </geometry>
@@ -4035,7 +4035,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.35429919506211005 0.35429919506211005 0.35429919506211005</scale>
             </mesh>
           </geometry>
@@ -4089,7 +4089,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.23079171312251728 0.23079171312251728 0.23079171312251728</scale>
             </mesh>
           </geometry>
@@ -4143,7 +4143,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.30848861411644174 0.30848861411644174 0.30848861411644174</scale>
             </mesh>
           </geometry>
@@ -4197,7 +4197,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.3497482250491997 0.3497482250491997 0.3497482250491997</scale>
             </mesh>
           </geometry>
@@ -4251,7 +4251,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.2917239843580275 0.2917239843580275 0.2917239843580275</scale>
             </mesh>
           </geometry>
@@ -4305,7 +4305,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.2799573150200668 0.2799573150200668 0.2799573150200668</scale>
             </mesh>
           </geometry>
@@ -4359,7 +4359,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <uri>model://maize_01/meshes/maize_01.dae</uri>
               <scale>0.3245862616197014 0.3245862616197014 0.3245862616197014</scale>
             </mesh>
           </geometry>
@@ -4413,7 +4413,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <uri>model://maize_02/meshes/maize_02.dae</uri>
               <scale>0.25776112853677013 0.25776112853677013 0.25776112853677013</scale>
             </mesh>
           </geometry>
