@@ -87,8 +87,8 @@ optional arguments:
 | *simple_row_level_2.world* | `--max_angle_variation=0` | One row with more natural plant placement. |
 | *simple_row_level_3.world* | default | One row with little curvature. |
 | *simple_row_level_4.world* | `--max_angle_variation=0.3` | One row with curvature. |
-| *simple_row_level_5.world* | TODO | Level 3 with gaps |
-| *simple_row_level_6.world* | TODO | Level 4 with gaps |
+| *simple_row_level_5.world* | `--dropout=0.1` | Level 3 with gaps |
+| *simple_row_level_6.world* | `--max_angle_variation=0.3 --dropout=0.1` | Level 4 with gaps |
 
 ## License
 Virtual Maize Field is copyright (C) 2021 *Farm Technology Group of Wageningen University & Research* and *Kamaro Engineering e.V.* and licensed under GPLv3 (see [`LICENSE`](LICENSE)).
