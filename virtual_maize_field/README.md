@@ -46,7 +46,8 @@ usage: generate_world.py [-h] [--plant_radius PLANT_RADIUS]
                          [--plant_mass PLANT_MASS]
                          [--radius_noise_range RADIUS_NOISE_RANGE]
                          [--position_div POSITION_DIV]
-                         [--seed SEED] [--types TYPES]
+                         [--dropout DROPOUT] [--seed SEED]
+                         [--types TYPES]
 
 Generate a virtual maize field world for gazebo
 
@@ -74,6 +75,7 @@ optional arguments:
                         default_value: 0.05
   --position_div POSITION_DIV
                         default_value: 0.03
+  --dropout DROPOUT     default_value: 0.0
   --seed SEED           default_value: None
   --types TYPES         default_value: maize_01,maize_02
 ```
