@@ -19,6 +19,7 @@ class Field2DGenerator():
         plant_height = 0.3,
         plant_mass = 5.0,
         radius_noise_range = 0.05,
+        position_div = .03,
         seed = None,
         types=",".join(["maize_01", "maize_02"])):
         
@@ -72,6 +73,7 @@ class Field2DGenerator():
                 self.placements.append(placement_r)
 
         self.placements = np.array(np.stack([p.T for p in self.placements])).T
+        self.placements += np.random.normal(scale=self.position_div, size=self.placements.shape)
         
     def get_distance_to_closest_pumpkin(self, x, y, theta):
         s = np.sin(theta)

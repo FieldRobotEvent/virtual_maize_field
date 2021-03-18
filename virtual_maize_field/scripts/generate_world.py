@@ -13,7 +13,7 @@ if __name__ == "__main__":
     defaults = argspec.defaults
     
     # construct an ArgumentParser that takes these arguments
-    parser = argparse.ArgumentParser(description='generate a world full of cylinders')
+    parser = argparse.ArgumentParser(description='Generate a virtual maize field world for gazebo')
     for argname, default in zip(possible_kwargs, defaults):
         # we analyze the default value's type to guess the type for that argument
         parser.add_argument("--"+argname, type=type(default), help='default_value: {}'.format(default), required=False)

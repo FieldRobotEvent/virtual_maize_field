@@ -45,10 +45,10 @@ usage: generate_world.py [-h] [--plant_radius PLANT_RADIUS]
                          [--plant_height PLANT_HEIGHT]
                          [--plant_mass PLANT_MASS]
                          [--radius_noise_range RADIUS_NOISE_RANGE]
-                         [--seed SEED]
-                         [--types TYPES]
+                         [--position_div POSITION_DIV]
+                         [--seed SEED] [--types TYPES]
 
-generate a world full of cylinders
+Generate a virtual maize field world for gazebo
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -72,15 +72,17 @@ optional arguments:
                         default_value: 5.0
   --radius_noise_range RADIUS_NOISE_RANGE
                         default_value: 0.05
+  --position_div POSITION_DIV
+                        default_value: 0.03
   --seed SEED           default_value: None
-  --types TYPES         default_value: cylinder,maize_01,maize_02
+  --types TYPES         default_value: maize_01,maize_02
 ```
 
 ## Sample Worlds
 | Name | Parameters | Description |
 |:---- |:--------- |:----------- |
-| *simple_row_level_1.world* | `--max_angle_variation=0` | One row with grad based plants. |
-| *simple_row_level_2.world* | TODO | One row with more natural plant placement. |
+| *simple_row_level_1.world* | `--max_angle_variation=0 --position_div=0` | One row with grid based plants. |
+| *simple_row_level_2.world* | `--max_angle_variation=0` | One row with more natural plant placement. |
 | *simple_row_level_3.world* | default | One row with little curvature. |
 | *simple_row_level_4.world* | `--max_angle_variation=0.3` | One row with curvature. |
 | *simple_row_level_5.world* | TODO | Level 3 with gaps |
