@@ -1,4 +1,5 @@
 <?xml version='1.0'?>
+<!-- Seed: 934 -->
 <sdf version='1.6'>
   <world name='default'>
     <light name='sun' type='directional'>
@@ -107,9 +108,9 @@
     </state>
 
 
-    <model name='maize_02_0000'>
-      <pose frame=''>0.5417172281802712 0.3726723398281058 0.05 0 -0 1.0127954582291923</pose>
-      <link name='maize_02_0000_link'>
+    <model name='maize_01_0000'>
+      <pose frame=''>0.4315093026539479 0.397079906074998 0.05 0 -0 4.550763382685952</pose>
+      <link name='maize_01_0000_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
@@ -146,8 +147,8 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
-              <scale>0.23523611321754245 0.23523611321754245 0.23523611321754245</scale>
+              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <scale>0.3712101174081974 0.3712101174081974 0.3712101174081974</scale>
             </mesh>
           </geometry>
           <material>
@@ -162,7 +163,7 @@
 
 
     <model name='maize_02_0001'>
-      <pose frame=''>0.6251516845408136 1.1180170194843175 0.05 0 -0 5.349744571430131</pose>
+      <pose frame=''>0.24255768186829124 1.0661191235397471 0.05 0 -0 2.9865219693177543</pose>
       <link name='maize_02_0001_link'>
         <inertial>
           <mass>5.0</mass>
@@ -201,7 +202,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
-              <scale>0.34889392128717256 0.34889392128717256 0.34889392128717256</scale>
+              <scale>0.2853492473918083 0.2853492473918083 0.2853492473918083</scale>
             </mesh>
           </geometry>
           <material>
@@ -216,7 +217,7 @@
 
 
     <model name='maize_01_0002'>
-      <pose frame=''>0.45828277181972876 -0.3726723398281058 0.05 0 -0 4.351594590744513</pose>
+      <pose frame=''>0.542351872272787 -0.39441670784615185 0.05 0 -0 6.168725861179706</pose>
       <link name='maize_01_0002_link'>
         <inertial>
           <mass>5.0</mass>
@@ -255,7 +256,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.2295017503889616 0.2295017503889616 0.2295017503889616</scale>
+              <scale>0.25825073338826204 0.25825073338826204 0.25825073338826204</scale>
             </mesh>
           </geometry>
           <material>
@@ -270,7 +271,7 @@
 
 
     <model name='maize_01_0003'>
-      <pose frame=''>0.3748483154591864 -1.1180170194843175 0.05 0 -0 1.7593004485213475</pose>
+      <pose frame=''>0.6593663201321855 -1.124332373221146 0.05 0 -0 6.204155931579711</pose>
       <link name='maize_01_0003_link'>
         <inertial>
           <mass>5.0</mass>
@@ -309,7 +310,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.3843065621162232 0.3843065621162232 0.3843065621162232</scale>
+              <scale>0.2807490704351681 0.2807490704351681 0.2807490704351681</scale>
             </mesh>
           </geometry>
           <material>
@@ -323,63 +324,9 @@
 
 
 
-    <model name='maize_02_0004'>
-      <pose frame=''>1.1281267011234715 0.2956655458491917 0.05 0 -0 2.0008947347788895</pose>
-      <link name='maize_02_0004_link'>
-        <inertial>
-          <mass>5.0</mass>
-          <inertia>
-            <ixx>0.0033416667</ixx>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
-            <iyz>0</iyz>
-            <izz>0.000016666667</izz>
-          </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
-        </inertial>
-        <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
-          <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
-            </friction>
-          </surface>
-        </collision>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
-              <scale>0.2549433255926221 0.2549433255926221 0.2549433255926221</scale>
-            </mesh>
-          </geometry>
-          <material>
-          </material>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-    </model>
-
-
-
-    <model name='maize_01_0005'>
-      <pose frame=''>1.3905871971621324 0.9982425793616315 0.05 0 -0 2.035502518739645</pose>
-      <link name='maize_01_0005_link'>
+    <model name='maize_01_0004'>
+      <pose frame=''>1.0022382938134602 0.43712016255846725 0.05 0 -0 0.22871986162029784</pose>
+      <link name='maize_01_0004_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
@@ -417,7 +364,61 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.21101560110750583 0.21101560110750583 0.21101560110750583</scale>
+              <scale>0.21581469915429996 0.21581469915429996 0.21581469915429996</scale>
+            </mesh>
+          </geometry>
+          <material>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+
+
+
+    <model name='maize_02_0005'>
+      <pose frame=''>0.9833624985046959 1.267395927355852 0.05 0 -0 6.205141172646515</pose>
+      <link name='maize_02_0005_link'>
+        <inertial>
+          <mass>5.0</mass>
+          <inertia>
+            <ixx>0.0033416667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.0033416667</iyy>
+            <iyz>0</iyz>
+            <izz>0.000016666667</izz>
+          </inertia>
+          <pose>0 0 0.1 0 0 0</pose>
+        </inertial>
+        <collision name='collision'>
+          <pose>0 0 0.2 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.4</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode>
+                <mu>10</mu>
+                <mu2>10</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <scale>0.3361472061667857 0.3361472061667857 0.3361472061667857</scale>
             </mesh>
           </geometry>
           <material>
@@ -432,7 +433,7 @@
 
 
     <model name='maize_01_0006'>
-      <pose frame=''>0.8656662050848106 -0.40691148766324825 0.05 0 -0 5.7659016794730835</pose>
+      <pose frame=''>0.9878484557847592 -0.24856809103246533 0.05 0 -0 1.9096226756987231</pose>
       <link name='maize_01_0006_link'>
         <inertial>
           <mass>5.0</mass>
@@ -471,7 +472,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.32268144887059697 0.32268144887059697 0.32268144887059697</scale>
+              <scale>0.2758648658514212 0.2758648658514212 0.2758648658514212</scale>
             </mesh>
           </geometry>
           <material>
@@ -485,117 +486,9 @@
 
 
 
-    <model name='maize_01_0007'>
-      <pose frame=''>0.6032057090461498 -1.1094885211756882 0.05 0 -0 0.44377423805614086</pose>
-      <link name='maize_01_0007_link'>
-        <inertial>
-          <mass>5.0</mass>
-          <inertia>
-            <ixx>0.0033416667</ixx>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
-            <iyz>0</iyz>
-            <izz>0.000016666667</izz>
-          </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
-        </inertial>
-        <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
-          <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
-            </friction>
-          </surface>
-        </collision>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.20745396991736725 0.20745396991736725 0.20745396991736725</scale>
-            </mesh>
-          </geometry>
-          <material>
-          </material>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-    </model>
-
-
-
-    <model name='maize_01_0008'>
-      <pose frame=''>1.6501664967809175 0.09565848859648299 0.05 0 -0 4.870550465290271</pose>
-      <link name='maize_01_0008_link'>
-        <inertial>
-          <mass>5.0</mass>
-          <inertia>
-            <ixx>0.0033416667</ixx>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
-            <iyz>0</iyz>
-            <izz>0.000016666667</izz>
-          </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
-        </inertial>
-        <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
-          <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
-            </friction>
-          </surface>
-        </collision>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.24547215338143744 0.24547215338143744 0.24547215338143744</scale>
-            </mesh>
-          </geometry>
-          <material>
-          </material>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-    </model>
-
-
-
-    <model name='maize_02_0009'>
-      <pose frame=''>2.019937206117884 0.7481687356550534 0.05 0 -0 0.025164433497451618</pose>
-      <link name='maize_02_0009_link'>
+    <model name='maize_02_0007'>
+      <pose frame=''>1.0258689549942033 -1.0621389649807202 0.05 0 -0 4.64876227364672</pose>
+      <link name='maize_02_0007_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
@@ -633,7 +526,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
-              <scale>0.3830382917275661 0.3830382917275661 0.3830382917275661</scale>
+              <scale>0.3625388978567672 0.3625388978567672 0.3625388978567672</scale>
             </mesh>
           </geometry>
           <material>
@@ -647,9 +540,63 @@
 
 
 
-    <model name='maize_01_0010'>
-      <pose frame=''>1.280395787443951 -0.5568517584620875 0.05 0 -0 0.3257456195750682</pose>
-      <link name='maize_01_0010_link'>
+    <model name='maize_02_0008'>
+      <pose frame=''>1.580804603169776 0.4732595806892515 0.05 0 -0 5.5280930937211465</pose>
+      <link name='maize_02_0008_link'>
+        <inertial>
+          <mass>5.0</mass>
+          <inertia>
+            <ixx>0.0033416667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.0033416667</iyy>
+            <iyz>0</iyz>
+            <izz>0.000016666667</izz>
+          </inertia>
+          <pose>0 0 0.1 0 0 0</pose>
+        </inertial>
+        <collision name='collision'>
+          <pose>0 0 0.2 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.4</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode>
+                <mu>10</mu>
+                <mu2>10</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <scale>0.20827569868809992 0.20827569868809992 0.20827569868809992</scale>
+            </mesh>
+          </geometry>
+          <material>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+
+
+
+    <model name='maize_01_0009'>
+      <pose frame=''>1.7753909491447133 1.1820159427406136 0.05 0 -0 0.08068805032139821</pose>
+      <link name='maize_01_0009_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
@@ -687,7 +634,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.3194782296296452 0.3194782296296452 0.3194782296296452</scale>
+              <scale>0.3001175509176779 0.3001175509176779 0.3001175509176779</scale>
             </mesh>
           </geometry>
           <material>
@@ -701,9 +648,9 @@
 
 
 
-    <model name='maize_02_0011'>
-      <pose frame=''>0.9106250781069845 -1.2093620055206578 0.05 0 -0 3.8372748004931854</pose>
-      <link name='maize_02_0011_link'>
+    <model name='maize_02_0010'>
+      <pose frame=''>1.3909331549661366 -0.2678428269169846 0.05 0 -0 5.493984344535779</pose>
+      <link name='maize_02_0010_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
@@ -741,7 +688,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
-              <scale>0.3855531108987694 0.3855531108987694 0.3855531108987694</scale>
+              <scale>0.347686216432905 0.347686216432905 0.347686216432905</scale>
             </mesh>
           </geometry>
           <material>
@@ -755,9 +702,9 @@
 
 
 
-    <model name='maize_02_0012'>
-      <pose frame=''>2.162433231500911 -0.20895961848543926 0.05 0 -0 3.213859957224348</pose>
-      <link name='maize_02_0012_link'>
+    <model name='maize_01_0011'>
+      <pose frame=''>1.2066417683479735 -1.0160760083528395 0.05 0 -0 5.968121426790938</pose>
+      <link name='maize_01_0011_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
@@ -794,8 +741,62 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
-              <scale>0.21951389558364764 0.21951389558364764 0.21951389558364764</scale>
+              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <scale>0.3867559049798504 0.3867559049798504 0.3867559049798504</scale>
+            </mesh>
+          </geometry>
+          <material>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+
+
+
+    <model name='maize_01_0012'>
+      <pose frame=''>1.9614783048930566 0.3313782602875267 0.05 0 -0 5.713918931393798</pose>
+      <link name='maize_01_0012_link'>
+        <inertial>
+          <mass>5.0</mass>
+          <inertia>
+            <ixx>0.0033416667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.0033416667</iyy>
+            <iyz>0</iyz>
+            <izz>0.000016666667</izz>
+          </inertia>
+          <pose>0 0 0.1 0 0 0</pose>
+        </inertial>
+        <collision name='collision'>
+          <pose>0 0 0.2 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.4</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode>
+                <mu>10</mu>
+                <mu2>10</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <scale>0.334191932848008 0.334191932848008 0.334191932848008</scale>
             </mesh>
           </geometry>
           <material>
@@ -810,7 +811,7 @@
 
 
     <model name='maize_02_0013'>
-      <pose frame=''>2.6867237475331036 0.3273420268585754 0.05 0 -0 3.6611673901186195</pose>
+      <pose frame=''>1.973591996597552 1.0887870098024564 0.05 0 -0 0.45538326464263335</pose>
       <link name='maize_02_0013_link'>
         <inertial>
           <mass>5.0</mass>
@@ -849,7 +850,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
-              <scale>0.33703266768077494 0.33703266768077494 0.33703266768077494</scale>
+              <scale>0.3539681746236951 0.3539681746236951 0.3539681746236951</scale>
             </mesh>
           </geometry>
           <material>
@@ -863,9 +864,9 @@
 
 
 
-    <model name='maize_02_0014'>
-      <pose frame=''>1.6381427154687183 -0.745261263829454 0.05 0 -0 2.5698005861205817</pose>
-      <link name='maize_02_0014_link'>
+    <model name='maize_01_0014'>
+      <pose frame=''>1.97650578436195 -0.3908356024431098 0.05 0 -0 5.5633857957567985</pose>
+      <link name='maize_01_0014_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
@@ -902,8 +903,8 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
-              <scale>0.2872775528736215 0.2872775528736215 0.2872775528736215</scale>
+              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <scale>0.32912851552123706 0.32912851552123706 0.32912851552123706</scale>
             </mesh>
           </geometry>
           <material>
@@ -917,9 +918,9 @@
 
 
 
-    <model name='maize_02_0015'>
-      <pose frame=''>1.1138521994365258 -1.2815629091734686 0.05 0 -0 5.152457521005857</pose>
-      <link name='maize_02_0015_link'>
+    <model name='maize_01_0015'>
+      <pose frame=''>2.0017708666212517 -1.1443314566762193 0.05 0 -0 0.32319921572160565</pose>
+      <link name='maize_01_0015_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
@@ -956,8 +957,8 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
-              <scale>0.2918836771217627 0.2918836771217627 0.2918836771217627</scale>
+              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <scale>0.2110426145027453 0.2110426145027453 0.2110426145027453</scale>
             </mesh>
           </geometry>
           <material>
@@ -971,9 +972,9 @@
 
 
 
-    <model name='maize_02_0016'>
-      <pose frame=''>2.5565681937979976 -0.5999748106644966 0.05 0 -0 2.3478598585855592</pose>
-      <link name='maize_02_0016_link'>
+    <model name='maize_01_0016'>
+      <pose frame=''>2.507859450739737 0.3192338980267579 0.05 0 -0 5.663661556875392</pose>
+      <link name='maize_01_0016_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
@@ -1010,8 +1011,8 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
-              <scale>0.30648184403858714 0.30648184403858714 0.30648184403858714</scale>
+              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <scale>0.20652429102760272 0.20652429102760272 0.20652429102760272</scale>
             </mesh>
           </geometry>
           <material>
@@ -1026,7 +1027,7 @@
 
 
     <model name='maize_01_0017'>
-      <pose frame=''>3.1540597739656775 -0.14664952830234002 0.05 0 -0 5.374047506230506</pose>
+      <pose frame=''>2.7019005250432544 1.051103995046053 0.05 0 -0 1.2711967060808664</pose>
       <link name='maize_01_0017_link'>
         <inertial>
           <mass>5.0</mass>
@@ -1065,7 +1066,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.3836228263738631 0.3836228263738631 0.3836228263738631</scale>
+              <scale>0.33406995249293786 0.33406995249293786 0.33406995249293786</scale>
             </mesh>
           </geometry>
           <material>
@@ -1080,7 +1081,7 @@
 
 
     <model name='maize_01_0018'>
-      <pose frame=''>1.9590766136303177 -1.0533000930266534 0.05 0 -0 3.1842609452446355</pose>
+      <pose frame=''>2.4012489126734966 -0.41595581956273675 0.05 0 -0 4.278655914751727</pose>
       <link name='maize_01_0018_link'>
         <inertial>
           <mass>5.0</mass>
@@ -1119,7 +1120,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.3866450613408694 0.3866450613408694 0.3866450613408694</scale>
+              <scale>0.2276170209956057 0.2276170209956057 0.2276170209956057</scale>
             </mesh>
           </geometry>
           <material>
@@ -1133,9 +1134,9 @@
 
 
 
-    <model name='maize_01_0019'>
-      <pose frame=''>1.361585033462638 -1.50662537538881 0.05 0 -0 1.7893232997321924</pose>
-      <link name='maize_01_0019_link'>
+    <model name='maize_02_0019'>
+      <pose frame=''>2.2783577702041926 -1.1215333399157092 0.05 0 -0 0.0630392871826464</pose>
+      <link name='maize_02_0019_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
@@ -1172,8 +1173,8 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.2009160641246734 0.2009160641246734 0.2009160641246734</scale>
+              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <scale>0.297332530152266 0.297332530152266 0.297332530152266</scale>
             </mesh>
           </geometry>
           <material>
@@ -1187,9 +1188,9 @@
 
 
 
-    <model name='maize_01_0020'>
-      <pose frame=''>2.8061025410027476 -0.9419848527403862 0.05 0 -0 2.8203649339183183</pose>
-      <link name='maize_01_0020_link'>
+    <model name='maize_02_0020'>
+      <pose frame=''>3.1188785961637353 0.14438031633707513 0.05 0 -0 2.0724282506629668</pose>
+      <link name='maize_02_0020_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
@@ -1226,8 +1227,8 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.26677986127440584 0.26677986127440584 0.26677986127440584</scale>
+              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <scale>0.3356782546571425 0.3356782546571425 0.3356782546571425</scale>
             </mesh>
           </geometry>
           <material>
@@ -1242,7 +1243,7 @@
 
 
     <model name='maize_01_0021'>
-      <pose frame=''>3.2982291057637196 -0.3760242143064354 0.05 0 -0 4.596984794414026</pose>
+      <pose frame=''>3.4912260758192204 0.8111291514497204 0.05 0 -0 2.2099733163872144</pose>
       <link name='maize_01_0021_link'>
         <inertial>
           <mass>5.0</mass>
@@ -1281,7 +1282,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.308988902233461 0.308988902233461 0.308988902233461</scale>
+              <scale>0.2689546829469098 0.2689546829469098 0.2689546829469098</scale>
             </mesh>
           </geometry>
           <material>
@@ -1295,63 +1296,9 @@
 
 
 
-    <model name='maize_02_0022'>
-      <pose frame=''>2.3139759762417764 -1.5079454911743368 0.05 0 -0 5.721265487708122</pose>
-      <link name='maize_02_0022_link'>
-        <inertial>
-          <mass>5.0</mass>
-          <inertia>
-            <ixx>0.0033416667</ixx>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
-            <iyz>0</iyz>
-            <izz>0.000016666667</izz>
-          </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
-        </inertial>
-        <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
-          <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
-            </friction>
-          </surface>
-        </collision>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
-              <scale>0.23366518743661135 0.23366518743661135 0.23366518743661135</scale>
-            </mesh>
-          </geometry>
-          <material>
-          </material>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-    </model>
-
-
-
-    <model name='maize_01_0023'>
-      <pose frame=''>1.8218494114808046 -2.0739061296082877 0.05 0 -0 1.0987201515643072</pose>
-      <link name='maize_01_0023_link'>
+    <model name='maize_01_0022'>
+      <pose frame=''>2.7825069520723744 -0.48854178496382517 0.05 0 -0 0.20577746977581438</pose>
+      <link name='maize_01_0022_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
@@ -1389,7 +1336,61 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.25528687071230294 0.25528687071230294 0.25528687071230294</scale>
+              <scale>0.2533481960442858 0.2533481960442858 0.2533481960442858</scale>
+            </mesh>
+          </geometry>
+          <material>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+
+
+
+    <model name='maize_02_0023'>
+      <pose frame=''>2.467261485012224 -1.092746419659887 0.05 0 -0 2.1593284409652265</pose>
+      <link name='maize_02_0023_link'>
+        <inertial>
+          <mass>5.0</mass>
+          <inertia>
+            <ixx>0.0033416667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.0033416667</iyy>
+            <iyz>0</iyz>
+            <izz>0.000016666667</izz>
+          </inertia>
+          <pose>0 0 0.1 0 0 0</pose>
+        </inertial>
+        <collision name='collision'>
+          <pose>0 0 0.2 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.4</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode>
+                <mu>10</mu>
+                <mu2>10</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <scale>0.2917524720984204 0.2917524720984204 0.2917524720984204</scale>
             </mesh>
           </geometry>
           <material>
@@ -1404,7 +1405,7 @@
 
 
     <model name='maize_01_0024'>
-      <pose frame=''>3.1693730617752633 -1.2584504896648 0.05 0 -0 3.850102093413041</pose>
+      <pose frame=''>3.5626712667203346 -0.012360351254634767 0.05 0 -0 3.024978536346312</pose>
       <link name='maize_01_0024_link'>
         <inertial>
           <mass>5.0</mass>
@@ -1443,7 +1444,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.38034272210038245 0.38034272210038245 0.38034272210038245</scale>
+              <scale>0.3224302541832941 0.3224302541832941 0.3224302541832941</scale>
             </mesh>
           </geometry>
           <material>
@@ -1458,7 +1459,7 @@
 
 
     <model name='maize_02_0025'>
-      <pose frame=''>3.633426483502664 -0.6692523720650483 0.05 0 -0 0.1111341025069123</pose>
+      <pose frame=''>3.6774084393490796 0.753786787578464 0.05 0 -0 1.9276555911311397</pose>
       <link name='maize_02_0025_link'>
         <inertial>
           <mass>5.0</mass>
@@ -1497,7 +1498,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
-              <scale>0.2432646987756229 0.2432646987756229 0.2432646987756229</scale>
+              <scale>0.3217355225725299 0.3217355225725299 0.3217355225725299</scale>
             </mesh>
           </geometry>
           <material>
@@ -1511,9 +1512,9 @@
 
 
 
-    <model name='maize_01_0026'>
-      <pose frame=''>2.705319640047862 -1.847648607264552 0.05 0 -0 3.7717332994067174</pose>
-      <link name='maize_01_0026_link'>
+    <model name='maize_02_0026'>
+      <pose frame=''>3.268320391884293 -0.725061698640344 0.05 0 -0 1.5294238544526986</pose>
+      <link name='maize_02_0026_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
@@ -1550,8 +1551,8 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.3963958054957488 0.3963958054957488 0.3963958054957488</scale>
+              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <scale>0.30966717487904843 0.30966717487904843 0.30966717487904843</scale>
             </mesh>
           </geometry>
           <material>
@@ -1566,7 +1567,7 @@
 
 
     <model name='maize_02_0027'>
-      <pose frame=''>2.2412662183204612 -2.4368467248643038 0.05 0 -0 1.118790999973533</pose>
+      <pose frame=''>3.0809284633471745 -1.4537320118669428 0.05 0 -0 3.5627395952522374</pose>
       <link name='maize_02_0027_link'>
         <inertial>
           <mass>5.0</mass>
@@ -1605,7 +1606,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
-              <scale>0.3821372153628289 0.3821372153628289 0.3821372153628289</scale>
+              <scale>0.21945692540695266 0.21945692540695266 0.21945692540695266</scale>
             </mesh>
           </geometry>
           <material>
@@ -1620,7 +1621,7 @@
 
 
     <model name='maize_02_0028'>
-      <pose frame=''>3.634726730421504 -1.6436605753754645 0.05 0 -0 1.3096170226850359</pose>
+      <pose frame=''>3.8754932521747065 -0.1122528950783549 0.05 0 -0 0.6253915548283281</pose>
       <link name='maize_02_0028_link'>
         <inertial>
           <mass>5.0</mass>
@@ -1659,7 +1660,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
-              <scale>0.22425520455274678 0.22425520455274678 0.22425520455274678</scale>
+              <scale>0.20801956292645246 0.20801956292645246 0.20801956292645246</scale>
             </mesh>
           </geometry>
           <material>
@@ -1674,7 +1675,7 @@
 
 
     <model name='maize_01_0029'>
-      <pose frame=''>4.243889999308384 -1.2061447335605067 0.05 0 -0 5.982848388261096</pose>
+      <pose frame=''>3.929426342198815 0.6685869851245586 0.05 0 -0 3.685080814420155</pose>
       <link name='maize_01_0029_link'>
         <inertial>
           <mass>5.0</mass>
@@ -1713,7 +1714,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.3066995935761974 0.3066995935761974 0.3066995935761974</scale>
+              <scale>0.24861004509621615 0.24861004509621615 0.24861004509621615</scale>
             </mesh>
           </geometry>
           <material>
@@ -1728,7 +1729,7 @@
 
 
     <model name='maize_02_0030'>
-      <pose frame=''>3.0255634615346243 -2.0811764171904223 0.05 0 -0 5.9741160472117105</pose>
+      <pose frame=''>3.927666054194202 -0.8487175619974151 0.05 0 -0 3.342236629569204</pose>
       <link name='maize_02_0030_link'>
         <inertial>
           <mass>5.0</mass>
@@ -1767,7 +1768,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
-              <scale>0.27838300385198217 0.27838300385198217 0.27838300385198217</scale>
+              <scale>0.22213924919420608 0.22213924919420608 0.22213924919420608</scale>
             </mesh>
           </geometry>
           <material>
@@ -1781,9 +1782,9 @@
 
 
 
-    <model name='maize_01_0031'>
-      <pose frame=''>2.4164001926477447 -2.51869225900538 0.05 0 -0 2.8547917383197023</pose>
-      <link name='maize_01_0031_link'>
+    <model name='maize_02_0031'>
+      <pose frame=''>3.9013006127125998 -1.6516415498685684 0.05 0 -0 3.2321022580271928</pose>
+      <link name='maize_02_0031_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
@@ -1820,8 +1821,8 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.37829484292372395 0.37829484292372395 0.37829484292372395</scale>
+              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <scale>0.3603951491526316 0.3603951491526316 0.3603951491526316</scale>
             </mesh>
           </geometry>
           <material>
@@ -1836,7 +1837,7 @@
 
 
     <model name='maize_02_0032'>
-      <pose frame=''>3.9758893102773345 -2.1449896187154898 0.05 0 -0 6.2183034960639745</pose>
+      <pose frame=''>4.439199363061432 -0.14066899256534637 0.05 0 -0 5.9358670776532705</pose>
       <link name='maize_02_0032_link'>
         <inertial>
           <mass>5.0</mass>
@@ -1875,7 +1876,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
-              <scale>0.2522915347051234 0.2522915347051234 0.2522915347051234</scale>
+              <scale>0.2028216828042786 0.2028216828042786 0.2028216828042786</scale>
             </mesh>
           </geometry>
           <material>
@@ -1889,9 +1890,9 @@
 
 
 
-    <model name='maize_01_0033'>
-      <pose frame=''>4.684023283122599 -1.8979141717314107 0.05 0 -0 3.662934623189202</pose>
-      <link name='maize_01_0033_link'>
+    <model name='maize_02_0033'>
+      <pose frame=''>4.43188903623742 0.6045097352418226 0.05 0 -0 2.2810833320887784</pose>
+      <link name='maize_02_0033_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
@@ -1928,8 +1929,8 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.3615802971089941 0.3615802971089941 0.3615802971089941</scale>
+              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <scale>0.31961643123346445 0.31961643123346445 0.31961643123346445</scale>
             </mesh>
           </geometry>
           <material>
@@ -1944,7 +1945,7 @@
 
 
     <model name='maize_02_0034'>
-      <pose frame=''>3.2677553374320705 -2.3920650656995694 0.05 0 -0 2.1086720271711332</pose>
+      <pose frame=''>4.347891319499114 -0.8955657525434201 0.05 0 -0 1.3296802143322661</pose>
       <link name='maize_02_0034_link'>
         <inertial>
           <mass>5.0</mass>
@@ -1983,7 +1984,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
-              <scale>0.36360574053740974 0.36360574053740974 0.36360574053740974</scale>
+              <scale>0.3518461039078813 0.3518461039078813 0.3518461039078813</scale>
             </mesh>
           </geometry>
           <material>
@@ -1997,63 +1998,9 @@
 
 
 
-    <model name='maize_01_0035'>
-      <pose frame=''>2.559621364586806 -2.6391405126836487 0.05 0 -0 3.746701411163734</pose>
-      <link name='maize_01_0035_link'>
-        <inertial>
-          <mass>5.0</mass>
-          <inertia>
-            <ixx>0.0033416667</ixx>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
-            <iyz>0</iyz>
-            <izz>0.000016666667</izz>
-          </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
-        </inertial>
-        <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
-          <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
-            </friction>
-          </surface>
-        </collision>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.3904737953802095 0.3904737953802095 0.3904737953802095</scale>
-            </mesh>
-          </geometry>
-          <material>
-          </material>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-    </model>
-
-
-
-    <model name='maize_02_0036'>
-      <pose frame=''>4.099440108552612 -2.533933138943527 0.05 0 -0 1.0989208760183617</pose>
-      <link name='maize_02_0036_link'>
+    <model name='maize_02_0035'>
+      <pose frame=''>4.347034108037335 -1.6063175487834744 0.05 0 -0 4.253922399307593</pose>
+      <link name='maize_02_0035_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
@@ -2091,7 +2038,61 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
-              <scale>0.2003483910782492 0.2003483910782492 0.2003483910782492</scale>
+              <scale>0.36297338904215565 0.36297338904215565 0.36297338904215565</scale>
+            </mesh>
+          </geometry>
+          <material>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+
+
+
+    <model name='maize_01_0036'>
+      <pose frame=''>5.074209964115373 -0.20480802382659885 0.05 0 -0 0.3638103052801269</pose>
+      <link name='maize_01_0036_link'>
+        <inertial>
+          <mass>5.0</mass>
+          <inertia>
+            <ixx>0.0033416667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.0033416667</iyy>
+            <iyz>0</iyz>
+            <izz>0.000016666667</izz>
+          </inertia>
+          <pose>0 0 0.1 0 0 0</pose>
+        </inertial>
+        <collision name='collision'>
+          <pose>0 0 0.2 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.4</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode>
+                <mu>10</mu>
+                <mu2>10</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <scale>0.3481762318444535 0.3481762318444535 0.3481762318444535</scale>
             </mesh>
           </geometry>
           <material>
@@ -2106,7 +2107,7 @@
 
 
     <model name='maize_02_0037'>
-      <pose frame=''>4.725241748636326 -2.1205661019551703 0.05 0 -0 2.931707134280725</pose>
+      <pose frame=''>5.3028744785081505 0.5048094763240217 0.05 0 -0 4.495556347153885</pose>
       <link name='maize_02_0037_link'>
         <inertial>
           <mass>5.0</mass>
@@ -2145,7 +2146,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
-              <scale>0.24772575277964337 0.24772575277964337 0.24772575277964337</scale>
+              <scale>0.3809313850186602 0.3809313850186602 0.3809313850186602</scale>
             </mesh>
           </geometry>
           <material>
@@ -2160,7 +2161,7 @@
 
 
     <model name='maize_01_0038'>
-      <pose frame=''>3.473638468468898 -2.9473001759318844 0.05 0 -0 2.152109248912289</pose>
+      <pose frame=''>4.7672032487272 -0.8810774185613224 0.05 0 -0 5.5128656827529285</pose>
       <link name='maize_01_0038_link'>
         <inertial>
           <mass>5.0</mass>
@@ -2199,7 +2200,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.39430861506755255 0.39430861506755255 0.39430861506755255</scale>
+              <scale>0.2933322492580028 0.2933322492580028 0.2933322492580028</scale>
             </mesh>
           </geometry>
           <material>
@@ -2214,7 +2215,7 @@
 
 
     <model name='maize_01_0039'>
-      <pose frame=''>2.847836828385184 -3.3606672129202413 0.05 0 -0 4.073023913541653</pose>
+      <pose frame=''>4.488917310758957 -1.5973413830626544 0.05 0 -0 0.7046300905682895</pose>
       <link name='maize_01_0039_link'>
         <inertial>
           <mass>5.0</mass>
@@ -2253,7 +2254,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.3681877586577653 0.3681877586577653 0.3681877586577653</scale>
+              <scale>0.2605368011653744 0.2605368011653744 0.2605368011653744</scale>
             </mesh>
           </geometry>
           <material>
@@ -2267,117 +2268,9 @@
 
 
 
-    <model name='maize_01_0040'>
-      <pose frame=''>4.421319217180599 -3.0501191335891322 0.05 0 -0 4.143340406395905</pose>
-      <link name='maize_01_0040_link'>
-        <inertial>
-          <mass>5.0</mass>
-          <inertia>
-            <ixx>0.0033416667</ixx>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
-            <iyz>0</iyz>
-            <izz>0.000016666667</izz>
-          </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
-        </inertial>
-        <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
-          <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
-            </friction>
-          </surface>
-        </collision>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.3318566386469575 0.3318566386469575 0.3318566386469575</scale>
-            </mesh>
-          </geometry>
-          <material>
-          </material>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-    </model>
-
-
-
-    <model name='maize_01_0041'>
-      <pose frame=''>5.139723025202477 -2.834721899113699 0.05 0 -0 5.067943213191992</pose>
-      <link name='maize_01_0041_link'>
-        <inertial>
-          <mass>5.0</mass>
-          <inertia>
-            <ixx>0.0033416667</ixx>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
-            <iyz>0</iyz>
-            <izz>0.000016666667</izz>
-          </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
-        </inertial>
-        <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
-          <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
-            </friction>
-          </surface>
-        </collision>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.32060894667515893 0.32060894667515893 0.32060894667515893</scale>
-            </mesh>
-          </geometry>
-          <material>
-          </material>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-    </model>
-
-
-
-    <model name='maize_02_0042'>
-      <pose frame=''>3.7029154091587206 -3.2655163680645645 0.05 0 -0 5.190537187944571</pose>
-      <link name='maize_02_0042_link'>
+    <model name='maize_02_0040'>
+      <pose frame=''>5.479058064693875 -0.3564382195694253 0.05 0 -0 3.6998749466094587</pose>
+      <link name='maize_02_0040_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
@@ -2415,7 +2308,115 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
-              <scale>0.22325535566041457 0.22325535566041457 0.22325535566041457</scale>
+              <scale>0.30516677270756504 0.30516677270756504 0.30516677270756504</scale>
+            </mesh>
+          </geometry>
+          <material>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+
+
+
+    <model name='maize_02_0041'>
+      <pose frame=''>5.568708669775309 0.4432382582735174 0.05 0 -0 3.635426221191771</pose>
+      <link name='maize_02_0041_link'>
+        <inertial>
+          <mass>5.0</mass>
+          <inertia>
+            <ixx>0.0033416667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.0033416667</iyy>
+            <iyz>0</iyz>
+            <izz>0.000016666667</izz>
+          </inertia>
+          <pose>0 0 0.1 0 0 0</pose>
+        </inertial>
+        <collision name='collision'>
+          <pose>0 0 0.2 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.4</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode>
+                <mu>10</mu>
+                <mu2>10</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <scale>0.24199709201753283 0.24199709201753283 0.24199709201753283</scale>
+            </mesh>
+          </geometry>
+          <material>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+
+
+
+    <model name='maize_01_0042'>
+      <pose frame=''>5.301787066000131 -1.0763968945177689 0.05 0 -0 1.1109230626619038</pose>
+      <link name='maize_01_0042_link'>
+        <inertial>
+          <mass>5.0</mass>
+          <inertia>
+            <ixx>0.0033416667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.0033416667</iyy>
+            <iyz>0</iyz>
+            <izz>0.000016666667</izz>
+          </inertia>
+          <pose>0 0 0.1 0 0 0</pose>
+        </inertial>
+        <collision name='collision'>
+          <pose>0 0 0.2 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.4</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode>
+                <mu>10</mu>
+                <mu2>10</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <scale>0.2772823817461369 0.2772823817461369 0.2772823817461369</scale>
             </mesh>
           </geometry>
           <material>
@@ -2430,7 +2431,7 @@
 
 
     <model name='maize_01_0043'>
-      <pose frame=''>2.9845116011368424 -3.4809136025399976 0.05 0 -0 2.2376469543351813</pose>
+      <pose frame=''>5.151823347107983 -1.7742745084111593 0.05 0 -0 1.6627226124865941</pose>
       <link name='maize_01_0043_link'>
         <inertial>
           <mass>5.0</mass>
@@ -2469,7 +2470,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.2906969030074323 0.2906969030074323 0.2906969030074323</scale>
+              <scale>0.2192655597060479 0.2192655597060479 0.2192655597060479</scale>
             </mesh>
           </geometry>
           <material>
@@ -2484,7 +2485,7 @@
 
 
     <model name='maize_01_0044'>
-      <pose frame=''>4.52797701850094 -3.4449920677087973 0.05 0 -0 0.06251234656159897</pose>
+      <pose frame=''>5.997370636748303 -0.43453068917584464 0.05 0 -0 3.0363443924250375</pose>
       <link name='maize_01_0044_link'>
         <inertial>
           <mass>5.0</mass>
@@ -2523,7 +2524,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.21396985870489907 0.21396985870489907 0.21396985870489907</scale>
+              <scale>0.3156462175001283 0.3156462175001283 0.3156462175001283</scale>
             </mesh>
           </geometry>
           <material>
@@ -2537,63 +2538,9 @@
 
 
 
-    <model name='maize_02_0045'>
-      <pose frame=''>5.1725001165295925 -3.061468957443524 0.05 0 -0 3.3567959022907066</pose>
-      <link name='maize_02_0045_link'>
-        <inertial>
-          <mass>5.0</mass>
-          <inertia>
-            <ixx>0.0033416667</ixx>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
-            <iyz>0</iyz>
-            <izz>0.000016666667</izz>
-          </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
-        </inertial>
-        <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
-          <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
-            </friction>
-          </surface>
-        </collision>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
-              <scale>0.30626826911529914 0.30626826911529914 0.30626826911529914</scale>
-            </mesh>
-          </geometry>
-          <material>
-          </material>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-    </model>
-
-
-
-    <model name='maize_01_0046'>
-      <pose frame=''>3.8834539204722884 -3.82851517797407 0.05 0 -0 5.062035827904962</pose>
-      <link name='maize_01_0046_link'>
+    <model name='maize_01_0045'>
+      <pose frame=''>6.1760588636844895 0.24516573348665505 0.05 0 -0 5.437953657646721</pose>
+      <link name='maize_01_0045_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
@@ -2631,7 +2578,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.32047094332566145 0.32047094332566145 0.32047094332566145</scale>
+              <scale>0.28575632511967586 0.28575632511967586 0.28575632511967586</scale>
             </mesh>
           </geometry>
           <material>
@@ -2645,9 +2592,9 @@
 
 
 
-    <model name='maize_02_0047'>
-      <pose frame=''>3.2389308224436366 -4.212038288239343 0.05 0 -0 6.240078469642805</pose>
-      <link name='maize_02_0047_link'>
+    <model name='maize_02_0046'>
+      <pose frame=''>5.767305551114741 -1.1818292335546101 0.05 0 -0 3.199339258518485</pose>
+      <link name='maize_02_0046_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
@@ -2685,7 +2632,61 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
-              <scale>0.35726959493111077 0.35726959493111077 0.35726959493111077</scale>
+              <scale>0.22207130089193772 0.22207130089193772 0.22207130089193772</scale>
+            </mesh>
+          </geometry>
+          <material>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+
+
+
+    <model name='maize_01_0047'>
+      <pose frame=''>5.512999398349257 -1.8421251721417977 0.05 0 -0 3.0663462175958798</pose>
+      <link name='maize_01_0047_link'>
+        <inertial>
+          <mass>5.0</mass>
+          <inertia>
+            <ixx>0.0033416667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.0033416667</iyy>
+            <iyz>0</iyz>
+            <izz>0.000016666667</izz>
+          </inertia>
+          <pose>0 0 0.1 0 0 0</pose>
+        </inertial>
+        <collision name='collision'>
+          <pose>0 0 0.2 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.4</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode>
+                <mu>10</mu>
+                <mu2>10</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <scale>0.2388954270758812 0.2388954270758812 0.2388954270758812</scale>
             </mesh>
           </geometry>
           <material>
@@ -2700,7 +2701,7 @@
 
 
     <model name='maize_01_0048'>
-      <pose frame=''>4.716819816409103 -3.7918733778799996 0.05 0 -0 3.635242490299941</pose>
+      <pose frame=''>6.516326268361257 -0.6259603881629942 0.05 0 -0 5.440965302554201</pose>
       <link name='maize_01_0048_link'>
         <inertial>
           <mass>5.0</mass>
@@ -2739,7 +2740,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.2858560596195341 0.2858560596195341 0.2858560596195341</scale>
+              <scale>0.2883771424666554 0.2883771424666554 0.2883771424666554</scale>
             </mesh>
           </geometry>
           <material>
@@ -2754,7 +2755,7 @@
 
 
     <model name='maize_01_0049'>
-      <pose frame=''>5.227664363233715 -3.242748757252262 0.05 0 -0 3.2162034124624372</pose>
+      <pose frame=''>6.81582099035738 0.09424682301170872 0.05 0 -0 6.205153649267513</pose>
       <link name='maize_01_0049_link'>
         <inertial>
           <mass>5.0</mass>
@@ -2793,7 +2794,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.2757322502789414 0.2757322502789414 0.2757322502789414</scale>
+              <scale>0.3733145915036303 0.3733145915036303 0.3733145915036303</scale>
             </mesh>
           </geometry>
           <material>
@@ -2807,9 +2808,9 @@
 
 
 
-    <model name='maize_02_0050'>
-      <pose frame=''>4.20597526958449 -4.340997998507737 0.05 0 -0 2.5196984815204195</pose>
-      <link name='maize_02_0050_link'>
+    <model name='maize_01_0050'>
+      <pose frame=''>6.123077394655233 -1.2967560747513358 0.05 0 -0 0.12145444657264368</pose>
+      <link name='maize_01_0050_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
@@ -2846,8 +2847,8 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
-              <scale>0.24990643535826612 0.24990643535826612 0.24990643535826612</scale>
+              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <scale>0.27537942975144075 0.27537942975144075 0.27537942975144075</scale>
             </mesh>
           </geometry>
           <material>
@@ -2862,7 +2863,7 @@
 
 
     <model name='maize_01_0051'>
-      <pose frame=''>3.6951307227598784 -4.890122619135475 0.05 0 -0 0.5532988255804562</pose>
+      <pose frame=''>5.878537813385042 -2.002874035403834 0.05 0 -0 3.328478661948782</pose>
       <link name='maize_01_0051_link'>
         <inertial>
           <mass>5.0</mass>
@@ -2901,7 +2902,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.325999776097552 0.325999776097552 0.325999776097552</scale>
+              <scale>0.2622082928611512 0.2622082928611512 0.2622082928611512</scale>
             </mesh>
           </geometry>
           <material>
@@ -2915,9 +2916,9 @@
 
 
 
-    <model name='maize_01_0052'>
-      <pose frame=''>5.030887036247824 -4.0919577201441495 0.05 0 -0 3.3580091762218203</pose>
-      <link name='maize_01_0052_link'>
+    <model name='maize_02_0052'>
+      <pose frame=''>6.9916097350231965 -0.8829749834231445 0.05 0 -0 2.6667097412651954</pose>
+      <link name='maize_02_0052_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
@@ -2954,8 +2955,8 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.2913831615670124 0.2913831615670124 0.2913831615670124</scale>
+              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <scale>0.20776714427987342 0.20776714427987342 0.20776714427987342</scale>
             </mesh>
           </geometry>
           <material>
@@ -2970,7 +2971,7 @@
 
 
     <model name='maize_01_0053'>
-      <pose frame=''>5.437699861912896 -3.4618757216118947 0.05 0 -0 2.222283445497612</pose>
+      <pose frame=''>7.422843290922605 -0.24099178125387255 0.05 0 -0 2.939527955552282</pose>
       <link name='maize_01_0053_link'>
         <inertial>
           <mass>5.0</mass>
@@ -3009,7 +3010,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.24339885335706843 0.24339885335706843 0.24339885335706843</scale>
+              <scale>0.2756851386217878 0.2756851386217878 0.2756851386217878</scale>
             </mesh>
           </geometry>
           <material>
@@ -3023,63 +3024,9 @@
 
 
 
-    <model name='maize_02_0054'>
-      <pose frame=''>4.624074210582753 -4.722039718676404 0.05 0 -0 4.348180205042942</pose>
-      <link name='maize_02_0054_link'>
-        <inertial>
-          <mass>5.0</mass>
-          <inertia>
-            <ixx>0.0033416667</ixx>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
-            <iyz>0</iyz>
-            <izz>0.000016666667</izz>
-          </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
-        </inertial>
-        <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
-          <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
-            </friction>
-          </surface>
-        </collision>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
-              <scale>0.3539611601289734 0.3539611601289734 0.3539611601289734</scale>
-            </mesh>
-          </geometry>
-          <material>
-          </material>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-    </model>
-
-
-
-    <model name='maize_01_0055'>
-      <pose frame=''>4.217261384917681 -5.352121717208659 0.05 0 -0 2.410337756769713</pose>
-      <link name='maize_01_0055_link'>
+    <model name='maize_01_0054'>
+      <pose frame=''>6.571853817442142 -1.4271728463200621 0.05 0 -0 3.301712691776191</pose>
+      <link name='maize_01_0054_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
@@ -3117,7 +3064,61 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.32764321902996624 0.32764321902996624 0.32764321902996624</scale>
+              <scale>0.3963667352619458 0.3963667352619458 0.3963667352619458</scale>
+            </mesh>
+          </geometry>
+          <material>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+
+
+
+    <model name='maize_02_0055'>
+      <pose frame=''>6.078397265185088 -2.1030297540513248 0.05 0 -0 4.548644060231294</pose>
+      <link name='maize_02_0055_link'>
+        <inertial>
+          <mass>5.0</mass>
+          <inertia>
+            <ixx>0.0033416667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.0033416667</iyy>
+            <iyz>0</iyz>
+            <izz>0.000016666667</izz>
+          </inertia>
+          <pose>0 0 0.1 0 0 0</pose>
+        </inertial>
+        <collision name='collision'>
+          <pose>0 0 0.2 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.4</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode>
+                <mu>10</mu>
+                <mu2>10</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <scale>0.3984025922975394 0.3984025922975394 0.3984025922975394</scale>
             </mesh>
           </geometry>
           <material>
@@ -3132,7 +3133,7 @@
 
 
     <model name='maize_01_0056'>
-      <pose frame=''>5.534537789412904 -4.4368474454915106 0.05 0 -0 2.6183114119753657</pose>
+      <pose frame=''>7.434453658970364 -1.2196753234245439 0.05 0 -0 1.4151042241253762</pose>
       <link name='maize_01_0056_link'>
         <inertial>
           <mass>5.0</mass>
@@ -3171,7 +3172,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.2481380411263725 0.2481380411263725 0.2481380411263725</scale>
+              <scale>0.37288021370095253 0.37288021370095253 0.37288021370095253</scale>
             </mesh>
           </geometry>
           <material>
@@ -3186,7 +3187,7 @@
 
 
     <model name='maize_02_0057'>
-      <pose frame=''>6.108542790031795 -3.9541277967672155 0.05 0 -0 2.879258028217024</pose>
+      <pose frame=''>7.9290792056114014 -0.6373874562908493 0.05 0 -0 1.3926742693503522</pose>
       <link name='maize_02_0057_link'>
         <inertial>
           <mass>5.0</mass>
@@ -3225,7 +3226,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
-              <scale>0.2566624434386825 0.2566624434386825 0.2566624434386825</scale>
+              <scale>0.2549321761233434 0.2549321761233434 0.2549321761233434</scale>
             </mesh>
           </geometry>
           <material>
@@ -3239,9 +3240,9 @@
 
 
 
-    <model name='maize_01_0058'>
-      <pose frame=''>4.960532788794013 -4.919567094215806 0.05 0 -0 3.1137256547273835</pose>
-      <link name='maize_01_0058_link'>
+    <model name='maize_02_0058'>
+      <pose frame=''>6.895438613374187 -1.7109448217423877 0.05 0 -0 4.671125991169863</pose>
+      <link name='maize_02_0058_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
@@ -3278,8 +3279,8 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.24172915422349572 0.24172915422349572 0.24172915422349572</scale>
+              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <scale>0.2088355598813872 0.2088355598813872 0.2088355598813872</scale>
             </mesh>
           </geometry>
           <material>
@@ -3294,7 +3295,7 @@
 
 
     <model name='maize_02_0059'>
-      <pose frame=''>4.386527788175123 -5.402286742940101 0.05 0 -0 1.5224110427182045</pose>
+      <pose frame=''>6.382420156643021 -2.2553539452344857 0.05 0 -0 5.6162909541725226</pose>
       <link name='maize_02_0059_link'>
         <inertial>
           <mass>5.0</mass>
@@ -3333,7 +3334,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
-              <scale>0.293787854632669 0.293787854632669 0.293787854632669</scale>
+              <scale>0.25710422066861055 0.25710422066861055 0.25710422066861055</scale>
             </mesh>
           </geometry>
           <material>
@@ -3347,9 +3348,9 @@
 
 
 
-    <model name='maize_02_0060'>
-      <pose frame=''>5.906075807033332 -4.895832896107278 0.05 0 -0 0.34925525711505945</pose>
-      <link name='maize_02_0060_link'>
+    <model name='maize_01_0060'>
+      <pose frame=''>7.8074594027843265 -1.544907915172342 0.05 0 -0 5.484342701715738</pose>
+      <link name='maize_01_0060_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
@@ -3386,8 +3387,8 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
-              <scale>0.39995405405991247 0.39995405405991247 0.39995405405991247</scale>
+              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <scale>0.21330822113305126 0.21330822113305126 0.21330822113305126</scale>
             </mesh>
           </geometry>
           <material>
@@ -3402,7 +3403,7 @@
 
 
     <model name='maize_01_0061'>
-      <pose frame=''>6.579530644594018 -4.565744147789331 0.05 0 -0 2.6488938231610235</pose>
+      <pose frame=''>8.465470022525832 -1.101813059355951 0.05 0 -0 2.7622012682227877</pose>
       <link name='maize_01_0061_link'>
         <inertial>
           <mass>5.0</mass>
@@ -3441,7 +3442,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.23146237001123587 0.23146237001123587 0.23146237001123587</scale>
+              <scale>0.3278711462792965 0.3278711462792965 0.3278711462792965</scale>
             </mesh>
           </geometry>
           <material>
@@ -3455,9 +3456,9 @@
 
 
 
-    <model name='maize_01_0062'>
-      <pose frame=''>5.232620969472645 -5.225921644425226 0.05 0 -0 0.5421614249625584</pose>
-      <link name='maize_01_0062_link'>
+    <model name='maize_02_0062'>
+      <pose frame=''>7.231521145437364 -2.0494003347882077 0.05 0 -0 2.4348959767139675</pose>
+      <link name='maize_02_0062_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
@@ -3494,8 +3495,8 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.33757583849822975 0.33757583849822975 0.33757583849822975</scale>
+              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <scale>0.3651312743839169 0.3651312743839169 0.3651312743839169</scale>
             </mesh>
           </geometry>
           <material>
@@ -3510,7 +3511,7 @@
 
 
     <model name='maize_01_0063'>
-      <pose frame=''>4.559166131911959 -5.556010392743173 0.05 0 -0 2.4510632436192905</pose>
+      <pose frame=''>6.657248654401277 -2.533643048390824 0.05 0 -0 0.19539616745988297</pose>
       <link name='maize_01_0063_link'>
         <inertial>
           <mass>5.0</mass>
@@ -3549,7 +3550,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.2956928997735185 0.2956928997735185 0.2956928997735185</scale>
+              <scale>0.24050775177382866 0.24050775177382866 0.24050775177382866</scale>
             </mesh>
           </geometry>
           <material>
@@ -3563,63 +3564,9 @@
 
 
 
-    <model name='maize_01_0064'>
-      <pose frame=''>6.069053236473729 -5.2600006247530535 0.05 0 -0 6.0818995846636215</pose>
-      <link name='maize_01_0064_link'>
-        <inertial>
-          <mass>5.0</mass>
-          <inertia>
-            <ixx>0.0033416667</ixx>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
-            <iyz>0</iyz>
-            <izz>0.000016666667</izz>
-          </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
-        </inertial>
-        <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
-          <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
-            </friction>
-          </surface>
-        </collision>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.33986263727663224 0.33986263727663224 0.33986263727663224</scale>
-            </mesh>
-          </geometry>
-          <material>
-          </material>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-    </model>
-
-
-
-    <model name='maize_02_0065'>
-      <pose frame=''>6.6283446018246135 -4.760307550312409 0.05 0 -0 5.330369936247278</pose>
-      <link name='maize_02_0065_link'>
+    <model name='maize_02_0064'>
+      <pose frame=''>8.085177201300702 -1.9087744844559198 0.05 0 -0 2.2035648604423357</pose>
+      <link name='maize_02_0064_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
@@ -3657,7 +3604,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
-              <scale>0.3041728560182206 0.3041728560182206 0.3041728560182206</scale>
+              <scale>0.29422711120321277 0.29422711120321277 0.29422711120321277</scale>
             </mesh>
           </geometry>
           <material>
@@ -3671,9 +3618,9 @@
 
 
 
-    <model name='maize_01_0066'>
-      <pose frame=''>5.509761871122845 -5.759693699193698 0.05 0 -0 0.4770303785405304</pose>
-      <link name='maize_01_0066_link'>
+    <model name='maize_01_0065'>
+      <pose frame=''>8.533197391067327 -1.3743255710694275 0.05 0 -0 5.972178180139961</pose>
+      <link name='maize_01_0065_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
@@ -3711,7 +3658,61 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.34388445252721506 0.34388445252721506 0.34388445252721506</scale>
+              <scale>0.23511540222643346 0.23511540222643346 0.23511540222643346</scale>
+            </mesh>
+          </geometry>
+          <material>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+
+
+
+    <model name='maize_02_0066'>
+      <pose frame=''>7.576490825986342 -2.5338862140195406 0.05 0 -0 5.459387039316107</pose>
+      <link name='maize_02_0066_link'>
+        <inertial>
+          <mass>5.0</mass>
+          <inertia>
+            <ixx>0.0033416667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.0033416667</iyy>
+            <iyz>0</iyz>
+            <izz>0.000016666667</izz>
+          </inertia>
+          <pose>0 0 0.1 0 0 0</pose>
+        </inertial>
+        <collision name='collision'>
+          <pose>0 0 0.2 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.4</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode>
+                <mu>10</mu>
+                <mu2>10</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <scale>0.3984031639480601 0.3984031639480601 0.3984031639480601</scale>
             </mesh>
           </geometry>
           <material>
@@ -3726,7 +3727,7 @@
 
 
     <model name='maize_01_0067'>
-      <pose frame=''>4.9504705057719605 -6.2593867736343425 0.05 0 -0 1.405101548885407</pose>
+      <pose frame=''>7.1650460752519125 -3.0623312777752005 0.05 0 -0 5.181737470451427</pose>
       <link name='maize_01_0067_link'>
         <inertial>
           <mass>5.0</mass>
@@ -3765,7 +3766,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.2809756994334886 0.2809756994334886 0.2809756994334886</scale>
+              <scale>0.3664637456030204 0.3664637456030204 0.3664637456030204</scale>
             </mesh>
           </geometry>
           <material>
@@ -3779,9 +3780,9 @@
 
 
 
-    <model name='maize_02_0068'>
-      <pose frame=''>6.438886963642763 -5.681344622966918 0.05 0 -0 1.9346917174953056</pose>
-      <link name='maize_02_0068_link'>
+    <model name='maize_01_0068'>
+      <pose frame=''>8.392412813947882 -2.1255480802962192 0.05 0 -0 0.3719810377776792</pose>
+      <link name='maize_01_0068_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
@@ -3818,8 +3819,8 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
-              <scale>0.355424293667864 0.355424293667864 0.355424293667864</scale>
+              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <scale>0.3009023825353744 0.3009023825353744 0.3009023825353744</scale>
             </mesh>
           </geometry>
           <material>
@@ -3834,7 +3835,7 @@
 
 
     <model name='maize_01_0069'>
-      <pose frame=''>7.071588350744188 -5.278617724486158 0.05 0 -0 3.347224550051618</pose>
+      <pose frame=''>8.720542262796615 -1.5410890418539298 0.05 0 -0 5.77161697033459</pose>
       <link name='maize_01_0069_link'>
         <inertial>
           <mass>5.0</mass>
@@ -3873,7 +3874,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.32469492029369107 0.32469492029369107 0.32469492029369107</scale>
+              <scale>0.21191830954583224 0.21191830954583224 0.21191830954583224</scale>
             </mesh>
           </geometry>
           <material>
@@ -3888,7 +3889,7 @@
 
 
     <model name='maize_02_0070'>
-      <pose frame=''>5.8061855765413375 -6.0840715214476795 0.05 0 -0 5.7918079224532</pose>
+      <pose frame=''>8.03910267813748 -2.9048601639049667 0.05 0 -0 3.07160808988611</pose>
       <link name='maize_02_0070_link'>
         <inertial>
           <mass>5.0</mass>
@@ -3927,7 +3928,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
-              <scale>0.2054387723904561 0.2054387723904561 0.2054387723904561</scale>
+              <scale>0.35609720150252233 0.35609720150252233 0.35609720150252233</scale>
             </mesh>
           </geometry>
           <material>
@@ -3941,63 +3942,9 @@
 
 
 
-    <model name='maize_01_0071'>
-      <pose frame=''>5.173484189439913 -6.48679841992844 0.05 0 -0 3.0064946282323386</pose>
-      <link name='maize_01_0071_link'>
-        <inertial>
-          <mass>5.0</mass>
-          <inertia>
-            <ixx>0.0033416667</ixx>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
-            <iyz>0</iyz>
-            <izz>0.000016666667</izz>
-          </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
-        </inertial>
-        <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
-          <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
-            </friction>
-          </surface>
-        </collision>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.24619041568699945 0.24619041568699945 0.24619041568699945</scale>
-            </mesh>
-          </geometry>
-          <material>
-          </material>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-    </model>
-
-
-
-    <model name='maize_02_0072'>
-      <pose frame=''>6.676967171672236 -6.061898790986874 0.05 0 -0 6.231310557061886</pose>
-      <link name='maize_02_0072_link'>
+    <model name='maize_02_0071'>
+      <pose frame=''>7.717903754996891 -3.5196511050328314 0.05 0 -0 0.6021741484847589</pose>
+      <link name='maize_02_0071_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
@@ -4035,7 +3982,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
-              <scale>0.3316549755940859 0.3316549755940859 0.3316549755940859</scale>
+              <scale>0.3002431208174625 0.3002431208174625 0.3002431208174625</scale>
             </mesh>
           </geometry>
           <material>
@@ -4049,63 +3996,9 @@
 
 
 
-    <model name='maize_02_0073'>
-      <pose frame=''>7.248859776858259 -5.576678379077458 0.05 0 -0 3.3813154929316087</pose>
-      <link name='maize_02_0073_link'>
-        <inertial>
-          <mass>5.0</mass>
-          <inertia>
-            <ixx>0.0033416667</ixx>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
-            <iyz>0</iyz>
-            <izz>0.000016666667</izz>
-          </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
-        </inertial>
-        <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
-          <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
-            </friction>
-          </surface>
-        </collision>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
-              <scale>0.3674706880964472 0.3674706880964472 0.3674706880964472</scale>
-            </mesh>
-          </geometry>
-          <material>
-          </material>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-    </model>
-
-
-
-    <model name='maize_01_0074'>
-      <pose frame=''>6.105074566486212 -6.54711920289629 0.05 0 -0 3.1745559976450055</pose>
-      <link name='maize_01_0074_link'>
+    <model name='maize_01_0072'>
+      <pose frame=''>8.784709196936431 -2.3769013797916965 0.05 0 -0 4.186765761637344</pose>
+      <link name='maize_01_0072_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
@@ -4143,7 +4036,115 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.3168933417380276 0.3168933417380276 0.3168933417380276</scale>
+              <scale>0.2222464267064479 0.2222464267064479 0.2222464267064479</scale>
+            </mesh>
+          </geometry>
+          <material>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+
+
+
+    <model name='maize_01_0073'>
+      <pose frame=''>9.029602916808678 -1.660108292090896 0.05 0 -0 5.934250506216158</pose>
+      <link name='maize_01_0073_link'>
+        <inertial>
+          <mass>5.0</mass>
+          <inertia>
+            <ixx>0.0033416667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.0033416667</iyy>
+            <iyz>0</iyz>
+            <izz>0.000016666667</izz>
+          </inertia>
+          <pose>0 0 0.1 0 0 0</pose>
+        </inertial>
+        <collision name='collision'>
+          <pose>0 0 0.2 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.4</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode>
+                <mu>10</mu>
+                <mu2>10</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <scale>0.274833229768702 0.274833229768702 0.274833229768702</scale>
+            </mesh>
+          </geometry>
+          <material>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+
+
+
+    <model name='maize_02_0074'>
+      <pose frame=''>8.590326891112747 -3.1223747667644566 0.05 0 -0 2.1398752158556604</pose>
+      <link name='maize_02_0074_link'>
+        <inertial>
+          <mass>5.0</mass>
+          <inertia>
+            <ixx>0.0033416667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.0033416667</iyy>
+            <iyz>0</iyz>
+            <izz>0.000016666667</izz>
+          </inertia>
+          <pose>0 0 0.1 0 0 0</pose>
+        </inertial>
+        <collision name='collision'>
+          <pose>0 0 0.2 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.4</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode>
+                <mu>10</mu>
+                <mu2>10</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <scale>0.2446543264532813 0.2446543264532813 0.2446543264532813</scale>
             </mesh>
           </geometry>
           <material>
@@ -4158,7 +4159,7 @@
 
 
     <model name='maize_01_0075'>
-      <pose frame=''>5.533181961300189 -7.032339614805706 0.05 0 -0 0.14964998491498846</pose>
+      <pose frame=''>8.358615734444731 -3.862044248366975 0.05 0 -0 3.9729829742881586</pose>
       <link name='maize_01_0075_link'>
         <inertial>
           <mass>5.0</mass>
@@ -4197,7 +4198,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.2194908907058834 0.2194908907058834 0.2194908907058834</scale>
+              <scale>0.3566092938401519 0.3566092938401519 0.3566092938401519</scale>
             </mesh>
           </geometry>
           <material>
@@ -4211,9 +4212,9 @@
 
 
 
-    <model name='maize_02_0076'>
-      <pose frame=''>7.029873757384664 -6.482878854819975 0.05 0 -0 0.9812728501080205</pose>
-      <link name='maize_02_0076_link'>
+    <model name='maize_01_0076'>
+      <pose frame=''>9.294731724132491 -2.566933864172101 0.05 0 -0 5.93428580953485</pose>
+      <link name='maize_01_0076_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
@@ -4250,8 +4251,8 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
-              <scale>0.30374252566333193 0.30374252566333193 0.30374252566333193</scale>
+              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
+              <scale>0.3379026567275263 0.3379026567275263 0.3379026567275263</scale>
             </mesh>
           </geometry>
           <material>
@@ -4266,7 +4267,7 @@
 
 
     <model name='maize_02_0077'>
-      <pose frame=''>7.660618984782988 -6.0770950969953965 0.05 0 -0 3.1580148516740287</pose>
+      <pose frame=''>9.670351137578217 -1.9471077292636292 0.05 0 -0 0.12837822498457616</pose>
       <link name='maize_02_0077_link'>
         <inertial>
           <mass>5.0</mass>
@@ -4305,7 +4306,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
-              <scale>0.37146236226450646 0.37146236226450646 0.37146236226450646</scale>
+              <scale>0.22414277224956103 0.22414277224956103 0.22414277224956103</scale>
             </mesh>
           </geometry>
           <material>
@@ -4320,7 +4321,7 @@
 
 
     <model name='maize_02_0078'>
-      <pose frame=''>6.3991285299863385 -6.888662612644553 0.05 0 -0 5.761740757813285</pose>
+      <pose frame=''>8.960629388668515 -3.2266018340446077 0.05 0 -0 3.7247704093797793</pose>
       <link name='maize_02_0078_link'>
         <inertial>
           <mass>5.0</mass>
@@ -4359,7 +4360,7 @@
           <geometry>
             <mesh>
               <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
-              <scale>0.24115458671733025 0.24115458671733025 0.24115458671733025</scale>
+              <scale>0.2938043774851387 0.2938043774851387 0.2938043774851387</scale>
             </mesh>
           </geometry>
           <material>
@@ -4373,9 +4374,9 @@
 
 
 
-    <model name='maize_01_0079'>
-      <pose frame=''>5.768383302588014 -7.294446370469132 0.05 0 -0 3.4103581969692103</pose>
-      <link name='maize_01_0079_link'>
+    <model name='maize_02_0079'>
+      <pose frame=''>8.643869186008002 -3.9032181425068018 0.05 0 -0 1.102674544444839</pose>
+      <link name='maize_02_0079_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
@@ -4412,8 +4413,8 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_01.dae</uri>
-              <scale>0.22039112862878035 0.22039112862878035 0.22039112862878035</scale>
+              <uri>/home/dark/ws/kamaro/fre21_ws/src/Virtual_Field_Robot_Event/virtual_maize_field/meshes/maize/maize_02.dae</uri>
+              <scale>0.3748474826482154 0.3748474826482154 0.3748474826482154</scale>
             </mesh>
           </geometry>
           <material>
