@@ -98,3 +98,4 @@ optional arguments:
 
 ## License
 Virtual Maize Field is copyright (C) 2021 *Farm Technology Group of Wageningen University & Research* and *Kamaro Engineering e.V.* and licensed under GPLv3 (see [`LICENSE`](LICENSE)).
+The maize models under `models\` are (C) 2021 *Kamaro Engineering e.V.* and licensed under CC BY-SA 4.0.
