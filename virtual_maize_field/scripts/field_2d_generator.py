@@ -2,6 +2,7 @@ import jinja2
 import numpy as np
 import os
 import rospkg
+from datetime import datetime
 
 
 AVAILABLE_TYPES = ["cylinder", "maize_01", "maize_02"]
@@ -21,8 +22,12 @@ class Field2DGenerator():
         seed = None,
         types=",".join(["maize_01", "maize_02"])):
         
+        if seed is None:
+            seed = int(datetime.now().timestamp()*1000)%8192
+
         for k,v in locals().items():
             self.__setattr__(k,v)
+    
         np.random.seed(self.seed)
         self.reset()
     
@@ -106,4 +111,4 @@ class Field2DGenerator():
             return coordinate
         coordinates = [into_dict(row,self.plant_radius, self.plant_height, self.plant_mass, i) for i, row in enumerate(self.placements.T[:,:-1])]
         template = jinja2.Template(template)
-        return template.render(coordinates=coordinates, package_path=rospkg.RosPack().get_path('virtual_maize_field'))
+        return template.render(coordinates=coordinates, seed=self.seed, package_path=rospkg.RosPack().get_path('virtual_maize_field'))

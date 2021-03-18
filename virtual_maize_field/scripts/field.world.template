@@ -1,4 +1,5 @@
 <?xml version='1.0'?>
+<!-- Seed: {{ seed }} -->
 <sdf version='1.6'>
   <world name='default'>
     <light name='sun' type='directional'>
