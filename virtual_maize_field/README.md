@@ -90,6 +90,7 @@ optional arguments:
 ## Sample Worlds
 | Name | Parameters | Description |
 |:---- |:--------- |:----------- |
+| *simple_row_level_0.world* | `--plant_radius=0.03 --max_angle_variation=0 --plant_height=0.75 --radius_noise_range=0 --position_div=0 --types=cylinder` | One row with grid based cylinders. |
 | *simple_row_level_1.world* | `--max_angle_variation=0 --position_div=0` | One row with grid based plants. |
 | *simple_row_level_2.world* | `--max_angle_variation=0` | One row with more natural plant placement. |
 | *simple_row_level_3.world* | default | One row with little curvature. |
