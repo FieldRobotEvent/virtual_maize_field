@@ -151,10 +151,10 @@
             </cylinder>
           </geometry>
           <material>
-            <script>
-              <name>Gazebo/Red</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>

@@ -84,7 +84,7 @@ optional arguments:
                         default_value: 0.03
   --dropout DROPOUT     default_value: 0.0
   --seed SEED           default_value: None
-  --types TYPES         default_value: maize_01,maize_02
+  --types TYPES         default_value: cylinder,maize_01,maize_02
 ```
 
 ## Sample Worlds
