@@ -9,7 +9,7 @@ AVAILABLE_TYPES = ["cylinder", "maize_01", "maize_02"]
 
 class Field2DGenerator():
     def __init__(self,
-        plant_radius = .15,
+        plant_radius = .30,
         row_width = 0.75,
         plant_offset = .50,
         max_angle_variation = 0.15,

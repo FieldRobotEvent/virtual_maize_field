@@ -52,7 +52,8 @@ usage: generate_world.py [-h] [--plant_radius PLANT_RADIUS]
                          [--plant_mass PLANT_MASS]
                          [--radius_noise_range RADIUS_NOISE_RANGE]
                          [--position_div POSITION_DIV]
-                         [--dropout DROPOUT] [--seed SEED]
+                         [--dropout DROPOUT]
+                         [--seed SEED]
                          [--types TYPES]
 
 Generate a virtual maize field world for gazebo
@@ -83,18 +84,22 @@ optional arguments:
                         default_value: 0.03
   --dropout DROPOUT     default_value: 0.0
   --seed SEED           default_value: None
-  --types TYPES         default_value: maize_01,maize_02
+  --types TYPES         default_value: cylinder,maize_01,maize_02
 ```
 
 ## Sample Worlds
 | Name | Parameters | Description |
 |:---- |:--------- |:----------- |
+| *simple_row_level_0.world* | `--plant_radius=0.03 --max_angle_variation=0 --plant_height=0.75 --radius_noise_range=0 --position_div=0 --types=cylinder` | One row with grid based cylinders. |
 | *simple_row_level_1.world* | `--max_angle_variation=0 --position_div=0` | One row with grid based plants. |
 | *simple_row_level_2.world* | `--max_angle_variation=0` | One row with more natural plant placement. |
 | *simple_row_level_3.world* | default | One row with little curvature. |
 | *simple_row_level_4.world* | `--max_angle_variation=0.3` | One row with curvature. |
 | *simple_row_level_5.world* | `--dropout=0.1` | Level 3 with gaps |
 | *simple_row_level_6.world* | `--max_angle_variation=0.3 --dropout=0.1` | Level 4 with gaps |
+
+## Launching worlds
+The launch file to launch the worlds is called `simulation.launch`. You can launch the launch file by running `roslaunch virtual_maize_field simulation.launch`. By default the launch file will launch `generated_world.world`. You can launch any world by using the `world_name` arg. e.g. `roslaunch virtual_maize_field simulation.launch world_name:=simple_row_level_1.world`.
 
 ## License
 Virtual Maize Field is copyright (C) 2021 *Farm Technology Group of Wageningen University & Research* and *Kamaro Engineering e.V.* and licensed under GPLv3 (see [`LICENSE`](LICENSE)).

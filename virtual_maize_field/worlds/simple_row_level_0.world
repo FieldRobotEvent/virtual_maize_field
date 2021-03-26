@@ -1,5 +1,5 @@
 <?xml version='1.0'?>
-<!-- Seed: 7371 -->
+<!-- Seed: 7194 -->
 <sdf version='1.6'>
   <world name='default'>
     <light name='sun' type='directional'>
@@ -108,27 +108,26 @@
     </state>
 
 
-    <model name='maize_02_0000'>
-      <pose frame=''>0.5 0.375 0.05 0 -0 2.486436329962448</pose>
-      <link name='maize_02_0000_link'>
+    <model name='cylinder_0000'>
+      <pose frame=''>0.5 0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0000_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -137,21 +136,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.594464190907645 0.594464190907645 0.594464190907645</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -162,27 +165,26 @@
 
 
 
-    <model name='maize_01_0001'>
-      <pose frame=''>0.5 1.125 0.05 0 -0 2.298788414996738</pose>
-      <link name='maize_01_0001_link'>
+    <model name='cylinder_0001'>
+      <pose frame=''>0.5 1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0001_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -191,21 +193,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.6277734751738697 0.6277734751738697 0.6277734751738697</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -216,27 +222,26 @@
 
 
 
-    <model name='maize_02_0002'>
-      <pose frame=''>0.5 -0.375 0.05 0 -0 5.080375280023383</pose>
-      <link name='maize_02_0002_link'>
+    <model name='cylinder_0002'>
+      <pose frame=''>0.5 -0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0002_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -245,21 +250,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.6373901294734036 0.6373901294734036 0.6373901294734036</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -270,27 +279,26 @@
 
 
 
-    <model name='maize_02_0003'>
-      <pose frame=''>0.5 -1.125 0.05 0 -0 2.0655652335273587</pose>
-      <link name='maize_02_0003_link'>
+    <model name='cylinder_0003'>
+      <pose frame=''>0.5 -1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0003_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -299,21 +307,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.6587457137448713 0.6587457137448713 0.6587457137448713</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -324,27 +336,26 @@
 
 
 
-    <model name='maize_02_0004'>
-      <pose frame=''>1.0 0.375 0.05 0 -0 5.888778220820629</pose>
-      <link name='maize_02_0004_link'>
+    <model name='cylinder_0004'>
+      <pose frame=''>1.0 0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0004_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -353,21 +364,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.5925092554410509 0.5925092554410509 0.5925092554410509</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -378,27 +393,26 @@
 
 
 
-    <model name='maize_01_0005'>
-      <pose frame=''>1.0 1.125 0.05 0 -0 3.800942496032068</pose>
-      <link name='maize_01_0005_link'>
+    <model name='cylinder_0005'>
+      <pose frame=''>1.0 1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0005_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -407,21 +421,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.5658001392971347 0.5658001392971347 0.5658001392971347</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -432,27 +450,26 @@
 
 
 
-    <model name='maize_02_0006'>
-      <pose frame=''>1.0 -0.375 0.05 0 -0 5.960453748156834</pose>
-      <link name='maize_02_0006_link'>
+    <model name='cylinder_0006'>
+      <pose frame=''>1.0 -0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0006_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -461,21 +478,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.5101669844444433 0.5101669844444433 0.5101669844444433</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -486,27 +507,26 @@
 
 
 
-    <model name='maize_02_0007'>
-      <pose frame=''>1.0 -1.125 0.05 0 -0 0.7257184616854857</pose>
-      <link name='maize_02_0007_link'>
+    <model name='cylinder_0007'>
+      <pose frame=''>1.0 -1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0007_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -515,21 +535,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.6774858792550148 0.6774858792550148 0.6774858792550148</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -540,27 +564,26 @@
 
 
 
-    <model name='maize_02_0008'>
-      <pose frame=''>1.5 0.375 0.05 0 -0 4.276486220324584</pose>
-      <link name='maize_02_0008_link'>
+    <model name='cylinder_0008'>
+      <pose frame=''>1.5 0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0008_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -569,21 +592,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.5624697977309072 0.5624697977309072 0.5624697977309072</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -594,27 +621,26 @@
 
 
 
-    <model name='maize_01_0009'>
-      <pose frame=''>1.5 1.125 0.05 0 -0 0.226990537836368</pose>
-      <link name='maize_01_0009_link'>
+    <model name='cylinder_0009'>
+      <pose frame=''>1.5 1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0009_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -623,21 +649,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.5509734204890646 0.5509734204890646 0.5509734204890646</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -648,27 +678,26 @@
 
 
 
-    <model name='maize_01_0010'>
-      <pose frame=''>1.5 -0.375 0.05 0 -0 4.998152133039663</pose>
-      <link name='maize_01_0010_link'>
+    <model name='cylinder_0010'>
+      <pose frame=''>1.5 -0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0010_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -677,21 +706,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.5865168241783152 0.5865168241783152 0.5865168241783152</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -702,27 +735,26 @@
 
 
 
-    <model name='maize_01_0011'>
-      <pose frame=''>1.5 -1.125 0.05 0 -0 1.9324223692315545</pose>
-      <link name='maize_01_0011_link'>
+    <model name='cylinder_0011'>
+      <pose frame=''>1.5 -1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0011_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -731,21 +763,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.5003540891792582 0.5003540891792582 0.5003540891792582</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -756,27 +792,26 @@
 
 
 
-    <model name='maize_01_0012'>
-      <pose frame=''>2.0 0.375 0.05 0 -0 3.506546388485013</pose>
-      <link name='maize_01_0012_link'>
+    <model name='cylinder_0012'>
+      <pose frame=''>2.0 0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0012_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -785,21 +820,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.6499434881953365 0.6499434881953365 0.6499434881953365</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -810,27 +849,26 @@
 
 
 
-    <model name='maize_02_0013'>
-      <pose frame=''>2.0 1.125 0.05 0 -0 3.5083101263330416</pose>
-      <link name='maize_02_0013_link'>
+    <model name='cylinder_0013'>
+      <pose frame=''>2.0 1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0013_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -839,21 +877,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.5802755091073676 0.5802755091073676 0.5802755091073676</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -864,27 +906,26 @@
 
 
 
-    <model name='maize_02_0014'>
-      <pose frame=''>2.0 -0.375 0.05 0 -0 1.6967970722052805</pose>
-      <link name='maize_02_0014_link'>
+    <model name='cylinder_0014'>
+      <pose frame=''>2.0 -0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0014_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -893,21 +934,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.5231342005749441 0.5231342005749441 0.5231342005749441</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -918,27 +963,26 @@
 
 
 
-    <model name='maize_01_0015'>
-      <pose frame=''>2.0 -1.125 0.05 0 -0 3.519975309279825</pose>
-      <link name='maize_01_0015_link'>
+    <model name='cylinder_0015'>
+      <pose frame=''>2.0 -1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0015_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -947,21 +991,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.6468035016286179 0.6468035016286179 0.6468035016286179</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -972,27 +1020,26 @@
 
 
 
-    <model name='maize_01_0016'>
-      <pose frame=''>2.5 0.375 0.05 0 -0 4.247404974419108</pose>
-      <link name='maize_01_0016_link'>
+    <model name='cylinder_0016'>
+      <pose frame=''>2.5 0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0016_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -1001,21 +1048,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.6690471731804969 0.6690471731804969 0.6690471731804969</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -1026,27 +1077,26 @@
 
 
 
-    <model name='maize_01_0017'>
-      <pose frame=''>2.5 1.125 0.05 0 -0 5.449269828116384</pose>
-      <link name='maize_01_0017_link'>
+    <model name='cylinder_0017'>
+      <pose frame=''>2.5 1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0017_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -1055,21 +1105,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.6421622239480822 0.6421622239480822 0.6421622239480822</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -1080,27 +1134,26 @@
 
 
 
-    <model name='maize_02_0018'>
-      <pose frame=''>2.5 -0.375 0.05 0 -0 4.906010909218893</pose>
-      <link name='maize_02_0018_link'>
+    <model name='cylinder_0018'>
+      <pose frame=''>2.5 -0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0018_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -1109,21 +1162,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.626600553921358 0.626600553921358 0.626600553921358</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -1134,27 +1191,26 @@
 
 
 
-    <model name='maize_02_0019'>
-      <pose frame=''>2.5 -1.125 0.05 0 -0 5.69318676119266</pose>
-      <link name='maize_02_0019_link'>
+    <model name='cylinder_0019'>
+      <pose frame=''>2.5 -1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0019_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -1163,21 +1219,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.5929270849490827 0.5929270849490827 0.5929270849490827</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -1188,27 +1248,26 @@
 
 
 
-    <model name='maize_01_0020'>
-      <pose frame=''>3.0 0.375 0.05 0 -0 1.043117871051002</pose>
-      <link name='maize_01_0020_link'>
+    <model name='cylinder_0020'>
+      <pose frame=''>3.0 0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0020_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -1217,21 +1276,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.6769761855756116 0.6769761855756116 0.6769761855756116</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -1242,27 +1305,26 @@
 
 
 
-    <model name='maize_01_0021'>
-      <pose frame=''>3.0 1.125 0.05 0 -0 1.5060979926703266</pose>
-      <link name='maize_01_0021_link'>
+    <model name='cylinder_0021'>
+      <pose frame=''>3.0 1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0021_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -1271,21 +1333,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.5539245820906094 0.5539245820906094 0.5539245820906094</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -1296,27 +1362,26 @@
 
 
 
-    <model name='maize_01_0022'>
-      <pose frame=''>3.0 -0.375 0.05 0 -0 0.33031992653440345</pose>
-      <link name='maize_01_0022_link'>
+    <model name='cylinder_0022'>
+      <pose frame=''>3.0 -0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0022_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -1325,21 +1390,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.5847663939026114 0.5847663939026114 0.5847663939026114</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -1350,27 +1419,26 @@
 
 
 
-    <model name='maize_02_0023'>
-      <pose frame=''>3.0 -1.125 0.05 0 -0 4.489898993022544</pose>
-      <link name='maize_02_0023_link'>
+    <model name='cylinder_0023'>
+      <pose frame=''>3.0 -1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0023_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -1379,21 +1447,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.5223654487258567 0.5223654487258567 0.5223654487258567</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -1404,27 +1476,26 @@
 
 
 
-    <model name='maize_01_0024'>
-      <pose frame=''>3.5 0.375 0.05 0 -0 5.3651282673576715</pose>
-      <link name='maize_01_0024_link'>
+    <model name='cylinder_0024'>
+      <pose frame=''>3.5 0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0024_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -1433,21 +1504,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.5986903436208948 0.5986903436208948 0.5986903436208948</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -1458,27 +1533,26 @@
 
 
 
-    <model name='maize_02_0025'>
-      <pose frame=''>3.5 1.125 0.05 0 -0 3.974233096109407</pose>
-      <link name='maize_02_0025_link'>
+    <model name='cylinder_0025'>
+      <pose frame=''>3.5 1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0025_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -1487,21 +1561,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.6840697809252837 0.6840697809252837 0.6840697809252837</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -1512,27 +1590,26 @@
 
 
 
-    <model name='maize_02_0026'>
-      <pose frame=''>3.5 -0.375 0.05 0 -0 0.3855338366262953</pose>
-      <link name='maize_02_0026_link'>
+    <model name='cylinder_0026'>
+      <pose frame=''>3.5 -0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0026_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -1541,21 +1618,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.5689283618021689 0.5689283618021689 0.5689283618021689</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -1566,27 +1647,26 @@
 
 
 
-    <model name='maize_01_0027'>
-      <pose frame=''>3.5 -1.125 0.05 0 -0 4.535984097456068</pose>
-      <link name='maize_01_0027_link'>
+    <model name='cylinder_0027'>
+      <pose frame=''>3.5 -1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0027_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -1595,21 +1675,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.6088326556180363 0.6088326556180363 0.6088326556180363</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -1620,27 +1704,26 @@
 
 
 
-    <model name='maize_01_0028'>
-      <pose frame=''>4.0 0.375 0.05 0 -0 3.485553312830647</pose>
-      <link name='maize_01_0028_link'>
+    <model name='cylinder_0028'>
+      <pose frame=''>4.0 0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0028_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -1649,21 +1732,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.5595020058112883 0.5595020058112883 0.5595020058112883</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -1674,27 +1761,26 @@
 
 
 
-    <model name='maize_02_0029'>
-      <pose frame=''>4.0 1.125 0.05 0 -0 4.791513384607671</pose>
-      <link name='maize_02_0029_link'>
+    <model name='cylinder_0029'>
+      <pose frame=''>4.0 1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0029_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -1703,21 +1789,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.6988486792723937 0.6988486792723937 0.6988486792723937</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -1728,27 +1818,26 @@
 
 
 
-    <model name='maize_02_0030'>
-      <pose frame=''>4.0 -0.375 0.05 0 -0 2.7621582964979345</pose>
-      <link name='maize_02_0030_link'>
+    <model name='cylinder_0030'>
+      <pose frame=''>4.0 -0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0030_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -1757,21 +1846,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.6989581909866358 0.6989581909866358 0.6989581909866358</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -1782,27 +1875,26 @@
 
 
 
-    <model name='maize_02_0031'>
-      <pose frame=''>4.0 -1.125 0.05 0 -0 5.6240680111964645</pose>
-      <link name='maize_02_0031_link'>
+    <model name='cylinder_0031'>
+      <pose frame=''>4.0 -1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0031_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -1811,21 +1903,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.5756476119257931 0.5756476119257931 0.5756476119257931</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -1836,27 +1932,26 @@
 
 
 
-    <model name='maize_02_0032'>
-      <pose frame=''>4.5 0.375 0.05 0 -0 4.8015691944950385</pose>
-      <link name='maize_02_0032_link'>
+    <model name='cylinder_0032'>
+      <pose frame=''>4.5 0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0032_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -1865,21 +1960,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.5925649161468299 0.5925649161468299 0.5925649161468299</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -1890,27 +1989,26 @@
 
 
 
-    <model name='maize_02_0033'>
-      <pose frame=''>4.5 1.125 0.05 0 -0 1.4349793509265023</pose>
-      <link name='maize_02_0033_link'>
+    <model name='cylinder_0033'>
+      <pose frame=''>4.5 1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0033_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -1919,21 +2017,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.587815625584764 0.587815625584764 0.587815625584764</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -1944,27 +2046,26 @@
 
 
 
-    <model name='maize_02_0034'>
-      <pose frame=''>4.5 -0.375 0.05 0 -0 3.551398869278533</pose>
-      <link name='maize_02_0034_link'>
+    <model name='cylinder_0034'>
+      <pose frame=''>4.5 -0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0034_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -1973,21 +2074,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.6789430266731954 0.6789430266731954 0.6789430266731954</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -1998,27 +2103,26 @@
 
 
 
-    <model name='maize_02_0035'>
-      <pose frame=''>4.5 -1.125 0.05 0 -0 6.18063007604289</pose>
-      <link name='maize_02_0035_link'>
+    <model name='cylinder_0035'>
+      <pose frame=''>4.5 -1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0035_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -2027,21 +2131,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.5166875342991507 0.5166875342991507 0.5166875342991507</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -2052,27 +2160,26 @@
 
 
 
-    <model name='maize_01_0036'>
-      <pose frame=''>5.0 0.375 0.05 0 -0 2.652369312314264</pose>
-      <link name='maize_01_0036_link'>
+    <model name='cylinder_0036'>
+      <pose frame=''>5.0 0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0036_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -2081,21 +2188,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.5601748754102126 0.5601748754102126 0.5601748754102126</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -2106,27 +2217,26 @@
 
 
 
-    <model name='maize_01_0037'>
-      <pose frame=''>5.0 1.125 0.05 0 -0 1.0055387141877898</pose>
-      <link name='maize_01_0037_link'>
+    <model name='cylinder_0037'>
+      <pose frame=''>5.0 1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0037_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -2135,21 +2245,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.5573503519460182 0.5573503519460182 0.5573503519460182</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -2160,27 +2274,26 @@
 
 
 
-    <model name='maize_01_0038'>
-      <pose frame=''>5.0 -0.375 0.05 0 -0 0.033546879748599004</pose>
-      <link name='maize_01_0038_link'>
+    <model name='cylinder_0038'>
+      <pose frame=''>5.0 -0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0038_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -2189,21 +2302,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.652328931683679 0.652328931683679 0.652328931683679</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -2214,27 +2331,26 @@
 
 
 
-    <model name='maize_02_0039'>
-      <pose frame=''>5.0 -1.125 0.05 0 -0 4.7448974235242325</pose>
-      <link name='maize_02_0039_link'>
+    <model name='cylinder_0039'>
+      <pose frame=''>5.0 -1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0039_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -2243,21 +2359,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.6150353287371257 0.6150353287371257 0.6150353287371257</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -2268,27 +2388,26 @@
 
 
 
-    <model name='maize_01_0040'>
-      <pose frame=''>5.5 0.375 0.05 0 -0 3.887574766477994</pose>
-      <link name='maize_01_0040_link'>
+    <model name='cylinder_0040'>
+      <pose frame=''>5.5 0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0040_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -2297,21 +2416,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.5489192693650802 0.5489192693650802 0.5489192693650802</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -2322,27 +2445,26 @@
 
 
 
-    <model name='maize_02_0041'>
-      <pose frame=''>5.5 1.125 0.05 0 -0 2.3619413126375988</pose>
-      <link name='maize_02_0041_link'>
+    <model name='cylinder_0041'>
+      <pose frame=''>5.5 1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0041_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -2351,21 +2473,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.5501693872556289 0.5501693872556289 0.5501693872556289</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -2376,27 +2502,26 @@
 
 
 
-    <model name='maize_02_0042'>
-      <pose frame=''>5.5 -0.375 0.05 0 -0 4.083068784888128</pose>
-      <link name='maize_02_0042_link'>
+    <model name='cylinder_0042'>
+      <pose frame=''>5.5 -0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0042_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -2405,21 +2530,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.5530000482037853 0.5530000482037853 0.5530000482037853</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -2430,27 +2559,26 @@
 
 
 
-    <model name='maize_02_0043'>
-      <pose frame=''>5.5 -1.125 0.05 0 -0 4.679963526451803</pose>
-      <link name='maize_02_0043_link'>
+    <model name='cylinder_0043'>
+      <pose frame=''>5.5 -1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0043_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -2459,21 +2587,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.6465327736157129 0.6465327736157129 0.6465327736157129</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -2484,27 +2616,26 @@
 
 
 
-    <model name='maize_02_0044'>
-      <pose frame=''>6.0 0.375 0.05 0 -0 0.8436668734788505</pose>
-      <link name='maize_02_0044_link'>
+    <model name='cylinder_0044'>
+      <pose frame=''>6.0 0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0044_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -2513,21 +2644,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.6668488416863659 0.6668488416863659 0.6668488416863659</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -2538,27 +2673,26 @@
 
 
 
-    <model name='maize_02_0045'>
-      <pose frame=''>6.0 1.125 0.05 0 -0 2.847201937121884</pose>
-      <link name='maize_02_0045_link'>
+    <model name='cylinder_0045'>
+      <pose frame=''>6.0 1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0045_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -2567,21 +2701,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.5905462226182049 0.5905462226182049 0.5905462226182049</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -2592,27 +2730,26 @@
 
 
 
-    <model name='maize_01_0046'>
-      <pose frame=''>6.0 -0.375 0.05 0 -0 1.2947930681933637</pose>
-      <link name='maize_01_0046_link'>
+    <model name='cylinder_0046'>
+      <pose frame=''>6.0 -0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0046_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -2621,21 +2758,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.5602845266150258 0.5602845266150258 0.5602845266150258</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -2646,27 +2787,26 @@
 
 
 
-    <model name='maize_01_0047'>
-      <pose frame=''>6.0 -1.125 0.05 0 -0 1.9447629273371778</pose>
-      <link name='maize_01_0047_link'>
+    <model name='cylinder_0047'>
+      <pose frame=''>6.0 -1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0047_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -2675,21 +2815,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.5058932557829288 0.5058932557829288 0.5058932557829288</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -2700,27 +2844,26 @@
 
 
 
-    <model name='maize_01_0048'>
-      <pose frame=''>6.5 0.375 0.05 0 -0 5.524367839968027</pose>
-      <link name='maize_01_0048_link'>
+    <model name='cylinder_0048'>
+      <pose frame=''>6.5 0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0048_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -2729,21 +2872,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.634801878046184 0.634801878046184 0.634801878046184</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -2754,27 +2901,26 @@
 
 
 
-    <model name='maize_02_0049'>
-      <pose frame=''>6.5 1.125 0.05 0 -0 4.81982130819356</pose>
-      <link name='maize_02_0049_link'>
+    <model name='cylinder_0049'>
+      <pose frame=''>6.5 1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0049_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -2783,21 +2929,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.5031114657585396 0.5031114657585396 0.5031114657585396</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -2808,27 +2958,26 @@
 
 
 
-    <model name='maize_02_0050'>
-      <pose frame=''>6.5 -0.375 0.05 0 -0 2.2194903250908564</pose>
-      <link name='maize_02_0050_link'>
+    <model name='cylinder_0050'>
+      <pose frame=''>6.5 -0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0050_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -2837,21 +2986,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.6820594748634804 0.6820594748634804 0.6820594748634804</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -2862,27 +3015,26 @@
 
 
 
-    <model name='maize_01_0051'>
-      <pose frame=''>6.5 -1.125 0.05 0 -0 5.651115416720341</pose>
-      <link name='maize_01_0051_link'>
+    <model name='cylinder_0051'>
+      <pose frame=''>6.5 -1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0051_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -2891,21 +3043,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.6958102714642818 0.6958102714642818 0.6958102714642818</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -2916,27 +3072,26 @@
 
 
 
-    <model name='maize_01_0052'>
-      <pose frame=''>7.0 0.375 0.05 0 -0 2.7099210681280055</pose>
-      <link name='maize_01_0052_link'>
+    <model name='cylinder_0052'>
+      <pose frame=''>7.0 0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0052_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -2945,21 +3100,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.6691300027135483 0.6691300027135483 0.6691300027135483</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -2970,27 +3129,26 @@
 
 
 
-    <model name='maize_01_0053'>
-      <pose frame=''>7.0 1.125 0.05 0 -0 1.5384217549494101</pose>
-      <link name='maize_01_0053_link'>
+    <model name='cylinder_0053'>
+      <pose frame=''>7.0 1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0053_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -2999,21 +3157,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.633565423696171 0.633565423696171 0.633565423696171</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -3024,27 +3186,26 @@
 
 
 
-    <model name='maize_01_0054'>
-      <pose frame=''>7.0 -0.375 0.05 0 -0 0.7859409075128175</pose>
-      <link name='maize_01_0054_link'>
+    <model name='cylinder_0054'>
+      <pose frame=''>7.0 -0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0054_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -3053,21 +3214,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.6438057635443771 0.6438057635443771 0.6438057635443771</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -3078,27 +3243,26 @@
 
 
 
-    <model name='maize_02_0055'>
-      <pose frame=''>7.0 -1.125 0.05 0 -0 2.8656782531925153</pose>
-      <link name='maize_02_0055_link'>
+    <model name='cylinder_0055'>
+      <pose frame=''>7.0 -1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0055_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -3107,21 +3271,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.5251471431352807 0.5251471431352807 0.5251471431352807</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -3132,27 +3300,26 @@
 
 
 
-    <model name='maize_02_0056'>
-      <pose frame=''>7.5 0.375 0.05 0 -0 2.7171973356963255</pose>
-      <link name='maize_02_0056_link'>
+    <model name='cylinder_0056'>
+      <pose frame=''>7.5 0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0056_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -3161,21 +3328,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.6952513788042518 0.6952513788042518 0.6952513788042518</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -3186,27 +3357,26 @@
 
 
 
-    <model name='maize_01_0057'>
-      <pose frame=''>7.5 1.125 0.05 0 -0 3.131954284944509</pose>
-      <link name='maize_01_0057_link'>
+    <model name='cylinder_0057'>
+      <pose frame=''>7.5 1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0057_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -3215,21 +3385,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.6762899672990061 0.6762899672990061 0.6762899672990061</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -3240,27 +3414,26 @@
 
 
 
-    <model name='maize_02_0058'>
-      <pose frame=''>7.5 -0.375 0.05 0 -0 2.5350907079838056</pose>
-      <link name='maize_02_0058_link'>
+    <model name='cylinder_0058'>
+      <pose frame=''>7.5 -0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0058_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -3269,21 +3442,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.6381679518568922 0.6381679518568922 0.6381679518568922</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -3294,27 +3471,26 @@
 
 
 
-    <model name='maize_01_0059'>
-      <pose frame=''>7.5 -1.125 0.05 0 -0 3.968055489600705</pose>
-      <link name='maize_01_0059_link'>
+    <model name='cylinder_0059'>
+      <pose frame=''>7.5 -1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0059_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -3323,21 +3499,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.5893720003046389 0.5893720003046389 0.5893720003046389</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -3348,27 +3528,26 @@
 
 
 
-    <model name='maize_02_0060'>
-      <pose frame=''>8.0 0.375 0.05 0 -0 3.9464323315970296</pose>
-      <link name='maize_02_0060_link'>
+    <model name='cylinder_0060'>
+      <pose frame=''>8.0 0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0060_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -3377,21 +3556,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.5412554866058185 0.5412554866058185 0.5412554866058185</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -3402,27 +3585,26 @@
 
 
 
-    <model name='maize_01_0061'>
-      <pose frame=''>8.0 1.125 0.05 0 -0 3.6858187307931813</pose>
-      <link name='maize_01_0061_link'>
+    <model name='cylinder_0061'>
+      <pose frame=''>8.0 1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0061_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -3431,21 +3613,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.6982450714203192 0.6982450714203192 0.6982450714203192</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -3456,27 +3642,26 @@
 
 
 
-    <model name='maize_02_0062'>
-      <pose frame=''>8.0 -0.375 0.05 0 -0 5.693590974628645</pose>
-      <link name='maize_02_0062_link'>
+    <model name='cylinder_0062'>
+      <pose frame=''>8.0 -0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0062_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -3485,21 +3670,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.5254142955412426 0.5254142955412426 0.5254142955412426</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -3510,27 +3699,26 @@
 
 
 
-    <model name='maize_01_0063'>
-      <pose frame=''>8.0 -1.125 0.05 0 -0 4.195880050040716</pose>
-      <link name='maize_01_0063_link'>
+    <model name='cylinder_0063'>
+      <pose frame=''>8.0 -1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0063_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -3539,21 +3727,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.674402580278686 0.674402580278686 0.674402580278686</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -3564,27 +3756,26 @@
 
 
 
-    <model name='maize_01_0064'>
-      <pose frame=''>8.5 0.375 0.05 0 -0 0.437970465267605</pose>
-      <link name='maize_01_0064_link'>
+    <model name='cylinder_0064'>
+      <pose frame=''>8.5 0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0064_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -3593,21 +3784,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.6044091149506376 0.6044091149506376 0.6044091149506376</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -3618,27 +3813,26 @@
 
 
 
-    <model name='maize_02_0065'>
-      <pose frame=''>8.5 1.125 0.05 0 -0 3.9411018682151764</pose>
-      <link name='maize_02_0065_link'>
+    <model name='cylinder_0065'>
+      <pose frame=''>8.5 1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0065_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -3647,21 +3841,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.5868912992685925 0.5868912992685925 0.5868912992685925</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -3672,27 +3870,26 @@
 
 
 
-    <model name='maize_01_0066'>
-      <pose frame=''>8.5 -0.375 0.05 0 -0 5.825034407605688</pose>
-      <link name='maize_01_0066_link'>
+    <model name='cylinder_0066'>
+      <pose frame=''>8.5 -0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0066_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -3701,21 +3898,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.6038767018513062 0.6038767018513062 0.6038767018513062</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -3726,27 +3927,26 @@
 
 
 
-    <model name='maize_01_0067'>
-      <pose frame=''>8.5 -1.125 0.05 0 -0 2.9630977109878196</pose>
-      <link name='maize_01_0067_link'>
+    <model name='cylinder_0067'>
+      <pose frame=''>8.5 -1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0067_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -3755,21 +3955,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.6376493713539123 0.6376493713539123 0.6376493713539123</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -3780,27 +3984,26 @@
 
 
 
-    <model name='maize_02_0068'>
-      <pose frame=''>9.0 0.375 0.05 0 -0 4.16095023320316</pose>
-      <link name='maize_02_0068_link'>
+    <model name='cylinder_0068'>
+      <pose frame=''>9.0 0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0068_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -3809,21 +4012,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.6287042195204358 0.6287042195204358 0.6287042195204358</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -3834,27 +4041,26 @@
 
 
 
-    <model name='maize_01_0069'>
-      <pose frame=''>9.0 1.125 0.05 0 -0 1.7790052859951344</pose>
-      <link name='maize_01_0069_link'>
+    <model name='cylinder_0069'>
+      <pose frame=''>9.0 1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0069_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -3863,21 +4069,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.6495170978152995 0.6495170978152995 0.6495170978152995</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -3888,27 +4098,26 @@
 
 
 
-    <model name='maize_01_0070'>
-      <pose frame=''>9.0 -0.375 0.05 0 -0 3.518011417776488</pose>
-      <link name='maize_01_0070_link'>
+    <model name='cylinder_0070'>
+      <pose frame=''>9.0 -0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0070_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -3917,21 +4126,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.549971991842383 0.549971991842383 0.549971991842383</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -3942,27 +4155,26 @@
 
 
 
-    <model name='maize_02_0071'>
-      <pose frame=''>9.0 -1.125 0.05 0 -0 5.49208654981782</pose>
-      <link name='maize_02_0071_link'>
+    <model name='cylinder_0071'>
+      <pose frame=''>9.0 -1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0071_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -3971,21 +4183,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.5793124686730746 0.5793124686730746 0.5793124686730746</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -3996,27 +4212,26 @@
 
 
 
-    <model name='maize_02_0072'>
-      <pose frame=''>9.5 0.375 0.05 0 -0 1.6163670671618176</pose>
-      <link name='maize_02_0072_link'>
+    <model name='cylinder_0072'>
+      <pose frame=''>9.5 0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0072_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -4025,21 +4240,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.68122728880079 0.68122728880079 0.68122728880079</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -4050,27 +4269,26 @@
 
 
 
-    <model name='maize_02_0073'>
-      <pose frame=''>9.5 1.125 0.05 0 -0 1.85082525197933</pose>
-      <link name='maize_02_0073_link'>
+    <model name='cylinder_0073'>
+      <pose frame=''>9.5 1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0073_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -4079,21 +4297,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.584847417908603 0.584847417908603 0.584847417908603</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -4104,27 +4326,26 @@
 
 
 
-    <model name='maize_01_0074'>
-      <pose frame=''>9.5 -0.375 0.05 0 -0 0.16114885219384603</pose>
-      <link name='maize_01_0074_link'>
+    <model name='cylinder_0074'>
+      <pose frame=''>9.5 -0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0074_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -4133,21 +4354,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.6520010127876996 0.6520010127876996 0.6520010127876996</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -4158,27 +4383,26 @@
 
 
 
-    <model name='maize_01_0075'>
-      <pose frame=''>9.5 -1.125 0.05 0 -0 1.0574580484349572</pose>
-      <link name='maize_01_0075_link'>
+    <model name='cylinder_0075'>
+      <pose frame=''>9.5 -1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0075_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -4187,21 +4411,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.6441556937863818 0.6441556937863818 0.6441556937863818</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -4212,27 +4440,26 @@
 
 
 
-    <model name='maize_02_0076'>
-      <pose frame=''>10.0 0.375 0.05 0 -0 5.175684961982594</pose>
-      <link name='maize_02_0076_link'>
+    <model name='cylinder_0076'>
+      <pose frame=''>10.0 0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0076_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -4241,21 +4468,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.6134961117128319 0.6134961117128319 0.6134961117128319</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -4266,27 +4497,26 @@
 
 
 
-    <model name='maize_01_0077'>
-      <pose frame=''>10.0 1.125 0.05 0 -0 3.0596398871173816</pose>
-      <link name='maize_01_0077_link'>
+    <model name='cylinder_0077'>
+      <pose frame=''>10.0 1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0077_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -4295,21 +4525,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.6596812382749775 0.6596812382749775 0.6596812382749775</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -4320,27 +4554,26 @@
 
 
 
-    <model name='maize_01_0078'>
-      <pose frame=''>10.0 -0.375 0.05 0 -0 5.941655625587477</pose>
-      <link name='maize_01_0078_link'>
+    <model name='cylinder_0078'>
+      <pose frame=''>10.0 -0.375 0.5 0 -0 0</pose>
+      <link name='cylinder_0078_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -4349,21 +4582,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_01/meshes/maize_01.dae</uri>
-              <scale>0.6821076140405908 0.6821076140405908 0.6821076140405908</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -4374,27 +4611,26 @@
 
 
 
-    <model name='maize_02_0079'>
-      <pose frame=''>10.0 -1.125 0.05 0 -0 2.5294894165681456</pose>
-      <link name='maize_02_0079_link'>
+    <model name='cylinder_0079'>
+      <pose frame=''>10.0 -1.125 0.5 0 -0 0</pose>
+      <link name='cylinder_0079_link'>
         <inertial>
           <mass>5.0</mass>
           <inertia>
-            <ixx>0.0033416667</ixx>
+            <ixx>0.23550000000000001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.0033416667</iyy>
+            <iyy>0.23550000000000001</iyy>
             <iyz>0</iyz>
-            <izz>0.000016666667</izz>
+            <izz>0.00225</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
-          <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
-            <box>
-              <size>0.02 0.02 0.4</size>
-            </box>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -4403,21 +4639,25 @@
             </contact>
             <bounce/>
             <friction>
-              <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
             </friction>
           </surface>
         </collision>
         <visual name='visual'>
           <geometry>
-            <mesh>
-              <uri>model://maize_02/meshes/maize_02.dae</uri>
-              <scale>0.6374872915612891 0.6374872915612891 0.6374872915612891</scale>
-            </mesh>
+            <cylinder>
+              <radius>0.03</radius>
+              <length>0.75</length>
+            </cylinder>
           </geometry>
           <material>
+            <ambient>0.437790 0.985028 0.656685 1.0</ambient>
+            <diffuse>0.297093 0.668460 0.445640 1.0</diffuse>
+            <specular>0.000000 0.000000 0.000000 1.0</specular>
+            <emissive>0.0 0.0 0.0 0.0</emissive> 
           </material>
         </visual>
         <self_collide>0</self_collide>
