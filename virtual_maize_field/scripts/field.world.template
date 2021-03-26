@@ -182,7 +182,7 @@
           <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
             <box>
-              <size>0.02 0.02 0.4</size>
+              <size>0.02 0.02 0.5</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -234,7 +234,7 @@
           <pose>0 0 0.2 0 -0 0</pose>
           <geometry>
             <box>
-              <size>0.02 0.02 0.4</size>
+              <size>0.02 0.02 0.5</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
