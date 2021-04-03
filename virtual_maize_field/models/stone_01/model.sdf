@@ -2,16 +2,18 @@
 <sdf version="1.6">
   <model name='Stone_01'>
     <pose frame=''>0 0 0.2 0 -0 0</pose>
+    <!-- The model will move on its own, if it is not a static model.
+         I tried to fix this, but couldn't find a solution. -->
+    <static>true</static>
+    <allow_auto_disable>true</allow_auto_disable>
     <link name='Stone_01_link'>
       <inertial>
-        <mass>30</mass>
-<!--
-LOG: 2 Center of Mass  is 0.040667 0.064566 -0.032088
-LOG: 2 Inertia Tensor is :
-LOG: 2     |  0.013198   0.000071  -0.002737 |
-LOG: 2     |  0.000071   0.035595  -0.000109 |
-LOG: 2     | -0.002737  -0.000109   0.043366 |
--->
+        <!-- Volume: 0.274472 m^3, Density: ~2000 kg/m^3 -->
+        <mass>550</mass>
+        <!-- Inertia Tensor is :
+            |  0.013198   0.000071  -0.002737 |
+            |  0.000071   0.035595  -0.000109 |
+            | -0.002737  -0.000109   0.043366 | -->
         <inertia>
           <ixx>0.013198</ixx>
           <ixy>0.000071</ixy>
@@ -20,12 +22,14 @@ LOG: 2     | -0.002737  -0.000109   0.043366 |
           <iyz>-0.000109</iyz>
           <izz>0.043366</izz>
         </inertia>
+        <!-- Center of Mass  is 0.040667 0.064566 -0.032088 -->
         <pose>0.040667 0.064566 -0.032088 0 0 0</pose>
       </inertial>
       <collision name='collision'>
         <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <box>
+            <!-- TODO: Better collision box. Maybe an ultra low poly rock. -->
             <size>1.516384 0.974134 0.495299</size>
           </box>
         </geometry>
