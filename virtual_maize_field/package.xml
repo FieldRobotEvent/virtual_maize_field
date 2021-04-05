@@ -24,9 +24,10 @@
 
   <build_depend>roslaunch</build_depend>
 
+  <!-- On ROS Melodic or lower you have to install some deps by hand. See README.md. -->
   <exec_depend>rospy</exec_depend>
-  <exec_depend>python-rospkg</exec_depend>
-  <!-- Ubuntu 20.04 with noetic. If melodic see readme. -->
+  <exec_depend condition="$ROS_PYTHON_VERSION == 2">python-rospkg</exec_depend>
+  <exec_depend condition="$ROS_PYTHON_VERSION == 3">python3-rospkg</exec_depend>
   <exec_depend condition="$ROS_PYTHON_VERSION == 3">python3-jinja2</exec_depend>
 
   <exec_depend>gazebo_ros</exec_depend>
