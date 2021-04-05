@@ -42,12 +42,22 @@
   <!--   <test_depend>gtest</test_depend> -->
   <!-- Use doc_depend for packages you need only for building documentation: -->
   <!--   <doc_depend>doxygen</doc_depend> -->
-  <exec_depend>gazebo_ros_pkgs</exec_depend>
   <buildtool_depend>catkin</buildtool_depend>
 
-  <!-- The export tag contains other, unspecified, tags -->
-  <export>
-    <!-- Other tools can request additional information be placed here -->
+  <build_depend>roslaunch</build_depend>
 
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>python-rospkg</exec_depend>
+  <exec_depend>python3-jinja2</exec_depend> <!-- Ubuntu 20.04 with noetic. If melodic see readme. -->
+
+  <exec_depend>gazebo_ros</exec_depend>
+  <exec_depend>gazebo_ros_pkgs</exec_depend>
+
+  <export>
+    <!-- gazebo_ros_paths_plugin automatically adds these to
+         GAZEBO_PLUGIN_PATH and GAZEBO_MODEL_PATH when you do this export inside
+         the package.xml file. You can than use URIs of type model://my_package/stuff. -->
+    <gazebo_ros gazebo_model_path="${prefix}/models"/>
+    <gazebo_ros gazebo_media_path="${prefix}/models"/>
   </export>
 </package>
