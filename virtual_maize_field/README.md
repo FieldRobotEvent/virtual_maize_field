@@ -20,19 +20,13 @@ This package has been tested on `ROS melodic` and `ROS noetic`.
 Additional you'll need the following packages:
 ```bash
 # melodic
-sudo apt install ros-melodic-gazebo-ros-pkgs python3-pip
+rosdep install virtual_maize_field
+sudo apt install python3-pip
 sudo pip3 install -U jinja2 rospkg
 
 # noetic
-sudo apt install ros-noetic-gazebo-ros-pkgs \
-                 python3-jinja2
+rosdep install virtual_maize_field
 ```
-
-Append `models` directory to `GAZEBO_MODEL_PATH`:
-```
-export GAZEBO_MODEL_PATH=<YOUR WS ROOT DIR>/src/Virtual_Field_Robot_Event/virtual_maize_field/models/:\$GAZEBO_MODEL_PATH
-```
-To automate this, place the line above in  `~/.bashrc`.
 
 ## Generating new maize field worlds
 This package includes a script (`scripts/generate_world.py`) that can generate randomized agricultural worlds. All parameters are optional and have default values. You can call the script using
