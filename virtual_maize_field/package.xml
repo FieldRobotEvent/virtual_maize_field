@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<package format="2">
+<package format="3">
   <name>virtual_maize_field</name>
   <version>2.0.0</version>
   <description>A virtual maize field for agricultural robot simulation in Gazebo.</description>
@@ -12,7 +12,7 @@
   <!-- One license tag required, multiple allowed, one license per tag -->
   <!-- Commonly used license strings: -->
   <!--   BSD, MIT, Boost Software License, GPLv2, GPLv3, LGPLv2.1, LGPLv3 -->
-  <license>GPLv3</license>
+  <license file="LICENSE">GPLv3</license>
   <url type="website">https://www.fieldrobot.com/event/</url>
 
   <!-- Author tags are optional, multiple are allowed, one per tag -->
@@ -26,7 +26,8 @@
 
   <exec_depend>rospy</exec_depend>
   <exec_depend>python-rospkg</exec_depend>
-  <exec_depend>python3-jinja2</exec_depend> <!-- Ubuntu 20.04 with noetic. If melodic see readme. -->
+  <!-- Ubuntu 20.04 with noetic. If melodic see readme. -->
+  <exec_depend condition="$ROS_PYTHON_VERSION == 3">python3-jinja2</exec_depend>
 
   <exec_depend>gazebo_ros</exec_depend>
   <exec_depend>gazebo_ros_pkgs</exec_depend>
