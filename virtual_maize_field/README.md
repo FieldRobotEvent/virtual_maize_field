@@ -99,9 +99,9 @@ The launch file to launch the worlds is called `simulation.launch`. You can laun
 Virtual Maize Field is copyright (C) 2021 *Farm Technology Group of Wageningen University & Research* and *Kamaro Engineering e.V.* and licensed under GPLv3 (see [`LICENSE`](LICENSE)).
 
 ### Models
-| Name | Path | License |
-|:---- |:---- |:------- |
-| [Maize 01](models/maize_01/model.config) | `models/maize_01/` | (C) 2021 *Kamaro Engineering e.V.* licensed under CC BY-SA 4.0 |
-| [Maize 02](models/maize_02/model.config) | `models/maize_02/` | (C) 2021 *Kamaro Engineering e.V.* licensed under CC BY-SA 4.0 |
-| [Stone 01](models/stone_01/model.config) | `models/stone_01/` | (C) 2020 *Andrea Spognetta* licensed under CC BY-NC 4.0 |
-| [Stone 02](models/stone_02/model.config) | `models/stone_02/` | (C) 2014 *Sascha Henrichs* licensed under CC BY 4.0 |
+| Name | Path | Copyright | License |
+|:---- |:---- |:--------- |:------- |
+| [Maize 01](models/maize_01/model.config) | `models/maize_01/` | 2021 *Kamaro Engineering e.V.* | CC BY-SA 4.0 |
+| [Maize 02](models/maize_02/model.config) | `models/maize_02/` | 2021 *Kamaro Engineering e.V.* | CC BY-SA 4.0 |
+| [Stone 01](models/stone_01/model.config) | `models/stone_01/` | 2020 *Andrea Spognetta* | CC BY-NC 4.0 |
+| [Stone 02](models/stone_02/model.config) | `models/stone_02/` | 2014 *Sascha Henrichs* | CC BY 4.0 |
