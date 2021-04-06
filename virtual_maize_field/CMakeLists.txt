@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.0.2)
 project(virtual_maize_field)
 
-find_package(catkin REQUIRED COMPONENTS roslaunch)
+find_package(catkin REQUIRED COMPONENTS rospy roslaunch)
 
 catkin_package(
 #  INCLUDE_DIRS include
