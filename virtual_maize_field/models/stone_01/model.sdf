@@ -8,12 +8,12 @@
     <allow_auto_disable>true</allow_auto_disable>
     <link name='Stone_01_link'>
       <inertial>
-        <!-- Volume: 0.274472 m^3, Density: ~2000 kg/m^3 -->
-        <mass>550</mass>
+        <!-- Volume: 0.078717 m^3, Density: ~2000 kg/m^3 -->
+        <mass>157</mass>
         <!-- Inertia Tensor is :
-            |  0.013198   0.000071  -0.002737 |
-            |  0.000071   0.035595  -0.000109 |
-            | -0.002737  -0.000109   0.043366 | -->
+            |  0.001646   0.000009  -0.000341 |
+            |  0.000009   0.004440  -0.000014 |
+            | -0.000341  -0.000014   0.005409 | -->
         <inertia>
           <ixx>0.013198</ixx>
           <ixy>0.000071</ixy>
@@ -22,15 +22,15 @@
           <iyz>-0.000109</iyz>
           <izz>0.043366</izz>
         </inertia>
-        <!-- Center of Mass  is 0.040667 0.064566 -0.032088 -->
-        <pose>0.040667 0.064566 -0.032088 0 0 0</pose>
+        <!-- Center of Mass  is 0.026819 0.042579 -0.021161 -->
+        <pose>0.026819 0.042579 -0.021161 0 0 0</pose>
       </inertial>
       <collision name='collision'>
         <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <box>
             <!-- TODO: Better collision box. Maybe an ultra low poly rock. -->
-            <size>1.516384 0.974134 0.495299</size>
+            <size>1.000000  0.642406  0.326631</size>
           </box>
         </geometry>
         <max_contacts>10</max_contacts>
@@ -50,7 +50,7 @@
       <visual name='visual'>
         <geometry>
           <mesh>
-            <uri>model://stone_01/meshes/stone_01.obj</uri>
+            <uri>model://stone_01/meshes/stone_01.dae</uri>
             <scale>1 1 1</scale>
           </mesh>
         </geometry>
