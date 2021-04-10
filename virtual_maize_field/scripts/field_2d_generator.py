@@ -1,13 +1,14 @@
+import sys
 import jinja2
 import numpy as np
 import os
 import rospkg
 from datetime import datetime
 
-import geometry
+import row_sections
 
 AVAILABLE_TYPES = ["cylinder", "maize_01", "maize_02"]
-AVAILABLE_SECTIONS = ["Straight", "Curve"]
+AVAILABLE_SECTIONS = ["StraightSection", "CurveSection"]
 class Field2DGenerator():
     def __init__(self,
         row_length = 15.0,
@@ -24,24 +25,60 @@ class Field2DGenerator():
         plant_position_stddiv = 0.03,
         plant_mass = 0.3,
         plant_dropout = 0.0,
-        plant_types=",".join(["maize_01", "maize_02"])),
-        seed = None:
+        plant_types=",".join(["maize_01", "maize_02"]),
+        seed = None):
     
         if seed is None:
             seed = int(datetime.now().timestamp()*1000)%8192
 
         for k,v in locals().items():
             self.__setattr__(k,v)
+        self.row_width = (self.row_width_max + self.row_width_min) / 2
 
         np.random.seed(self.seed)
 
-    def generateRows():
+    def generate(self):
+        self.generateRows()
+        self.generateGround()
+        return self.renderTemplate()
+
+    def generateRows(self):
+        # Plant row starting points
+        space_left = -self.row_width / 2 - self.rows_left * self.row_width
+        space_right = self.row_width / 2 + self.rows_right * self.row_width
+        x = np.arange(space_left, space_right, self.row_width)
+        y = np.array([0])
+        start_p = np.transpose([np.tile(x, len(y)), np.repeat(y, len(x))])
+        start_dir = np.array([0, 1])
+
+        # First section is always at least 1 m straight
+        self.sections = [StraightSection(dsfsafdasdfsfs,sadfsadf)]
+
+        while(self.current_row_length < self.row_length):
+            # Choose rendom available section
+            getattr(sys.modules[__name__], str)
+            
+            var = np.random(self.row_sections)
+            if(var == "Straight")
+
+            elif(var == "Curve")
+
+            else
+                Error
+
+            StraightSection()
+            var = "StraightSection"
+            var()
+
+    def nextStraightSection(self):
+
+    def generateGround(self):
+        # Generate heightmap png
+
+        # Save in GAZEBO_MEDIA_PATH
         pass 
 
-    def generateGround():
-        pass 
-
-    def renderTemplate():
+    def renderTemplate(self):
         pass 
 
 # class Field2DGenerator():
