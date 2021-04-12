@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.0.2)
 project(virtual_maize_field)
 
-find_package(catkin REQUIRED)
+find_package(catkin REQUIRED COMPONENTS rospy roslaunch)
 
 catkin_package(
 #  INCLUDE_DIRS include
@@ -29,3 +29,7 @@ include_directories(
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
+
+install(DIRECTORY launch models worlds
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)
