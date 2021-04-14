@@ -5,10 +5,8 @@ import os
 import rospkg
 from datetime import datetime
 
-import row_sections
+import row_segments
 
-AVAILABLE_TYPES = ["cylinder", "maize_01", "maize_02"]
-AVAILABLE_SECTIONS = ["StraightSection", "CurveSection"]
 class Field2DGenerator():
     def __init__(self,
         row_length = 15.0,
@@ -17,7 +15,8 @@ class Field2DGenerator():
         row_radius_min = 3.0,
         rows_left = 2,
         rows_right = 2,
-        row_sections = ",".join(AVAILABLE_SECTIONS),
+        row_segments = ",".join(AVAILABLE_SECTIONS),
+        row_segment_length_max = 2.5,
         plant_height_min = 0.3,
         plant_height_max = 0.6,
         plant_radius = 0.3,
@@ -38,6 +37,7 @@ class Field2DGenerator():
         np.random.seed(self.seed)
 
     def generate(self):
+        self.generateParams()
         self.generateRows()
         self.generateGround()
         return self.renderTemplate()
@@ -51,26 +51,24 @@ class Field2DGenerator():
         start_p = np.transpose([np.tile(x, len(y)), np.repeat(y, len(x))])
         start_dir = np.array([0, 1])
 
-        # First section is always at least 1 m straight
-        self.sections = [StraightSection(dsfsafdasdfsfs,sadfsadf)]
+        # First segment is always at least 1 m straight
+        self.segments = [StraightSegment(start_p, start_dir, bounds, np.random)]
+        [current_p, current_dir] = self.segments[-1].end()
+        current_row_length = self.segments[-1].dist()
 
-        while(self.current_row_length < self.row_length):
-            # Choose rendom available section
-            getattr(sys.modules[__name__], str)
-            
-            var = np.random(self.row_sections)
-            if(var == "Straight")
+        while(current_row_length < self.row_length):
+            # Choose rendom segment
+            segment_name = np.random.choice(self.row_segments)
 
-            elif(var == "Curve")
+            if segment_name == 'Straigt':
+                segment = row_segments.StraightSegment(current_p, current_dir, )
 
-            else
-                Error
+            segment = getattr(sys.modules[__name__], segment_name)(current_p, current_dir, bounds, np.random)
+            self.segments.append(segment)
 
-            StraightSection()
-            var = "StraightSection"
-            var()
-
-    def nextStraightSection(self):
+            # Update current end points, direction and row length
+            [current_p, current_dir] = self.segments[-1].end()
+            current_row_length += self.segments[-1].dist()
 
     def generateGround(self):
         # Generate heightmap png
