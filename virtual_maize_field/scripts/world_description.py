@@ -18,7 +18,7 @@ class WorldDescription():
         rows_left = 2,
         rows_right = 2,
         rows_curve_budget = np.pi / 2,
-        row_segments = ",".join(AVAILABLE_SEGMENTS),
+        row_segments = ",".join(AVAILABLE_SEGMENTS[:2]),
         row_segment_straight_length_min = 1,
         row_segment_straight_length_max = 2.5,
         row_segment_curved_radius_min = 3.0,

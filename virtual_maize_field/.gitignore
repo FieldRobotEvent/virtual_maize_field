@@ -22,6 +22,8 @@ qtcreator-*
 CATKIN_IGNORE
 
 .ipynb_checkpoints
-
+*.ipynb 
 # Ignore generated world file
 worlds/generated.world
+
+.vscode

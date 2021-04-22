@@ -15,11 +15,11 @@ class BaseSegment(ABC):
         self.plant_params = plant_params
 
     def next_distance(self, offset):
-        mean = (self.plant_params['spacing_max'] + self.plant_params['spacing_min']) / 2
-        sigma = self.plant_params['spacing_max'] - mean
+        mean = (self.plant_params['plant_spacing_max'] + self.plant_params['plant_spacing_min']) / 2
+        sigma = self.plant_params['plant_spacing_max'] - mean
         while True:
             num = np.random.normal(mean, sigma)
-            if (num > self.plant_params['spacing_min'] and num < self.plant_params['spacing_max']):
+            if (num > self.plant_params['plant_spacing_min'] and num < self.plant_params['plant_spacing_max']):
                 return num + offset
 
     # Must return a touple of the end points from the implemented segment 
@@ -33,7 +33,7 @@ class BaseSegment(ABC):
     def placements(self, offset = None):
         # Assuming the first plant should be roughly at the start of each row if no offset is given
         if offset == None:
-            offset = np.full((len(self.start_p)), -(self.plant_params['spacing_max'] + self.plant_params['spacing_min']) / 2)
+            offset = np.full((len(self.start_p)), -(self.plant_params['plant_spacing_max'] + self.plant_params['plant_spacing_min']) / 2)
 
         placements = []
         next_offset = []
@@ -95,7 +95,7 @@ class StraightSegment(BaseSegment):
 
         cur_placement = start + self.start_dir * c
         placements = [cur_placement]
-        while self.length - c > self.plant_params['spacing_min']:
+        while self.length - c > self.plant_params['plant_spacing_min']:
             step = self.next_distance(0.0)
             cur_placement = cur_placement + self.start_dir * step
             placements.append(cur_placement)
@@ -155,7 +155,7 @@ class CurvedSegment(BaseSegment):
 
         cur_placement = Geometry.rotate(start, self.center, c / r)
         placements = [cur_placement]
-        while (c < l - self.plant_params['spacing_min'] or not self.curve_dir) and (c > l + self.plant_params['spacing_min'] or self.curve_dir):
+        while (c < l - self.plant_params['plant_spacing_min'] or not self.curve_dir) and (c > l + self.plant_params['plant_spacing_min'] or self.curve_dir):
             step = rot * self.next_distance(0.0)
             cur_placement = Geometry.rotate(cur_placement, self.center, step / r)
             placements.append(cur_placement)
