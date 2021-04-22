@@ -16,8 +16,8 @@ class Field2DGenerator:
 
     def generate(self):
         self.chainSegments()
-        heightmap = self.generateGround()
-        sdf = self.renderTemplate()
+        heightmap = self.generate_ground()
+        sdf = self.render_to_template()
         return [sdf, heightmap]
 
     def chainSegments(self):
@@ -130,7 +130,11 @@ class Field2DGenerator:
             )
             for i, plant in enumerate(self.placements)
         ]
-        template = jinja2.Template(open('field.world.template').read())
+
+        pkg_path = rospkg.RosPack().get_path('virtual_maize_field')
+        template_path = os.path.join(pkg_path, "scripts/field.world.template")
+        template = open(template_path).read()
+        template = jinja2.Template(template)
         return template.render(coordinates=coordinates, seed=self.wd.structure['params']['seed'])
 
 

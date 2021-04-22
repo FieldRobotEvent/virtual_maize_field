@@ -28,8 +28,6 @@ if __name__ == "__main__":
     
     # generate the template and write it to a file
     pkg_path = rospkg.RosPack().get_path('virtual_maize_field')
-    template_path = os.path.join(pkg_path, "scripts/field.world.template")
-    template = open(template_path).read()
     generated_sdf, heightmap = fgen.generate()
     out_path = os.path.join(pkg_path, "worlds/generated.world")
     with open(out_path, "w") as f:
