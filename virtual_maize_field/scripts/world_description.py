@@ -7,15 +7,17 @@ import inspect
 from datetime import datetime
 
 AVAILABLE_TYPES = ["cylinder", "maize_01", "maize_02"]
-AVAILABLE_SEGMENTS = ["straight", "curved"]
+AVAILABLE_OBSTACLES = ["box", "stone_01", "stone_02"]
+AVAILABLE_ILANDS = []
+AVAILABLE_SEGMENTS = ["straight", "curved", "iland"]
 
 class WorldDescription():
     def __init__(self,
         row_length = 15.0,
-        row_width_min = 0.7,
-        row_width_max = 0.8,
+        row_width = 0.75,
         rows_left = 2,
         rows_right = 2,
+        rows_curve_budget = np.pi / 2,
         row_segments = ",".join(AVAILABLE_SEGMENTS),
         row_segment_straight_length_min = 1,
         row_segment_straight_length_max = 2.5,
@@ -23,14 +25,16 @@ class WorldDescription():
         row_segment_curved_radius_max = 10.0,
         row_segment_curved_arc_measure_min = 1,
         row_segment_curved_arc_measure_max = 2.5,
+        plant_spacing_min = 0.13,
+        plant_spacing_max = 0.19,
         plant_height_min = 0.3,
         plant_height_max = 0.6,
         plant_radius = 0.3,
         plant_radius_noise = 0.05,
-        plant_position_stddiv = 0.03,
+        plant_placement_error_max = 0.05,
         plant_mass = 0.3,
         plant_dropout = 0.0,
-        plant_types=",".join(["maize_01", "maize_02"]),
+        plant_types=",".join(AVAILABLE_TYPES[1:]),
         load_from_file=None,
         seed = None):
     
@@ -41,7 +45,6 @@ class WorldDescription():
 
         for k,v in locals().items():
             self.__setattr__(k,v)
-        self.row_width = (self.row_width_max + self.row_width_min) / 2
 
         np.random.seed(self.seed)
 
@@ -53,11 +56,13 @@ class WorldDescription():
     def random_description(self):
         self.structure = dict()
         self.structure['params'] = {
+            'plant_spacing_min': self.plant_spacing_min,
+            'plant_spacing_max': self.plant_spacing_max,
             'plant_height_min': self.plant_height_min,
             'plant_height_max': self.plant_height_max,
             'plant_radius': self.plant_radius,
             'plant_radius_noise': self.plant_radius_noise,
-            'plant_position_stddiv': self.plant_position_stddiv,
+            'plant_placement_error_max': self.plant_placement_error_max,
             'plant_mass': self.plant_mass,
             'plant_dropout': self.plant_dropout,
             'plant_types': self.plant_types,
@@ -100,6 +105,17 @@ class WorldDescription():
                     'radius': radius,
                     'curve_dir': curve_dir,
                     'arc_measure': arc_measure
+                }
+
+                current_row_length += arc_measure * ((self.rows_left + self.rows_right) * self.row_width + radius) / 2
+
+            elif segment_name == 'island':
+                segment = {
+                    'type': 'island',
+                    'radius': radius,
+                    # 'model':
+                    # 'model_radius':
+                    # 'model_row':
                 }
 
                 current_row_length += arc_measure * ((self.rows_left + self.rows_right) * self.row_width + radius) / 2

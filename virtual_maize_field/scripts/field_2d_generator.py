@@ -3,80 +3,53 @@ import jinja2
 import numpy as np
 import os
 import rospkg
-from datetime import datetime
 
-import row_segments
+from world_description import WorldDescription
+from row_segments import StraightSegment, CurvedSegment, IslandSegment
 
 class Field2DGenerator():
-    def __init__(self,
-        row_length = 15.0,
-        row_width_min = 0.7,
-        row_width_max = 0.8,
-        row_radius_min = 3.0,
-        rows_left = 2,
-        rows_right = 2,
-        row_segments = ",".join(AVAILABLE_SECTIONS),
-        row_segment_length_max = 2.5,
-        plant_height_min = 0.3,
-        plant_height_max = 0.6,
-        plant_radius = 0.3,
-        plant_radius_noise = 0.05,
-        plant_position_stddiv = 0.03,
-        plant_mass = 0.3,
-        plant_dropout = 0.0,
-        plant_types=",".join(["maize_01", "maize_02"]),
-        seed = None):
-    
-        if seed is None:
-            seed = int(datetime.now().timestamp()*1000)%8192
-
-        for k,v in locals().items():
-            self.__setattr__(k,v)
-        self.row_width = (self.row_width_max + self.row_width_min) / 2
-
-        np.random.seed(self.seed)
+    def __init__(self, world_description = WorldDescription()):
+        self.wd = world_description
+        np.random.seed(self.wd['params']['seed'])
 
     def generate(self):
-        self.generateParams()
-        self.generateRows()
-        self.generateGround()
-        return self.renderTemplate()
+        self.chainSegments()
+        heightmap = self.generateGround()
+        sdf = self.renderTemplate()
+        return [sdf, heightmap] 
 
-    def generateRows(self):
-        # Plant row starting points
-        space_left = -self.row_width / 2 - self.rows_left * self.row_width
-        space_right = self.row_width / 2 + self.rows_right * self.row_width
-        x = np.arange(space_left, space_right, self.row_width)
-        y = np.array([0])
-        start_p = np.transpose([np.tile(x, len(y)), np.repeat(y, len(x))])
-        start_dir = np.array([0, 1])
+    def chainSegments(self):
+        # Generate start points
+        rows = self.wd.rows_left + self.wd.rows_right
+        x_start = -self.wd.row_width/2 - self.wd.row_width * (self.wd.rows_left - 1) if self.wd.rows_left > 0 else self.wd.row_width/2
+        x_end = self.wd.row_width/2 + self.wd.row_width * (self.wd.rows_right - 1) if self.wd.rows_right > 0 else -self.wd.row_width/2
+        current_p = np.transpose([np.tile(np.arange(x_start, x_end, self.wd.row_width), rows), np.repeat([0], rows)])
+        current_dir = [0, 1]
 
-        # First segment is always at least 1 m straight
-        self.segments = [StraightSegment(start_p, start_dir, bounds, np.random)]
-        [current_p, current_dir] = self.segments[-1].end()
-        current_row_length = self.segments[-1].dist()
-
-        while(current_row_length < self.row_length):
-            # Choose rendom segment
-            segment_name = np.random.choice(self.row_segments)
-
-            if segment_name == 'Straigt':
-                segment = row_segments.StraightSegment(current_p, current_dir, )
-
-            segment = getattr(sys.modules[__name__], segment_name)(current_p, current_dir, bounds, np.random)
-            self.segments.append(segment)
+        # Chain all segments from the world description
+        for segment in self.wd.structure['segments']:
+            if segment.type == 'straight':
+                seg = StraightSegment(current_p, current_dir, self.wd.structure['params'], segment.length)
+            elif segment.type == 'curved':
+                seg = CurvedSegment(current_p, current_dir, self.wd.structure['params'], segment.radius, segment.curve_dir, segment.arc_measure)
+            elif segment.type == 'island':
+                seg = IslandSegment(current_p, current_dir, self.wd.structure['params'], segment.radius, segment.iland_model, segment.iland_model_radius, segment.iland_row)
+            else:
+                raise ValueError('Unknown segment type. [' + segment_name + ']')
 
             # Update current end points, direction and row length
-            [current_p, current_dir] = self.segments[-1].end()
-            current_row_length += self.segments[-1].dist()
+            [current_p, current_dir] = seg.end()
+            self.segments.append(seg)
 
-    def generateGround(self):
+        
+
+    def generate_ground(self):
         # Generate heightmap png
 
         # Save in GAZEBO_MEDIA_PATH
         pass 
 
-    def renderTemplate(self):
+    def render_to_template(self):
         pass 
 
 # class Field2DGenerator():
