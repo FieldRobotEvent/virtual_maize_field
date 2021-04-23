@@ -13,23 +13,29 @@ if __name__ == "__main__":
     argspec = inspect.getfullargspec(WorldDescription.__init__)
     possible_kwargs = argspec.args[1:]
     defaults = argspec.defaults
-    
+
     # construct an ArgumentParser that takes these arguments
-    parser = argparse.ArgumentParser(description='Generate a virtual maize field world for gazebo')
+    parser = argparse.ArgumentParser(
+        description="Generate a virtual maize field world for gazebo"
+    )
     for argname, default in zip(possible_kwargs, defaults):
         # we analyze the default value's type to guess the type for that argument
-        parser.add_argument("--"+argname, type=type(default), help='default_value: {}'.format(default), required=False)
-    
+        parser.add_argument(
+            "--" + argname,
+            type=type(default),
+            help="default_value: {}".format(default),
+            required=False,
+        )
+
     # get a dict representation of the arguments and call our constructor with them as kwargs
     args = vars(parser.parse_args())
-    args = {k:v for k,v in args.items() if v is not None}
+    args = {k: v for k, v in args.items() if v is not None}
     wd = WorldDescription(**args)
     fgen = Field2DGenerator(wd)
-    
+
     # generate the template and write it to a file
-    pkg_path = rospkg.RosPack().get_path('virtual_maize_field')
+    pkg_path = rospkg.RosPack().get_path("virtual_maize_field")
     generated_sdf, heightmap = fgen.generate()
     out_path = os.path.join(pkg_path, "worlds/generated.world")
     with open(out_path, "w") as f:
         f.write(generated_sdf)
-    

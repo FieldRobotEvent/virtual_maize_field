@@ -102,7 +102,9 @@ class Field2DGenerator:
     def render_to_template(self):
         def into_dict(xy, radius, height, mass, index):
             coordinate = dict()
-            coordinate["type"] = np.random.choice(self.wd.structure['params']['plant_types'].split(','))
+            coordinate["type"] = np.random.choice(
+                self.wd.structure["params"]["plant_types"].split(",")
+            )
             inertia = dict()
             inertia["ixx"] = (mass * (3 * radius ** 2 + height ** 2)) / 12.0
             inertia["iyy"] = (mass * (3 * radius ** 2 + height ** 2)) / 12.0
@@ -112,7 +114,9 @@ class Field2DGenerator:
             coordinate["x"] = xy[0]
             coordinate["y"] = xy[1]
             coordinate["radius"] = (
-                radius + (2 * np.random.rand() - 1) * self.wd.structure['params']['plant_radius_noise']
+                radius
+                + (2 * np.random.rand() - 1)
+                * self.wd.structure["params"]["plant_radius_noise"]
             )
             if coordinate["type"] == "cylinder":
                 coordinate["height"] = height
@@ -131,11 +135,13 @@ class Field2DGenerator:
             for i, plant in enumerate(self.placements)
         ]
 
-        pkg_path = rospkg.RosPack().get_path('virtual_maize_field')
+        pkg_path = rospkg.RosPack().get_path("virtual_maize_field")
         template_path = os.path.join(pkg_path, "scripts/field.world.template")
         template = open(template_path).read()
         template = jinja2.Template(template)
-        return template.render(coordinates=coordinates, seed=self.wd.structure['params']['seed'])
+        return template.render(
+            coordinates=coordinates, seed=self.wd.structure["params"]["seed"]
+        )
 
 
 # class Field2DGenerator():
