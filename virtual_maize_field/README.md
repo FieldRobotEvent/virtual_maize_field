@@ -40,50 +40,75 @@ rosrun virtual_maize_field generate_world.py
 ```
 The resulting file will be placed in `worlds/generated.world`.
 ```
-usage: generate_world.py [-h] [--plant_radius PLANT_RADIUS]
-                         [--row_width ROW_WIDTH]
-                         [--plant_offset PLANT_OFFSET]
-                         [--max_angle_variation MAX_ANGLE_VARIATION]
-                         [--num_plant_pairs NUM_PLANT_PAIRS]
-                         [--num_rows_left NUM_ROWS_LEFT]
-                         [--num_rows_right NUM_ROWS_RIGHT]
-                         [--plant_height PLANT_HEIGHT]
-                         [--plant_mass PLANT_MASS]
-                         [--radius_noise_range RADIUS_NOISE_RANGE]
-                         [--position_div POSITION_DIV]
-                         [--dropout DROPOUT]
-                         [--seed SEED]
-                         [--types TYPES]
+usage: world_description.py [-h] [--row_length ROW_LENGTH] 
+                            [--row_width ROW_WIDTH] 
+                            [--rows_left ROWS_LEFT] [--rows_right ROWS_RIGHT] 
+                            [--rows_curve_budget ROWS_CURVE_BUDGET] 
+                            [--row_segments ROW_SEGMENTS]
+                            [--row_segment_straight_length_min ROW_SEGMENT_STRAIGHT_LENGTH_MIN] 
+                            [--row_segment_straight_length_max ROW_SEGMENT_STRAIGHT_LENGTH_MAX]
+                            [--row_segment_curved_radius_min ROW_SEGMENT_CURVED_RADIUS_MIN] 
+                            [--row_segment_curved_radius_max ROW_SEGMENT_CURVED_RADIUS_MAX]
+                            [--row_segment_curved_arc_measure_min ROW_SEGMENT_CURVED_ARC_MEASURE_MIN] 
+                            [--row_segment_curved_arc_measure_max ROW_SEGMENT_CURVED_ARC_MEASURE_MAX]
+                            [--plant_spacing_min PLANT_SPACING_MIN] [--plant_spacing_max PLANT_SPACING_MAX] 
+                            [--plant_height_min PLANT_HEIGHT_MIN] [--plant_height_max PLANT_HEIGHT_MAX]
+                            [--plant_radius PLANT_RADIUS] [--plant_radius_noise PLANT_RADIUS_NOISE] 
+                            [--plant_placement_error_max PLANT_PLACEMENT_ERROR_MAX] 
+                            [--plant_mass PLANT_MASS]
+                            [--plant_types PLANT_TYPES] 
+                            [--load_from_file LOAD_FROM_FILE] 
+                            [--seed SEED]
 
-Generate a virtual maize field world for gazebo
+Generate the json description for a virtual maize field.
 
 optional arguments:
   -h, --help            show this help message and exit
-  --plant_radius PLANT_RADIUS
-                        default_value: 0.15
+  --row_length ROW_LENGTH
+                        default_value: 15.0
   --row_width ROW_WIDTH
                         default_value: 0.75
-  --plant_offset PLANT_OFFSET
-                        default_value: 0.5
-  --max_angle_variation MAX_ANGLE_VARIATION
-                        default_value: 0.15
-  --num_plant_pairs NUM_PLANT_PAIRS
-                        default_value: 20
-  --num_rows_left NUM_ROWS_LEFT
+  --rows_left ROWS_LEFT
                         default_value: 2
-  --num_rows_right NUM_ROWS_RIGHT
+  --rows_right ROWS_RIGHT
                         default_value: 2
-  --plant_height PLANT_HEIGHT
+  --rows_curve_budget ROWS_CURVE_BUDGET
+                        default_value: 1.5707963267948966
+  --row_segments ROW_SEGMENTS
+                        default_value: straight,curved
+  --row_segment_straight_length_min ROW_SEGMENT_STRAIGHT_LENGTH_MIN
+                        default_value: 1
+  --row_segment_straight_length_max ROW_SEGMENT_STRAIGHT_LENGTH_MAX
+                        default_value: 2.5
+  --row_segment_curved_radius_min ROW_SEGMENT_CURVED_RADIUS_MIN
+                        default_value: 3.0
+  --row_segment_curved_radius_max ROW_SEGMENT_CURVED_RADIUS_MAX
+                        default_value: 10.0
+  --row_segment_curved_arc_measure_min ROW_SEGMENT_CURVED_ARC_MEASURE_MIN
+                        default_value: 1
+  --row_segment_curved_arc_measure_max ROW_SEGMENT_CURVED_ARC_MEASURE_MAX
+                        default_value: 2.5
+  --plant_spacing_min PLANT_SPACING_MIN
+                        default_value: 0.13
+  --plant_spacing_max PLANT_SPACING_MAX
+                        default_value: 0.19
+  --plant_height_min PLANT_HEIGHT_MIN
                         default_value: 0.3
-  --plant_mass PLANT_MASS
-                        default_value: 5.0
-  --radius_noise_range RADIUS_NOISE_RANGE
+  --plant_height_max PLANT_HEIGHT_MAX
+                        default_value: 0.6
+  --plant_radius PLANT_RADIUS
+                        default_value: 0.3
+  --plant_radius_noise PLANT_RADIUS_NOISE
                         default_value: 0.05
-  --position_div POSITION_DIV
-                        default_value: 0.03
-  --dropout DROPOUT     default_value: 0.0
+  --plant_placement_error_max PLANT_PLACEMENT_ERROR_MAX
+                        default_value: 0.05
+  --plant_mass PLANT_MASS
+                        default_value: 0.3
+  --plant_types PLANT_TYPES
+                        default_value: maize_01,maize_02
+  --load_from_file LOAD_FROM_FILE
+                        default_value: None
   --seed SEED           default_value: None
-  --types TYPES         default_value: cylinder,maize_01,maize_02
 ```
 
 ## Sample Worlds
