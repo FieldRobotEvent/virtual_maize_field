@@ -4,6 +4,7 @@ import rospkg
 import argparse
 import inspect
 import os
+import cv2
 
 from field_2d_generator import Field2DGenerator
 from world_description import WorldDescription
@@ -36,6 +37,11 @@ if __name__ == "__main__":
     # generate the template and write it to a file
     pkg_path = rospkg.RosPack().get_path("virtual_maize_field")
     generated_sdf, heightmap = fgen.generate()
-    out_path = os.path.join(pkg_path, "worlds/generated.world")
-    with open(out_path, "w") as f:
+    sdf_path = os.path.join(pkg_path, "worlds/generated.world")
+    with open(sdf_path, "w") as f:
         f.write(generated_sdf)
+    # save heightmap
+    heightmap_path = os.path.join(
+        pkg_path, "Media/models/virtual_maize_field_heightmap.png"
+    )
+    cv2.imwrite(heightmap_path, fgen.heightmap)
