@@ -27,6 +27,8 @@ class WorldDescription:
         row_segment_curved_radius_max=10.0,
         row_segment_curved_arc_measure_min=1,
         row_segment_curved_arc_measure_max=2.5,
+        row_segment_island_radius_min=1.0,
+        row_segment_island_radius_max=3.0,
         plant_spacing_min=0.13,
         plant_spacing_max=0.19,
         plant_height_min=0.3,
@@ -126,19 +128,26 @@ class WorldDescription:
                 )
 
             elif segment_name == "island":
+                radius = (
+                    np.random.rand()
+                    * (
+                        self.row_segment_island_radius_max
+                        - self.row_segment_island_radius_min
+                    )
+                    + self.row_segment_island_radius_min
+                )
+                island_row = np.random.randint(self.rows_left + self.rows_right - 1) + 1
+
                 segment = {
                     "type": "island",
                     "radius": radius,
-                    # 'model':
-                    # 'model_radius':
-                    # 'model_row':
+                    "island_model": None,
+                    "island_model_radius": radius,
+                    "island_row": island_row,
                 }
 
-                current_row_length += (
-                    arc_measure
-                    * ((self.rows_left + self.rows_right) * self.row_width + radius)
-                    / 2
-                )
+                # TODO
+                current_row_length += 5
 
             else:
                 raise ValueError("Unknown segment type. [" + segment_name + "]")

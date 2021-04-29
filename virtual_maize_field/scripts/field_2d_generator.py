@@ -16,6 +16,7 @@ class Field2DGenerator:
 
     def generate(self):
         self.chainSegments()
+        self.seedWeeds()
         heightmap = self.generate_ground()
         sdf = self.render_to_template()
         return [sdf, heightmap]
@@ -65,16 +66,18 @@ class Field2DGenerator:
                     current_dir,
                     self.wd.structure["params"],
                     segment["radius"],
-                    segment["iland_model"],
-                    segment["iland_model_radius"],
-                    segment["iland_row"],
+                    segment["island_model"],
+                    segment["island_model_radius"],
+                    segment["island_row"],
                 )
             else:
-                raise ValueError("Unknown segment type. [" + segment_name + "]")
+                raise ValueError("Unknown segment type. [" + segment["type"] + "]")
 
+            # Collect all plant placements
             seg_placements, offset = seg.placements(offset)
             for row, seg_row in zip(self.placements, seg_placements):
                 row.extend(seg_row)
+
             # Update current end points, direction and row length
             current_p, current_dir = seg.end()
             self.segments.append(seg)
@@ -92,6 +95,12 @@ class Field2DGenerator:
 
         # Plants
         plt.scatter(self.placements[:, 0], self.placements[:, 1], color="c", marker=".")
+
+    # The function calculates the placements of the weed plants and
+    # stores them under self.weeds : np.array([[x,y],[x,y],...])
+    def seedWeeds(self):
+        self.weeds = np.array([])
+        pass
 
     def generate_ground(self):
         # Generate heightmap png

@@ -155,7 +155,7 @@ class CurvedSegment(BaseSegment):
         super(CurvedSegment, self).__init__(start_p, start_dir, plant_params)
         self.radius = radius
         self.curve_dir = curve_dir
-        self.arc_measure = arc_measure * 1 if self.curve_dir else -1
+        self.arc_measure = arc_measure * (1 if self.curve_dir else -1)
 
         # calculate center
         last_p = self.start_p[0] if self.curve_dir else self.start_p[-1]
@@ -270,54 +270,74 @@ class IslandSegment(BaseSegment):
         self.start_p_left = self.start_p[: self.island_row + 1]
         self.start_p_right = self.start_p[self.island_row :]
 
-        # Left
-        self.center_start_left = self.start_p[0] + vec * self.radius
-        d_l = np.linalg.norm(start_p[self.island_row] - self.center_start_left)
-        self.left_angle = np.arccos(d_l / (d_l + self.island_row_radius))
+        # start circles
+        center_start_left = self.start_p[0] + vec * self.radius
+        d_l = np.linalg.norm(start_p[self.island_row] - center_start_left)
+        a_l = np.arccos(d_l / (d_l + self.island_row_radius))
 
+        center_start_right = self.start_p[-1] - vec * self.radius
+        d_r = np.linalg.norm(start_p[self.island_row] - center_start_right)
+        a_r = np.arccos(d_r / (d_r + self.island_row_radius))
+
+        # check which is bigger and us it
+        if d_l > d_r:
+            self.angle = a_l
+            self.radius_left = d_l - np.linalg.norm(
+                self.start_p_left[0] - self.start_p_left[-1]
+            )
+            self.radius_right = d_l - np.linalg.norm(
+                self.start_p_right[0] - self.start_p_right[-1]
+            )
+            self.length = 2 * d_l * np.tan(self.angle)
+        else:
+            self.angle = a_r
+            self.radius_left = d_r - np.linalg.norm(
+                self.start_p_left[0] - self.start_p_left[-1]
+            )
+            self.radius_right = d_r - np.linalg.norm(
+                self.start_p_right[0] - self.start_p_right[-1]
+            )
+            self.length = 2 * d_r * np.tan(self.angle)
+
+        # Island
+        self.center_island = (
+            self.start_p[self.island_row] + self.start_dir * 0.5 * self.length
+        )
+
+        # Left
         self.entrence_left = CurvedSegment(
             self.start_p_left,
             self.start_dir,
             self.plant_params,
-            self.radius,
+            self.radius_left,
             True,
-            self.left_angle,
+            self.angle,
         )
         lp1, ld1 = self.entrence_left.end()
         self.middle_left = CurvedSegment(
-            lp1, ld1, plant_params, self.island_row_radius, False, 2 * self.left_angle
+            lp1, ld1, plant_params, self.island_row_radius, False, 2 * self.angle
         )
         lp2, ld2 = self.middle_left.end()
         self.exit_left = CurvedSegment(
-            lp2, ld2, plant_params, self.radius, True, self.left_angle
+            lp2, ld2, plant_params, self.radius_left, True, self.angle
         )
 
         # Right
-        self.center_start_right = self.start_p[-1] - vec * self.radius
-        d_r = np.linalg.norm(start_p[self.island_row] - self.center_start_right)
-        self.right_angle = np.arccos(d_r / (d_r + self.island_row_radius))
-
         self.entrence_right = CurvedSegment(
             self.start_p_right,
             self.start_dir,
             self.plant_params,
-            self.radius,
+            self.radius_right,
             False,
-            self.right_angle,
+            self.angle,
         )
         rp1, rd1 = self.entrence_right.end()
         self.middle_right = CurvedSegment(
-            rp1, rd1, plant_params, self.island_row_radius, True, 2 * self.right_angle
+            rp1, rd1, plant_params, self.island_row_radius, True, 2 * self.angle
         )
         rp2, rd2 = self.middle_right.end()
         self.exit_right = CurvedSegment(
-            rp2, rd2, plant_params, self.radius, False, self.right_angle
-        )
-
-        # Island
-        temp_vec = Geometry.rotate(vec, [0, 0], self.right_angle)
-        self.center_island = self.center_start_right + temp_vec * (
-            d_r + self.island_row_radius
+            rp2, rd2, plant_params, self.radius_right, False, self.angle
         )
 
     def end(self):
@@ -329,14 +349,61 @@ class IslandSegment(BaseSegment):
         return end_p, self.start_dir
 
     def get_plant_row(self, row_number, offset):
-        print("Test")
-        # raise NotImplementedError
+        if row_number < self.island_row:
+            p1, off1 = self.entrence_left.get_plant_row(row_number, offset)
+            p2, off2 = self.middle_left.get_plant_row(row_number, off1)
+            p3, next_offset = self.exit_left.get_plant_row(row_number, off2)
+            placements = np.vstack([p1, p2, p3])
+        elif row_number > self.island_row:
+            p1, off1 = self.entrence_right.get_plant_row(
+                row_number - self.island_row, offset
+            )
+            p2, off2 = self.middle_right.get_plant_row(
+                row_number - self.island_row, off1
+            )
+            p3, next_offset = self.exit_right.get_plant_row(
+                row_number - self.island_row, off2
+            )
+            placements = np.vstack([p1, p2, p3])
+        else:
+            pel, off1 = self.entrence_left.get_plant_row(row_number, offset)
+            pml, off2 = self.middle_left.get_plant_row(row_number, off1)
+            pxl, nol = self.exit_left.get_plant_row(row_number, off2)
+
+            per, off1 = self.entrence_right.get_plant_row(
+                row_number - self.island_row, offset
+            )
+            pmr, off2 = self.middle_right.get_plant_row(
+                row_number - self.island_row, off1
+            )
+            pxr, nor = self.exit_right.get_plant_row(row_number - self.island_row, off2)
+
+            placements = np.vstack([pel, per, pml, pmr, pxl, pxr])
+            next_offset = min(nol, nor)
+
+        return placements, next_offset
 
     def racing_line(self, row_number, spacing):
         raise NotImplementedError
 
     def render(self):
         super(IslandSegment, self).render()
+
+        # center clearance
+        arc = Arc(
+            self.center_island,
+            2 * self.island_row_radius,
+            2 * self.island_row_radius,
+            0.0,
+            0,
+            360,
+            color="b",
+            linewidth=1,
+        )
+        plt.gca().add_patch(arc)
+
+        # island center
+        plt.scatter(self.center_island[0], self.center_island[1], color="b", marker=".")
 
         self.entrence_left.render()
         self.middle_left.render()
