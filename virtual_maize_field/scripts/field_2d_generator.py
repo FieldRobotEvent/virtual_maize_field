@@ -94,8 +94,12 @@ class Field2DGenerator:
             self.segments.append(seg)
 
         self.placements = np.vstack(self.placements)
+
+        # TODO This is a an unbounded normal distribution, which causes problems with
+        # the plant placements. There will be some outliers each time, because the
+        # number of plants is so heigh
         self.placements += np.random.normal(
-            scale=self.wd.structure["params"]["plant_radius_noise"],
+            scale=self.wd.structure["params"]["plant_placement_error_max"],
             size=self.placements.shape,
         )
 

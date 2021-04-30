@@ -36,7 +36,7 @@ class WorldDescription:
         plant_height_max=0.6,
         plant_radius=0.3,
         plant_radius_noise=0.05,
-        plant_placement_error_max=0.05,
+        plant_placement_error_max=0.03,
         plant_mass=0.3,
         plant_dropout=0.0,
         plant_types=",".join(AVAILABLE_TYPES[1:]),
