@@ -25,7 +25,7 @@ class Field2DGenerator:
 
     def generate(self):
         self.chain_segments()
-        # self.center_plants()
+        self.center_plants()
         self.seed_weeds()
         self.generate_ground()
         self.fix_gazebo()
@@ -102,14 +102,18 @@ class Field2DGenerator:
     # Because the heightmap must be square and has to have a side length of 2^n + 1
     # this means that we could have smaller maps, by centering the placements around 0,0
     # TODO
-    # def center_plants(self):
-    #     x_min = self.placements[:, 0].min()
-    #     x_max = self.placements[:, 0].max()
-    #     y_min = self.placements[:, 1].min()
-    #     y_max = self.placements[:, 1].max()
+    def center_plants(self):
+        x_min = self.placements[:, 0].min()
+        y_min = self.placements[:, 1].min()
 
-    #     self.placements += np.array([-x_min - 0.5 * x_max, -y_min - 0.5 * y_max])
+        self.placements -= np.array([x_min, y_min])
 
+        x_max = self.placements[:, 0].max()
+        y_max = self.placements[:, 1].max()
+        
+        self.placements -= np.array([x_max, y_max]) / 2
+
+        
     # The function calculates the placements of the weed plants and
     # stores them under self.weeds : np.array([[x,y],[x,y],...])
     def seed_weeds(self):
@@ -146,13 +150,14 @@ class Field2DGenerator:
             )
             n += 1
 
+        offset = image_size // 2
         # Make plant placements flat
         for mx, my in self.placements:
-            px = int((2 + mx - metric_x_min - 0.5 * metric_x_max) // resolution)
-            py = int((2 + my - metric_y_min) // resolution)
+            px = int(mx // resolution) + offset
+            py = int(my // resolution) + offset
 
             height = heightmap[py, px]
-            heightmap = cv2.circle(heightmap, (px, py), 2, height, -1)
+            heightmap = cv2.circle(heightmap, (px, py), 10, height, -1)
 
         # Convert to grayscale
         heightmap -= heightmap.min()
@@ -170,7 +175,7 @@ class Field2DGenerator:
         # move everything so that the hightmap can be spawned
         # at 0, 0, because there is a bug causing a mismatch
         # between the heightmap visual and the collision
-        self.placements -= np.array(self.heightmap_position)
+        #self.placements -= np.array(self.heightmap_position)
         self.heightmap_position = [0, 0]
 
     def render_to_template(self):
