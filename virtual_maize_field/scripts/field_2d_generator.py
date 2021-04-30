@@ -101,7 +101,6 @@ class Field2DGenerator:
 
     # Because the heightmap must be square and has to have a side length of 2^n + 1
     # this means that we could have smaller maps, by centering the placements around 0,0
-    # TODO
     def center_plants(self):
         x_min = self.placements[:, 0].min()
         y_min = self.placements[:, 1].min()
@@ -110,10 +109,9 @@ class Field2DGenerator:
 
         x_max = self.placements[:, 0].max()
         y_max = self.placements[:, 1].max()
-        
+
         self.placements -= np.array([x_max, y_max]) / 2
 
-        
     # The function calculates the placements of the weed plants and
     # stores them under self.weeds : np.array([[x,y],[x,y],...])
     def seed_weeds(self):
@@ -150,18 +148,25 @@ class Field2DGenerator:
             )
             n += 1
 
+        # Normalize heightmap
+        heightmap -= heightmap.min()
+        heightmap /= heightmap.max()
+
         offset = image_size // 2
-        # Make plant placements flat
+        # Make plant placements flat and save the heights for the sdf renderer
+        self.placements_ground_height = []
         for mx, my in self.placements:
             px = int(mx // resolution) + offset
             py = int(my // resolution) + offset
 
             height = heightmap[py, px]
-            heightmap = cv2.circle(heightmap, (px, py), 10, height, -1)
+            height = 1
+            heightmap = cv2.circle(heightmap, (px, py), 3, height, -1)
+            self.placements_ground_height.append(
+                self.wd.structure["params"]["ground_max_elevation"] * height
+            )
 
         # Convert to grayscale
-        heightmap -= heightmap.min()
-        heightmap /= heightmap.max()
         self.heightmap = (255 * heightmap[::-1, :]).astype(np.uint8)
 
         # Calc heightmap position
@@ -172,14 +177,14 @@ class Field2DGenerator:
         ]
 
     def fix_gazebo(self):
-        # move everything so that the hightmap can be spawned
-        # at 0, 0, because there is a bug causing a mismatch
-        # between the heightmap visual and the collision
-        #self.placements -= np.array(self.heightmap_position)
+        # move the plants to the center of the flat circles
+        self.placements -= 0.01
+
+        # set heightmap position to origin
         self.heightmap_position = [0, 0]
 
     def render_to_template(self):
-        def into_dict(xy, radius, height, mass, index):
+        def into_dict(xy, ground_height, radius, height, mass, index):
             coordinate = dict()
             coordinate["type"] = np.random.choice(
                 self.wd.structure["params"]["plant_types"].split(",")
@@ -192,6 +197,7 @@ class Field2DGenerator:
             coordinate["mass"] = mass
             coordinate["x"] = xy[0]
             coordinate["y"] = xy[1]
+            coordinate["z"] = ground_height
             coordinate["radius"] = (
                 radius
                 + (2 * np.random.rand() - 1)
@@ -206,6 +212,7 @@ class Field2DGenerator:
         coordinates = [
             into_dict(
                 plant,
+                self.placements_ground_height[i],
                 self.wd.structure["params"]["plant_radius"],
                 self.wd.structure["params"]["plant_height_min"],
                 self.wd.structure["params"]["plant_mass"],
