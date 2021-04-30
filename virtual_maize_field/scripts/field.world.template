@@ -156,7 +156,7 @@
 {% for coordinate in coordinates %}
 {% if coordinate.type == 'cylinder' %}
     <model name='{{ coordinate.name }}'>
-      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ heightmap.max_elevation + 0.01 }} 0 -0 0</pose>
+      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 -0 0</pose>
       <link name='{{ coordinate.name }}_link'>
         <inertial>
           <mass>{{ coordinate.mass }}</mass>
@@ -211,7 +211,7 @@
     </model>
 {% elif coordinate.type == 'maize_01' %}
     <model name='{{ coordinate.name }}'>
-      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ heightmap.max_elevation + 0.01 }} 0 -0 {{ coordinate.yaw }}</pose>
+      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 -0 {{ coordinate.yaw }}</pose>
       <link name='{{ coordinate.name }}_link'>
         <inertial>
           <mass>{{ coordinate.mass }}</mass>
@@ -263,7 +263,7 @@
     </model>
 {% elif coordinate.type == 'maize_02' %}
     <model name='{{ coordinate.name }}'>
-      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ heightmap.max_elevation + 0.01 }} 0 -0 {{ coordinate.yaw }}</pose>
+      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 -0 {{ coordinate.yaw }}</pose>
       <link name='{{ coordinate.name }}_link'>
         <inertial>
           <mass>{{ coordinate.mass }}</mass>
