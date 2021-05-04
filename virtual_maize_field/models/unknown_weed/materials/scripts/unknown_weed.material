@@ -1,0 +1,16 @@
+material unknown_weed_leaf
+{
+  technique
+  {
+    pass
+    {
+      alpha_rejection greater 128
+
+      texture_unit
+      {
+        texture unknown_weed.png
+      }
+    }
+  }
+}
+
