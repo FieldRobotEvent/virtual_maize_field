@@ -15,7 +15,7 @@ AVAILABLE_SEGMENTS = ["straight", "curved", "iland"]
 class WorldDescription:
     def __init__(
         self,
-        row_length=15.0,
+        row_length=12.0,
         row_width=0.75,
         rows_left=2,
         rows_right=2,
@@ -25,8 +25,8 @@ class WorldDescription:
         row_segment_straight_length_max=2.5,
         row_segment_curved_radius_min=3.0,
         row_segment_curved_radius_max=10.0,
-        row_segment_curved_arc_measure_min=1,
-        row_segment_curved_arc_measure_max=2.5,
+        row_segment_curved_arc_measure_min=0.3,
+        row_segment_curved_arc_measure_max=1.0,
         row_segment_island_radius_min=1.0,
         row_segment_island_radius_max=3.0,
         ground_max_elevation=0.2,
@@ -41,12 +41,12 @@ class WorldDescription:
         plant_dropout=0.0,
         plant_types=",".join(AVAILABLE_TYPES[1:]),
         load_from_file=None,
-        seed=None,
+        seed=-1,
     ):
 
         row_segments = row_segments.split(",")
 
-        if seed is None:
+        if seed == -1:
             seed = int(datetime.now().timestamp() * 1000) % 8192
 
         for k, v in locals().items():
@@ -78,6 +78,7 @@ class WorldDescription:
 
         self.structure["segments"] = []
         current_row_length = 0
+        current_curve = 0
 
         while current_row_length < self.row_length:
             # Choose rendom segment
@@ -106,7 +107,6 @@ class WorldDescription:
                     )
                     + self.row_segment_curved_radius_min
                 )
-                curve_dir = np.random.randint(2)
                 arc_measure = (
                     np.random.rand()
                     * (
@@ -115,6 +115,11 @@ class WorldDescription:
                     )
                     + self.row_segment_curved_arc_measure_min
                 )
+                curve_dir = np.random.randint(2)
+                if current_curve + arc_measure > self.rows_curve_budget:
+                    curve_dir = 1
+                elif current_curve - arc_measure < -self.rows_curve_budget:
+                    curve_dir = 0
 
                 segment = {
                     "type": "curved",
@@ -128,6 +133,7 @@ class WorldDescription:
                     * ((self.rows_left + self.rows_right) * self.row_width + radius)
                     / 2
                 )
+                current_curve = arc_measure if not curve_dir else -arc_measure
 
             elif segment_name == "island":
                 radius = (
