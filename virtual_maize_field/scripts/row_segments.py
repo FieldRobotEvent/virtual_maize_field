@@ -5,7 +5,7 @@ from abc import ABC, abstractmethod
 from matplotlib import pyplot as plt
 from matplotlib.patches import Arc
 
-from utils import Geometry
+from utils import Geometry, BoundedGaussian
 
 
 class BaseSegment(ABC):
@@ -14,20 +14,10 @@ class BaseSegment(ABC):
         self.start_dir = start_dir
         self.start_dir = self.start_dir / np.linalg.norm(self.start_dir)
         self.plant_params = plant_params
-
-    def next_distance(self, offset):
-        mean = (
-            self.plant_params["plant_spacing_max"]
-            + self.plant_params["plant_spacing_min"]
-        ) / 2
-        sigma = self.plant_params["plant_spacing_max"] - mean
-        while True:
-            num = np.random.normal(mean, sigma)
-            if (
-                num > self.plant_params["plant_spacing_min"]
-                and num < self.plant_params["plant_spacing_max"]
-            ):
-                return num + offset
+        self.bounded_gaussian = BoundedGaussian(
+            self.plant_params["plant_spacing_min"],
+            self.plant_params["plant_spacing_max"],
+        )
 
     # Must return a touple of the end points from the implemented segment
     # and the new direction for the next segment
@@ -108,12 +98,12 @@ class StraightSegment(BaseSegment):
 
     def get_plant_row(self, row_number, offset):
         start = self.start_p[row_number]
-        c = self.next_distance(offset)
+        c = self.bounded_gaussian.get(offset)
 
         cur_placement = start + self.start_dir * c
         placements = [cur_placement]
         while self.length - c > self.plant_params["plant_spacing_min"]:
-            step = self.next_distance(0.0)
+            step = self.bounded_gaussian.get()
             cur_placement = cur_placement + self.start_dir * step
             placements.append(cur_placement)
             c += step
@@ -177,14 +167,14 @@ class CurvedSegment(BaseSegment):
         r = np.linalg.norm(self.center - start)
         l = self.arc_measure * r
         rot = 1 if self.curve_dir else -1
-        c = rot * self.next_distance(offset)
+        c = rot * self.bounded_gaussian.get(offset)
 
         cur_placement = Geometry.rotate(start, self.center, c / r)
         placements = [cur_placement]
         while (
             c < l - self.plant_params["plant_spacing_min"] or not self.curve_dir
         ) and (c > l + self.plant_params["plant_spacing_min"] or self.curve_dir):
-            step = rot * self.next_distance(0.0)
+            step = rot * self.bounded_gaussian.get(0.0)
             cur_placement = Geometry.rotate(cur_placement, self.center, step / r)
             placements.append(cur_placement)
             c += step
