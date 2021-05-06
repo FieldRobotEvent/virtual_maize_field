@@ -8,6 +8,7 @@ from matplotlib import pyplot as plt
 
 from world_description import WorldDescription
 from row_segments import StraightSegment, CurvedSegment, IslandSegment
+from utils import BoundedGaussian
 
 
 class Field2DGenerator:
@@ -95,13 +96,20 @@ class Field2DGenerator:
 
         self.placements = np.vstack(self.placements)
 
-        # TODO This is a an unbounded normal distribution, which causes problems with
-        # the plant placements. There will be some outliers each time, because the
-        # number of plants is so heigh
-        self.placements += np.random.normal(
-            scale=self.wd.structure["params"]["plant_placement_error_max"],
-            size=self.placements.shape,
+        # Add bounden noise to placements
+        bg = BoundedGaussian(
+            -self.wd.structure["params"]["plant_placement_error_max"],
+            self.wd.structure["params"]["plant_placement_error_max"],
         )
+
+        # TODO There is a better way to do this
+        new_placements = []
+        for x, y in self.placements:
+            x += bg.get()
+            y += bg.get()
+            new_placements.append([x, y])
+
+        self.placements = np.array(new_placements)
 
     # Because the heightmap must be square and has to have a side length of 2^n + 1
     # this means that we could have smaller maps, by centering the placements around 0,0
@@ -164,8 +172,7 @@ class Field2DGenerator:
             py = int(my // resolution) + offset
 
             height = heightmap[py, px]
-            height = 1
-            heightmap = cv2.circle(heightmap, (px, py), 3, height, -1)
+            heightmap = cv2.circle(heightmap, (px, py), 2, height, -1)
             self.placements_ground_height.append(
                 self.wd.structure["params"]["ground_max_elevation"] * height
             )
