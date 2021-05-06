@@ -1,0 +1,65 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="qr_location_marker">
+    <static>true</static>
+    <link name="link">
+      <pose>0 0 1 0 0 0</pose>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>1 1 2</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="visual_bottom">
+	<pose>0 0 -0.75 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>1 1 0.5</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://qr_location_marker/materials/scripts</uri>
+            <uri>model://qr_location_marker/materials/textures</uri>
+            <name>qr_location_marker/logo</name>
+          </script>
+        </material>
+      </visual>
+
+      <visual name="visual_top">
+	<pose>0 0 0.75 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>1 1 0.5</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://qr_location_marker/materials/scripts</uri>
+            <uri>model://qr_location_marker/materials/textures</uri>
+            <name>qr_location_marker/logo</name>
+          </script>
+        </material>
+      </visual>
+
+      <visual name="visual_code">
+	<pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>1 1 1</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://qr_location_marker/materials/scripts</uri>
+            <uri>model://qr_location_marker/materials/textures</uri>
+            <name>qr_location_marker/qr_code</name>
+          </script>
+        </material>
+      </visual>
+
+    </link>
+  </model>
+</sdf>

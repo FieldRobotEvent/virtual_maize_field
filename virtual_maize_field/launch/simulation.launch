@@ -41,4 +41,6 @@
     <arg name="config" value="$(arg config)" />
     <arg name="joystick" value="$(arg joystick)" />
   </include>
+
+<node pkg="jackal_gazebo_fre" name="move_robot_random" type="move_robot_random.py" output="screen"/>
 </launch>
