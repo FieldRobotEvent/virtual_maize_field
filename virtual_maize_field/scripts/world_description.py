@@ -9,17 +9,17 @@ from datetime import datetime
 AVAILABLE_TYPES = ["cylinder", "maize_01", "maize_02"]
 AVAILABLE_OBSTACLES = ["box", "stone_01", "stone_02"]
 AVAILABLE_ILANDS = []
-AVAILABLE_SEGMENTS = ["straight", "curved", "iland"]
+AVAILABLE_SEGMENTS = ["straight", "curved", "island"]
 
 
 class WorldDescription:
     def __init__(
         self,
         row_length=12.0,
+        rows_curve_budget=np.pi / 2,
         row_width=0.75,
         rows_left=2,
         rows_right=2,
-        rows_curve_budget=np.pi / 2,
         row_segments=",".join(AVAILABLE_SEGMENTS[:2]),
         row_segment_straight_length_min=1,
         row_segment_straight_length_max=2.5,

@@ -127,8 +127,12 @@ class Field2DGenerator:
     # The function calculates the placements of the weed plants and
     # stores them under self.weeds : np.array([[x,y],[x,y],...])
     def seed_weeds(self):
+        # TODO Thijs
+        # [ [x,y],[x,y],[x,y],... ]
         self.weeds = np.array([])
-        pass
+
+        # [ type1, type2, type3, ...]
+        self.weeds_type = ["weed_01", "can", "ale"]
 
     def generate_ground(self):
         # Calculate image resolution
