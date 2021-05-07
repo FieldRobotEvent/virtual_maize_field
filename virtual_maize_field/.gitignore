@@ -22,6 +22,9 @@ qtcreator-*
 CATKIN_IGNORE
 
 .ipynb_checkpoints
+*.ipynb 
+.vscode
 
-# Ignore generated world file
+# Ignore generated files
 worlds/generated.world
+Media/models/virtual_maize_field_heightmap.png

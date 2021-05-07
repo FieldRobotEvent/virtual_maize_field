@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="3">
   <name>virtual_maize_field</name>
-  <version>2.0.0</version>
+  <version>3.0.0</version>
   <description>A virtual maize field for agricultural robot simulation in Gazebo.</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
@@ -38,6 +38,6 @@
          GAZEBO_PLUGIN_PATH and GAZEBO_MODEL_PATH when you do this export inside
          the package.xml file. You can than use URIs of type model://my_package/stuff. -->
     <gazebo_ros gazebo_model_path="${prefix}/models"/>
-    <gazebo_ros gazebo_media_path="${prefix}/models"/>
+    <gazebo_ros gazebo_media_path="${prefix}"/>
   </export>
 </package>

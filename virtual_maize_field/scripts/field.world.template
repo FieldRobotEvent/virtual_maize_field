@@ -88,10 +88,10 @@
       <heading_deg>0</heading_deg>
     </spherical_coordinates>
     <state world_name='default'>
-      <sim_time>29 706000000</sim_time>
-      <real_time>29 884195945</real_time>
-      <wall_time>1582227173 790094351</wall_time>
-      <iterations>29706</iterations>
+      <sim_time>0</sim_time>
+      <real_time>0</real_time>
+      <wall_time>0</wall_time>
+      <iterations>0</iterations>
       <model name='ground_plane'>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <scale>1 1 1</scale>
@@ -106,10 +106,57 @@
         <pose frame=''>0 0 10 0 -0 0</pose>
       </light>
     </state>
+    <model name="heightmap">
+      <static>true</static>
+      <link name="link">
+        <visual name="visual_abcedf">
+          <geometry>
+            <heightmap>
+              <use_terrain_paging>false</use_terrain_paging>
+              <texture>
+                <diffuse>file://media/materials/textures/dirt_diffusespecular.png</diffuse>
+                <normal>file://media/materials/textures/flat_normal.png</normal>
+                <size>1</size>
+              </texture>
+              <texture>
+                <diffuse>file://media/materials/textures/grass_diffusespecular.png</diffuse>
+                <normal>file://media/materials/textures/flat_normal.png</normal>
+                <size>1</size>
+              </texture>
+              <texture>
+                <diffuse>file://media/materials/textures/fungus_diffusespecular.png</diffuse>
+                <normal>file://media/materials/textures/flat_normal.png</normal>
+                <size>1</size>
+              </texture>
+             <blend>
+                <min_height>2</min_height>
+                <fade_dist>5</fade_dist>
+              </blend>
+              <blend>
+                <min_height>4</min_height>
+                <fade_dist>5</fade_dist>
+              </blend>
+              <uri>file://virtual_maize_field_heightmap.png</uri>
+              <size>{{ heightmap.size }} {{ heightmap.size }} {{ heightmap.max_elevation }}</size>
+              <pos>{{ heightmap.pos.x }} {{ heightmap.pos.y }} 0</pos>
+            </heightmap>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <heightmap>
+              <uri>file://virtual_maize_field_heightmap.png</uri>
+              <size>{{ heightmap.size }} {{ heightmap.size }} {{ heightmap.max_elevation }}</size>
+              <pos>{{ heightmap.pos.x }} {{ heightmap.pos.y }} 0</pos>
+            </heightmap>
+          </geometry>
+        </collision>
+      </link>
+    </model>
 {% for coordinate in coordinates %}
 {% if coordinate.type == 'cylinder' %}
     <model name='{{ coordinate.name }}'>
-      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} 0.5 0 -0 0</pose>
+      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 -0 0</pose>
       <link name='{{ coordinate.name }}_link'>
         <inertial>
           <mass>{{ coordinate.mass }}</mass>
@@ -164,7 +211,7 @@
     </model>
 {% elif coordinate.type == 'maize_01' %}
     <model name='{{ coordinate.name }}'>
-      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} 0.05 0 -0 {{ coordinate.yaw }}</pose>
+      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 -0 {{ coordinate.yaw }}</pose>
       <link name='{{ coordinate.name }}_link'>
         <inertial>
           <mass>{{ coordinate.mass }}</mass>
@@ -216,7 +263,7 @@
     </model>
 {% elif coordinate.type == 'maize_02' %}
     <model name='{{ coordinate.name }}'>
-      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} 0.05 0 -0 {{ coordinate.yaw }}</pose>
+      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 -0 {{ coordinate.yaw }}</pose>
       <link name='{{ coordinate.name }}_link'>
         <inertial>
           <mass>{{ coordinate.mass }}</mass>
