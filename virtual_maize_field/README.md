@@ -28,6 +28,8 @@ Additional you'll need the following packages:
 rosdep install virtual_maize_field
 sudo apt install python3-pip
 sudo pip3 install -U jinja2 rospkg
+sudo pip3 install opencv-python
+sudo pip3 install matplotlib
 
 # noetic
 rosdep install virtual_maize_field
