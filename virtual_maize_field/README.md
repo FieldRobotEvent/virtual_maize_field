@@ -58,6 +58,8 @@ usage: world_description.py [-h] [--row_length ROW_LENGTH]
                             [--plant_radius PLANT_RADIUS] [--plant_radius_noise PLANT_RADIUS_NOISE] 
                             [--plant_placement_error_max PLANT_PLACEMENT_ERROR_MAX] 
                             [--plant_mass PLANT_MASS]
+                            [--hole_prob HOLE_PROB]
+                            [--max_hole_size MAX_HOLE_SIZE]
                             [--plant_types PLANT_TYPES] 
                             [--load_from_file LOAD_FROM_FILE] 
                             [--seed SEED]
@@ -106,6 +108,10 @@ optional arguments:
                         default_value: 0.05
   --plant_mass PLANT_MASS
                         default_value: 0.3
+  --hole_prob HOLE_PROB
+                        default_value: 0.0
+  --max_hole_size MAX_HOLE_SIZE
+                        default_value: 7
   --plant_types PLANT_TYPES
                         default_value: maize_01,maize_02
   --load_from_file LOAD_FROM_FILE

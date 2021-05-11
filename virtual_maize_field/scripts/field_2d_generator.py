@@ -88,58 +88,33 @@ class Field2DGenerator:
             # Collect all plant placements
             seg_placements, offset = seg.placements(offset)
             for row, seg_row in zip(self.placements, seg_placements):
-                
-                # hole_size = 7
-                # pole_prob = 0.04
-                        
-                # # generate indexes of the end of the hole
-                # probs = np.random.sample(seg_row.shape[0])
-                # probs = probs < pole_prob
-                
-                # # iterate in reverse order
-                # i = seg_row.shape[0]-1
-                # while i > 0 :
-                #     if probs[i]:
-                #         # remove 7 consecutive plants
-                #         seg_row = np.delete(seg_row, list(range(max(0,i-7), i)))
-                        # seg_row.pop(list(range(max(0,i-7), i)))
-                #         i = i - hole_size
-                    
-                #     i = i -1
-                    
-                    
-                
                 row.extend(seg_row)
 
             # Update current end points, direction and row length
             current_p, current_dir = seg.end()
             self.segments.append(seg)
 
+        # generate holes in the maize field
         rows = []
         for row in self.placements:
             row = np.vstack(row)
-            
-            max_hole_size = 7
-            pole_prob = 0.04
                     
             # generate indexes of the end of the hole
             probs = np.random.sample(row.shape[0])
-            probs = probs < pole_prob
+            probs = probs < self.wd.structure["params"]["hole_prob"]
             
-            # iterate in reverse order
+            # iterate in reverse order, and remove plants in the holes
             i = probs.shape[0]-1
             while i > 0 :
                 if probs[i]:
-                    # remove hole_size consecutive plants
-                    hole_size = np.random.randint(1,max_hole_size)
+                    hole_size = np.random.randint(1, self.wd.structure["params"]["max_hole_size"])
                     row = np.delete(row, slice(max(0,i-hole_size), i), axis=0)
                     i = i - hole_size
-                
+
                 i = i -1
             rows.append(row)
 
         self.placements = np.vstack(rows)
-        # self.placements = np.vstack(self.placements)
 
         # Add bounden noise to placements
         bg = BoundedGaussian(
