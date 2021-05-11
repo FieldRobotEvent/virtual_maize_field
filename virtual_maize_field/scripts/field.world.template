@@ -70,10 +70,6 @@
                 <normal>file://media/materials/textures/flat_normal.png</normal>
                 <size>1</size>
               </texture>
-             <blend>
-                <min_height>2</min_height>
-                <fade_dist>5</fade_dist>
-              </blend>
               <blend>
                 <min_height>4</min_height>
                 <fade_dist>5</fade_dist>
