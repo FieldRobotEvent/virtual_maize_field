@@ -6,10 +6,12 @@ import argparse
 import inspect
 from datetime import datetime
 
-AVAILABLE_TYPES = ["cylinder", "maize_01", "maize_02"]
+AVAILABLE_CROP_TYPES = ["cylinder", "maize_01", "maize_02"]
+AVAILABLE_OBJECT_TYPES = ["ale"]
 AVAILABLE_OBSTACLES = ["box", "stone_01", "stone_02"]
 AVAILABLE_ILANDS = []
 AVAILABLE_SEGMENTS = ["straight", "curved", "island"]
+
 
 
 class WorldDescription:
@@ -30,6 +32,7 @@ class WorldDescription:
         row_segment_island_radius_min=1.0,
         row_segment_island_radius_max=3.0,
         ground_max_elevation=0.2,
+        dem_res=0.10,
         plant_spacing_min=0.13,
         plant_spacing_max=0.19,
         plant_height_min=0.3,
@@ -40,7 +43,8 @@ class WorldDescription:
         plant_mass=0.3,
         hole_prob = 0.0,
         max_hole_size = 7,
-        plant_types=",".join(AVAILABLE_TYPES[1:]),
+        crop_types=",".join(AVAILABLE_CROP_TYPES[1:]),
+        object_types=",".join(AVAILABLE_OBJECT_TYPES),
         load_from_file=None,
         seed=-1
     ):
@@ -64,6 +68,7 @@ class WorldDescription:
         self.structure = dict()
         self.structure["params"] = {
             "ground_max_elevation": self.ground_max_elevation,
+            "dem_res": self.dem_res,
             "plant_spacing_min": self.plant_spacing_min,
             "plant_spacing_max": self.plant_spacing_max,
             "plant_height_min": self.plant_height_min,
@@ -74,7 +79,8 @@ class WorldDescription:
             "plant_mass": self.plant_mass,
             "hole_prob": self.hole_prob,
             "max_hole_size": self.max_hole_size,
-            "plant_types": self.plant_types,
+            "crop_types": self.crop_types,
+            "object_types": self.object_types,
             "seed": self.seed,
         }
 
