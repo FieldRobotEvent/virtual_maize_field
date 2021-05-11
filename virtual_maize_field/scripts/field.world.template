@@ -15,54 +15,6 @@
       </attenuation>
       <direction>-0.5 0.1 -0.9</direction>
     </light>
-    <model name='ground_plane'>
-      <static>1</static>
-      <link name='link'>
-        <collision name='collision'>
-          <geometry>
-            <plane>
-              <normal>0 0 1</normal>
-              <size>100 100</size>
-            </plane>
-          </geometry>
-          <surface>
-            <contact>
-              <collide_bitmask>65535</collide_bitmask>
-              <ode/>
-            </contact>
-            <friction>
-              <ode>
-                <mu>100</mu>
-                <mu2>50</mu2>
-              </ode>
-              <torsional>
-                <ode/>
-              </torsional>
-            </friction>
-            <bounce/>
-          </surface>
-          <max_contacts>10</max_contacts>
-        </collision>
-        <visual name='visual'>
-          <cast_shadows>0</cast_shadows>
-          <geometry>
-            <plane>
-              <normal>0 0 1</normal>
-              <size>100 100</size>
-            </plane>
-          </geometry>
-          <material>
-            <script>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Grey</name>
-            </script>
-          </material>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-    </model>
     <gravity>0 0 -9.8</gravity>
     <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
     <atmosphere type='adiabatic'/>
@@ -115,16 +67,6 @@
               <use_terrain_paging>false</use_terrain_paging>
               <texture>
                 <diffuse>file://media/materials/textures/dirt_diffusespecular.png</diffuse>
-                <normal>file://media/materials/textures/flat_normal.png</normal>
-                <size>1</size>
-              </texture>
-              <texture>
-                <diffuse>file://media/materials/textures/grass_diffusespecular.png</diffuse>
-                <normal>file://media/materials/textures/flat_normal.png</normal>
-                <size>1</size>
-              </texture>
-              <texture>
-                <diffuse>file://media/materials/textures/fungus_diffusespecular.png</diffuse>
                 <normal>file://media/materials/textures/flat_normal.png</normal>
                 <size>1</size>
               </texture>
@@ -214,6 +156,7 @@
       <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 -0 {{ coordinate.yaw }}</pose>
       <link name='{{ coordinate.name }}_link'>
         <inertial>
+          <pose>0 0 0.01 0 0 0</pose>
           <mass>{{ coordinate.mass }}</mass>
           <inertia>
             <ixx>0.0033416667</ixx>
@@ -223,7 +166,6 @@
             <iyz>0</iyz>
             <izz>0.000016666667</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
           <pose>0 0 0.2 0 -0 0</pose>
@@ -266,6 +208,7 @@
       <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 -0 {{ coordinate.yaw }}</pose>
       <link name='{{ coordinate.name }}_link'>
         <inertial>
+          <pose>0 0 0.01 0 0 0</pose>
           <mass>{{ coordinate.mass }}</mass>
           <inertia>
             <ixx>0.0033416667</ixx>
@@ -275,7 +218,6 @@
             <iyz>0</iyz>
             <izz>0.000016666667</izz>
           </inertia>
-          <pose>0 0 0.1 0 0 0</pose>
         </inertial>
         <collision name='collision'>
           <pose>0 0 0.2 0 -0 0</pose>
