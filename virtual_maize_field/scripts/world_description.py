@@ -38,7 +38,7 @@ class WorldDescription:
         plant_radius_noise=0.05,
         plant_placement_error_max=0.02,
         plant_mass=0.3,
-        hole_prob = 0,
+        hole_prob = 0.0,
         max_hole_size = 7,
         plant_types=",".join(AVAILABLE_TYPES[1:]),
         load_from_file=None,
