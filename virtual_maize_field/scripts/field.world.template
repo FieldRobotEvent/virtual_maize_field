@@ -307,6 +307,47 @@
     </link>
   </model>
 
+{% elif coordinate.type == 'beer' %}
+    <model name='{{ coordinate.name }}'>
+      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 1.5707963267948966 0 {{ coordinate.yaw }}</pose>
+      <link name='{{ coordinate.name }}_link'>
+      <inertial>
+        <mass>0.390</mass>
+        <inertia>
+          <ixx>0.00058</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00058</iyy>
+          <iyz>0</iyz>
+          <izz>0.00019</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <cylinder>
+            <radius>0.035000</radius>
+            <length>0.150000</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <cylinder>
+            <radius>0.035000</radius>
+            <length>0.150000</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://beer/materials/scripts</uri>
+            <uri>model://beer/materials/textures</uri>
+            <name>Beer/Diffuse</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+
 
 {% endif %}
 {% endfor %}
