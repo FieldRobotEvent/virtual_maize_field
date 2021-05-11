@@ -120,15 +120,13 @@ optional arguments:
 ```
 
 ## Sample Worlds
+In the script folder, bash files to generate sample worlds are located. The parameters are chosen to match the task description from https://www.fieldrobot.com/event/index.php/contest/
 | Name | Parameters | Description |
 |:---- |:--------- |:----------- |
-| *simple_row_level_0.world* | `--plant_radius=0.03 --max_angle_variation=0 --plant_height=0.75 --radius_noise_range=0 --position_div=0 --types=cylinder` | One row with grid based cylinders. |
-| *simple_row_level_1.world* | `--max_angle_variation=0 --position_div=0` | One row with grid based plants. |
-| *simple_row_level_2.world* | `--max_angle_variation=0` | One row with more natural plant placement. |
-| *simple_row_level_3.world* | default | One row with little curvature. |
-| *simple_row_level_4.world* | `--max_angle_variation=0.3` | One row with curvature. |
-| *simple_row_level_5.world* | `--dropout=0.1` | Level 3 with gaps |
-| *simple_row_level_6.world* | `--max_angle_variation=0.3 --dropout=0.1` | Level 4 with gaps |
+| *create_task_1.sh* | `--row_length 10 --rows_left 0 --rows_right 11 --rows_curve_budget 0.78539816339 --row_segments straight,curved --row_segment_curved_radius_min 4.0 --row_segment_curved_radius_max 5.0` | Task 1, curved rows without holes |
+| *create_task_1_mini.sh* | `--row_length 5 --rows_left 0 --rows_right 5 --rows_curve_budget 0.78539816339 --row_segments straight,curved --row_segment_curved_radius_min 4.0 --row_segment_curved_radius_max 5.0` | A smaller version of task 1, requiring less computer power |
+| *create_task_2.sh* | `--row_length 7 --rows_left 0 --rows_right 11 --row_segments straight --hole_prob 0.04 --max_hole_size 7` | Task 2, straight rows with holes |
+| *create_task_2_mini.sh* | `--row_length 3.5 --rows_left 0 --rows_right 7 --row_segments straight --hole_prob 0.04 --max_hole_size 7` | A smaller version of task 2, requiring less computer power |
 
 ## Launching worlds
 The launch file to launch the worlds is called `simulation.launch`. You can launch the launch file by running `roslaunch virtual_maize_field simulation.launch`. By default the launch file will launch `generated_world.world`. You can launch any world by using the `world_name` arg. e.g. `roslaunch virtual_maize_field simulation.launch world_name:=simple_row_level_1.world`.
