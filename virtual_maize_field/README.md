@@ -113,8 +113,20 @@ optional arguments:
                         default_value: 0.0
   --max_hole_size MAX_HOLE_SIZE
                         default_value: 7
-  --plant_types PLANT_TYPES
+  --crop_types CROP_TYPES
                         default_value: maize_01,maize_02
+  --litters LITTERS
+                        default_value: 0
+  --litter_types LITTER_TYPES
+                        default_value: ale, beer, coke_can, retro_pepsi_can
+  --crop_types CROP_TYPES
+                        default_value: maize_01, maize_02
+  --weeds WEEDS
+                        default_value: 0
+  --weed_types WEED_TYPES
+                        default_value: nettle, unknown_weed
+  --ghost_objects GHOST_OBJECTS
+                        default_value: False
   --load_from_file LOAD_FROM_FILE
                         default_value: None
   --seed SEED           default_value: None
@@ -128,6 +140,8 @@ In the script folder, bash files to generate sample worlds are located. The para
 | *create_task_1_mini.sh* | `--row_length 5 --rows_left 0 --rows_right 5 --rows_curve_budget 0.78539816339 --row_segments straight,curved --row_segment_curved_radius_min 4.0 --row_segment_curved_radius_max 5.0` | A smaller version of task 1, requiring less computer power |
 | *create_task_2.sh* | `--row_length 7 --rows_left 0 --rows_right 11 --row_segments straight --hole_prob 0.04 --max_hole_size 7` | Task 2, straight rows with holes |
 | *create_task_2_mini.sh* | `--row_length 3.5 --rows_left 0 --rows_right 7 --row_segments straight --hole_prob 0.04 --max_hole_size 7` | A smaller version of task 2, requiring less computer power |
+| *create_task_3.sh* | `--row_length 7 --rows_left 0 --rows_right 11 --row_segments straight --hole_prob 0.04 --max_hole_size 7 --litters 5 --weeds 5 --ghost_objects true` | Task 3, same as task_2 but with 5 cans/bottles and weeds. The cans, bottles and weeds have no collision box and are static. |
+| *create_task_3_mini.sh* | `--row_length 3.5 --rows_left 0 --rows_right 7 --row_segments straight --hole_prob 0.04 --max_hole_size 7 --litters 5 --weeds 5 --ghost_objects true` | A smaller version of task 3, requiring less computer power |
 
 ## Launching worlds
 The launch file to launch the worlds is called `simulation.launch`. You can launch the launch file by running `roslaunch virtual_maize_field simulation.launch`. By default the launch file will launch `generated_world.world`. You can launch any world by using the `world_name` arg. e.g. `roslaunch virtual_maize_field simulation.launch world_name:=simple_row_level_1.world`.
