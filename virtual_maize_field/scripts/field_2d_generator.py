@@ -30,8 +30,10 @@ class Field2DGenerator:
     def plot_field(self):
         plt.plot(*self.field_poly.exterior.xy)
         plt.scatter(self.crop_placements[:, 0], self.crop_placements[:, 1], color="g", marker=".")
-        plt.scatter(self.weed_placements[:, 0], self.weed_placements[:, 1], color="r", marker=".")
-        plt.scatter(self.litter_placements[:, 0], self.litter_placements[:, 1], color="b", marker=".")
+        if self.weed_placements.ndim == 2:
+            plt.scatter(self.weed_placements[:, 0], self.weed_placements[:, 1], color="r", marker=".")
+        if self.litter_placements.ndim == 2:
+            plt.scatter(self.litter_placements[:, 0], self.litter_placements[:, 1], color="b", marker=".")
         self.mini_map = plt
         
 
@@ -181,14 +183,12 @@ class Field2DGenerator:
         self.field_poly = geometry.Polygon(outer_plants)
 
         # place x_nr of weeds within the field area
-        nr_of_weeds = 5
-        self.weed_placements = random_points_within(self.field_poly, nr_of_weeds)
-        weed_types = np.random.choice(self.wd.structure["params"]["weed_types"].split(","), nr_of_weeds)
+        self.weed_placements = random_points_within(self.field_poly, self.wd.structure["params"]["weeds"])
+        weed_types = np.random.choice(self.wd.structure["params"]["weed_types"].split(","), self.wd.structure["params"]["weeds"])
         
         # place y_nr of litter within the field area
-        nr_of_litters = 5
-        self.litter_placements = random_points_within(self.field_poly, nr_of_litters)
-        litter_types = np.random.choice(self.wd.structure["params"]["litter_types"].split(","), nr_of_weeds)
+        self.litter_placements = random_points_within(self.field_poly, self.wd.structure["params"]["litters"])
+        litter_types = np.random.choice(self.wd.structure["params"]["litter_types"].split(","), self.wd.structure["params"]["litters"])
         
         # TODO Thijs
         # place start marker at the beginning of the field
@@ -320,7 +320,8 @@ class Field2DGenerator:
                 self.wd.structure["params"]["plant_radius"],
                 self.wd.structure["params"]["plant_height_min"],
                 self.wd.structure["params"]["plant_mass"],
-                self.object_types[i],
+                "ghost_%s" % self.object_types[i] if self.wd.structure["params"]
+                    ["ghost_objects"] else self.object_types[i],
                 i
             )
             for i, plant in enumerate(self.object_placements)

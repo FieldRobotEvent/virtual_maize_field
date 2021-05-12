@@ -45,8 +45,11 @@ class WorldDescription:
         hole_prob = 0.0,
         max_hole_size = 7,
         crop_types=",".join(AVAILABLE_CROP_TYPES[1:]),
+        litters=0,
         litter_types=",".join(AVAILABLE_LITTER_TYPES),
+        weeds=0,
         weed_types=",".join(AVAILABLE_WEED_TYPES),
+        ghost_objects=False,
         load_from_file=None,
         seed=-1
     ):
@@ -83,7 +86,10 @@ class WorldDescription:
             "max_hole_size": self.max_hole_size,
             "crop_types": self.crop_types,
             "litter_types": self.litter_types,
+            "litters":self.litters,
             "weed_types": self.weed_types,
+            "weeds" :self.weeds,
+            "ghost_objects":self.ghost_objects,
             "seed": self.seed,
         }
 

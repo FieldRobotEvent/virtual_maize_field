@@ -669,6 +669,137 @@
     </link>
   </model>
 
+<!--ghost_ale-->
+{% elif coordinate.type == 'ghost_ale' %}
+    <model name='{{ coordinate.name }}'>
+      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 1.5707963267948966 0 {{ coordinate.yaw }}</pose>
+      <static>true</static>
+      <link name='{{ coordinate.name }}_link'>
+      <visual name='visual'>
+        <geometry>
+          <mesh>
+            <uri>model://ale/meshes/ale.dae</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+        <material>
+        </material>
+      </visual>
+      <self_collide>0</self_collide>
+      <enable_wind>0</enable_wind>
+      <kinematic>0</kinematic>
+    </link>
+  </model>
+
+<!--ghost_beer-->
+{% elif coordinate.type == 'ghost_beer' %}
+    <model name='{{ coordinate.name }}'>
+      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 1.5707963267948966 0 {{ coordinate.yaw }}</pose>
+      <static>true</static>
+      <link name='{{ coordinate.name }}_link'>
+      <visual name="visual">
+        <geometry>
+          <cylinder>
+            <radius>0.035000</radius>
+            <length>0.150000</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://beer/materials/scripts</uri>
+            <uri>model://beer/materials/textures</uri>
+            <name>Beer/Diffuse</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+
+<!--ghost_coke_can-->
+{% elif coordinate.type == 'ghost_coke_can' %}
+    <model name='{{ coordinate.name }}'>
+      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 1.5707963267948966 0 {{ coordinate.yaw }}</pose>
+      <static>true</static>
+      <link name='{{ coordinate.name }}_link'>
+      <visual name="visual">
+        <pose>0.003937 0.0047244 -0.18 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://coke_can/meshes/coke_can.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+
+<!--ghost_retro_pepsi_can-->
+{% elif coordinate.type == 'ghost_retro_pepsi_can' %}
+    <model name='{{ coordinate.name }}'>
+      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 1.5707963267948966 0 {{ coordinate.yaw }}</pose>
+      <static>true</static>
+      <link name='{{ coordinate.name }}_link'>
+      <visual name='visual'>
+        <geometry>
+          <mesh>
+            <uri>model://retro_pepsi_can/meshes/retro_pepsi_can.dae</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+        <material>
+        </material>
+      </visual>
+      <self_collide>0</self_collide>
+      <enable_wind>0</enable_wind>
+      <kinematic>0</kinematic>
+    </link>
+  </model>
+
+<!--ghost_nettle-->
+{% elif coordinate.type == 'ghost_nettle' %}
+    <model name='{{ coordinate.name }}'>
+      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 0 {{ coordinate.yaw }}</pose>
+      <static>true</static>
+      <link name='{{ coordinate.name }}_link'>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://nettle/meshes/nettle.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://nettle/materials/scripts/</uri>
+            <uri>model://nettle/materials/textures/</uri>
+            <name>nettle_leaf</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+
+<!--ghost_unknown_weed-->
+{% elif coordinate.type == 'ghost_unknown_weed' %}
+    <model name='{{ coordinate.name }}'>
+      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 0 {{ coordinate.yaw }}</pose>
+      <static>true</static>
+      <link name='{{ coordinate.name }}_link'>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://unknown_weed/meshes/unknown_weed.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://unknown_weed/materials/scripts/</uri>
+            <uri>model://unknown_weed/materials/textures/</uri>
+            <name>unknown_weed_leaf</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+
 {% endif %}
 {% endfor %}
 
