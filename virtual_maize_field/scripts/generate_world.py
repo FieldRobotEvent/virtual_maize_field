@@ -49,4 +49,4 @@ if __name__ == "__main__":
     
     # save mini_map
     mini_map_path = os.path.join(pkg_path, "virtual_maize_field_mini_map.png")
-    fgen.map.savefig(mini_map_path, dpi=1000)
+    fgen.mini_map.savefig(mini_map_path, dpi=1000)
