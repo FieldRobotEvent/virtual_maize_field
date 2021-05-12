@@ -30,6 +30,7 @@ sudo apt install python3-pip
 sudo pip3 install -U jinja2 rospkg
 sudo pip3 install opencv-python
 sudo pip3 install matplotlib
+sudo pip3 install shapely
 
 # noetic
 rosdep install virtual_maize_field

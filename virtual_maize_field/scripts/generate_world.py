@@ -5,6 +5,7 @@ import argparse
 import inspect
 import os
 import cv2
+from matplotlib import pyplot as plt
 
 from field_2d_generator import Field2DGenerator
 from world_description import WorldDescription
@@ -45,3 +46,7 @@ if __name__ == "__main__":
         pkg_path, "Media/models/virtual_maize_field_heightmap.png"
     )
     cv2.imwrite(heightmap_path, fgen.heightmap)
+    
+    # save mini_map
+    mini_map_path = os.path.join(pkg_path, "virtual_maize_field_mini_map.png")
+    fgen.map.savefig(mini_map_path, dpi=1000)

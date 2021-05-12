@@ -7,7 +7,8 @@ import inspect
 from datetime import datetime
 
 AVAILABLE_CROP_TYPES = ["cylinder", "maize_01", "maize_02"]
-AVAILABLE_OBJECT_TYPES = ["ale", "beer", "coke_can", "retro_pepsi_can", "nettle", "unknown_weed"]
+AVAILABLE_WEED_TYPES = ["nettle", "unknown_weed"]
+AVAILABLE_LITTER_TYPES = ["ale", "beer", "coke_can", "retro_pepsi_can"]
 AVAILABLE_OBSTACLES = ["box", "stone_01", "stone_02"]
 AVAILABLE_ILANDS = []
 AVAILABLE_SEGMENTS = ["straight", "curved", "island"]
@@ -44,7 +45,8 @@ class WorldDescription:
         hole_prob = 0.0,
         max_hole_size = 7,
         crop_types=",".join(AVAILABLE_CROP_TYPES[1:]),
-        object_types=",".join(AVAILABLE_OBJECT_TYPES),
+        litter_types=",".join(AVAILABLE_LITTER_TYPES),
+        weed_types=",".join(AVAILABLE_WEED_TYPES),
         load_from_file=None,
         seed=-1
     ):
@@ -80,7 +82,8 @@ class WorldDescription:
             "hole_prob": self.hole_prob,
             "max_hole_size": self.max_hole_size,
             "crop_types": self.crop_types,
-            "object_types": self.object_types,
+            "litter_types": self.litter_types,
+            "weed_types": self.weed_types,
             "seed": self.seed,
         }
 
