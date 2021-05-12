@@ -13,7 +13,7 @@
           <iyz>0</iyz>
           <izz>0.00000125</izz>
         </inertia>
-        <pose>0 0 0.075 0 0 0</pose>
+        <pose>0 0 0.005 0 0 0</pose>
       </inertial>
       <collision name='collision_stem'>
         <pose>0 0 0.075 0 0 0</pose>

@@ -13,7 +13,7 @@
           <iyz>0</iyz>
           <izz>0.000125</izz>
         </inertia>
-        <pose>0 0 0.01 0 0 0 0 0</pose>
+        <pose>0 0 0.005 0 0 0 0 0</pose>
       </inertial>
       <collision name="collision_leaves">
         <geometry>
@@ -39,8 +39,8 @@
         <pose>0 0 0 0 0 0 0 0</pose>
         <geometry>
           <cylinder>
-            <radius>0.02</radius>
-            <length>0.01</length>
+            <radius>0.03</radius>
+            <length>0.005</length>
           </cylinder>
         </geometry>
         <max_contacts>10</max_contacts>
