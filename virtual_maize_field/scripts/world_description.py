@@ -7,7 +7,7 @@ import inspect
 from datetime import datetime
 
 AVAILABLE_CROP_TYPES = ["cylinder", "maize_01", "maize_02"]
-AVAILABLE_OBJECT_TYPES = ["ale"]
+AVAILABLE_OBJECT_TYPES = ["ale", "beer", "coke_can", "retro_pepsi_can", "nettle", "unknown_weed"]
 AVAILABLE_OBSTACLES = ["box", "stone_01", "stone_02"]
 AVAILABLE_ILANDS = []
 AVAILABLE_SEGMENTS = ["straight", "curved", "island"]
