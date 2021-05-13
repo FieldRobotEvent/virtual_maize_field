@@ -122,7 +122,7 @@ class Field2DGenerator:
             i = probs.shape[0]-1
             while i > 0 :
                 if probs[i]:
-                    hole_size = np.random.randint(1, self.wd.structure["params"]["max_hole_size"])
+                    hole_size = np.random.randint(1, self.wd.structure["params"]["hole_size_max"])
                     row = np.delete(row, slice(max(0,i-hole_size), i), axis=0)
                     i = i - hole_size
 
