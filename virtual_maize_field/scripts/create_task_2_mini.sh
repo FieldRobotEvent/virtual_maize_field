@@ -5,4 +5,5 @@ rosrun virtual_maize_field generate_world.py \
 --rows_right 7 \
 --row_segments straight \
 --hole_prob 0.04 \
---hole_size_max 7
+--hole_size_max 7 \
+--ground_resolution 0.1
