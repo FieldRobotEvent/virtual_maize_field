@@ -15,8 +15,7 @@ class BaseSegment(ABC):
         self.start_dir = self.start_dir / np.linalg.norm(self.start_dir)
         self.plant_params = plant_params
         self.bounded_gaussian = BoundedGaussian(
-            self.plant_params["plant_spacing_min"],
-            self.plant_params["plant_spacing_max"],
+            self.plant_params["plant_spacing_min"], self.plant_params["plant_spacing_max"]
         )
 
     # Must return a touple of the end points from the implemented segment
@@ -213,14 +212,7 @@ class CurvedSegment(BaseSegment):
                 start_angle, end_angle = end_angle, start_angle
 
             arc = Arc(
-                self.center,
-                2 * r,
-                2 * r,
-                0.0,
-                start_angle,
-                end_angle,
-                color="g",
-                linewidth=1,
+                self.center, 2 * r, 2 * r, 0.0, start_angle, end_angle, color="g", linewidth=1
             )
             plt.gca().add_patch(arc)
 
@@ -277,12 +269,7 @@ class IslandSegment(BaseSegment):
 
         # Left
         self.entrence_left = CurvedSegment(
-            self.start_p_left,
-            self.start_dir,
-            self.plant_params,
-            self.radius_left,
-            True,
-            self.angle,
+            self.start_p_left, self.start_dir, self.plant_params, self.radius_left, True, self.angle
         )
         lp1, ld1 = self.entrence_left.end()
         self.middle_left = CurvedSegment(
