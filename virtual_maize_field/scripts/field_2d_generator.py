@@ -73,10 +73,7 @@ class Field2DGenerator:
         for segment in self.wd.structure["segments"]:
             if segment["type"] == "straight":
                 seg = StraightSegment(
-                    current_p,
-                    current_dir,
-                    self.wd.structure["params"],
-                    segment["length"],
+                    current_p, current_dir, self.wd.structure["params"], segment["length"]
                 )
             elif segment["type"] == "curved":
                 seg = CurvedSegment(
@@ -340,10 +337,7 @@ class Field2DGenerator:
             seed=self.wd.structure["params"]["seed"],
             heightmap={
                 "size": self.metric_size,
-                "pos": {
-                    "x": self.heightmap_position[0],
-                    "y": self.heightmap_position[1],
-                },
+                "pos": {"x": self.heightmap_position[0], "y": self.heightmap_position[1]},
                 "max_elevation": self.wd.structure["params"]["ground_elevation_max"],
             },
         )

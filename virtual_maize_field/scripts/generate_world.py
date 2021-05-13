@@ -20,9 +20,7 @@ if __name__ == "__main__":
     defaults = argspec.defaults
 
     # construct an ArgumentParser that takes these arguments
-    parser = argparse.ArgumentParser(
-        description="Generate a virtual maize field world for gazebo"
-    )
+    parser = argparse.ArgumentParser(description="Generate a virtual maize field world for gazebo")
     for argname, default in zip(possible_kwargs, defaults):
         # we analyze the default value's type to guess the type for that argument
         parser.add_argument(
@@ -45,16 +43,12 @@ if __name__ == "__main__":
     with open(sdf_path, "w") as f:
         f.write(generated_sdf)
     # save heightmap
-    heightmap_path = os.path.join(
-        pkg_path, "Media/models/virtual_maize_field_heightmap.png"
-    )
+    heightmap_path = os.path.join(pkg_path, "Media/models/virtual_maize_field_heightmap.png")
     cv2.imwrite(heightmap_path, fgen.heightmap)
 
     # clear the gazbeo cache for old heightmap
     home_dir = os.path.expanduser("~")
-    gazebo_cache_pkg = os.path.join(
-        home_dir, ".gazebo/paging/virtual_maize_field_heightmap"
-    )
+    gazebo_cache_pkg = os.path.join(home_dir, ".gazebo/paging/virtual_maize_field_heightmap")
     if os.path.isdir(gazebo_cache_pkg):
         shutil.rmtree(gazebo_cache_pkg)
 
