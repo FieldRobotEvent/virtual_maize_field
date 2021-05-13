@@ -32,8 +32,8 @@ class WorldDescription:
         row_segment_curved_arc_measure_max=1.0,
         row_segment_island_radius_min=1.0,
         row_segment_island_radius_max=3.0,
-        ground_max_elevation=0.2,
-        dem_res=0.02,
+        ground_resolution=0.02,
+        ground_elevation_max=0.2,
         plant_spacing_min=0.13,
         plant_spacing_max=0.19,
         plant_height_min=0.3,
@@ -72,8 +72,8 @@ class WorldDescription:
     def random_description(self):
         self.structure = dict()
         self.structure["params"] = {
-            "ground_max_elevation": self.ground_max_elevation,
-            "dem_res": self.dem_res,
+            "ground_resolution": self.ground_resolution,
+            "ground_elevation_max": self.ground_elevation_max,
             "plant_spacing_min": self.plant_spacing_min,
             "plant_spacing_max": self.plant_spacing_max,
             "plant_height_min": self.plant_height_min,

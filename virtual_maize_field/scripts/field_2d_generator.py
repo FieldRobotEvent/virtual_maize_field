@@ -217,7 +217,7 @@ class Field2DGenerator:
         metric_width = metric_x_max - metric_x_min + 4
         metric_height = metric_y_max - metric_y_min + 4
 
-        resolution = self.wd.structure["params"]["dem_res"]
+        resolution = self.wd.structure["params"]["ground_resolution"]
         min_image_size = int(
             np.ceil(max(metric_width / resolution, metric_height / resolution))
         )
@@ -251,7 +251,7 @@ class Field2DGenerator:
             height = heightmap[py, px]
             heightmap = cv2.circle(heightmap, (px, py), 2, height, -1)
             self.placements_ground_height.append(
-                self.wd.structure["params"]["ground_max_elevation"] * height
+                self.wd.structure["params"]["ground_elevation_max"] * height
             )
 
         # Convert to grayscale
@@ -267,8 +267,8 @@ class Field2DGenerator:
 
     def fix_gazebo(self):
         # move the plants to the center of the flat circles
-        self.crop_placements -= self.wd.structure["params"]["dem_res"] / 2
-        self.object_placements -= self.wd.structure["params"]["dem_res"] / 2
+        self.crop_placements -= self.wd.structure["params"]["ground_resolution"] / 2
+        self.object_placements -= self.wd.structure["params"]["ground_resolution"] / 2
 
         # set heightmap position to origin
         self.heightmap_position = [0, 0]
@@ -342,7 +342,7 @@ class Field2DGenerator:
                     "x": self.heightmap_position[0],
                     "y": self.heightmap_position[1],
                 },
-                "max_elevation": self.wd.structure["params"]["ground_max_elevation"],
+                "max_elevation": self.wd.structure["params"]["ground_elevation_max"],
             },
         )
         
