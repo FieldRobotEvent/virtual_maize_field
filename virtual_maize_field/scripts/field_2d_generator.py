@@ -267,8 +267,8 @@ class Field2DGenerator:
 
     def fix_gazebo(self):
         # move the plants to the center of the flat circles
-        self.crop_placements -= 0.01
-        self.object_placements -= 0.01
+        self.crop_placements -= self.wd.structure["params"]["dem_res"] / 2
+        self.object_placements -= self.wd.structure["params"]["dem_res"] / 2
 
         # set heightmap position to origin
         self.heightmap_position = [0, 0]
