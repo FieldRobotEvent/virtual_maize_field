@@ -3,7 +3,10 @@
 import rospkg
 import argparse
 import inspect
+
 import os
+import shutil
+
 import cv2
 from matplotlib import pyplot as plt
 
@@ -46,7 +49,15 @@ if __name__ == "__main__":
         pkg_path, "Media/models/virtual_maize_field_heightmap.png"
     )
     cv2.imwrite(heightmap_path, fgen.heightmap)
-    
+
+    # clear the gazbeo cache for old heightmap
+    home_dir = os.path.expanduser("~")
+    gazebo_cache_pkg = os.path.join(
+        home_dir, ".gazebo/paging/virtual_maize_field_heightmap"
+    )
+    if os.path.isdir(gazebo_cache_pkg):
+        shutil.rmtree(gazebo_cache_pkg)
+
     # save mini_map
-    mini_map_path = os.path.join(pkg_path, "virtual_maize_field_mini_map.png")
-    fgen.mini_map.savefig(mini_map_path, dpi=1000)
+    minimap_path = os.path.join(pkg_path, "generated_minimap.png")
+    fgen.minimap.savefig(minimap_path, dpi=1000)

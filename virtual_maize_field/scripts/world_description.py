@@ -14,7 +14,6 @@ AVAILABLE_ILANDS = []
 AVAILABLE_SEGMENTS = ["straight", "curved", "island"]
 
 
-
 class WorldDescription:
     def __init__(
         self,
@@ -32,8 +31,8 @@ class WorldDescription:
         row_segment_curved_arc_measure_max=1.0,
         row_segment_island_radius_min=1.0,
         row_segment_island_radius_max=3.0,
-        ground_max_elevation=0.2,
-        dem_res=0.10,
+        ground_resolution=0.02,
+        ground_elevation_max=0.2,
         plant_spacing_min=0.13,
         plant_spacing_max=0.19,
         plant_height_min=0.3,
@@ -42,8 +41,8 @@ class WorldDescription:
         plant_radius_noise=0.05,
         plant_placement_error_max=0.02,
         plant_mass=0.3,
-        hole_prob = 0.0,
-        max_hole_size = 7,
+        hole_prob=0.0,
+        hole_size_max=7,
         crop_types=",".join(AVAILABLE_CROP_TYPES[1:]),
         litters=0,
         litter_types=",".join(AVAILABLE_LITTER_TYPES),
@@ -51,7 +50,7 @@ class WorldDescription:
         weed_types=",".join(AVAILABLE_WEED_TYPES),
         ghost_objects=False,
         load_from_file=None,
-        seed=-1
+        seed=-1,
     ):
 
         row_segments = row_segments.split(",")
@@ -72,8 +71,8 @@ class WorldDescription:
     def random_description(self):
         self.structure = dict()
         self.structure["params"] = {
-            "ground_max_elevation": self.ground_max_elevation,
-            "dem_res": self.dem_res,
+            "ground_resolution": self.ground_resolution,
+            "ground_elevation_max": self.ground_elevation_max,
             "plant_spacing_min": self.plant_spacing_min,
             "plant_spacing_max": self.plant_spacing_max,
             "plant_height_min": self.plant_height_min,
@@ -83,13 +82,13 @@ class WorldDescription:
             "plant_placement_error_max": self.plant_placement_error_max,
             "plant_mass": self.plant_mass,
             "hole_prob": self.hole_prob,
-            "max_hole_size": self.max_hole_size,
+            "hole_size_max": self.hole_size_max,
             "crop_types": self.crop_types,
             "litter_types": self.litter_types,
-            "litters":self.litters,
+            "litters": self.litters,
             "weed_types": self.weed_types,
-            "weeds" :self.weeds,
-            "ghost_objects":self.ghost_objects,
+            "weeds": self.weeds,
+            "ghost_objects": self.ghost_objects,
             "seed": self.seed,
         }
 
@@ -104,10 +103,7 @@ class WorldDescription:
             if segment_name == "straight":
                 length = (
                     np.random.rand()
-                    * (
-                        self.row_segment_straight_length_max
-                        - self.row_segment_straight_length_min
-                    )
+                    * (self.row_segment_straight_length_max - self.row_segment_straight_length_min)
                     + self.row_segment_straight_length_min
                 )
 
@@ -118,10 +114,7 @@ class WorldDescription:
             elif segment_name == "curved":
                 radius = (
                     np.random.rand()
-                    * (
-                        self.row_segment_curved_radius_max
-                        - self.row_segment_curved_radius_min
-                    )
+                    * (self.row_segment_curved_radius_max - self.row_segment_curved_radius_min)
                     + self.row_segment_curved_radius_min
                 )
                 arc_measure = (
@@ -146,19 +139,14 @@ class WorldDescription:
                 }
 
                 current_row_length += (
-                    arc_measure
-                    * ((self.rows_left + self.rows_right) * self.row_width + radius)
-                    / 2
+                    arc_measure * ((self.rows_left + self.rows_right) * self.row_width + radius) / 2
                 )
                 current_curve = arc_measure if not curve_dir else -arc_measure
 
             elif segment_name == "island":
                 radius = (
                     np.random.rand()
-                    * (
-                        self.row_segment_island_radius_max
-                        - self.row_segment_island_radius_min
-                    )
+                    * (self.row_segment_island_radius_max - self.row_segment_island_radius_min)
                     + self.row_segment_island_radius_min
                 )
                 island_row = np.random.randint(self.rows_left + self.rows_right - 1) + 1

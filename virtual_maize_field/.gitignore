@@ -28,3 +28,4 @@ CATKIN_IGNORE
 # Ignore generated files
 worlds/generated.world
 Media/models/virtual_maize_field_heightmap.png
+generated_minimap.png

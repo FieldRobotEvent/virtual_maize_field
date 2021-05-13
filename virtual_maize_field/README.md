@@ -27,10 +27,7 @@ Additional you'll need the following packages:
 # melodic
 rosdep install virtual_maize_field
 sudo apt install python3-pip
-sudo pip3 install -U jinja2 rospkg
-sudo pip3 install opencv-python
-sudo pip3 install matplotlib
-sudo pip3 install shapely
+sudo pip3 install -U jinja2 rospkg opencv-python matplotlib shapely
 
 # noetic
 rosdep install virtual_maize_field
@@ -138,12 +135,12 @@ In the script folder, bash files to generate sample worlds are located. The para
 |:---- |:--------- |:----------- |
 | *create_task_1.sh* | `--row_length 10 --rows_left 0 --rows_right 11 --rows_curve_budget 0.78539816339 --row_segments straight,curved --row_segment_curved_radius_min 4.0 --row_segment_curved_radius_max 5.0` | Task 1, curved rows without holes |
 | *create_task_1_mini.sh* | `--row_length 5 --rows_left 0 --rows_right 5 --rows_curve_budget 0.78539816339 --row_segments straight,curved --row_segment_curved_radius_min 4.0 --row_segment_curved_radius_max 5.0` | A smaller version of task 1, requiring less computer power |
-| *create_task_2.sh* | `--row_length 7 --rows_left 0 --rows_right 11 --row_segments straight --hole_prob 0.04 --max_hole_size 7` | Task 2, straight rows with holes |
-| *create_task_2_mini.sh* | `--row_length 3.5 --rows_left 0 --rows_right 7 --row_segments straight --hole_prob 0.04 --max_hole_size 7` | A smaller version of task 2, requiring less computer power |
-| *create_task_3.sh* | `--row_length 7 --rows_left 0 --rows_right 11 --row_segments straight --hole_prob 0.04 --max_hole_size 7 --litters 5 --weeds 5 --ghost_objects true` | Task 3, similar crop rows as in task_2 but with cans, bottles and weeds spread throughout the field. The cans, bottles and weeds have no collision box and are static. |
-| *create_task_3_mini.sh* | `--row_length 3.5 --rows_left 0 --rows_right 7 --row_segments straight --hole_prob 0.04 --max_hole_size 7 --litters 5 --weeds 5 --ghost_objects true` | A smaller version of task 3, requiring less computer power |
-| *create_task_4.sh* | `--row_length 7 --rows_left 0 --rows_right 11 --row_segments straight --hole_prob 0.04 --max_hole_size 7 --litters 5 --weeds 5` | Task 4, similar crop rows as in task_2 but with cans, bottles and weeds spread throughout the field. The cans, bottles and weeds have a collision box and can be picked up. |
-| *create_task_4_mini.sh* | `--row_length 3.5 --rows_left 0 --rows_right 7 --row_segments straight --hole_prob 0.04 --max_hole_size 7 --litters 5 --weeds 5` | A smaller version of task 4, requiring less computer power |
+| *create_task_2.sh* | `--row_length 7 --rows_left 0 --rows_right 11 --row_segments straight --hole_prob 0.04 --hole_size_max 7` | Task 2, straight rows with holes |
+| *create_task_2_mini.sh* | `--row_length 3.5 --rows_left 0 --rows_right 7 --row_segments straight --hole_prob 0.04 --hole_size_max 7` | A smaller version of task 2, requiring less computer power |
+| *create_task_3.sh* | `--row_length 7 --rows_left 0 --rows_right 11 --row_segments straight --hole_prob 0.04 --hole_size_max 7 --litters 5 --weeds 5 --ghost_objects true` | Task 3, similar crop rows as in task_2 but with cans, bottles and weeds spread throughout the field. The cans, bottles and weeds have no collision box and are static. |
+| *create_task_3_mini.sh* | `--row_length 3.5 --rows_left 0 --rows_right 7 --row_segments straight --hole_prob 0.04 --hole_size_max 7 --litters 5 --weeds 5 --ghost_objects true` | A smaller version of task 3, requiring less computer power |
+| *create_task_4.sh* | `--row_length 7 --rows_left 0 --rows_right 11 --row_segments straight --hole_prob 0.04 --hole_size_max 7 --litters 5 --weeds 5` | Task 4, similar crop rows as in task_2 but with cans, bottles and weeds spread throughout the field. The cans, bottles and weeds have a collision box and can be picked up. |
+| *create_task_4_mini.sh* | `--row_length 3.5 --rows_left 0 --rows_right 7 --row_segments straight --hole_prob 0.04 --hole_size_max 7 --litters 5 --weeds 5` | A smaller version of task 4, requiring less computer power |
 
 ## Launching worlds
 The launch file to launch the worlds is called `simulation.launch`. You can launch the launch file by running `roslaunch virtual_maize_field simulation.launch`. By default the launch file will launch `generated_world.world`. You can launch any world by using the `world_name` arg. e.g. `roslaunch virtual_maize_field simulation.launch world_name:=simple_row_level_1.world`.
