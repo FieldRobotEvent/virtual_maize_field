@@ -33,7 +33,7 @@ class WorldDescription:
         row_segment_island_radius_min=1.0,
         row_segment_island_radius_max=3.0,
         ground_max_elevation=0.2,
-        dem_res=0.10,
+        dem_res=0.02,
         plant_spacing_min=0.13,
         plant_spacing_max=0.19,
         plant_height_min=0.3,
