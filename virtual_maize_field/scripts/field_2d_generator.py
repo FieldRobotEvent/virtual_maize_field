@@ -207,6 +207,9 @@ class Field2DGenerator:
         self.object_types = np.concatenate((weed_types, litter_types))
 
     def generate_ground(self):
+        ditch_depth = self.wd.structure["params"]["ground_ditch_depth"]
+        ditch_distance = self.wd.structure["params"]["ground_headland"]
+
         self.crop_placements = np.vstack(self.rows)
 
         if self.object_placements.ndim == 2:
@@ -219,12 +222,15 @@ class Field2DGenerator:
         metric_y_min = self.placements[:, 1].min()
         metric_y_max = self.placements[:, 1].max()
 
-        metric_width = metric_x_max - metric_x_min + 4
-        metric_height = metric_y_max - metric_y_min + 4
+        metric_width = metric_x_max - metric_x_min + 2 * ditch_distance + 1
+        metric_height = metric_y_max - metric_y_min + 2 * ditch_distance + 1
 
-        resolution = self.wd.structure["params"]["ground_resolution"]
-        min_image_size = int(np.ceil(max(metric_width / resolution, metric_height / resolution)))
+        min_resolution = self.wd.structure["params"]["ground_resolution"] # min resolution
+        min_image_size = int(np.ceil(max(metric_width / min_resolution, metric_height / min_resolution)))
+        # gazebo expects heightmap in format 2**n -1
         image_size = int(2 ** np.ceil(np.log2(min_image_size))) + 1
+
+        self.resolution = min_resolution * (min_image_size / image_size)
 
         # Generate noise
         heightmap = np.zeros((image_size, image_size))
@@ -244,24 +250,50 @@ class Field2DGenerator:
         heightmap -= heightmap.min()
         heightmap /= heightmap.max()
 
+        max_elevation = self.wd.structure["params"]["ground_elevation_max"]
+
+        self.heightmap_elevation = ditch_depth + (max_elevation / 2)
+
+        heightmap *= ((max_elevation) / self.heightmap_elevation)
+        field_height = ((ditch_depth - (max_elevation / 2)) / self.heightmap_elevation)
+
+        field_mask = np.zeros((image_size, image_size))
+
         offset = image_size // 2
+        def metric_to_pixel(pos):
+            return int(pos // self.resolution) + offset
+
         # Make plant placements flat and save the heights for the sdf renderer
+        PLANT_FOOTPRINT = (2 * 0.02**2) ** 0.5
+        flatspot_radius = int((PLANT_FOOTPRINT / 2) // self.resolution) + 2
+
         self.placements_ground_height = []
         for mx, my in self.placements:
-            px = int(mx // resolution) + offset
-            py = int(my // resolution) + offset
+            px = metric_to_pixel(mx)
+            py = metric_to_pixel(my)
+
+            field_mask = cv2.circle(field_mask, (px, py), int((ditch_distance) / self.resolution), 1, -1)
 
             height = heightmap[py, px]
-            heightmap = cv2.circle(heightmap, (px, py), 2, height, -1)
+            heightmap = cv2.circle(heightmap, (px, py), flatspot_radius, height, -1)
             self.placements_ground_height.append(
-                self.wd.structure["params"]["ground_elevation_max"] * height
+                (field_height + height) * self.heightmap_elevation
             )
+
+
+        blur_size = (int(0.2 / self.resolution) // 2) * 2 + 1
+        field_mask = cv2.GaussianBlur(field_mask, (blur_size, blur_size), 0)
+
+        heightmap += field_height * field_mask
+
+        assert(heightmap.max() <= 1)
+        assert(heightmap.min() >= 0)
 
         # Convert to grayscale
         self.heightmap = (255 * heightmap[::-1, :]).astype(np.uint8)
 
-        # Calc heightmap position
-        self.metric_size = image_size * resolution
+        self.metric_size = image_size * self.resolution
+        # Calc heightmap position. Currently unused, overwritten in @ref fix_gazebo
         self.heightmap_position = [
             metric_x_min - 2 + 0.5 * self.metric_size,
             metric_y_min - 2 + 0.5 * self.metric_size,
@@ -269,8 +301,8 @@ class Field2DGenerator:
 
     def fix_gazebo(self):
         # move the plants to the center of the flat circles
-        self.crop_placements -= self.wd.structure["params"]["ground_resolution"] / 2
-        self.object_placements -= self.wd.structure["params"]["ground_resolution"] / 2
+        self.crop_placements -= self.resolution / 2
+        self.object_placements -= self.resolution / 2
 
         # set heightmap position to origin
         self.heightmap_position = [0, 0]
@@ -341,5 +373,7 @@ class Field2DGenerator:
                 "size": self.metric_size,
                 "pos": {"x": self.heightmap_position[0], "y": self.heightmap_position[1]},
                 "max_elevation": self.wd.structure["params"]["ground_elevation_max"],
+                "ditch_depth": self.wd.structure["params"]["ground_ditch_depth"],
+                "total_height": self.heightmap_elevation
             },
         )
