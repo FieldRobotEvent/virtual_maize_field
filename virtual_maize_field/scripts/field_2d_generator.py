@@ -34,7 +34,7 @@ class Field2DGenerator:
             plt.scatter(self.weed_placements[:, 0], self.weed_placements[:, 1], color="r", marker=".")
         if self.litter_placements.ndim == 2:
             plt.scatter(self.litter_placements[:, 0], self.litter_placements[:, 1], color="b", marker=".")
-        self.mini_map = plt
+        self.minimap = plt
         
 
     def generate(self):

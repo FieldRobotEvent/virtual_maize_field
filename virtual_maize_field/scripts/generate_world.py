@@ -48,5 +48,5 @@ if __name__ == "__main__":
     cv2.imwrite(heightmap_path, fgen.heightmap)
     
     # save mini_map
-    mini_map_path = os.path.join(pkg_path, "virtual_maize_field_mini_map.png")
-    fgen.mini_map.savefig(mini_map_path, dpi=1000)
+    minimap_path = os.path.join(pkg_path, "generated_minimap.png")
+    fgen.minimap.savefig(minimap_path, dpi=1000)
