@@ -225,8 +225,10 @@ class Field2DGenerator:
         metric_width = metric_x_max - metric_x_min + 2 * ditch_distance + 1
         metric_height = metric_y_max - metric_y_min + 2 * ditch_distance + 1
 
-        min_resolution = self.wd.structure["params"]["ground_resolution"] # min resolution
-        min_image_size = int(np.ceil(max(metric_width / min_resolution, metric_height / min_resolution)))
+        min_resolution = self.wd.structure["params"]["ground_resolution"]  # min resolution
+        min_image_size = int(
+            np.ceil(max(metric_width / min_resolution, metric_height / min_resolution))
+        )
         # gazebo expects heightmap in format 2**n -1
         image_size = int(2 ** np.ceil(np.log2(min_image_size))) + 1
 
@@ -254,17 +256,18 @@ class Field2DGenerator:
 
         self.heightmap_elevation = ditch_depth + (max_elevation / 2)
 
-        heightmap *= ((max_elevation) / self.heightmap_elevation)
-        field_height = ((ditch_depth - (max_elevation / 2)) / self.heightmap_elevation)
+        heightmap *= (max_elevation) / self.heightmap_elevation
+        field_height = (ditch_depth - (max_elevation / 2)) / self.heightmap_elevation
 
         field_mask = np.zeros((image_size, image_size))
 
         offset = image_size // 2
+
         def metric_to_pixel(pos):
             return int(pos // self.resolution) + offset
 
         # Make plant placements flat and save the heights for the sdf renderer
-        PLANT_FOOTPRINT = (2 * 0.02**2) ** 0.5
+        PLANT_FOOTPRINT = (2 * 0.02 ** 2) ** 0.5
         flatspot_radius = int((PLANT_FOOTPRINT / 2) // self.resolution) + 2
 
         self.placements_ground_height = []
@@ -272,22 +275,21 @@ class Field2DGenerator:
             px = metric_to_pixel(mx)
             py = metric_to_pixel(my)
 
-            field_mask = cv2.circle(field_mask, (px, py), int((ditch_distance) / self.resolution), 1, -1)
+            field_mask = cv2.circle(
+                field_mask, (px, py), int((ditch_distance) / self.resolution), 1, -1
+            )
 
             height = heightmap[py, px]
             heightmap = cv2.circle(heightmap, (px, py), flatspot_radius, height, -1)
-            self.placements_ground_height.append(
-                (field_height + height) * self.heightmap_elevation
-            )
-
+            self.placements_ground_height.append((field_height + height) * self.heightmap_elevation)
 
         blur_size = (int(0.2 / self.resolution) // 2) * 2 + 1
         field_mask = cv2.GaussianBlur(field_mask, (blur_size, blur_size), 0)
 
         heightmap += field_height * field_mask
 
-        assert(heightmap.max() <= 1)
-        assert(heightmap.min() >= 0)
+        assert heightmap.max() <= 1
+        assert heightmap.min() >= 0
 
         # Convert to grayscale
         self.heightmap = (255 * heightmap[::-1, :]).astype(np.uint8)
@@ -374,6 +376,6 @@ class Field2DGenerator:
                 "pos": {"x": self.heightmap_position[0], "y": self.heightmap_position[1]},
                 "max_elevation": self.wd.structure["params"]["ground_elevation_max"],
                 "ditch_depth": self.wd.structure["params"]["ground_ditch_depth"],
-                "total_height": self.heightmap_elevation
+                "total_height": self.heightmap_elevation,
             },
         )
