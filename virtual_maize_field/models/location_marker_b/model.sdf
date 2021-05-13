@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <sdf version="1.5">
-  <model name="qr_location_marker">
+  <model name="location_marker_b">
     <static>true</static>
     <link name="link">
       <pose>0 0 1 0 0 0</pose>
@@ -21,9 +21,9 @@
         </geometry>
         <material>
           <script>
-            <uri>model://qr_location_marker/materials/scripts</uri>
-            <uri>model://qr_location_marker/materials/textures</uri>
-            <name>qr_location_marker/logo</name>
+            <uri>model://location_marker_b/materials/scripts</uri>
+            <uri>model://location_marker_b/materials/textures</uri>
+            <name>location_marker_b/logo</name>
           </script>
         </material>
       </visual>
@@ -37,9 +37,9 @@
         </geometry>
         <material>
           <script>
-            <uri>model://qr_location_marker/materials/scripts</uri>
-            <uri>model://qr_location_marker/materials/textures</uri>
-            <name>qr_location_marker/logo</name>
+            <uri>model://location_marker_b/materials/scripts</uri>
+            <uri>model://location_marker_b/materials/textures</uri>
+            <name>location_marker_b/logo</name>
           </script>
         </material>
       </visual>
@@ -53,9 +53,9 @@
         </geometry>
         <material>
           <script>
-            <uri>model://qr_location_marker/materials/scripts</uri>
-            <uri>model://qr_location_marker/materials/textures</uri>
-            <name>qr_location_marker/qr_code</name>
+            <uri>model://location_marker_b/materials/scripts</uri>
+            <uri>model://location_marker_b/materials/textures</uri>
+            <name>location_marker_b/qr_code</name>
           </script>
         </material>
       </visual>

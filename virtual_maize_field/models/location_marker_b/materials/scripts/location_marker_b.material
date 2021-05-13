@@ -1,4 +1,4 @@
-material qr_location_marker/qr_code
+material location_marker_b/qr_code
 {
   technique
   {
@@ -7,7 +7,7 @@ material qr_location_marker/qr_code
       texture_unit
       {
         // Relative to the location of the material script
-        texture ../textures/qr_code.png
+        texture ../textures/location_marker_b.png
         // Repeat the texture over the surface (1 per face)
         scale 1 1
       }
@@ -15,7 +15,7 @@ material qr_location_marker/qr_code
   }
 }
 
-material qr_location_marker/logo
+material location_marker_b/logo
 {
   technique
   {
