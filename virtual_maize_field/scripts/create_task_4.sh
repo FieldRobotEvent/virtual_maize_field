@@ -7,6 +7,6 @@ rosrun virtual_maize_field generate_world.py \
 --rows_right 11 \
 --row_segments straight \
 --hole_prob 0.04 \
---max_hole_size 7 \
+--hole_size_max 7 \
 --litters 5 \
 --weeds 5
