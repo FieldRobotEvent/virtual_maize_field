@@ -27,8 +27,8 @@ class Field2DGenerator:
 
     def plot_field(self):
         plt.plot(*self.field_poly.exterior.xy)
-        plt.figure(figsize=(10,10))
-        plt.gca().axis('equal')
+        plt.figure(figsize=(10, 10))
+        plt.gca().axis("equal")
         plt.scatter(self.crop_placements[:, 0], self.crop_placements[:, 1], color="g", marker=".")
         if self.weed_placements.ndim == 2:
             plt.scatter(

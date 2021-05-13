@@ -71,13 +71,24 @@
                 <size>1</size>
               </texture>
               <texture>
-                <diffuse>file://media/materials/textures/grass_diffusespecular.png</diffuse>
+                <diffuse>file://materials/textures/grass_color.jpg</diffuse>
+                <normal>file://materials/textures/grass_normal.jpg</normal>
+                <size>4</size>
+              </texture>
+              <!-- Without this unused 3. texture the blend between the first 2 doesn't work -->
+              <texture>
+                <diffuse>file://media/materials/textures/fungus_diffusespecular.png</diffuse>
                 <normal>file://media/materials/textures/flat_normal.png</normal>
                 <size>1</size>
               </texture>
               <blend>
                 <min_height>{{ heightmap.max_elevation / 2 }}</min_height>
                 <fade_dist>0.05</fade_dist>
+              </blend>
+              <!-- Without this unused 3. texture the blend between the first 2 doesn't work -->
+              <blend>
+                <min_height>4</min_height>
+                <fade_dist>5</fade_dist>
               </blend>
               <uri>file://virtual_maize_field_heightmap.png</uri>
               <size>{{ heightmap.size }} {{ heightmap.size }} {{ heightmap.max_elevation }}</size>
