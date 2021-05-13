@@ -165,4 +165,4 @@ Virtual Maize Field is copyright (C) 2021 *Farm Technology Group of Wageningen U
 ### Textures
 | Name | Path | Copyright | License |
 |:---- |:---- |:--------- |:------- |
-| [grass](Media/models/materials/textures/) | `Media/models/materials/textures/` | 2018 *CC0Textures.com* | [![License: CC0-1.0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg)](http://creativecommons.org/publicdomain/zero/1.0/) |
+| [grass](https://cc0textures.com/view?id=Ground003) | [`Media/models/materials/textures/`](Media/models/materials/textures/) | 2018 *CC0Textures.com* | [![License: CC0-1.0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg)](http://creativecommons.org/publicdomain/zero/1.0/) |
