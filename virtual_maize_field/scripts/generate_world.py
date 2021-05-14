@@ -57,14 +57,14 @@ if __name__ == "__main__":
     minimap_path = os.path.join(pkg_path, "generated_minimap.png")
     fgen.minimap.savefig(minimap_path, dpi=100)
 
-    # save the start location
-    yaml_path = os.path.join(pkg_path, "config/spawn_location.yaml")
-
-    with open(yaml_path, "w") as outfile:
-        # fgen
-        data = {}
-        data["spawn_position_x"] = float(fgen.start_loc[0][0])
-        data["spawn_position_y"] = float(fgen.start_loc[0][1])
-        data["spawn_position_z"] = 1
-        data["spawn_position_yaw"] = 0
-        yaml.dump(data, outfile, default_flow_style=False)
+    # save the start location in a launch file   
+    launch_path = os.path.join(pkg_path, "launch/robot_spawner.launch")
+    with open(launch_path, "w") as launch_file:
+        string = '''<?xml version="1.0"?>
+        <launch>
+        <!-- Spawn Jackal -->
+        <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model"
+	    args="-urdf -model jackal -param robot_description -x %f -y %f -z %f -R 0 -P 0 -Y %f" /> 
+        </launch>''' % (float(fgen.start_loc[0][0]), float(fgen.start_loc[0][1]), 1, 1.5707963267948966)
+  
+        launch_file.write(string)

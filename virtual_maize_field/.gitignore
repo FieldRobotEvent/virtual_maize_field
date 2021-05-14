@@ -29,3 +29,4 @@ CATKIN_IGNORE
 worlds/generated.world
 Media/models/virtual_maize_field_heightmap.png
 generated_minimap.png
+launch/robot_spawner.launch
