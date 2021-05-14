@@ -27,7 +27,6 @@ class Field2DGenerator:
         plt.scatter(self.crop_placements[:, 0], self.crop_placements[:, 1], color="c", marker=".")
 
     def plot_field(self):
-        # plt.plot(*self.field_poly.exterior.xy)
         plt.plot()
         plt.figure(figsize=(10, 10))
         plt.gca().axis("equal")

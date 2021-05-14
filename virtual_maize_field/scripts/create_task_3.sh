@@ -1,4 +1,3 @@
-# remove old gazebo cache file, so gazebo is forced to use the new height map.
 rosrun virtual_maize_field generate_world.py \
 --row_length 7 \
 --rows_left 0 \
