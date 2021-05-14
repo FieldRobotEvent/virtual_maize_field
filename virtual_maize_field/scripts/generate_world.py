@@ -3,13 +3,10 @@
 import rospkg
 import argparse
 import inspect
-
 import os
 import shutil
-
+import numpy as np
 import cv2
-from matplotlib import pyplot as plt
-import yaml
 
 from field_2d_generator import Field2DGenerator
 from world_description import WorldDescription
@@ -67,10 +64,10 @@ if __name__ == "__main__":
     <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model"
     args="-urdf -model jackal -param robot_description -x %f -y %f -z %f -R 0 -P 0 -Y %f" /> 
 </launch>""" % (
-            float(fgen.start_loc[0][0]),
-            float(fgen.start_loc[0][1]),
+            float(fgen.start_loc[0][0]) + np.random.rand() * 0.1 - 0.05,
+            float(fgen.start_loc[0][1]) + np.random.rand() * 0.1 - 0.05,
             0.7,
-            1.5707963267948966,
+            1.5707963267948966 + np.random.rand() * 0.1 - 0.05,
         )
 
         launch_file.write(string)

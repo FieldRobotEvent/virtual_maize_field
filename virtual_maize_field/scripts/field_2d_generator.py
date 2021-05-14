@@ -271,7 +271,6 @@ class Field2DGenerator:
                 ]
             ]
         )
-        self.start_type = np.array(["start"])
 
         # place location markers at the desginated locations
         if self.wd.structure["params"]["location_markers"]:
@@ -290,18 +289,10 @@ class Field2DGenerator:
             self.marker_types = np.array([])
 
         self.object_placements = np.concatenate(
-            (
-                self.weed_placements,
-                self.litter_placements,
-                self.marker_a_loc,
-                self.marker_b_loc,
-                self.start_loc,
-            )
+            (self.weed_placements, self.litter_placements, self.marker_a_loc, self.marker_b_loc)
         )
 
-        self.object_types = np.concatenate(
-            (self.weed_types, self.litter_types, self.marker_types, self.start_type)
-        )
+        self.object_types = np.concatenate((self.weed_types, self.litter_types, self.marker_types))
 
     def generate_ground(self):
         ditch_depth = self.wd.structure["params"]["ground_ditch_depth"]

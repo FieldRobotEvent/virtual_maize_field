@@ -965,34 +965,6 @@
     </link>
   </model>
 
-{% elif coordinate.type == 'start' or coordinate.type == 'ghost_start' %}
-<!--start-->
-    <model name='start'>
-      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 0 1.5707963267948966</pose>
-      <static>true</static>
-      <link name='start_link'>
-      <pose>0 0 0 0 0 0</pose>
-
-      <visual name="visual_start">
-	<pose>0 0 0 0 0 0</pose>
-        <geometry>
-          <box>
-            <size>0.75 0.75 0.05</size>
-          </box>
-        </geometry>
-        <material>
-          <script>
-            <uri>model://start/materials/scripts</uri>
-            <uri>model://start/materials/textures</uri>
-            <name>start/texture</name>
-          </script>
-        </material>
-      </visual>
-
-
-    </link>
-  </model>
-
 {% endif %}
 {% endfor %}
 
