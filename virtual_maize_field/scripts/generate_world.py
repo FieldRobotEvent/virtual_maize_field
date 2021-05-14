@@ -56,15 +56,15 @@ if __name__ == "__main__":
     # save mini_map
     minimap_path = os.path.join(pkg_path, "generated_minimap.png")
     fgen.minimap.savefig(minimap_path, dpi=100)
-    
+
     # save the start location
     yaml_path = os.path.join(pkg_path, "config/spawn_location.yaml")
-    
-    with open(yaml_path, 'w') as outfile:
+
+    with open(yaml_path, "w") as outfile:
         # fgen
         data = {}
-        data['spawn_position_x'] = float(fgen.start_loc[0][0])
-        data['spawn_position_y'] = float(fgen.start_loc[0][1])
-        data['spawn_position_z'] = 1
-        data['spawn_position_yaw'] = 0
-        yaml.dump(data, outfile, default_flow_style=False)    
+        data["spawn_position_x"] = float(fgen.start_loc[0][0])
+        data["spawn_position_y"] = float(fgen.start_loc[0][1])
+        data["spawn_position_z"] = 1
+        data["spawn_position_yaw"] = 0
+        yaml.dump(data, outfile, default_flow_style=False)

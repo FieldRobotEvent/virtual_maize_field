@@ -4,6 +4,7 @@ import cv2
 import os
 import rospkg
 from matplotlib import pyplot as plt
+import matplotlib.patches as patches
 import shapely
 import shapely.geometry as geometry
 
@@ -26,18 +27,73 @@ class Field2DGenerator:
         plt.scatter(self.crop_placements[:, 0], self.crop_placements[:, 1], color="c", marker=".")
 
     def plot_field(self):
-        plt.plot(*self.field_poly.exterior.xy)
+        # plt.plot(*self.field_poly.exterior.xy)
+        plt.plot()
         plt.figure(figsize=(10, 10))
         plt.gca().axis("equal")
+
+        # crops
         plt.scatter(self.crop_placements[:, 0], self.crop_placements[:, 1], color="g", marker=".")
-        if self.weed_placements.ndim == 2:
+
+        # weeds
+        plt.scatter(
+            self.weed_placements[:, 0],
+            self.weed_placements[:, 1],
+            color="r",
+            marker=".",
+            s=100,
+            alpha=0.5,
+        )
+
+        # litter
+        plt.scatter(
+            self.litter_placements[:, 0],
+            self.litter_placements[:, 1],
+            color="b",
+            marker=".",
+            s=100,
+            alpha=0.5,
+        )
+
+        # start
+        plt.scatter(
+            self.start_loc[:, 0], self.start_loc[:, 1], color="r", marker=".", alpha=0
+        )  # just to extend the axis of the plot
+        plt.text(
+            self.start_loc[:, 0],
+            self.start_loc[:, 1],
+            "START",
+            bbox={"facecolor": "green", "alpha": 0.5, "pad": 10},
+            ha="center",
+            va="center",
+        )
+
+        # location markers
+        if self.wd.structure["params"]["location_markers"]:
             plt.scatter(
-                self.weed_placements[:, 0], self.weed_placements[:, 1], color="r", marker="."
+                self.marker_a_loc[:, 0], self.marker_a_loc[:, 1], color="r", marker=".", alpha=0
+            )  # just to extend the axis of the plot
+            plt.text(
+                self.marker_a_loc[:, 0],
+                self.marker_a_loc[:, 1],
+                "A",
+                bbox={"facecolor": "red", "alpha": 0.5, "pad": 10},
+                ha="center",
+                va="center",
             )
-        if self.litter_placements.ndim == 2:
+
             plt.scatter(
-                self.litter_placements[:, 0], self.litter_placements[:, 1], color="b", marker="."
+                self.marker_b_loc[:, 0], self.marker_b_loc[:, 1], color="r", marker=".", alpha=0
+            )  # just to extend the axis of the plot
+            plt.text(
+                self.marker_b_loc[:, 0],
+                self.marker_b_loc[:, 1],
+                "B",
+                bbox={"facecolor": "red", "alpha": 0.5, "pad": 10},
+                ha="center",
+                va="center",
             )
+
         self.minimap = plt
 
     def generate(self):
@@ -188,9 +244,8 @@ class Field2DGenerator:
                 self.wd.structure["params"]["weeds"],
             )
         else:
-            self.weed_placements = np.array([]).reshape(0,2)
+            self.weed_placements = np.array([]).reshape(0, 2)
             self.weed_types = np.array([])
-            
 
         # place y_nr of litter within the field area
         if self.wd.structure["params"]["litters"] > 0:
@@ -201,9 +256,9 @@ class Field2DGenerator:
                 self.wd.structure["params"]["litter_types"].split(","),
                 self.wd.structure["params"]["litters"],
             )
-        
+
         else:
-            self.litter_placements = np.array([]).reshape(0,2)
+            self.litter_placements = np.array([]).reshape(0, 2)
             self.litter_types = np.array([])
 
         # place start marker at the beginning of the field
@@ -231,10 +286,10 @@ class Field2DGenerator:
 
             self.marker_types = np.array(["location_marker_a", "location_marker_b"])
         else:
-            self.marker_a_loc = np.array([]).reshape(0,2)
-            self.marker_b_loc = np.array([]).reshape(0,2)
+            self.marker_a_loc = np.array([]).reshape(0, 2)
+            self.marker_b_loc = np.array([]).reshape(0, 2)
             self.marker_types = np.array([])
-        
+
         self.object_placements = np.concatenate(
             (
                 self.weed_placements,
@@ -244,7 +299,7 @@ class Field2DGenerator:
                 self.start_loc,
             )
         )
-        
+
         self.object_types = np.concatenate(
             (self.weed_types, self.litter_types, self.marker_types, self.start_type)
         )
