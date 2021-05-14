@@ -290,14 +290,19 @@ class Field2DGenerator:
             px = metric_to_pixel(mx)
             py = metric_to_pixel(my)
 
-            field_mask = cv2.circle(
-                field_mask, (px, py), int((ditch_distance) / self.resolution), 1, -1
-            )
-
             height = heightmap[py, px]
             heightmap = cv2.circle(heightmap, (px, py), flatspot_radius, height, -1)
             self.placements_ground_height.append((field_height + height) * self.heightmap_elevation)
+            
+        # create ditch around the crop field
+        for mx, my in self.crop_placements:
+            px = metric_to_pixel(mx)
+            py = metric_to_pixel(my)
 
+            field_mask = cv2.circle(
+                field_mask, (px, py), int((ditch_distance) / self.resolution), 1, -1
+            )
+            
         blur_size = (int(0.2 / self.resolution) // 2) * 2 + 1
         field_mask = cv2.GaussianBlur(field_mask, (blur_size, blur_size), 0)
 

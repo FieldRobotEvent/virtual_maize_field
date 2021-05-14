@@ -12,6 +12,15 @@
         </geometry>
       </collision>
 
+      <visual name="foot">
+	<pose>0 0 -1.5 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>1 1 1</size>
+          </box>
+        </geometry>
+      </visual>
+
       <visual name="visual_bottom">
 	<pose>0 0 -0.75 0 0 0</pose>
         <geometry>
