@@ -33,6 +33,8 @@ class WorldDescription:
         row_segment_island_radius_max=3.0,
         ground_resolution=0.02,
         ground_elevation_max=0.2,
+        ground_headland=2.0,
+        ground_ditch_depth=0.3,
         plant_spacing_min=0.13,
         plant_spacing_max=0.19,
         plant_height_min=0.3,
@@ -73,6 +75,8 @@ class WorldDescription:
         self.structure["params"] = {
             "ground_resolution": self.ground_resolution,
             "ground_elevation_max": self.ground_elevation_max,
+            "ground_headland": self.ground_headland,
+            "ground_ditch_depth": self.ground_ditch_depth,
             "plant_spacing_min": self.plant_spacing_min,
             "plant_spacing_max": self.plant_spacing_max,
             "plant_height_min": self.plant_height_min,
