@@ -160,7 +160,6 @@ class Field2DGenerator:
             self.rows[i] -= np.array([x_max, y_max]) / 2
 
     # The function calculates the placements of the weed plants and
-    # stores them under self.weeds : np.array([[x,y],[x,y],...])
     def place_objects(self):
         def random_points_within(poly, num_points):
             min_x, min_y, max_x, max_y = poly.bounds
@@ -180,48 +179,63 @@ class Field2DGenerator:
         self.field_poly = geometry.Polygon(outer_plants)
 
         # place x_nr of weeds within the field area
-        if self.wd.structure["params"]["weeds"] > 0:
-            self.weed_placements = random_points_within(
-                self.field_poly, self.wd.structure["params"]["weeds"]
-            )
-            weed_types = np.random.choice(
-                self.wd.structure["params"]["weed_types"].split(","),
-                self.wd.structure["params"]["weeds"],
-            )
+        self.weed_placements = random_points_within(
+            self.field_poly, self.wd.structure["params"]["weeds"]
+        )
+        self.weed_types = np.random.choice(
+            self.wd.structure["params"]["weed_types"].split(","),
+            self.wd.structure["params"]["weeds"],
+        )
 
         # place y_nr of litter within the field area
-        if self.wd.structure["params"]["litters"] > 0:
-            self.litter_placements = random_points_within(
-                self.field_poly, self.wd.structure["params"]["litters"]
-            )
-            litter_types = np.random.choice(
-                self.wd.structure["params"]["litter_types"].split(","),
-                self.wd.structure["params"]["litters"],
-            )
+        self.litter_placements = random_points_within(
+            self.field_poly, self.wd.structure["params"]["litters"]
+        )
+        self.litter_types = np.random.choice(
+            self.wd.structure["params"]["litter_types"].split(","),
+            self.wd.structure["params"]["litters"],
+        )
 
-        # TODO Thijs
         # place start marker at the beginning of the field
+        line = geometry.LineString([self.rows[0][0], self.rows[-1][0]])
+        offset_start = line.parallel_offset(1, "right", join_style=2, mitre_limit=0.1)
+        self.start_loc = np.array(
+            [
+                [
+                    offset_start.interpolate(distance=0.375).xy[0][0],
+                    offset_start.interpolate(distance=1).xy[1][0],
+                ]
+            ]
+        )
+        self.start_type = np.array(["start"])
 
-        # TODO Thijs
         # place location markers at the desginated locations
         if self.wd.structure["params"]["location_markers"]:
-            begin = self.rows[0][0]
-            end = self.rows[-1][0]
-            line = geometry.LineString([begin, end])
+            line = geometry.LineString([self.rows[0][0], self.rows[-1][0]])
             offset_a = line.parallel_offset(2.5, "right", join_style=2, mitre_limit=0.1)
             self.marker_a_loc = np.array([[offset_a.centroid.xy[0][0], offset_a.centroid.xy[1][0]]])
 
-            begin = self.rows[0][-1]
-            end = self.rows[-1][-1]
-            line = geometry.LineString([begin, end])
+            line = geometry.LineString([self.rows[0][-1], self.rows[-1][-1]])
             offset_b = line.parallel_offset(2.5, "left", join_style=2, mitre_limit=0.1)
             self.marker_b_loc = np.array([[offset_b.centroid.xy[0][0], offset_b.centroid.xy[1][0]]])
 
+            self.marker_types = np.array(["location_marker_a", "location_marker_b"])
+        else:
+            self.marker_a_loc = np.array([])
+            self.marker_b_loc = np.array([])
+            self.marker_types = np.array([])
+
         self.object_placements = np.concatenate(
-            (self.weed_placements, self.litter_placements, self.marker_a_loc, self.marker_b_loc)
+            (
+                self.weed_placements,
+                self.litter_placements,
+                self.marker_a_loc,
+                self.marker_b_loc,
+                self.start_loc,
+            )
         )
         self.object_types = np.concatenate(
-            (weed_types, litter_types, ["location_marker_a", "location_marker_b"])
+            (self.weed_types, self.litter_types, self.marker_types, self.start_type)
         )
 
     def generate_ground(self):
