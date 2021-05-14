@@ -179,7 +179,6 @@ class Field2DGenerator:
         outer_plants = np.concatenate((self.rows[0], np.flipud(self.rows[-1])))
         self.field_poly = geometry.Polygon(outer_plants)
 
-
         # place x_nr of weeds within the field area
         if self.wd.structure["params"]["weeds"] > 0:
             self.weed_placements = random_points_within(
@@ -209,17 +208,21 @@ class Field2DGenerator:
             begin = self.rows[0][0]
             end = self.rows[-1][0]
             line = geometry.LineString([begin, end])
-            offset_a = line.parallel_offset(2.5, 'right', join_style=2, mitre_limit=0.1)
+            offset_a = line.parallel_offset(2.5, "right", join_style=2, mitre_limit=0.1)
             self.marker_a_loc = np.array([[offset_a.centroid.xy[0][0], offset_a.centroid.xy[1][0]]])
-            
+
             begin = self.rows[0][-1]
             end = self.rows[-1][-1]
             line = geometry.LineString([begin, end])
-            offset_b = line.parallel_offset(2.5, 'left', join_style=2, mitre_limit=0.1)
+            offset_b = line.parallel_offset(2.5, "left", join_style=2, mitre_limit=0.1)
             self.marker_b_loc = np.array([[offset_b.centroid.xy[0][0], offset_b.centroid.xy[1][0]]])
 
-        self.object_placements = np.concatenate((self.weed_placements, self.litter_placements, self.marker_a_loc, self.marker_b_loc))
-        self.object_types = np.concatenate((weed_types, litter_types, ['location_marker_a', 'location_marker_b']))
+        self.object_placements = np.concatenate(
+            (self.weed_placements, self.litter_placements, self.marker_a_loc, self.marker_b_loc)
+        )
+        self.object_types = np.concatenate(
+            (weed_types, litter_types, ["location_marker_a", "location_marker_b"])
+        )
 
     def generate_ground(self):
         ditch_depth = self.wd.structure["params"]["ground_ditch_depth"]
@@ -293,7 +296,7 @@ class Field2DGenerator:
             height = heightmap[py, px]
             heightmap = cv2.circle(heightmap, (px, py), flatspot_radius, height, -1)
             self.placements_ground_height.append((field_height + height) * self.heightmap_elevation)
-            
+
         # create ditch around the crop field
         for mx, my in self.crop_placements:
             px = metric_to_pixel(mx)
@@ -302,7 +305,7 @@ class Field2DGenerator:
             field_mask = cv2.circle(
                 field_mask, (px, py), int((ditch_distance) / self.resolution), 1, -1
             )
-            
+
         blur_size = (int(0.2 / self.resolution) // 2) * 2 + 1
         field_mask = cv2.GaussianBlur(field_mask, (blur_size, blur_size), 0)
 
