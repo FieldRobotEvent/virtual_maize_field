@@ -179,22 +179,32 @@ class Field2DGenerator:
         self.field_poly = geometry.Polygon(outer_plants)
 
         # place x_nr of weeds within the field area
-        self.weed_placements = random_points_within(
-            self.field_poly, self.wd.structure["params"]["weeds"]
-        )
-        self.weed_types = np.random.choice(
-            self.wd.structure["params"]["weed_types"].split(","),
-            self.wd.structure["params"]["weeds"],
-        )
+        if self.wd.structure["params"]["weeds"] > 0:
+            self.weed_placements = random_points_within(
+                self.field_poly, self.wd.structure["params"]["weeds"]
+            )
+            self.weed_types = np.random.choice(
+                self.wd.structure["params"]["weed_types"].split(","),
+                self.wd.structure["params"]["weeds"],
+            )
+        else:
+            self.weed_placements = np.array([]).reshape(0,2)
+            self.weed_types = np.array([])
+            
 
         # place y_nr of litter within the field area
-        self.litter_placements = random_points_within(
-            self.field_poly, self.wd.structure["params"]["litters"]
-        )
-        self.litter_types = np.random.choice(
-            self.wd.structure["params"]["litter_types"].split(","),
-            self.wd.structure["params"]["litters"],
-        )
+        if self.wd.structure["params"]["litters"] > 0:
+            self.litter_placements = random_points_within(
+                self.field_poly, self.wd.structure["params"]["litters"]
+            )
+            self.litter_types = np.random.choice(
+                self.wd.structure["params"]["litter_types"].split(","),
+                self.wd.structure["params"]["litters"],
+            )
+        
+        else:
+            self.litter_placements = np.array([]).reshape(0,2)
+            self.litter_types = np.array([])
 
         # place start marker at the beginning of the field
         line = geometry.LineString([self.rows[0][0], self.rows[-1][0]])
@@ -221,10 +231,10 @@ class Field2DGenerator:
 
             self.marker_types = np.array(["location_marker_a", "location_marker_b"])
         else:
-            self.marker_a_loc = np.array([])
-            self.marker_b_loc = np.array([])
+            self.marker_a_loc = np.array([]).reshape(0,2)
+            self.marker_b_loc = np.array([]).reshape(0,2)
             self.marker_types = np.array([])
-
+        
         self.object_placements = np.concatenate(
             (
                 self.weed_placements,
@@ -234,6 +244,7 @@ class Field2DGenerator:
                 self.start_loc,
             )
         )
+        
         self.object_types = np.concatenate(
             (self.weed_types, self.litter_types, self.marker_types, self.start_type)
         )

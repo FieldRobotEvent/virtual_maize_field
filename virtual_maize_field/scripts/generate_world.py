@@ -55,7 +55,7 @@ if __name__ == "__main__":
 
     # save mini_map
     minimap_path = os.path.join(pkg_path, "generated_minimap.png")
-    fgen.minimap.savefig(minimap_path, dpi=1000)
+    fgen.minimap.savefig(minimap_path, dpi=100)
     
     # save the start location
     yaml_path = os.path.join(pkg_path, "config/spawn_location.yaml")
