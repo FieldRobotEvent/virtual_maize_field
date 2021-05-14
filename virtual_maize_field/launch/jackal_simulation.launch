@@ -1,0 +1,46 @@
+<?xml version='1.0'?>
+<launch>
+  <arg name="use_sim_time" default="true" />
+  <arg name="gui" default="true" />
+  <arg name="paused" default="false" />
+  <arg name="headless" default="false" />
+  <arg name="world_path" default="$(find virtual_maize_field)/worlds/"/>
+  <arg name="world_name" default="generated.world"/>
+
+  <!-- Short-term hack to support the original front_laser:=true argument for spawning
+       the simulator. This will be removed in favour of using the config:=x arg instead. -->
+  <arg name="front_laser" default="true" />
+  <arg name="default_config" value="front_laser" if="$(arg front_laser)" />
+  <arg name="default_config" value="base" unless="$(arg front_laser)" />
+  <!-- end of hack -->
+
+  <!-- Configuration of Jackal which you would like to simulate.
+       See jackal_description for details. -->
+  <arg name="config" default="$(arg default_config)" />
+
+  <!-- Optionally enable teleop for the simulation -->
+  <arg name="joystick" default="false" />
+
+  <!-- Load Jackal's description, controllers, and teleop nodes. -->
+  <include file="$(find jackal_description_fre)/launch/description.launch">
+    <arg name="config" value="$(arg config)" />
+  </include>
+  <include file="$(find jackal_control_fre)/launch/control.launch" />
+  <include file="$(find jackal_control_fre)/launch/teleop.launch">
+    <arg name="joystick" value="$(arg joystick)" />
+  </include>
+
+<include file="$(find virtual_maize_field)/launch/simulation.launch">
+  <arg name="use_sim_time" value="$(arg use_sim_time)" />
+  <arg name="gui" value="$(arg gui)" />
+  <arg name="paused" value="$(arg paused)" />
+  <arg name="headless" value="$(arg headless)" />
+  <arg name="world_path" value="$(arg world_path)"/>
+  <arg name="world_name" value="$(arg world_name)"/>
+
+</include>
+  <include file="$(find virtual_maize_field)/launch/robot_spawner.launch">
+    <arg name="robot_name" value="jackal"/>
+</include>
+
+</launch>

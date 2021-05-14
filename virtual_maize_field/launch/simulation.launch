@@ -18,29 +18,4 @@
     <arg name="world_name" value="$(arg world_path)$(arg world_name)" />
   </include>
 
-  <!-- Short-term hack to support the original front_laser:=true argument for spawning
-       the simulator. This will be removed in favour of using the config:=x arg instead. -->
-  <arg name="front_laser" default="true" />
-  <arg name="default_config" value="front_laser" if="$(arg front_laser)" />
-  <arg name="default_config" value="base" unless="$(arg front_laser)" />
-  <!-- end of hack -->
-
-  <!-- Configuration of Jackal which you would like to simulate.
-       See jackal_description for details. -->
-  <arg name="config" default="$(arg default_config)" />
-
-  <!-- Optionally enable teleop for the simulation -->
-  <arg name="joystick" default="false" />
-
-  <!-- Load Jackal's description, controllers, and teleop nodes. -->
-  <include file="$(find jackal_description_fre)/launch/description.launch">
-    <arg name="config" value="$(arg config)" />
-  </include>
-  <include file="$(find jackal_control_fre)/launch/control.launch" />
-  <include file="$(find jackal_control_fre)/launch/teleop.launch">
-    <arg name="joystick" value="$(arg joystick)" />
-  </include>
-
-<include file="$(find virtual_maize_field)/launch/robot_spawner.launch"></include>
-
 </launch>
