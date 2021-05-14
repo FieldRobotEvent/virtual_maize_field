@@ -177,32 +177,47 @@ class Field2DGenerator:
         outer_plants = np.concatenate((self.rows[0], np.flipud(self.rows[-1])))
         self.field_poly = geometry.Polygon(outer_plants)
 
+
         # place x_nr of weeds within the field area
-        self.weed_placements = random_points_within(
-            self.field_poly, self.wd.structure["params"]["weeds"]
-        )
-        weed_types = np.random.choice(
-            self.wd.structure["params"]["weed_types"].split(","),
-            self.wd.structure["params"]["weeds"],
-        )
+        if self.wd.structure["params"]["weeds"] > 0:
+            self.weed_placements = random_points_within(
+                self.field_poly, self.wd.structure["params"]["weeds"]
+            )
+            weed_types = np.random.choice(
+                self.wd.structure["params"]["weed_types"].split(","),
+                self.wd.structure["params"]["weeds"],
+            )
 
         # place y_nr of litter within the field area
-        self.litter_placements = random_points_within(
-            self.field_poly, self.wd.structure["params"]["litters"]
-        )
-        litter_types = np.random.choice(
-            self.wd.structure["params"]["litter_types"].split(","),
-            self.wd.structure["params"]["litters"],
-        )
+        if self.wd.structure["params"]["litters"] > 0:
+            self.litter_placements = random_points_within(
+                self.field_poly, self.wd.structure["params"]["litters"]
+            )
+            litter_types = np.random.choice(
+                self.wd.structure["params"]["litter_types"].split(","),
+                self.wd.structure["params"]["litters"],
+            )
 
         # TODO Thijs
         # place start marker at the beginning of the field
 
         # TODO Thijs
         # place location markers at the desginated locations
+        if self.wd.structure["params"]["location_markers"]:
+            begin = self.rows[0][0]
+            end = self.rows[-1][0]
+            line = geometry.LineString([begin, end])
+            offset_a = line.parallel_offset(2.5, 'right', join_style=2, mitre_limit=0.1)
+            self.marker_a_loc = np.array([[offset_a.centroid.xy[0][0], offset_a.centroid.xy[1][0]]])
+            
+            begin = self.rows[0][-1]
+            end = self.rows[-1][-1]
+            line = geometry.LineString([begin, end])
+            offset_b = line.parallel_offset(2.5, 'left', join_style=2, mitre_limit=0.1)
+            self.marker_b_loc = np.array([[offset_b.centroid.xy[0][0], offset_b.centroid.xy[1][0]]])
 
-        self.object_placements = np.concatenate((self.weed_placements, self.litter_placements))
-        self.object_types = np.concatenate((weed_types, litter_types))
+        self.object_placements = np.concatenate((self.weed_placements, self.litter_placements, self.marker_a_loc, self.marker_b_loc))
+        self.object_types = np.concatenate((weed_types, litter_types, ['location_marker_a', 'location_marker_b']))
 
     def generate_ground(self):
         self.crop_placements = np.vstack(self.rows)

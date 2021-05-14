@@ -94,8 +94,8 @@
 
 {% for coordinate in coordinates %}
 
-<!--cylinder-->
 {% if coordinate.type == 'cylinder' %}
+<!--cylinder-->
     <model name='{{ coordinate.name }}'>
       <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 -0 0</pose>
       <link name='{{ coordinate.name }}_link'>
@@ -151,8 +151,8 @@
       </link>
     </model>
 
-<!--maize_01-->
 {% elif coordinate.type == 'maize_01' %}
+<!--maize_01-->
     <model name='{{ coordinate.name }}'>
       <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 -0 {{ coordinate.yaw }}</pose>
       <link name='{{ coordinate.name }}_link'>
@@ -205,8 +205,8 @@
       </link>
     </model>
 
-<!--maize_02-->
 {% elif coordinate.type == 'maize_02' %}
+<!--maize_02-->
     <model name='{{ coordinate.name }}'>
       <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 -0 {{ coordinate.yaw }}</pose>
       <link name='{{ coordinate.name }}_link'>
@@ -259,8 +259,8 @@
       </link>
     </model>
 
-<!--ale-->
 {% elif coordinate.type == 'ale' %}
+<!--ale-->
     <model name='{{ coordinate.name }}'>
       <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 1.5707963267948966 0 {{ coordinate.yaw }}</pose>
       <link name='{{ coordinate.name }}_link'>
@@ -345,8 +345,8 @@
     </link>
   </model>
 
-<!--beer-->
 {% elif coordinate.type == 'beer' %}
+<!--beer-->
     <model name='{{ coordinate.name }}'>
       <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 1.5707963267948966 0 {{ coordinate.yaw }}</pose>
       <link name='{{ coordinate.name }}_link'>
@@ -392,8 +392,8 @@
     </link>
   </model>
 
-<!--coke_can-->
 {% elif coordinate.type == 'coke_can' %}
+<!--coke_can-->
     <model name='{{ coordinate.name }}'>
       <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 1.5707963267948966 0 {{ coordinate.yaw }}</pose>
       <link name='{{ coordinate.name }}_link'>
@@ -450,8 +450,8 @@
     </link>
   </model>
 
-<!--retro_pepsi_can-->
 {% elif coordinate.type == 'retro_pepsi_can' %}
+<!--retro_pepsi_can-->
     <model name='{{ coordinate.name }}'>
       <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 1.5707963267948966 0 {{ coordinate.yaw }}</pose>
       <link name='{{ coordinate.name }}_link'>
@@ -515,8 +515,8 @@
     </link>
   </model>
 
-<!--nettle-->
 {% elif coordinate.type == 'nettle' %}
+<!--nettle-->
     <model name='{{ coordinate.name }}'>
       <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 0 {{ coordinate.yaw }}</pose>
       <link name='{{ coordinate.name }}_link'>
@@ -593,8 +593,8 @@
     </link>
   </model>
 
-<!--unknown_weed-->
 {% elif coordinate.type == 'unknown_weed' %}
+<!--unknown_weed-->
     <model name='{{ coordinate.name }}'>
       <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 0 {{ coordinate.yaw }}</pose>
       <link name='{{ coordinate.name }}_link'>
@@ -669,8 +669,8 @@
     </link>
   </model>
 
-<!--ghost_ale-->
 {% elif coordinate.type == 'ghost_ale' %}
+<!--ghost_ale-->
     <model name='{{ coordinate.name }}'>
       <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 1.5707963267948966 0 {{ coordinate.yaw }}</pose>
       <static>true</static>
@@ -691,8 +691,8 @@
     </link>
   </model>
 
-<!--ghost_beer-->
 {% elif coordinate.type == 'ghost_beer' %}
+<!--ghost_beer-->
     <model name='{{ coordinate.name }}'>
       <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 1.5707963267948966 0 {{ coordinate.yaw }}</pose>
       <static>true</static>
@@ -715,8 +715,8 @@
     </link>
   </model>
 
-<!--ghost_coke_can-->
 {% elif coordinate.type == 'ghost_coke_can' %}
+<!--ghost_coke_can-->
     <model name='{{ coordinate.name }}'>
       <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 1.5707963267948966 0 {{ coordinate.yaw }}</pose>
       <static>true</static>
@@ -732,8 +732,8 @@
     </link>
   </model>
 
-<!--ghost_retro_pepsi_can-->
 {% elif coordinate.type == 'ghost_retro_pepsi_can' %}
+<!--ghost_retro_pepsi_can-->
     <model name='{{ coordinate.name }}'>
       <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 1.5707963267948966 0 {{ coordinate.yaw }}</pose>
       <static>true</static>
@@ -777,8 +777,8 @@
     </link>
   </model>
 
-<!--ghost_unknown_weed-->
 {% elif coordinate.type == 'ghost_unknown_weed' %}
+<!--ghost_unknown_weed-->
     <model name='{{ coordinate.name }}'>
       <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 0 {{ coordinate.yaw }}</pose>
       <static>true</static>
@@ -794,6 +794,130 @@
             <uri>model://unknown_weed/materials/scripts/</uri>
             <uri>model://unknown_weed/materials/textures/</uri>
             <name>unknown_weed_leaf</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+
+{% elif coordinate.type == 'location_marker_a' or coordinate.type == 'ghost_location_marker_a' %}
+<!--location_marker_a-->
+    <model name='{{ coordinate.name }}'>
+      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 0 0</pose>
+      <static>true</static>
+      <link name='{{ coordinate.name }}_link'>
+      <pose>0 0 1 0 0 0</pose>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>1 1 2</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual_bottom">
+	<pose>0 0 -0.75 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>1 1 0.5</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://location_marker_a/materials/scripts</uri>
+            <uri>model://location_marker_a/materials/textures</uri>
+            <name>location_marker_a/logo</name>
+          </script>
+        </material>
+      </visual>
+      <visual name="visual_top">
+	<pose>0 0 0.75 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>1 1 0.5</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://location_marker_a/materials/scripts</uri>
+            <uri>model://location_marker_a/materials/textures</uri>
+            <name>location_marker_a/logo</name>
+          </script>
+        </material>
+      </visual>
+      <visual name="visual_code">
+	<pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>1 1 1</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://location_marker_a/materials/scripts</uri>
+            <uri>model://location_marker_a/materials/textures</uri>
+            <name>location_marker_a/qr_code</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+
+{% elif coordinate.type == 'location_marker_b' or coordinate.type == 'ghost_location_marker_b' %}
+<!--location_marker_b-->
+    <model name='{{ coordinate.name }}'>
+      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 0 0</pose>
+      <static>true</static>
+      <link name='{{ coordinate.name }}_link'>
+      <pose>0 0 1 0 0 0</pose>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>1 1 2</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual_bottom">
+	<pose>0 0 -0.75 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>1 1 0.5</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://location_marker_b/materials/scripts</uri>
+            <uri>model://location_marker_b/materials/textures</uri>
+            <name>location_marker_b/logo</name>
+          </script>
+        </material>
+      </visual>
+      <visual name="visual_top">
+	<pose>0 0 0.75 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>1 1 0.5</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://location_marker_b/materials/scripts</uri>
+            <uri>model://location_marker_b/materials/textures</uri>
+            <name>location_marker_b/logo</name>
+          </script>
+        </material>
+      </visual>
+      <visual name="visual_code">
+	<pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>1 1 1</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://location_marker_b/materials/scripts</uri>
+            <uri>model://location_marker_b/materials/textures</uri>
+            <name>location_marker_b/qr_code</name>
           </script>
         </material>
       </visual>
