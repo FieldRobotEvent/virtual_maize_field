@@ -9,4 +9,5 @@ rosrun virtual_maize_field generate_world.py \
 --litters 5 \
 --weeds 5 \
 --ghost_objects true \
---ground_resolution 0.1
+--ground_resolution 0.1 \
+--location_markers true

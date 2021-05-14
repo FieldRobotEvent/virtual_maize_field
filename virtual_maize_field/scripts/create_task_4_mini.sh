@@ -8,4 +8,5 @@ rosrun virtual_maize_field generate_world.py \
 --hole_size_max 7 \
 --litters 5 \
 --weeds 5 \
---ground_resolution 0.1
+--ground_resolution 0.1 \
+--location_markers true
