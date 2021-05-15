@@ -76,7 +76,7 @@ if __name__ == "__main__":
         # marker
         if fgen.marker_a_loc.shape[0] != 0:
             writer.writerow([fgen.marker_a_loc[0][0], fgen.marker_a_loc[0][1], "location_marker_a"])
-            writer.writerow([fgen.marker_b_loc[0][0], fgen.marker_b_loc[0][0], "location_marker_b"])
+            writer.writerow([fgen.marker_b_loc[0][0], fgen.marker_b_loc[0][1], "location_marker_b"])
 
         for elm in fgen.weed_placements:
             writer.writerow([elm[0], elm[1], "weed"])
