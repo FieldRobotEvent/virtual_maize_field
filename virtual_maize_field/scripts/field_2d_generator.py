@@ -4,7 +4,6 @@ import cv2
 import os
 import rospkg
 from matplotlib import pyplot as plt
-import matplotlib.patches as patches
 import shapely
 import shapely.geometry as geometry
 
