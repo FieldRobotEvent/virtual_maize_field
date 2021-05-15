@@ -7,9 +7,13 @@ import os
 import shutil
 import numpy as np
 import cv2
+import csv
 
 from field_2d_generator import Field2DGenerator
 from world_description import WorldDescription
+
+
+
 
 if __name__ == "__main__":
     # get the possible arguments of the generator and default values
@@ -51,8 +55,19 @@ if __name__ == "__main__":
         shutil.rmtree(gazebo_cache_pkg)
 
     # save mini_map
-    minimap_path = os.path.join(pkg_path, "generated_minimap.png")
+    minimap_path = os.path.join(pkg_path, "map/map.png")
     fgen.minimap.savefig(minimap_path, dpi=100)
+    
+    # marker file
+    f_path = os.path.join(pkg_path, "map/markers.csv")
+    with open(f_path, "w") as f:
+        writer = csv.writer(f)
+        header = ["X", "Y", "kind"]
+        writer.writerow(header)
+        writer.writerow([fgen.marker_a_loc[0][0], fgen.marker_a_loc[0][1], 'location_marker_a'])
+        writer.writerow([fgen.marker_b_loc[0][0], fgen.marker_b_loc[0][0], 'location_marker_b'])
+        
+        
 
     # save the start location in a launch file
     launch_path = os.path.join(pkg_path, "launch/robot_spawner.launch")
