@@ -30,9 +30,11 @@ class Field2DGenerator:
         plt.plot()
         plt.figure(figsize=(10, 10))
         plt.gca().axis("equal")
+        labels = []
 
         # crops
         plt.scatter(self.crop_placements[:, 0], self.crop_placements[:, 1], color="g", marker=".")
+        labels.append("crops")
 
         # weeds
         plt.scatter(
@@ -43,6 +45,7 @@ class Field2DGenerator:
             s=100,
             alpha=0.5,
         )
+        labels.append("weeds")
 
         # litter
         plt.scatter(
@@ -53,10 +56,11 @@ class Field2DGenerator:
             s=100,
             alpha=0.5,
         )
+        labels.append("litter")
 
         # start
         plt.scatter(
-            self.start_loc[:, 0], self.start_loc[:, 1], color="r", marker=".", alpha=0
+            self.start_loc[:, 0], self.start_loc[:, 1], color="g", marker=".", alpha=0
         )  # just to extend the axis of the plot
         plt.text(
             self.start_loc[:, 0],
@@ -93,6 +97,7 @@ class Field2DGenerator:
                 va="center",
             )
 
+        plt.legend(labels)
         self.minimap = plt
 
     def generate(self):
