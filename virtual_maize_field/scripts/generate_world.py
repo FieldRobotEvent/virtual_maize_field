@@ -13,8 +13,6 @@ from field_2d_generator import Field2DGenerator
 from world_description import WorldDescription
 
 
-
-
 if __name__ == "__main__":
     # get the possible arguments of the generator and default values
     argspec = inspect.getfullargspec(WorldDescription.__init__)
@@ -57,17 +55,35 @@ if __name__ == "__main__":
     # save mini_map
     minimap_path = os.path.join(pkg_path, "map/map.png")
     fgen.minimap.savefig(minimap_path, dpi=100)
-    
+
     # marker file
     f_path = os.path.join(pkg_path, "map/markers.csv")
     with open(f_path, "w") as f:
         writer = csv.writer(f)
         header = ["X", "Y", "kind"]
         writer.writerow(header)
-        writer.writerow([fgen.marker_a_loc[0][0], fgen.marker_a_loc[0][1], 'location_marker_a'])
-        writer.writerow([fgen.marker_b_loc[0][0], fgen.marker_b_loc[0][0], 'location_marker_b'])
-        
-        
+        writer.writerow([fgen.marker_a_loc[0][0], fgen.marker_a_loc[0][1], "location_marker_a"])
+        writer.writerow([fgen.marker_b_loc[0][0], fgen.marker_b_loc[0][0], "location_marker_b"])
+
+    # complete map
+    f_path = os.path.join(pkg_path, "map/map.csv")
+    with open(f_path, "w") as f:
+        writer = csv.writer(f)
+        header = ["X", "Y", "kind"]
+        writer.writerow(header)
+
+        # marker
+        writer.writerow([fgen.marker_a_loc[0][0], fgen.marker_a_loc[0][1], "location_marker_a"])
+        writer.writerow([fgen.marker_b_loc[0][0], fgen.marker_b_loc[0][0], "location_marker_b"])
+
+        for elm in fgen.weed_placements:
+            writer.writerow([elm[0], elm[1], "weed"])
+
+        for elm in fgen.litter_placements:
+            writer.writerow([elm[0], elm[1], "litter"])
+
+        for elm in fgen.crop_placements:
+            writer.writerow([elm[0], elm[1], "crop"])
 
     # save the start location in a launch file
     launch_path = os.path.join(pkg_path, "launch/robot_spawner.launch")
