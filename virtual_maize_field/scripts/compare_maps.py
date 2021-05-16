@@ -32,6 +32,7 @@ def compute_score(gt, pred):
     best_pred_matches = []
     best_dist = []
 
+    # TODO make this more efficient, as the timecomplexity is now quadratic
     # comparing all possible orders of gt objects and pred objects to maximize the score
     for g in itertools.permutations(gt):
         for p in itertools.permutations(pred):
