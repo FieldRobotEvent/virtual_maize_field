@@ -3,16 +3,15 @@
 import rospkg
 import argparse
 import inspect
-
 import os
 import shutil
-
+import numpy as np
 import cv2
-from matplotlib import pyplot as plt
-import yaml
+import csv
 
 from field_2d_generator import Field2DGenerator
 from world_description import WorldDescription
+
 
 if __name__ == "__main__":
     # get the possible arguments of the generator and default values
@@ -54,17 +53,54 @@ if __name__ == "__main__":
         shutil.rmtree(gazebo_cache_pkg)
 
     # save mini_map
-    minimap_path = os.path.join(pkg_path, "generated_minimap.png")
+    minimap_path = os.path.join(pkg_path, "map/map.png")
     fgen.minimap.savefig(minimap_path, dpi=100)
 
-    # save the start location in a launch file   
+    # marker file
+    f_path = os.path.join(pkg_path, "map/markers.csv")
+    with open(f_path, "w") as f:
+        writer = csv.writer(f)
+        header = ["X", "Y", "kind"]
+        writer.writerow(header)
+        if fgen.marker_a_loc.shape[0] != 0:
+            writer.writerow([fgen.marker_a_loc[0][0], fgen.marker_a_loc[0][1], "location_marker_a"])
+            writer.writerow([fgen.marker_b_loc[0][0], fgen.marker_b_loc[0][0], "location_marker_b"])
+
+    # complete map
+    f_path = os.path.join(pkg_path, "map/map.csv")
+    with open(f_path, "w") as f:
+        writer = csv.writer(f)
+        header = ["X", "Y", "kind"]
+        writer.writerow(header)
+
+        # marker
+        if fgen.marker_a_loc.shape[0] != 0:
+            writer.writerow([fgen.marker_a_loc[0][0], fgen.marker_a_loc[0][1], "location_marker_a"])
+            writer.writerow([fgen.marker_b_loc[0][0], fgen.marker_b_loc[0][1], "location_marker_b"])
+
+        for elm in fgen.weed_placements:
+            writer.writerow([elm[0], elm[1], "weed"])
+
+        for elm in fgen.litter_placements:
+            writer.writerow([elm[0], elm[1], "litter"])
+
+        for elm in fgen.crop_placements:
+            writer.writerow([elm[0], elm[1], "crop"])
+
+    # save the start location in a launch file
     launch_path = os.path.join(pkg_path, "launch/robot_spawner.launch")
     with open(launch_path, "w") as launch_file:
-        string = '''<?xml version="1.0"?>
-        <launch>
-        <!-- Spawn Jackal -->
-        <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model"
-	    args="-urdf -model jackal -param robot_description -x %f -y %f -z %f -R 0 -P 0 -Y %f" /> 
-        </launch>''' % (float(fgen.start_loc[0][0]), float(fgen.start_loc[0][1]), 1, 1.5707963267948966)
-  
+        string = """<?xml version="1.0"?>
+<launch>
+    <!-- Spawn Robot -->
+    <arg name="robot_name" default="robot_model" />
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model"
+    args="-urdf -model jackal -param robot_description -x %f -y %f -z %f -R 0 -P 0 -Y %f" /> 
+</launch>""" % (
+            float(fgen.start_loc[0][0]) + np.random.rand() * 0.1 - 0.05,
+            float(fgen.start_loc[0][1]) + np.random.rand() * 0.1 - 0.05,
+            0.7,
+            1.5707963267948966 + np.random.rand() * 0.1 - 0.05,
+        )
+
         launch_file.write(string)

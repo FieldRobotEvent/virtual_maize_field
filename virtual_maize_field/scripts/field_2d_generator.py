@@ -4,7 +4,6 @@ import cv2
 import os
 import rospkg
 from matplotlib import pyplot as plt
-import matplotlib.patches as patches
 import shapely
 import shapely.geometry as geometry
 
@@ -30,9 +29,11 @@ class Field2DGenerator:
         plt.plot()
         plt.figure(figsize=(10, 10))
         plt.gca().axis("equal")
+        labels = []
 
         # crops
         plt.scatter(self.crop_placements[:, 0], self.crop_placements[:, 1], color="g", marker=".")
+        labels.append("crops")
 
         # weeds
         plt.scatter(
@@ -43,6 +44,7 @@ class Field2DGenerator:
             s=100,
             alpha=0.5,
         )
+        labels.append("weeds")
 
         # litter
         plt.scatter(
@@ -53,10 +55,11 @@ class Field2DGenerator:
             s=100,
             alpha=0.5,
         )
+        labels.append("litter")
 
         # start
         plt.scatter(
-            self.start_loc[:, 0], self.start_loc[:, 1], color="r", marker=".", alpha=0
+            self.start_loc[:, 0], self.start_loc[:, 1], color="g", marker=".", alpha=0
         )  # just to extend the axis of the plot
         plt.text(
             self.start_loc[:, 0],
@@ -93,6 +96,7 @@ class Field2DGenerator:
                 va="center",
             )
 
+        plt.legend(labels)
         self.minimap = plt
 
     def generate(self):
@@ -177,7 +181,7 @@ class Field2DGenerator:
             while i > 0:
                 if probs[i]:
                     hole_size = np.random.randint(1, self.wd.structure["params"]["hole_size_max"])
-                    row = np.delete(row, slice(max(0, i - hole_size), i), axis=0)
+                    row = np.delete(row, slice(max(1, i - hole_size), i), axis=0)
                     i = i - hole_size
 
                 i = i - 1
@@ -271,7 +275,6 @@ class Field2DGenerator:
                 ]
             ]
         )
-        self.start_type = np.array(["start"])
 
         # place location markers at the desginated locations
         if self.wd.structure["params"]["location_markers"]:
@@ -290,18 +293,10 @@ class Field2DGenerator:
             self.marker_types = np.array([])
 
         self.object_placements = np.concatenate(
-            (
-                self.weed_placements,
-                self.litter_placements,
-                self.marker_a_loc,
-                self.marker_b_loc,
-                self.start_loc,
-            )
+            (self.weed_placements, self.litter_placements, self.marker_a_loc, self.marker_b_loc)
         )
 
-        self.object_types = np.concatenate(
-            (self.weed_types, self.litter_types, self.marker_types, self.start_type)
-        )
+        self.object_types = np.concatenate((self.weed_types, self.litter_types, self.marker_types))
 
     def generate_ground(self):
         ditch_depth = self.wd.structure["params"]["ground_ditch_depth"]
