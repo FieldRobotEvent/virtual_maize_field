@@ -95,7 +95,7 @@ if __name__ == "__main__":
     <!-- Spawn Robot -->
     <arg name="robot_name" default="robot_model" />
     <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model"
-    args="-urdf -model jackal -param robot_description -x %f -y %f -z %f -R 0 -P 0 -Y %f" /> 
+    args="-urdf -model $(arg robot_name) -param robot_description -x %f -y %f -z %f -R 0 -P 0 -Y %f" /> 
 </launch>""" % (
             float(fgen.start_loc[0][0]) + np.random.rand() * 0.1 - 0.05,
             float(fgen.start_loc[0][1]) + np.random.rand() * 0.1 - 0.05,
