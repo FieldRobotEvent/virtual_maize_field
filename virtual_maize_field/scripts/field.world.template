@@ -75,11 +75,11 @@
                 <normal>file://media/materials/textures/flat_normal.png</normal>
                 <size>1</size>
               </texture>
-              <texture>
+              <!-- <texture>
                 <diffuse>file://materials/textures/grass_color.jpg</diffuse>
                 <normal>file://materials/textures/grass_normal.jpg</normal>
                 <size>4</size>
-              </texture>
+              </texture> -->
               <!-- Without this unused 3. texture the blend between the first 2 doesn't work -->
               <texture>
                 <diffuse>file://media/materials/textures/fungus_diffusespecular.png</diffuse>
@@ -90,10 +90,10 @@
                 <min_height>{{ heightmap.max_elevation }}</min_height>
                 <fade_dist>0.05</fade_dist>
               </blend>
-              <blend>
+              <!-- <blend>
                 <min_height>{{ heightmap.total_height - (heightmap.max_elevation / 2) }}</min_height>
                 <fade_dist>0.05</fade_dist>
-              </blend>
+              </blend> -->
               <!-- Without this unused 3. texture the blend between the first 2 doesn't work -->
               <blend>
                 <min_height>4</min_height>
