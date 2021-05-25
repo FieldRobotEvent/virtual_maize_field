@@ -31,11 +31,10 @@ def compute_score(gt, pred):
     best_gt_matches = []
     best_pred_matches = []
     best_dist = []
-    
-    
+
     # make gt and pred equally long, by adding additional samples far outside the field
-    # only use the permute of on of the arrays. 
-    # or remove duplicates. 
+    # only use the permute of on of the arrays.
+    # or remove duplicates.
 
     # TODO make this more efficient, as the timecomplexity is now quadratic
     # comparing all possible orders of gt objects and pred objects to maximize the score
@@ -204,9 +203,8 @@ def read_dict(f_path):
                     xy = np.array([[float(line[0]), float(line[1])]])
                     objects[line[2]] = np.concatenate((objects[line[2]], xy))
         except:
-            print('Something is wrong with %s' % f_path)
-            print('Probably there is an empty line in your file')
-                        
+            print("Something is wrong with %s" % f_path)
+            print("Probably there is an empty line in your file")
 
     return objects
 
