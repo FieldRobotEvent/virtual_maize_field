@@ -24,7 +24,6 @@ def point_score(a, b):
         score = max(0, (15.56 - 28.17 * dist))
     else:
         score = -5
-    
 
     return score, dist
 
@@ -54,7 +53,7 @@ def compute_score(gt, pred):
                     gt_matches.append(g[i])
                     pred_matches.append(p[i])
                     dist.append(curr_dist)
-            
+
             # add penalty for additional fp
             if len(p) > len(g):
                 fp = len(p) - len(g)
