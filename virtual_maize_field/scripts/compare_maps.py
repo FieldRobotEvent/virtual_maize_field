@@ -19,9 +19,12 @@ def point_score(a, b):
 
     dist = np.sqrt(np.square(a[0] - b[0]) + np.square(a[1] - b[1]))
     if dist <= 0.02:
-        score = 10
+        score = 15
+    elif dist <= 0.375:
+        score = max(0, (15.56 - 28.17 * dist))
     else:
-        score = max(0, (10.56 - 28.17 * dist))
+        score = -5
+    
 
     return score, dist
 
@@ -46,11 +49,16 @@ def compute_score(gt, pred):
             dist = []
             for i in range(min(len(g), len(p))):
                 curr_score, curr_dist = point_score(g[i], p[i])
+                score += curr_score
                 if curr_score > 0:
-                    score += curr_score
                     gt_matches.append(g[i])
                     pred_matches.append(p[i])
                     dist.append(curr_dist)
+            
+            # add penalty for additional fp
+            if len(p) > len(g):
+                fp = len(p) - len(g)
+                score -= fp * 5
 
             # TODO there is currently no penalty for false positives
             if score > best_score:
