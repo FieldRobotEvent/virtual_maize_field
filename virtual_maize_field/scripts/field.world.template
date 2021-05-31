@@ -24,6 +24,11 @@
       <real_time_update_rate>1000</real_time_update_rate>
     </physics>
     <scene>
+      <sky>
+        <clouds>
+          <speed>12</speed>
+        </clouds>
+      </sky>
       <ambient>0.4 0.4 0.4 1</ambient>
       <background>0.7 0.7 0.7 1</background>
       <shadows>1</shadows>
