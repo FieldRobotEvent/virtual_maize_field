@@ -16,31 +16,34 @@ from urdf_parser_py.urdf import URDF
 import time
 
 counter = 0
-robot_name = ''
+robot_name = ""
+
 
 def callback(data):
     global counter
     global robot_name
-    
+
     ms = gms(robot_name, "")
     ms.pose.position.z += 1
-        
-    name = 'marker_%d' %counter
+
+    name = "marker_%d" % counter
     counter += 1
     cont = create_marker(name, data.data)
-    
-    a = spawn_model(name, cont, "marker", ms.pose,"world")
+
+    a = spawn_model(name, cont, "marker", ms.pose, "world")
     print(a)
-    
+
+
 def listener():
-    print('Ready to spawn some detections')
+    print("Ready to spawn some detections")
     rospy.Subscriber("fre_detections", String, callback)
     rospy.spin()
-    
+
+
 def create_marker(name, kind):
 
-
-    cont = "<sdf version='1.6'>  \
+    cont = (
+        "<sdf version='1.6'>  \
 <model name='%s'> \
     <static>true</static> \
   <pose frame=''>0 0 0 0 0 0</pose> \
@@ -52,20 +55,22 @@ def create_marker(name, kind):
           <length>1</length> \
         </cylinder> \
       </geometry> \
-      <material> " %(name)
-      
-    if kind == 'weed':
+      <material> "
+        % (name)
+    )
+
+    if kind == "weed":
         cont += "<ambient>1.0 0.0 0.0 0.4</ambient> \
         <diffuse>1.0 0.0 0.0 0.4</diffuse> \
         <specular>1.0 0.0 0.0 0.4</specular> \
         <emissive>0.0 0.0 0.0 0.0</emissive>"
-    
-    elif kind == 'litter':
+
+    elif kind == "litter":
         cont += "<ambient>0.0 0.0 1.0 0.4</ambient> \
         <diffuse>0.0 0.0 1.0 0.4</diffuse> \
         <specular>0.0 0.0 1.0 0.4</specular> \
         <emissive>0.0 0.0 0.0 0.0</emissive>"
-    
+
     cont += "</material> \
     </visual> \
     <self_collide>0</self_collide> \
@@ -73,30 +78,29 @@ def create_marker(name, kind):
     <kinematic>0</kinematic> \
   </link> \
 </model> \
-    </sdf>" 
+    </sdf>"
 
     return cont
 
 
-
-if __name__ == '__main__':
-    rospy.init_node('detection_spawner', anonymous=True)
-    print('detection_spawner node started')
-    print('Wating for gazebo services')
+if __name__ == "__main__":
+    rospy.init_node("detection_spawner", anonymous=True)
+    print("detection_spawner node started")
+    print("Wating for gazebo services")
     rospy.wait_for_service("gazebo/spawn_sdf_model")
-    rospy.wait_for_service('/gazebo/get_model_state')
-    gms = rospy.ServiceProxy('/gazebo/get_model_state', GetModelState)
-    spawn_model  = rospy.ServiceProxy("gazebo/spawn_sdf_model", SpawnModel)
-    print('gazebo services started')
-    
+    rospy.wait_for_service("/gazebo/get_model_state")
+    gms = rospy.ServiceProxy("/gazebo/get_model_state", GetModelState)
+    spawn_model = rospy.ServiceProxy("gazebo/spawn_sdf_model", SpawnModel)
+    print("gazebo services started")
+
     has_printed = False
-    while not rospy.has_param('robot_description') and not rospy.is_shutdown():
+    while not rospy.has_param("robot_description") and not rospy.is_shutdown():
         if not has_printed:
             print("Waiting for the robot description in the param server")
             has_printed = True
-            
+
         time.sleep(0.5)
-        
+
     print("Found the robot description in the param server")
     robot_name = URDF.from_parameter_server().name
 
