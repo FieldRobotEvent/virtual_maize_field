@@ -1,7 +1,7 @@
 # Virtual Maize Field
 
 <p float="left" align="middle">
-  <img src="https://www.fieldrobot.com/event/wp-content/uploads/2021/01/FRE-logo-v02.png" width="250">
+  <img src="https://www.fieldrobot.com/event/wp-content/uploads/2021/01/FRE-logo-v03.png" width="250">
 </p>
 <p float="left" align="middle"> 
   <img src="https://www.wur.nl/upload/58340fb4-e33a-4d0b-af17-8d596fa93663_WUR_RGB_standard.png" width="250" style="margin: 10px;"> 
