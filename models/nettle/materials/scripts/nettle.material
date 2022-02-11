@@ -1,0 +1,16 @@
+material nettle_leaf
+{
+  technique
+  {
+    pass
+    {
+      alpha_rejection greater 128
+
+      texture_unit
+      {
+        texture nettle.png
+      }
+    }
+  }
+}
+

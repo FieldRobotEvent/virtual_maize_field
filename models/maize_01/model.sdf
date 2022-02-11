@@ -1,0 +1,55 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name='maize_01'>
+    <pose frame=''>0 0 0.05 0 -0 0</pose>
+    <link name='maize_01_link'>
+      <inertial>
+        <pose>0 0 0.01 0 0 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.0033416667</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0033416667</iyy>
+          <iyz>0</iyz>
+          <izz>0.000016666667</izz>
+        </inertia>
+        <pose>0 0 0.1 0 0 0</pose>
+      </inertial>
+      <collision name='collision'>
+        <pose>0 0 0.2 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.02 0.02 0.4</size>
+          </box>
+        </geometry>
+        <max_contacts>10</max_contacts>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <bounce/>
+          <friction>
+            <ode>
+              <mu>10</mu>
+              <mu2>10</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='visual'>
+        <geometry>
+          <mesh>
+            <uri>model://maize_01/meshes/maize_01.dae</uri>
+            <scale>0.5 0.5 0.5</scale>
+          </mesh>
+        </geometry>
+        <material>
+        </material>
+      </visual>
+      <self_collide>0</self_collide>
+      <enable_wind>0</enable_wind>
+      <kinematic>0</kinematic>
+    </link>
+  </model>
+</sdf>

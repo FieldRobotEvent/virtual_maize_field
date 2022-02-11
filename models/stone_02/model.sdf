@@ -1,0 +1,76 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name='Stone_02'>
+    <pose frame=''>0 0 0.2 0 -0 0</pose>
+    <!-- The model will move on its own, if it is not a static model.
+         I tried to fix this, but couldn't find a solution. -->
+    <static>true</static>
+    <allow_auto_disable>true</allow_auto_disable>
+    <link name='Stone_02_link'>
+      <inertial>
+        <!-- Volume: 0.071326 m^3, Density: ~2000 kg/m^3 -->
+        <mass>142</mass>
+        <!-- Inertia Tensor is :
+            |  0.003534   0.000463   0.000122 |
+            |  0.000463   0.001486  -0.000015 |
+            |  0.000122  -0.000015   0.004391 | -->
+        <inertia>
+          <ixx>0.003534</ixx>
+          <ixy>0.000463</ixy>
+          <ixz>0.000122</ixz>
+          <iyy>0.001486</iyy>
+          <iyz>-0.000015</iyz>
+          <izz>0.004391</izz>
+        </inertia>
+        <!-- Center of Mass  is 0.001732 0.073943 -0.017533 -->
+        <pose>0.001732 0.073943 -0.017533 0 0 0</pose>
+      </inertial>
+      <collision name='collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <!-- TODO: Better collision box. Maybe an ultra low poly rock. -->
+            <size>0.597647 1.000000 0.299114</size>
+          </box>
+        </geometry>
+        <max_contacts>10</max_contacts>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <bounce/>
+          <friction>
+            <ode>
+              <mu>10</mu>
+              <mu2>10</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://stone_02/meshes/stone_02.dae</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <!--<shader type="normal_map_object_space">
+          <shader type="normal_map_tangent_space">
+            <normal_map>model://stone_02/textures/stone_02_normal.jpg</normal_map>
+          </shader>-->
+          <pbr>
+            <metal>
+              <albedo_map>model://stone_02/textures/stone_02.jpg</albedo_map>
+              <normal_map type="tangent">model://stone_02/textures/stone_02_normal.jpg</normal_map>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <self_collide>0</self_collide>
+      <enable_wind>0</enable_wind>
+      <kinematic>0</kinematic>
+    </link>
+  </model>
+</sdf>

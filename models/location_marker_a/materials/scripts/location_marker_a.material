@@ -1,0 +1,33 @@
+material location_marker_a/qr_code
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        // Relative to the location of the material script
+        texture ../textures/location_marker_a.png
+        // Repeat the texture over the surface (1 per face)
+        scale 1 1
+      }
+    }
+  }
+}
+
+material location_marker_a/logo
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        // Relative to the location of the material script
+        texture ../textures/fre_logo.png
+        // Repeat the texture over the surface (1 per face)
+        scale 1 1
+      }
+    }
+  }
+}
