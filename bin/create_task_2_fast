@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 rosrun virtual_maize_field generate_world.py \
 --row_length 7 \
 --rows_left 0 \
