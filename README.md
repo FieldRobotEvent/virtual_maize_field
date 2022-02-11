@@ -4,7 +4,7 @@
   <img src="https://www.fieldrobot.com/event/wp-content/uploads/2021/01/FRE-logo-v03.png" width="250">
 </p>
 <p float="left" align="middle"> 
-  <img src="https://www.wur.nl/upload/58340fb4-e33a-4d0b-af17-8d596fa93663_WUR_RGB_standard.png" width="250" style="margin: 10px;"> 
+  <img src="https://seekvectorlogo.com/wp-content/uploads/2020/01/wageningen-university-and-research-wur-vector-logo.png" width="250" style="margin: 10px;"> 
   <img src="https://www.uni-hohenheim.de/typo3conf/ext/uni_layout/Resources/Public/Images/uni-logo-en.svg" width="250" style="margin: 10px;">
   <img src="https://kamaro-engineering.de/wp-content/uploads/2015/03/Kamaro_Logo-1.png" width="250" style="margin: 10px;">
 </p>
@@ -17,24 +17,18 @@
   This is a package to procedurally generate randomized fields with rows of plants for Gazebo.
 </p>
 
-![Screenshot of a generated map with maize plants and pumpkins](./misc/screenshot_v3.0.png)
+![Screenshot of a generated map with maize plants and pumpkins](./misc/screenshot_v4.0.png)
 
 ## Installation
-This package has been tested on `ROS melodic` and `ROS noetic`.
+This package has been tested on `ROS noetic`.
 
-Additional you'll need the following packages:
+Additional you'll need the following packages by:
 ```bash
-# melodic
-rosdep install virtual_maize_field
-sudo apt install python3-pip
-sudo pip3 install -U jinja2 rospkg opencv-python matplotlib shapely
-
-# noetic
 rosdep install virtual_maize_field
 ```
 
 ## Generating new maize field worlds
-This package includes a script (`scripts/generate_world.py`) that can generate randomized agricultural worlds. All parameters are optional and have default values. You can call the script using
+This package includes a script (`src/world_generator/generate_world.py`) that can generate randomized agricultural worlds. All parameters are optional and have default values. You can call the script using
 ```bash
 rosrun virtual_maize_field generate_world.py
 ```
