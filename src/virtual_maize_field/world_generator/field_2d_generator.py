@@ -376,10 +376,10 @@ class Field2DGenerator:
         heightmap = np.zeros((image_size, image_size))
 
         n = 0
-        while 2 ** n < image_size:
+        while 2**n < image_size:
             heightmap += (
                 cv2.resize(
-                    np.random.random((image_size // 2 ** n, image_size // 2 ** n)),
+                    np.random.random((image_size // 2**n, image_size // 2**n)),
                     (image_size, image_size),
                 )
                 * (n + 1) ** 2
@@ -405,7 +405,7 @@ class Field2DGenerator:
             return int(pos // self.resolution) + offset
 
         # Make plant placements flat and save the heights for the sdf renderer
-        PLANT_FOOTPRINT = (2 * 0.02 ** 2) ** 0.5
+        PLANT_FOOTPRINT = (2 * 0.02**2) ** 0.5
         flatspot_radius = int((PLANT_FOOTPRINT / 2) // self.resolution) + 2
 
         self.placements_ground_height = []
@@ -459,9 +459,9 @@ class Field2DGenerator:
             coordinate = dict()
             coordinate["type"] = m_type
             inertia = dict()
-            inertia["ixx"] = (mass * (3 * radius ** 2 + height ** 2)) / 12.0
-            inertia["iyy"] = (mass * (3 * radius ** 2 + height ** 2)) / 12.0
-            inertia["izz"] = (mass * radius ** 2) / 2.0
+            inertia["ixx"] = (mass * (3 * radius**2 + height**2)) / 12.0
+            inertia["iyy"] = (mass * (3 * radius**2 + height**2)) / 12.0
+            inertia["izz"] = (mass * radius**2) / 2.0
             coordinate["inertia"] = inertia
             coordinate["mass"] = mass
             coordinate["x"] = xy[0]

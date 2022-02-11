@@ -1,8 +1,6 @@
 from abc import ABC, abstractmethod
 
 import numpy as np
-
-# rendering
 from matplotlib import pyplot as plt
 from matplotlib.patches import Arc
 

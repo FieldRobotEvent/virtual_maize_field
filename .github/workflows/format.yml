@@ -1,19 +1,21 @@
-name: CI
+name: Lint
+on: [push, pull_request]
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-    
-  workflow_dispatch:
-  
 jobs:
-  format:
+  lint-black:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
+      - uses: rickstaa/action-black@v1
+        with:
+          black_args: ". --check"
+  
+  lint-isort:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - uses: isort/isort-action@master
 
-      - name: Python Lint (isort/black)
-        uses: wrboyce/python-lint-action@v1.0.0
