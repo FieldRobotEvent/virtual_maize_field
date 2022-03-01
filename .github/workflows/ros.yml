@@ -16,6 +16,18 @@ jobs:
         ros_distribution:
           - melodic
           - noetic
+        include:
+          # Melodic Morenia (May 2018 - May 2023)
+          - docker_image: ubuntu:bionic
+            ros_distribution: melodic
+            ros_version: 1
+
+          # Noetic Ninjemys (May 2020 - May 2025)
+          - docker_image: ubuntu:focal
+            ros_distribution: noetic
+            ros_version: 1
+    container:
+      image: ${{ matrix.docker_image }}
     steps:
       - uses: actions/checkout@v2
       - uses: ros-tooling/setup-ros@v0.2
