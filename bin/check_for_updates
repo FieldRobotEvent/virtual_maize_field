@@ -36,7 +36,7 @@ def remote_version_from_cache(cache_file: Path) -> version.Version | None:
 
 def remote_version_to_cache(cache_file: Path, version: version.Version) -> None:
     timestamp = datetime.now().strftime("%d-%b-%Y (%H:%M:%S.%f)")
-    cache_file.write_text(f"{timestamp}\n{version}")
+    cache_file.write_text(f"{timestamp}\n{version}", encoding="utf-8")
 
 
 if __name__ == "__main__":
