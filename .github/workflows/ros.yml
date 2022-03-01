@@ -1,0 +1,32 @@
+name: ROS
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ros_distribution:
+          - melodic
+          - noetic
+        include:
+          - docker_image: ubuntu:bionic
+            ros_distribution: melodic
+          - docker_image: ubuntu:focal
+            ros_distribution: noetic
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ros-tooling/setup-ros@v0.2
+        with:
+          required-ros-distributions: ${{ matrix.ros_distribution }}
+      - uses: ros-tooling/action-ros-ci@v0.2
+        with:
+          package-name: virtual_maize_field
+          target-ros1-distro: ${{ matrix.ros_distribution }}
