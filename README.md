@@ -21,10 +21,17 @@
 ![Screenshot of a generated map with maize plants and pumpkins](./misc/screenshot_v4.0.png)
 
 ## Installation
-This package has been tested on `ROS noetic`.
+This package has been tested on ROS melodic and ROS noetic.
 
-Additional you'll need the following packages by:
-```bash
+Additional you'll need the following packages:
+
+```commandline
+# melodic
+rosdep install virtual_maize_field
+sudo apt install python3-pip
+sudo pip3 install -U jinja2 rospkg opencv-python matplotlib shapely
+
+# noetic
 rosdep install virtual_maize_field
 ```
 
