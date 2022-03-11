@@ -192,19 +192,19 @@ class Field2DGenerator:
 
         # generate holes in the maize field
         self.rows = []
-        for row in self.crop_placements:
+        for index, row in zip(range(self.wd.rows_count), self.crop_placements):
             row = np.vstack(row)
 
             # generate indexes of the end of the hole
             probs = np.random.sample(row.shape[0])
-            probs = probs < self.wd.structure["params"]["hole_prob"]
+            probs = probs < self.wd.structure["params"]["hole_prob"][index]
 
             # iterate in reverse order, and remove plants in the holes
             i = probs.shape[0] - 1
             while i > 0:
                 if probs[i]:
                     hole_size = np.random.randint(
-                        1, self.wd.structure["params"]["hole_size_max"]
+                        1, self.wd.structure["params"]["hole_size_max"][index]
                     )
                     row = np.delete(row, slice(max(1, i - hole_size), i), axis=0)
                     i = i - hole_size

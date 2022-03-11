@@ -43,8 +43,8 @@ class WorldDescription:
         plant_radius_noise=0.05,
         plant_placement_error_max=0.02,
         plant_mass=0.3,
-        hole_prob=0.0,
-        hole_size_max=7,
+        hole_prob="0.06,0.06,0.04,0.04,0.0,0.0",
+        hole_size_max="7,5,5,3,0,0",
         crop_types=",".join(AVAILABLE_CROP_TYPES[1:]),
         litters=0,
         litter_types=",".join(AVAILABLE_LITTER_TYPES),
@@ -57,6 +57,10 @@ class WorldDescription:
     ):
 
         row_segments = row_segments.split(",")
+        hole_prob = self.unpack_param(rows_count, hole_prob)
+        hole_size_max = self.unpack_param(rows_count, hole_size_max)
+
+        # accept array or single param
 
         if seed == -1:
             seed = int(datetime.now().timestamp() * 1000) % 8192
@@ -70,6 +74,16 @@ class WorldDescription:
             self.load()
         else:
             self.random_description()
+
+    def unpack_param(self, rows, value):
+        if "," in str(value):
+            array = value.split(",")
+            if len(array) != rows:
+                raise argparse.ArgumentError(None,"List argument must either be scalar or have one value for each row. See row_count.")
+        else:
+            array = [value] * rows
+        array = list(map(float, array))
+        return array
 
     def random_description(self):
         self.structure = dict()
