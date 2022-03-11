@@ -21,8 +21,7 @@ class WorldDescription:
         row_length=12.0,
         rows_curve_budget=np.pi / 2,
         row_width=0.75,
-        rows_left=2,
-        rows_right=2,
+        rows_count=6,
         row_segments=",".join(AVAILABLE_SEGMENTS[:2]),
         row_segment_straight_length_min=1,
         row_segment_straight_length_max=2.5,
@@ -153,7 +152,7 @@ class WorldDescription:
 
                 current_row_length += (
                     arc_measure
-                    * ((self.rows_left + self.rows_right) * self.row_width + radius)
+                    * (self.rows_count * self.row_width + radius)
                     / 2
                 )
                 current_curve = arc_measure if not curve_dir else -arc_measure
@@ -167,7 +166,7 @@ class WorldDescription:
                     )
                     + self.row_segment_island_radius_min
                 )
-                island_row = np.random.randint(self.rows_left + self.rows_right - 1) + 1
+                island_row = np.random.randint(self.rows_count - 1) + 1
 
                 segment = {
                     "type": "island",
