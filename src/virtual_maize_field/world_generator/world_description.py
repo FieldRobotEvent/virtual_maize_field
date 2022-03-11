@@ -151,9 +151,7 @@ class WorldDescription:
                 }
 
                 current_row_length += (
-                    arc_measure
-                    * (self.rows_count * self.row_width + radius)
-                    / 2
+                    arc_measure * (self.rows_count * self.row_width + radius) / 2
                 )
                 current_curve = arc_measure if not curve_dir else -arc_measure
 
