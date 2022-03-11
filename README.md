@@ -37,7 +37,9 @@ rosdep install virtual_maize_field
 ```
 
 ## Generating new maize field worlds
-This package includes a script (`src/world_generator/generate_world.py`) that can generate randomized agricultural worlds. All parameters are optional and have default values. You can call the script using
+This package includes a script (`src/world_generator/generate_world.py`) that can generate randomized agricultural worlds. All parameters are optional and have default values. All comma separated arguments can be scaler as well. 
+
+You can call the script using
 ```bash
 rosrun virtual_maize_field generate_world.py
 ```
@@ -47,12 +49,13 @@ usage: generate_world.py [-h] [--row_length ROW_LENGTH] [--rows_curve_budget ROW
                          [--row_segment_straight_length_min ROW_SEGMENT_STRAIGHT_LENGTH_MIN] [--row_segment_straight_length_max ROW_SEGMENT_STRAIGHT_LENGTH_MAX]
                          [--row_segment_curved_radius_min ROW_SEGMENT_CURVED_RADIUS_MIN] [--row_segment_curved_radius_max ROW_SEGMENT_CURVED_RADIUS_MAX]
                          [--row_segment_curved_arc_measure_min ROW_SEGMENT_CURVED_ARC_MEASURE_MIN] [--row_segment_curved_arc_measure_max ROW_SEGMENT_CURVED_ARC_MEASURE_MAX]
-                         [--row_segment_island_radius_min ROW_SEGMENT_ISLAND_RADIUS_MIN] [--row_segment_island_radius_max ROW_SEGMENT_ISLAND_RADIUS_MAX] [--ground_resolution GROUND_RESOLUTION]
-                         [--ground_elevation_max GROUND_ELEVATION_MAX] [--ground_headland GROUND_HEADLAND] [--ground_ditch_depth GROUND_DITCH_DEPTH] [--plant_spacing_min PLANT_SPACING_MIN]
-                         [--plant_spacing_max PLANT_SPACING_MAX] [--plant_height_min PLANT_HEIGHT_MIN] [--plant_height_max PLANT_HEIGHT_MAX] [--plant_radius PLANT_RADIUS]
-                         [--plant_radius_noise PLANT_RADIUS_NOISE] [--plant_placement_error_max PLANT_PLACEMENT_ERROR_MAX] [--plant_mass PLANT_MASS] [--hole_prob HOLE_PROB] [--hole_size_max HOLE_SIZE_MAX]
-                         [--crop_types CROP_TYPES] [--litters LITTERS] [--litter_types LITTER_TYPES] [--weeds WEEDS] [--weed_types WEED_TYPES] [--ghost_objects GHOST_OBJECTS] [--location_markers LOCATION_MARKERS] [--load_from_file LOAD_FROM_FILE]
-                         [--seed SEED]
+                         [--row_segment_island_radius_min ROW_SEGMENT_ISLAND_RADIUS_MIN] [--row_segment_island_radius_max ROW_SEGMENT_ISLAND_RADIUS_MAX]
+                         [--ground_resolution GROUND_RESOLUTION] [--ground_elevation_max GROUND_ELEVATION_MAX] [--ground_headland GROUND_HEADLAND]
+                         [--ground_ditch_depth GROUND_DITCH_DEPTH] [--plant_spacing_min PLANT_SPACING_MIN] [--plant_spacing_max PLANT_SPACING_MAX]
+                         [--plant_height_min PLANT_HEIGHT_MIN] [--plant_height_max PLANT_HEIGHT_MAX] [--plant_radius PLANT_RADIUS] [--plant_radius_noise PLANT_RADIUS_NOISE]
+                         [--plant_placement_error_max PLANT_PLACEMENT_ERROR_MAX] [--plant_mass PLANT_MASS] [--hole_prob HOLE_PROB] [--hole_size_max HOLE_SIZE_MAX]
+                         [--crop_types CROP_TYPES] [--litters LITTERS] [--litter_types LITTER_TYPES] [--weeds WEEDS] [--weed_types WEED_TYPES] [--ghost_objects GHOST_OBJECTS]
+                         [--location_markers LOCATION_MARKERS] [--load_from_file LOAD_FROM_FILE] [--seed SEED]
 
 Generate a virtual maize field world for gazebo
 
@@ -109,9 +112,9 @@ optional arguments:
   --plant_mass PLANT_MASS
                         default_value: 0.3
   --hole_prob HOLE_PROB
-                        default_value: 0.0
+                        default_value: 0.06,0.06,0.04,0.04,0.0,0.0
   --hole_size_max HOLE_SIZE_MAX
-                        default_value: 7
+                        default_value: 7,5,5,3,0,0
   --crop_types CROP_TYPES
                         default_value: maize_01,maize_02
   --litters LITTERS     default_value: 0
@@ -123,7 +126,7 @@ optional arguments:
   --ghost_objects GHOST_OBJECTS
                         default_value: False
   --location_markers LOCATION_MARKERS
-			default_value: False
+                        default_value: False
   --load_from_file LOAD_FROM_FILE
                         default_value: None
   --seed SEED           default_value: -1
@@ -133,8 +136,8 @@ optional arguments:
 In the script folder, bash files to generate sample worlds are located. The parameters are chosen to match the task description from https://www.fieldrobot.com/event/index.php/contest/
 | Name | Parameters | Description |
 |:---- |:--------- |:----------- |
-| *create_task_1.sh* | `--row_length 10 --rows_count 11 --rows_curve_budget 0.78539816339 --row_segments straight,curved --row_segment_curved_radius_min 4.0 --row_segment_curved_radius_max 5.0` | Task 1, curved rows without holes |
-| *create_task_1_mini.sh* | `--row_length 5 --rows_count 5 --rows_curve_budget 0.78539816339 --row_segments straight,curved --row_segment_curved_radius_min 4.0 --row_segment_curved_radius_max 5.0` | A smaller version of task 1, requiring less computer power |
+| *create_task_1.sh* | `--row_length 10 --rows_count 11 --rows_curve_budget 0.78539816339 --row_segments straight,curved --row_segment_curved_radius_min 4.0 --row_segment_curved_radius_max 5.0 --hole_prob 0.0 --hole_size_max 7` | Task 1, curved rows without holes |
+| *create_task_1_mini.sh* | `--row_length 5 --rows_count 5 --rows_curve_budget 0.78539816339 --row_segments straight,curved --row_segment_curved_radius_min 4.0 --row_segment_curved_radius_max 5.0 --hole_prob 0.0 --hole_size_max 7` | A smaller version of task 1, requiring less computer power |
 | *create_task_2.sh* | `--row_length 7 --rows_count 11 --row_segments straight --hole_prob 0.04 --hole_size_max 7` | Task 2, straight rows with holes |
 | *create_task_2_mini.sh* | `--row_length 3.5 --rows_count 7 --row_segments straight --hole_prob 0.04 --hole_size_max 7` | A smaller version of task 2, requiring less computer power |
 | *create_task_3.sh* | `--row_length 7 --rows_count 11 --row_segments straight --hole_prob 0.04 --hole_size_max 7 --litters 5 --weeds 5 --ghost_objects true --location_markers true` | Task 3, similar crop rows as in task_2 but with cans, bottles and weeds spread throughout the field. The cans, bottles and weeds have no collision box and are static. |
