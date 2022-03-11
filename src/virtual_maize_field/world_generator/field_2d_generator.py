@@ -134,23 +134,25 @@ class Field2DGenerator:
 
     def chain_segments(self):
         # Generate start points
-        rows = self.wd.rows_left + self.wd.rows_right
-        x_start = (
-            -self.wd.row_width / 2 - self.wd.row_width * (self.wd.rows_left - 1)
-            if self.wd.rows_left > 0
-            else self.wd.row_width / 2
-        )
-        x_end = (
-            self.wd.row_width / 2 + self.wd.row_width * (self.wd.rows_right - 1)
-            if self.wd.rows_right > 0
-            else -self.wd.row_width / 2
-        )
-        current_p = np.array([np.linspace(x_start, x_end, rows), np.repeat(0, rows)]).T
+        x_start = 0
+        x_end = self.wd.rows_count * self.wd.row_width
+        
+        # x_start = (
+        #     -self.wd.row_width / 2 - self.wd.row_width * (self.wd.rows_left - 1)
+        #     if self.wd.rows_left > 0
+        #     else self.wd.row_width / 2
+        # )
+        # x_end = (
+        #     self.wd.row_width / 2 + self.wd.row_width * (self.wd.rows_right - 1)
+        #     if self.wd.rows_right > 0
+        #     else -self.wd.row_width / 2
+        # )
+        current_p = np.array([np.linspace(x_start, x_end, self.wd.rows_count), np.repeat(0, self.wd.rows_count)]).T
         current_dir = [0, 1]
 
         # Placement parameters
         offset = None
-        self.crop_placements = [[] for _ in range(rows)]
+        self.crop_placements = [[] for _ in range(self.wd.rows_count)]
 
         # Chain all segments from the world description
         self.segments = []
