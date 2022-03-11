@@ -79,7 +79,10 @@ class WorldDescription:
         if "," in str(value):
             array = value.split(",")
             if len(array) != rows:
-                raise argparse.ArgumentError(None,"List argument must either be scalar or have one value for each row. See row_count.")
+                raise argparse.ArgumentError(
+                    None,
+                    "List argument must either be scalar or have one value for each row. See row_count.",
+                )
         else:
             array = [value] * rows
         array = list(map(float, array))
