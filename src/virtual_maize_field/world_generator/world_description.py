@@ -52,6 +52,7 @@ class WorldDescription:
         weed_types=",".join(AVAILABLE_WEED_TYPES),
         ghost_objects=False,
         location_markers=False,
+        driving_pattern=False,
         load_from_file=None,
         seed=-1,
     ):
@@ -67,8 +68,6 @@ class WorldDescription:
 
         for k, v in locals().items():
             self.__setattr__(k, v)
-
-        np.random.seed(self.seed)
 
         if self.load_from_file is not None:
             self.load()
