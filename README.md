@@ -135,10 +135,11 @@ optional arguments:
 ## Sample Worlds
 In the [bin folder](bin/), bash files to generate sample worlds are located. The parameters are chosen to match [the task description](https://www.fieldrobot.com/event/index.php/contest/)
 
-Worlds for the FRE2022:
+Worlds for the Field Robot Event 2022:
 | Name | Description |
 |:---- |:----------- |
-| *fre22_task_1* | Task 1, curved rows that get more difficult (eg. have more and larger holes) to the left |
+| *fre22_task_navigation* | Task navigation, curved rows that get more difficult (eg. have more and larger holes) to the left |
+| *fre22_task_mapping* | Task mapping, field with random holes, bottles and weeds spread throughout the field. The cans, bottles and weeds have no collision box and are static. |
 
 Other sample Worlds:
 | Name | Description |
