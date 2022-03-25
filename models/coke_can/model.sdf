@@ -17,10 +17,9 @@
       <collision name="collision">
         <pose>0 0 0.065 0 0 0</pose>
         <geometry>
-          <cylinder>
-            <radius>0.033000</radius>
-            <length>0.12000</length>
-          </cylinder>
+          <box>
+            <size>0.050 0.050 0.12</size>
+          </box>
         </geometry>
         <surface>
           <friction>

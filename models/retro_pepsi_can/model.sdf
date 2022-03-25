@@ -19,10 +19,9 @@
       <collision name='collision'>
         <pose>0 0 0 0 0 0</pose>
         <geometry>
-          <cylinder>
-            <radius>0.033100</radius>
-            <length>0.115000</length>
-          </cylinder>
+          <box>
+            <size>0.050 0.050 0.115</size>
+          </box>
         </geometry>
         <max_contacts>10</max_contacts>
 	<surface>

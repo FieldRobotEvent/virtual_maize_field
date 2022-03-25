@@ -1,4 +1,4 @@
-<?xml version="1.0" ?>
+<?xml version="1.0"?>
 <sdf version="1.5">
   <model name="beer">
     <link name="link">
@@ -16,10 +16,9 @@
       </inertial>
       <collision name="collision">
         <geometry>
-          <cylinder>
-            <radius>0.035000</radius>
-            <length>0.150000</length>
-          </cylinder>
+          <box>
+            <size>0.050 0.050 0.15</size>
+          </box>
         </geometry>
       </collision>
       <visual name="visual">
