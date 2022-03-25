@@ -535,9 +535,17 @@ class Field2DGenerator:
         n_easy_turns = self.wd.rows_count // 2 - 1
         current_row = 0
 
-        for i in len(range(n_easy_turns)):
+        for i in range(n_easy_turns):
             pattern.append("1L" if i % 2 == 1 else "1R")
             current_row += 1
 
+        # while len(pattern) - 3 < max_turns:
+        #     rows_to_skip = np.random.randint(1, 4)
+
+
+
+
         pattern.append("F")
         self.driving_pattern = " - ".join(pattern)
+
+        print(self.driving_pattern)
