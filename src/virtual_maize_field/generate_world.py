@@ -13,14 +13,6 @@ import rospkg
 from virtual_maize_field.world_generator.field_2d_generator import Field2DGenerator
 from virtual_maize_field.world_generator.world_description import WorldDescription
 
-SPAWNER_LAUNCH_FILE = """<?xml version="1.0"?>
-<launch>
-    <!-- Spawn Robot -->
-    <arg name="robot_name" default="robot_model" />
-    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model"
-    args="-urdf -model $(arg robot_name) -param robot_description -x {x} -y {y} -z {z} -R 0 -P 0 -Y {yaw}" /> 
-</launch>"""
-
 if __name__ == "__main__":
     # get the possible arguments of the generator and default values
     argspec = inspect.getfullargspec(WorldDescription.__init__)
@@ -58,7 +50,7 @@ if __name__ == "__main__":
     )
     cv2.imwrite(heightmap_path, fgen.heightmap)
 
-    # clear the Gazebo cache for old heightmap
+    # clear the gazbeo cache for old heightmap
     home_dir = os.path.expanduser("~")
     gazebo_cache_pkg = os.path.join(
         home_dir, ".gazebo/paging/virtual_maize_field_heightmap"
@@ -80,8 +72,6 @@ if __name__ == "__main__":
             writer.writerow(
                 [fgen.marker_a_loc[0][0], fgen.marker_a_loc[0][1], "location_marker_a"]
             )
-
-        if fgen.marker_b_loc.shape[0] != 0:
             writer.writerow(
                 [fgen.marker_b_loc[0][0], fgen.marker_b_loc[0][1], "location_marker_b"]
             )
@@ -98,8 +88,6 @@ if __name__ == "__main__":
             writer.writerow(
                 [fgen.marker_a_loc[0][0], fgen.marker_a_loc[0][1], "location_marker_a"]
             )
-
-        if fgen.marker_b_loc.shape[0] != 0:
             writer.writerow(
                 [fgen.marker_b_loc[0][0], fgen.marker_b_loc[0][1], "location_marker_b"]
             )
@@ -116,11 +104,17 @@ if __name__ == "__main__":
     # save the start location in a launch file
     launch_path = os.path.join(pkg_path, "launch/robot_spawner.launch")
     with open(launch_path, "w") as launch_file:
-        launch_file.write(
-            SPAWNER_LAUNCH_FILE.format(
-                x=float(fgen.start_loc[0][0]) + fgen.rng.random() * 0.1 - 0.05,
-                y=float(fgen.start_loc[0][1]) + fgen.rng.random() * 0.1 - 0.05,
-                z=0.7,
-                yaw=1.5707963267948966 + fgen.rng.random() * 0.1 - 0.05,
-            )
+        string = """<?xml version="1.0"?>
+<launch>
+    <!-- Spawn Robot -->
+    <arg name="robot_name" default="robot_model" />
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model"
+    args="-urdf -model $(arg robot_name) -param robot_description -x %f -y %f -z %f -R 0 -P 0 -Y %f" /> 
+</launch>""" % (
+            float(fgen.start_loc[0][0]) + np.random.rand() * 0.1 - 0.05,
+            float(fgen.start_loc[0][1]) + np.random.rand() * 0.1 - 0.05,
+            0.7,
+            1.5707963267948966 + np.random.rand() * 0.1 - 0.05,
         )
+
+        launch_file.write(string)

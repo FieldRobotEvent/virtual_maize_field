@@ -20,8 +20,7 @@ from virtual_maize_field.world_generator.world_description import WorldDescripti
 class Field2DGenerator:
     def __init__(self, world_description=WorldDescription()):
         self.wd = world_description
-
-        self.rng = np.random.default_rng(self.wd.structure["params"]["seed"])
+        np.random.seed(self.wd.structure["params"]["seed"])
 
     def render_matplotlib(self):
         # Segments
@@ -130,7 +129,6 @@ class Field2DGenerator:
         self.generate_ground()
         self.fix_gazebo()
         self.render_to_template()
-        self.create_driving_pattern()
         self.plot_field()
         return [self.sdf, self.heightmap]
 
@@ -194,18 +192,18 @@ class Field2DGenerator:
 
         # generate holes in the maize field
         self.rows = []
-        for index, row in enumerate(self.crop_placements):
+        for index, row in zip(range(self.wd.rows_count), self.crop_placements):
             row = np.vstack(row)
 
             # generate indexes of the end of the hole
-            probs = self.rng.random(row.shape[0])
+            probs = np.random.sample(row.shape[0])
             probs = probs < self.wd.structure["params"]["hole_prob"][index]
 
             # iterate in reverse order, and remove plants in the holes
             i = probs.shape[0] - 1
             while i > 0:
                 if probs[i]:
-                    hole_size = self.rng.integers(
+                    hole_size = np.random.randint(
                         1, self.wd.structure["params"]["hole_size_max"][index]
                     )
                     row = np.delete(row, slice(max(1, i - hole_size), i), axis=0)
@@ -254,8 +252,8 @@ class Field2DGenerator:
 
             while len(points) < num_points:
                 np_point = [
-                    self.rng.uniform(min_x, max_x),
-                    self.rng.uniform(min_y, max_y),
+                    np.random.uniform(min_x, max_x),
+                    np.random.uniform(min_y, max_y),
                 ]
                 random_point = shapely.geometry.Point(np_point)
                 if random_point.within(poly):
@@ -272,7 +270,7 @@ class Field2DGenerator:
             self.weed_placements = random_points_within(
                 self.field_poly, self.wd.structure["params"]["weeds"]
             )
-            self.weed_types = self.rng.choice(
+            self.weed_types = np.random.choice(
                 self.wd.structure["params"]["weed_types"].split(","),
                 self.wd.structure["params"]["weeds"],
             )
@@ -285,7 +283,7 @@ class Field2DGenerator:
             self.litter_placements = random_points_within(
                 self.field_poly, self.wd.structure["params"]["litters"]
             )
-            self.litter_types = self.rng.choice(
+            self.litter_types = np.random.choice(
                 self.wd.structure["params"]["litter_types"].split(","),
                 self.wd.structure["params"]["litters"],
             )
@@ -378,7 +376,7 @@ class Field2DGenerator:
         while 2**n < image_size:
             heightmap += (
                 cv2.resize(
-                    self.rng.random((image_size // 2**n, image_size // 2**n)),
+                    np.random.random((image_size // 2**n, image_size // 2**n)),
                     (image_size, image_size),
                 )
                 * (n + 1) ** 2
@@ -468,13 +466,13 @@ class Field2DGenerator:
             coordinate["z"] = ground_height
             coordinate["radius"] = (
                 radius
-                + (2 * self.rng.random() - 1)
+                + (2 * np.random.rand() - 1)
                 * self.wd.structure["params"]["plant_radius_noise"]
             )
             if coordinate["type"] == "cylinder":
                 coordinate["height"] = height
             coordinate["name"] = "{}_{:04d}".format(coordinate["type"], index)
-            coordinate["yaw"] = self.rng.random() * 2.0 * np.pi
+            coordinate["yaw"] = np.random.rand() * 2.0 * np.pi
             return coordinate
 
         # plant crops
@@ -485,7 +483,7 @@ class Field2DGenerator:
                 self.wd.structure["params"]["plant_radius"],
                 self.wd.structure["params"]["plant_height_min"],
                 self.wd.structure["params"]["plant_mass"],
-                self.rng.choice(self.wd.structure["params"]["crop_types"].split(",")),
+                np.random.choice(self.wd.structure["params"]["crop_types"].split(",")),
                 i,
             )
             for i, plant in enumerate(self.crop_placements)
@@ -527,25 +525,3 @@ class Field2DGenerator:
                 "total_height": self.heightmap_elevation,
             },
         )
-
-    def create_driving_pattern(self):
-        pattern = ["S"]
-
-        max_turns = self.wd.rows_count
-        n_easy_turns = self.wd.rows_count // 2 - 1
-        current_row = 0
-
-        for i in range(n_easy_turns):
-            pattern.append("1L" if i % 2 == 1 else "1R")
-            current_row += 1
-
-        # while len(pattern) - 3 < max_turns:
-        #     rows_to_skip = np.random.randint(1, 4)
-
-
-
-
-        pattern.append("F")
-        self.driving_pattern = " - ".join(pattern)
-
-        print(self.driving_pattern)
