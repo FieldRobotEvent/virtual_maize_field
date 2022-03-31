@@ -172,68 +172,10 @@
         <kinematic>0</kinematic>
       </link>
     </model>
-    {% elif coordinate.type == 'maize_01' %}
-    <!--maize_01-->
-    <include>
-      <uri>model://maize_01</uri>
-      <pose>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 -0 {{ coordinate.yaw }}</pose>
-      <scale>{{ 2*coordinate.radius }} {{ 2*coordinate.radius }} {{ 2*coordinate.radius }}</scale>
-      <name>{{ coordinate.name }}</name>
-    </include>
-    {% elif coordinate.type == 'maize_02' %}
-    <!--maize_02-->
-    <include>
-      <uri>model://maize_02</uri>
-      <pose>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 -0 {{ coordinate.yaw }}</pose>
-      <scale>{{ 2*coordinate.radius }} {{ 2*coordinate.radius }} {{ 2*coordinate.radius }}</scale>
-      <name>{{ coordinate.name }}</name>
-    </include>
-    {% elif coordinate.type == 'ale' %}
-    <!--ale-->
-    <include>
-      <uri>model://ale</uri>
-      <pose>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 1.5707963267948966 0 {{ coordinate.yaw }}</pose>
-      <name>{{ coordinate.name }}</name>
-    </include>
-    {% elif coordinate.type == 'beer' %}
-    <!--beer-->
-    <include>
-      <uri>model://beer</uri>
-      <pose>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 1.5707963267948966 0 {{ coordinate.yaw }}</pose>
-      <name>{{ coordinate.name }}</name>
-    </include>
-    {% elif coordinate.type == 'coke_can' %}
-    <!--coke_can-->
-    <include>
-      <uri>model://coke_can</uri>
-      <pose>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 1.5707963267948966 0 {{ coordinate.yaw }}</pose>
-      <name>{{ coordinate.name }}</name>
-    </include>
-    {% elif coordinate.type == 'retro_pepsi_can' %}
-    <!--retro_pepsi_can-->
-    <include>
-      <uri>model://retro_pepsi_can</uri>
-      <pose>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 1.5707963267948966 0 {{ coordinate.yaw }}</pose>
-      <name>{{ coordinate.name }}</name>
-    </include>
-    {% elif coordinate.type == 'nettle' %}
-    <!--nettle-->
-    <include>
-      <uri>model://nettle</uri>
-      <pose>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 0 {{ coordinate.yaw }}</pose>
-      <name>{{ coordinate.name }}</name>
-    </include>
-    {% elif coordinate.type == 'unknown_weed' %}
-    <!--unknown_weed-->
-    <include>
-      <uri>model://unknown_weed</uri>
-      <pose>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 0 {{ coordinate.yaw }}</pose>
-      <name>{{ coordinate.name }}</name>
-    </include>
     {% elif coordinate.type == 'ghost_ale' %}
     <!--ghost_ale-->
     <model name='{{ coordinate.name }}'>
-      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 1.5707963267948966 0 {{ coordinate.yaw }}</pose>
+      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 0 {{ coordinate.yaw }}</pose>
       <static>true</static>
       <link name='{{ coordinate.name }}_link'>
         <visual name='visual'>
@@ -252,7 +194,7 @@
     {% elif coordinate.type == 'ghost_beer' %}
     <!--ghost_beer-->
     <model name='{{ coordinate.name }}'>
-      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 1.5707963267948966 0 {{ coordinate.yaw }}</pose>
+      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 0 {{ coordinate.yaw }}</pose>
       <static>true</static>
       <link name='{{ coordinate.name }}_link'>
         <visual name="visual">
@@ -275,7 +217,7 @@
     {% elif coordinate.type == 'ghost_coke_can' %}
     <!--ghost_coke_can-->
     <model name='{{ coordinate.name }}'>
-      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 1.5707963267948966 0 {{ coordinate.yaw }}</pose>
+      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 0 {{ coordinate.yaw }}</pose>
       <static>true</static>
       <link name='{{ coordinate.name }}_link'>
         <visual name="visual">
@@ -291,7 +233,7 @@
     {% elif coordinate.type == 'ghost_retro_pepsi_can' %}
     <!--ghost_retro_pepsi_can-->
     <model name='{{ coordinate.name }}'>
-      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 1.5707963267948966 0 {{ coordinate.yaw }}</pose>
+      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 0 {{ coordinate.yaw }}</pose>
       <static>true</static>
       <link name='{{ coordinate.name }}_link'>
         <visual name='visual'>
@@ -367,6 +309,28 @@
       <pose>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 0 0</pose>
       <name>{{ coordinate.name }}</name>
       <static>true</static>
+    </include>
+    {% elif coordinate.type == 'maize_01' or coordinate.type == 'maize_02' %}
+    <!--{{coordinate.type}}-->
+    <include>
+      <uri>model://{{coordinate.type}}</uri>
+      <pose>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 0 {{ coordinate.yaw }}</pose>
+      <scale>{{ 2*coordinate.radius }} {{ 2*coordinate.radius }} {{ 2*coordinate.radius }}</scale>
+      <name>{{ coordinate.name }}</name>
+    </include>
+    {% elif coordinate.type == 'ale' or coordinate.type == 'beer' or coordinate.type == 'coke_can' or coordinate.type == 'retro_pepsi_can' %}
+    <!--{{coordinate.type}}-->
+    <include>
+      <uri>model://{{coordinate.type}}</uri>
+      <pose>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 1.5707963267948966 0 {{ coordinate.yaw }}</pose>
+      <name>{{ coordinate.name }}</name>
+    </include>
+    { % else % }
+    <!--{{coordinate.type}}-->
+    <include>
+      <uri>model://{{coordinate.type}}</uri>
+      <pose>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 0 {{ coordinate.yaw }}</pose>
+      <name>{{ coordinate.name }}</name>
     </include>
     {% endif %}
 {% endfor %}

@@ -2,7 +2,7 @@
 <sdf version='1.4'>
   <model name="beer">
     <link name='link'>
-      <pose>0 0 0.115 0 0 0</pose>
+      <pose>0 0 0.115 1.5707963267948966 0 0</pose>
       <inertial>
         <mass>0.390</mass>
         <inertia>

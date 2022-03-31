@@ -4,16 +4,13 @@ import argparse
 import inspect
 import json
 from datetime import datetime
-
+from world_generator import AVAILABLE_CROP_TYPES, AVAILABLE_LITTER_TYPES, AVAILABLE_OBSTACLES, AVAILABLE_WEED_TYPES
 import numpy as np
 
-AVAILABLE_CROP_TYPES = ["cylinder", "maize_01", "maize_02"]
-AVAILABLE_WEED_TYPES = ["nettle", "unknown_weed"]
-AVAILABLE_LITTER_TYPES = ["ale", "beer", "coke_can", "retro_pepsi_can"]
-AVAILABLE_OBSTACLES = ["box", "stone_01", "stone_02"]
 AVAILABLE_ILANDS = []
 AVAILABLE_SEGMENTS = ["straight", "curved", "island"]
 
+TODO: remove roll from litter objects sdf
 
 class WorldDescription:
     def __init__(
@@ -45,11 +42,11 @@ class WorldDescription:
         plant_mass=0.3,
         hole_prob="0.06,0.06,0.04,0.04,0.0,0.0",
         hole_size_max="7,5,5,3,0,0",
-        crop_types=",".join(AVAILABLE_CROP_TYPES[1:]),
+        crop_types=",".join(list(AVAILABLE_CROP_TYPES.keys())[1:]),
         litters=0,
-        litter_types=",".join(AVAILABLE_LITTER_TYPES),
+        litter_types=",".join(list(AVAILABLE_LITTER_TYPES.keys())),
         weeds=0,
-        weed_types=",".join(AVAILABLE_WEED_TYPES),
+        weed_types=",".join(list(AVAILABLE_WEED_TYPES.keys())),
         ghost_objects=False,
         location_markers=False,
         load_from_file=None,
@@ -59,6 +56,10 @@ class WorldDescription:
         row_segments = row_segments.split(",")
         hole_prob = self.unpack_param(rows_count, hole_prob)
         hole_size_max = self.unpack_param(rows_count, hole_size_max)
+
+        crop_types = [AVAILABLE_CROP_TYPES[ct] for ct in crop_types]
+        litter_types = [AVAILABLE_CROP_TYPES[ct] for ct in litter_types]
+        weed_types = [AVAILABLE_CROP_TYPES[ct] for ct in weed_types]
 
         # accept array or single param
 
