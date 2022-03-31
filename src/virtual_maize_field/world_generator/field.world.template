@@ -114,10 +114,9 @@
         </collision>
       </link>
     </model>
-    {% for coordinate in coordinates %}
-
-{% if coordinate.type == 'cylinder' %}
-    <!--cylinder-->
+    {% for coordinate in coordinates -%}
+    {% if coordinate.type == 'cylinder' -%}
+    {# Cylinder model #}
     <model name='{{ coordinate.name }}'>
       <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 -0 0</pose>
       <link name='{{ coordinate.name }}_link'>
@@ -170,170 +169,33 @@
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
-      </link>
+      </link>`
     </model>
-    {% elif coordinate.type == 'ghost_ale' %}
-    <!--ghost_ale-->
-    <model name='{{ coordinate.name }}'>
-      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 0 {{ coordinate.yaw }}</pose>
+    {# All ghost models have to be defined manually, since the SDF files already contains the collisions. #}
+    {% elif coordinate.ghost == true -%}
+    <model name='ghost_{{coordinate.name}}'>
+      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} {{ coordinate.roll }} {{ coordinate.pitch }} {{ coordinate.yaw }}</pose>
       <static>true</static>
       <link name='{{ coordinate.name }}_link'>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <uri>model://ale/meshes/ale.dae</uri>
-              <scale>1 1 1</scale>
-            </mesh>
-          </geometry>
-        </visual>
+        {{ coordinate.custom_visual -}}
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
     </model>
-    {% elif coordinate.type == 'ghost_beer' %}
-    <!--ghost_beer-->
-    <model name='{{ coordinate.name }}'>
-      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 0 {{ coordinate.yaw }}</pose>
-      <static>true</static>
-      <link name='{{ coordinate.name }}_link'>
-        <visual name="visual">
-          <geometry>
-            <cylinder>
-              <radius>0.035000</radius>
-              <length>0.150000</length>
-            </cylinder>
-          </geometry>
-          <material>
-            <script>
-              <uri>model://beer/materials/scripts</uri>
-              <uri>model://beer/materials/textures</uri>
-              <name>Beer/Diffuse</name>
-            </script>
-          </material>
-        </visual>
-      </link>
-    </model>
-    {% elif coordinate.type == 'ghost_coke_can' %}
-    <!--ghost_coke_can-->
-    <model name='{{ coordinate.name }}'>
-      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 0 {{ coordinate.yaw }}</pose>
-      <static>true</static>
-      <link name='{{ coordinate.name }}_link'>
-        <visual name="visual">
-          <pose>0.003937 0.0047244 -0.18 0 0 0</pose>
-          <geometry>
-            <mesh>
-              <uri>model://coke_can/meshes/coke_can.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-      </link>
-    </model>
-    {% elif coordinate.type == 'ghost_retro_pepsi_can' %}
-    <!--ghost_retro_pepsi_can-->
-    <model name='{{ coordinate.name }}'>
-      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 0 {{ coordinate.yaw }}</pose>
-      <static>true</static>
-      <link name='{{ coordinate.name }}_link'>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <uri>model://retro_pepsi_can/meshes/retro_pepsi_can.dae</uri>
-              <scale>1 1 1</scale>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-    </model>
-
-    <!--ghost_nettle-->
-    {% elif coordinate.type == 'ghost_nettle' %}
-    <model name='{{ coordinate.name }}'>
-      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 0 {{ coordinate.yaw }}</pose>
-      <static>true</static>
-      <link name='{{ coordinate.name }}_link'>
-        <visual name="visual">
-          <geometry>
-            <mesh>
-              <uri>model://nettle/meshes/nettle.dae</uri>
-            </mesh>
-          </geometry>
-          <material>
-            <script>
-              <uri>model://nettle/materials/scripts/</uri>
-              <uri>model://nettle/materials/textures/</uri>
-              <name>nettle_leaf</name>
-            </script>
-          </material>
-        </visual>
-      </link>
-    </model>
-    {% elif coordinate.type == 'ghost_unknown_weed' %}
-    <!--ghost_unknown_weed-->
-    <model name='{{ coordinate.name }}'>
-      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 0 {{ coordinate.yaw }}</pose>
-      <static>true</static>
-      <link name='{{ coordinate.name }}_link'>
-        <visual name="visual">
-          <geometry>
-            <mesh>
-              <uri>model://unknown_weed/meshes/unknown_weed.dae</uri>
-            </mesh>
-          </geometry>
-          <material>
-            <script>
-              <uri>model://unknown_weed/materials/scripts/</uri>
-              <uri>model://unknown_weed/materials/textures/</uri>
-              <name>unknown_weed_leaf</name>
-            </script>
-          </material>
-        </visual>
-      </link>
-    </model>
-    {% elif coordinate.type == 'location_marker_a' or coordinate.type == 'ghost_location_marker_a' %}
-    <!--location_marker_a-->
+    {# All other models can be included by using the SDF #}
+    {% else %}
     <include>
-      <uri>model://location_marker_a</uri>
-      <pose>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 0 0</pose>
-      <name>{{ coordinate.name }}</name>
-      <static>true</static>
-    </include>
-    {% elif coordinate.type == 'location_marker_b' or coordinate.type == 'ghost_location_marker_b' %}
-    <!--location_marker_b-->
-    <include>
-      <uri>model://location_marker_b</uri>
-      <pose>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 0 0</pose>
-      <name>{{ coordinate.name }}</name>
-      <static>true</static>
-    </include>
-    {% elif coordinate.type == 'maize_01' or coordinate.type == 'maize_02' %}
-    <!--{{coordinate.type}}-->
-    <include>
-      <uri>model://{{coordinate.type}}</uri>
-      <pose>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 0 {{ coordinate.yaw }}</pose>
+      <uri>model://{{ coordinate.type }}</uri>
+      <pose>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} {{ coordinate.roll }} {{ coordinate.pitch }} {{ coordinate.yaw }}</pose>
+      {% if coordinate.type == "maize_01" or coordinate.type == "maize_02" -%}
       <scale>{{ 2*coordinate.radius }} {{ 2*coordinate.radius }} {{ 2*coordinate.radius }}</scale>
+      {% endif -%}
       <name>{{ coordinate.name }}</name>
+      <static>{{ coordinate.static }}</static>
     </include>
-    {% elif coordinate.type == 'ale' or coordinate.type == 'beer' or coordinate.type == 'coke_can' or coordinate.type == 'retro_pepsi_can' %}
-    <!--{{coordinate.type}}-->
-    <include>
-      <uri>model://{{coordinate.type}}</uri>
-      <pose>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 1.5707963267948966 0 {{ coordinate.yaw }}</pose>
-      <name>{{ coordinate.name }}</name>
-    </include>
-    { % else % }
-    <!--{{coordinate.type}}-->
-    <include>
-      <uri>model://{{coordinate.type}}</uri>
-      <pose>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 0 {{ coordinate.yaw }}</pose>
-      <name>{{ coordinate.name }}</name>
-    </include>
-    {% endif %}
-{% endfor %}
+    {% endif -%}
+{% endfor -%}
     <gui fullscreen='0'>
       <camera name='user_camera'>
         <pose frame=''>5.45099 -4.71679 1.58055 0 0.275643 2.35619</pose>

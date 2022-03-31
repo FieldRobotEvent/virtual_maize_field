@@ -4,13 +4,19 @@ import argparse
 import inspect
 import json
 from datetime import datetime
-from world_generator import AVAILABLE_CROP_TYPES, AVAILABLE_LITTER_TYPES, AVAILABLE_OBSTACLES, AVAILABLE_WEED_TYPES
+
 import numpy as np
+
+from virtual_maize_field.world_generator import (
+    AVAILABLE_CROP_TYPES,
+    AVAILABLE_LITTER_TYPES,
+    AVAILABLE_OBSTACLES,
+    AVAILABLE_WEED_TYPES,
+)
 
 AVAILABLE_ILANDS = []
 AVAILABLE_SEGMENTS = ["straight", "curved", "island"]
 
-TODO: remove roll from litter objects sdf
 
 class WorldDescription:
     def __init__(
@@ -42,7 +48,7 @@ class WorldDescription:
         plant_mass=0.3,
         hole_prob="0.06,0.06,0.04,0.04,0.0,0.0",
         hole_size_max="7,5,5,3,0,0",
-        crop_types=",".join(list(AVAILABLE_CROP_TYPES.keys())[1:]),
+        crop_types=",".join(list(AVAILABLE_CROP_TYPES.keys())),
         litters=0,
         litter_types=",".join(list(AVAILABLE_LITTER_TYPES.keys())),
         weeds=0,
@@ -56,10 +62,6 @@ class WorldDescription:
         row_segments = row_segments.split(",")
         hole_prob = self.unpack_param(rows_count, hole_prob)
         hole_size_max = self.unpack_param(rows_count, hole_size_max)
-
-        crop_types = [AVAILABLE_CROP_TYPES[ct] for ct in crop_types]
-        litter_types = [AVAILABLE_CROP_TYPES[ct] for ct in litter_types]
-        weed_types = [AVAILABLE_CROP_TYPES[ct] for ct in weed_types]
 
         # accept array or single param
 
