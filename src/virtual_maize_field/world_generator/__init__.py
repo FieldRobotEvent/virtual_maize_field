@@ -15,7 +15,7 @@ class GazeboModel:
     default_pitch: float = 0.0
     default_yaw: float = 0.0
     static: bool = False
-    marker: bool = False
+    ghostable: bool = True
     random_yaw: bool = True
 
     __model_visual: str | None = None
@@ -64,10 +64,10 @@ AVAILABLE_OBSTACLES = {
 
 AVAILABLE_MARKERS = {
     "location_marker_a": GazeboModel(
-        "location_marker_a", static=True, marker=True, random_yaw=False
+        "location_marker_a", static=True, ghostable=False, random_yaw=False
     ),
     "location_marker_b": GazeboModel(
-        "location_marker_b", static=True, marker=True, random_yaw=False
+        "location_marker_b", static=True, ghostable=False, random_yaw=False
     ),
 }
 

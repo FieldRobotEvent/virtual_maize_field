@@ -463,7 +463,7 @@ class Field2DGenerator:
             coordinate["name"] = f"{m_type}_{index:04d}"
             coordinate["static"] = str(model.static).lower()
 
-            if ghost and not model.marker:
+            if ghost and model.ghostable:
                 coordinate["ghost"] = ghost
                 coordinate["custom_visual"] = model.get_model_visual()
 
