@@ -8,7 +8,11 @@ import shapely.geometry as geometry
 from matplotlib import pyplot as plt
 
 from virtual_maize_field import world_generator
-from virtual_maize_field.world_generator import AVAILABLE_MODELS
+from virtual_maize_field.world_generator import (
+    AVAILABLE_CROP_TYPES,
+    AVAILABLE_MODELS,
+    get_maize_models_by_days,
+)
 from virtual_maize_field.world_generator.row_segments import (
     CurvedSegment,
     IslandSegment,
@@ -453,10 +457,12 @@ class Field2DGenerator:
         self.heightmap_position = [0, 0]
 
     def render_to_template(self):
+        available_models = AVAILABLE_MODELS
+
         def into_dict(
             xy, ground_height, radius, height, mass, m_type, index, ghost=False
         ):
-            model = AVAILABLE_MODELS[m_type]
+            model = available_models[m_type]
 
             coordinate = dict()
             coordinate["type"] = model.model_name
@@ -496,6 +502,13 @@ class Field2DGenerator:
             return coordinate
 
         # plant crops
+        crop_types = self.wd.structure["params"]["crop_types"].split(",")
+        if "generated" in self.wd.structure["params"]["crop_types"]:
+            models = get_maize_models_by_days(self.wd.structure["params"]["crop_age"])
+            crop_types.remove("generated")
+            crop_types.extend(list(models.keys()))
+            available_models.update(models)
+
         coordinates = [
             into_dict(
                 plant,
@@ -503,7 +516,7 @@ class Field2DGenerator:
                 self.wd.structure["params"]["plant_radius"],
                 self.wd.structure["params"]["plant_height_min"],
                 self.wd.structure["params"]["plant_mass"],
-                np.random.choice(self.wd.structure["params"]["crop_types"].split(",")),
+                np.random.choice(crop_types),
                 i,
             )
             for i, plant in enumerate(self.crop_placements)

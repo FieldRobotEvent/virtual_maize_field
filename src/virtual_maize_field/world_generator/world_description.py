@@ -49,6 +49,7 @@ class WorldDescription:
         hole_prob="0.06,0.06,0.04,0.04,0.0,0.0",
         hole_size_max="7,5,5,3,0,0",
         crop_types=",".join(list(AVAILABLE_CROP_TYPES.keys())),
+        crop_age="50,55,60",
         litters=0,
         litter_types=",".join(list(AVAILABLE_LITTER_TYPES.keys())),
         weeds=0,
@@ -58,7 +59,7 @@ class WorldDescription:
         load_from_file=None,
         seed=-1,
     ):
-
+        crop_age = crop_age.split(",")
         row_segments = row_segments.split(",")
         hole_prob = self.unpack_param(rows_count, hole_prob)
         hole_size_max = self.unpack_param(rows_count, hole_size_max)
@@ -109,6 +110,7 @@ class WorldDescription:
             "hole_prob": self.hole_prob,
             "hole_size_max": self.hole_size_max,
             "crop_types": self.crop_types,
+            "crop_age": self.crop_age,
             "litter_types": self.litter_types,
             "litters": self.litters,
             "weed_types": self.weed_types,
