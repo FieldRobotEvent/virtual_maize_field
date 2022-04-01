@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 rosrun virtual_maize_field generate_world.py \
+--crop_types generated \
 --row_length 3.5 \
 --rows_count 7 \
 --row_segments straight \

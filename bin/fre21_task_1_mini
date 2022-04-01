@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 rosrun virtual_maize_field generate_world.py \
+--crop_types maize_01,maize_02 \
 --row_length 5 \
 --rows_count 5 \
 --rows_curve_budget 0.78539816339 \

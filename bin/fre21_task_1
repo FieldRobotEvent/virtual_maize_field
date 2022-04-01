@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 rosrun virtual_maize_field generate_world.py \
+--crop_types maize_01,maize_02 \
 --row_length 10 \
 --rows_count 11 \
 --rows_curve_budget 0.78539816339 \
@@ -8,4 +9,4 @@ rosrun virtual_maize_field generate_world.py \
 --row_segment_curved_radius_min 4.0 \
 --row_segment_curved_radius_max 5.0 \
 --hole_prob 0.0 \
---hole_size_max 7
+--hole_size_max 7 
