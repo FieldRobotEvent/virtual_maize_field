@@ -8,11 +8,7 @@ import shapely.geometry as geometry
 from matplotlib import pyplot as plt
 
 from virtual_maize_field import world_generator
-from virtual_maize_field.world_generator import (
-    AVAILABLE_CROP_TYPES,
-    AVAILABLE_MODELS,
-    get_maize_models_by_days,
-)
+from virtual_maize_field.world_generator import AVAILABLE_MODELS, GeneratedGazeboModels
 from virtual_maize_field.world_generator.row_segments import (
     CurvedSegment,
     IslandSegment,
@@ -503,11 +499,14 @@ class Field2DGenerator:
 
         # plant crops
         crop_types = self.wd.structure["params"]["crop_types"].split(",")
-        if "generated" in self.wd.structure["params"]["crop_types"]:
-            models = get_maize_models_by_days(self.wd.structure["params"]["crop_age"])
-            crop_types.remove("generated")
-            crop_types.extend(list(models.keys()))
-            available_models.update(models)
+        for ct in crop_types:
+            if isinstance(available_models[ct], GeneratedGazeboModels):
+                models = available_models[ct].get_models_by_age(
+                    self.wd.structure["params"]["crop_age"]
+                )
+                available_models.update(models)
+                crop_types.remove(ct)
+                crop_types.extend(list(models.keys()))
 
         coordinates = [
             into_dict(

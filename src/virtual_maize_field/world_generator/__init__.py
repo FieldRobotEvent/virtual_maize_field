@@ -39,27 +39,31 @@ class GazeboModel:
         return self.__model_visual
 
 
-def get_maize_models_by_days(days: list[int]) -> list[GazeboModel]:
-    models_folder = Path(__file__).parents[3] / "maize_models"
-    assert models_folder.is_dir(), "Cannot find generated maize models!"
+@dataclass
+class GeneratedGazeboModels:
+    model_regex: str
 
-    maize_models = {}
+    def get_models_by_age(self, days: list[int]) -> dict[str, GazeboModel]:
+        models_folder = Path(__file__).parents[3] / "generated_models"
+        assert models_folder.is_dir(), "Cannot find generated maize models!"
 
-    for model_folder in models_folder.glob("*"):
-        result = search(f"maize_([0-9]+)_day_([0-9]+)", model_folder.stem)
-        _, model_days = result.groups()
+        maize_models = {}
 
-        if int(model_days) in map(int, days):
-            maize_models[model_folder.name] = GazeboModel(model_folder.stem)
+        for model_folder in models_folder.glob(self.model_regex):
+            result = search(f"maize_([0-9]+)_day_([0-9]+)", model_folder.stem)
+            _, model_days = result.groups()
 
-    return maize_models
+            if int(model_days) in map(int, days):
+                maize_models[model_folder.name] = GazeboModel(model_folder.stem)
+
+        return maize_models
 
 
 AVAILABLE_CROP_TYPES = {
     # "cylinder": GazeboModel("cylinder"),
     "maize_01": GazeboModel("maize_01"),
     "maize_02": GazeboModel("maize_02"),
-    "generated": None,
+    "maize_generated": GeneratedGazeboModels("maize*"),
 }
 
 AVAILABLE_WEED_TYPES = {
