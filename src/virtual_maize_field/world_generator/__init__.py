@@ -50,8 +50,8 @@ class GeneratedGazeboModels:
         maize_models = {}
 
         for model_folder in models_folder.glob(self.model_regex):
-            result = search(f"maize_([0-9]+)_day_([0-9]+)", model_folder.stem)
-            _, model_days = result.groups()
+            result = search(f".+_day_([0-9]+)", model_folder.stem)
+            model_days = result.groups()[0]
 
             if int(model_days) in map(int, days):
                 maize_models[model_folder.name] = GazeboModel(model_folder.stem)
