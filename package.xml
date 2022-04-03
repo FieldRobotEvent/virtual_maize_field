@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="3">
   <name>virtual_maize_field</name>
-  <version>4.1.0</version>
+  <version>4.2.0</version>
   <description>A virtual maize field for agricultural robot simulation in Gazebo.</description>
 
   <maintainer email="fre@todo.todo">fre</maintainer>
@@ -32,6 +32,7 @@
   <exec_depend condition="$ROS_PYTHON_VERSION == 3">python3-matplotlib</exec_depend>
   <exec_depend condition="$ROS_PYTHON_VERSION == 3">python3-shapely</exec_depend>
   <exec_depend condition="$ROS_PYTHON_VERSION == 3">python3-packaging</exec_depend>
+  <exec_depend condition="$ROS_PYTHON_VERSION == 3">python3-pyyaml</exec_depend>
 
   <exec_depend>gazebo_ros</exec_depend>
   <exec_depend>gazebo_ros_pkgs</exec_depend>
