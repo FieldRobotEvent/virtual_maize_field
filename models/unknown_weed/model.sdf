@@ -1,4 +1,4 @@
-<?xml version="1.0" ?>
+<?xml version="1.0"?>
 <sdf version="1.6">
   <model name="unknown_weed">
     <static>false</static>
@@ -24,9 +24,9 @@
         <max_contacts>10</max_contacts>
         <surface>
           <contact>
-            <ode/>
+            <ode />
           </contact>
-          <bounce/>
+          <bounce />
           <friction>
             <ode>
               <mu>10</mu>
@@ -46,9 +46,9 @@
         <max_contacts>10</max_contacts>
         <surface>
           <contact>
-            <ode/>
+            <ode />
           </contact>
-          <bounce/>
+          <bounce />
           <friction>
             <ode>
               <mu>10</mu>
