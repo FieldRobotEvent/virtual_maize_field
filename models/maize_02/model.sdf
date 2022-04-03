@@ -5,7 +5,7 @@
     <link name='maize_02_link'>
       <inertial>
         <pose>0 0 0.01 0 0 0</pose>
-        <mass>0.1</mass>
+        <mass>0.3</mass>
         <inertia>
           <ixx>0.0033416667</ixx>
           <ixy>0</ixy>
@@ -41,7 +41,7 @@
         <geometry>
           <mesh>
             <uri>model://maize_02/meshes/maize_02.dae</uri>
-            <scale>0.5 0.5 0.5</scale>
+            <scale>0.683166466464586 0.683166466464586 0.683166466464586</scale>
           </mesh>
         </geometry>
         <material>

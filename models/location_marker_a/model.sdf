@@ -11,18 +11,16 @@
           </box>
         </geometry>
       </collision>
-
       <visual name="foot">
-	<pose>0 0 -1.5 0 0 0</pose>
+        <pose>0 0 -1.5 0 0 0</pose>
         <geometry>
           <box>
             <size>1 1 1</size>
           </box>
         </geometry>
       </visual>
-
       <visual name="visual_bottom">
-	<pose>0 0 -0.75 0 0 0</pose>
+        <pose>0 0 -0.75 0 0 0</pose>
         <geometry>
           <box>
             <size>1 1 0.5</size>
@@ -36,9 +34,8 @@
           </script>
         </material>
       </visual>
-
       <visual name="visual_top">
-	<pose>0 0 0.75 0 0 0</pose>
+        <pose>0 0 0.75 0 0 0</pose>
         <geometry>
           <box>
             <size>1 1 0.5</size>
@@ -52,9 +49,8 @@
           </script>
         </material>
       </visual>
-
       <visual name="visual_code">
-	<pose>0 0 0 0 0 0</pose>
+        <pose>0 0 0 0 0 0</pose>
         <geometry>
           <box>
             <size>1 1 1</size>
@@ -68,7 +64,6 @@
           </script>
         </material>
       </visual>
-
     </link>
   </model>
 </sdf>

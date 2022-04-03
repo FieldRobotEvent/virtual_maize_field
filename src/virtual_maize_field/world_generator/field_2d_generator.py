@@ -8,6 +8,7 @@ import shapely.geometry as geometry
 from matplotlib import pyplot as plt
 
 from virtual_maize_field import world_generator
+from virtual_maize_field.world_generator import AVAILABLE_MODELS
 from virtual_maize_field.world_generator.row_segments import (
     CurvedSegment,
     IslandSegment,
@@ -452,18 +453,38 @@ class Field2DGenerator:
         self.heightmap_position = [0, 0]
 
     def render_to_template(self):
-        def into_dict(xy, ground_height, radius, height, mass, m_type, index):
+        def into_dict(
+            xy, ground_height, radius, height, mass, m_type, index, ghost=False
+        ):
+            model = AVAILABLE_MODELS[m_type]
+
             coordinate = dict()
-            coordinate["type"] = m_type
+            coordinate["type"] = model.model_name
+            coordinate["name"] = f"{m_type}_{index:04d}"
+            coordinate["static"] = str(model.static).lower()
+
+            if ghost and model.ghostable:
+                coordinate["ghost"] = ghost
+                coordinate["custom_visual"] = model.get_model_visual()
+
+            # Model mass
             inertia = dict()
             inertia["ixx"] = (mass * (3 * radius**2 + height**2)) / 12.0
             inertia["iyy"] = (mass * (3 * radius**2 + height**2)) / 12.0
             inertia["izz"] = (mass * radius**2) / 2.0
             coordinate["inertia"] = inertia
             coordinate["mass"] = mass
-            coordinate["x"] = xy[0]
-            coordinate["y"] = xy[1]
-            coordinate["z"] = ground_height
+
+            # Model pose
+            coordinate["x"] = model.default_x + xy[0]
+            coordinate["y"] = model.default_y + xy[1]
+            coordinate["z"] = model.default_z + ground_height
+            coordinate["roll"] = model.default_roll
+            coordinate["pitch"] = model.default_pitch
+            coordinate["yaw"] = model.default_yaw
+            if model.random_yaw:
+                coordinate["yaw"] += np.random.rand() * 2.0 * np.pi
+
             coordinate["radius"] = (
                 radius
                 + (2 * np.random.rand() - 1)
@@ -471,8 +492,7 @@ class Field2DGenerator:
             )
             if coordinate["type"] == "cylinder":
                 coordinate["height"] = height
-            coordinate["name"] = "{}_{:04d}".format(coordinate["type"], index)
-            coordinate["yaw"] = np.random.rand() * 2.0 * np.pi
+
             return coordinate
 
         # plant crops
@@ -497,10 +517,9 @@ class Field2DGenerator:
                 self.wd.structure["params"]["plant_radius"],
                 self.wd.structure["params"]["plant_height_min"],
                 self.wd.structure["params"]["plant_mass"],
-                "ghost_%s" % self.object_types[i]
-                if self.wd.structure["params"]["ghost_objects"]
-                else self.object_types[i],
+                self.object_types[i],
                 i,
+                ghost=self.wd.structure["params"]["ghost_objects"],
             )
             for i, plant in enumerate(self.object_placements)
         ]
