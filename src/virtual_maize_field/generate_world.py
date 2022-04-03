@@ -26,8 +26,8 @@ LAUNCH_FILE_TEMPLATE = """<?xml version="1.0"?>
 
 class WorldGenerator:
     def __init__(self, **kwargs) -> None:
-        self.wd = WorldDescription(**kwargs)
-        self.fgen = Field2DGenerator(self.wd)
+        wd = WorldDescription(**kwargs)
+        self.fgen = Field2DGenerator(wd)
 
         self.pkg_path = Path(rospkg.RosPack().get_path("virtual_maize_field"))
 
