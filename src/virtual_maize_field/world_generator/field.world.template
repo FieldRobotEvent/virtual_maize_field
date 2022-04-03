@@ -188,9 +188,6 @@
     <include>
       <uri>model://{{ coordinate.type }}</uri>
       <pose>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} {{ coordinate.roll }} {{ coordinate.pitch }} {{ coordinate.yaw }}</pose>
-      {% if coordinate.type == "maize_01" or coordinate.type == "maize_02" -%}
-      <scale>{{ 2*coordinate.radius }} {{ 2*coordinate.radius }} {{ 2*coordinate.radius }}</scale>
-      {% endif -%}
       <name>{{ coordinate.name }}</name>
       <static>{{ coordinate.static }}</static>
     </include>

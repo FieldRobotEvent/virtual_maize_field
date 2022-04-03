@@ -41,7 +41,7 @@
         <geometry>
           <mesh>
             <uri>model://maize_02/meshes/maize_02.dae</uri>
-            <scale>0.5 0.5 0.5</scale>
+            <scale>0.683166466464586 0.683166466464586 0.683166466464586</scale>
           </mesh>
         </geometry>
         <material>
