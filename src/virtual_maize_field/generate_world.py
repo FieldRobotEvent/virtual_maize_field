@@ -32,7 +32,9 @@ class WorldGenerator:
         self.pkg_path = Path(rospkg.RosPack().get_path("virtual_maize_field"))
 
     def generate(self) -> None:
-        # Generate the template and write it to a file
+        """
+        Generate the template and write it to a file.
+        """
         generated_sdf, heightmap = self.fgen.generate()
 
         sdf_file = self.pkg_path / "worlds/generated.world"
@@ -44,7 +46,9 @@ class WorldGenerator:
         cv2.imwrite(str(heightmap_file), self.fgen.heightmap)
 
     def clear_gazebo_cache(self) -> None:
-        # Clear the gazbeo cache for old heightmap
+        """
+        Clear the Gazebo cache for old heightmap.
+        """
         gazebo_cache_pkg = Path.home() / ".gazebo/paging/virtual_maize_field_heightmap"
         if gazebo_cache_pkg.is_dir():
             rmtree(gazebo_cache_pkg)
@@ -123,7 +127,7 @@ class WorldGenerator:
     def from_config_file(cls, config_file: Path) -> WorldGenerator:
         with config_file.open("r") as f:
             config = yaml.safe_load(f)
-        return WorldGenerator(**config)
+        return cls(**config)
 
 
 if __name__ == "__main__":
@@ -165,7 +169,7 @@ if __name__ == "__main__":
             config_file_path = pkg_path / "config" / (args.config_file + ".yaml")
 
         if not config_file_path.is_file():
-            print(f"ERROR: cannot find config: '{config_file_path}' ")
+            print(f"ERROR: cannot find config: '{config_file_path}'!")
             exit(1)
 
         generator = WorldGenerator.from_config_file(config_file_path)
