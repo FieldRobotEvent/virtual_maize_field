@@ -4,15 +4,10 @@
   <version>4.2.0</version>
   <description>A virtual maize field for agricultural robot simulation in Gazebo.</description>
 
-  <maintainer email="fre@todo.todo">fre</maintainer>
+  <maintainer email="info@fieldrobot.com">Field Robot Event Organization</maintainer>
 
   <license file="LICENSE">GPLv3</license>
   <url type="website">https://www.fieldrobot.com/event/</url>
-
-  <!-- Author tags are optional, multiple are allowed, one per tag -->
-  <!-- Authors do not have to be maintainers, but could be -->
-  <!-- Example: -->
-  <!-- <author email="jane.doe@example.com">Jane Doe</author> -->
 
   <buildtool_depend>catkin</buildtool_depend>
 
