@@ -149,7 +149,7 @@ if __name__ == "__main__":
         type=str,
         help="Config file name in the config folder",
         default=None,
-        choices=[f.stem for f in (pkg_path / "config").glob("*.yaml")]
+        choices=[f.stem for f in (pkg_path / "config").glob("*.yaml")],
     )
     for argname, default in zip(possible_kwargs, defaults):
         # we analyze the default value's type to guess the type for that argument
