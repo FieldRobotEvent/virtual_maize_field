@@ -129,7 +129,7 @@ class WorldGenerator:
         return cls(**config)
 
 
-if __name__ == "__main__":
+def main() -> None:
     from argparse import ArgumentParser
     from inspect import getfullargspec
 
@@ -185,3 +185,7 @@ if __name__ == "__main__":
     generator.save_marker_file()
     generator.save_complete_map()
     generator.save_launch_file()
+
+
+if __name__ == "__main__":
+    main()
