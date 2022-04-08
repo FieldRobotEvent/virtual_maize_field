@@ -6,3 +6,4 @@ hole_size_max: 7
 litters: 5 
 weeds: 5 
 location_markers: true
+crop_types: "maize_01,maize_02"

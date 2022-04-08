@@ -3,3 +3,4 @@ rows_count: 11
 row_segments: straight 
 hole_prob: 0.04 
 hole_size_max: 7
+crop_types: "maize_01,maize_02"

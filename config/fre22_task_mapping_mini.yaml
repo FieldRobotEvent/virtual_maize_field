@@ -8,3 +8,4 @@ weeds: 5
 ghost_objects: true 
 ground_resolution: 0.1 
 location_markers: true
+crop_types: "maize_01,maize_02"

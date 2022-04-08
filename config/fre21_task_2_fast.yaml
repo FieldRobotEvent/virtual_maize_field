@@ -5,3 +5,4 @@ hole_prob: 0.04
 hole_size_max: 7 
 ground_resolution: 0.15 
 ground_elevation_max: 0.05
+crop_types: "maize_01,maize_02"

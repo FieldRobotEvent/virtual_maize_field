@@ -7,3 +7,4 @@ row_segment_curved_radius_max: 5.0
 ground_resolution: 0.1 
 hole_prob: 0.0 
 hole_size_max: 7
+crop_types: "maize_01,maize_02"

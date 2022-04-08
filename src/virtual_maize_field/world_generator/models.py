@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
+from re import match, search
 from xml.etree import ElementTree
 
 
@@ -38,31 +39,53 @@ class GazeboModel:
         return self.__model_visual
 
 
-AVAILABLE_CROP_TYPES = {
+@dataclass
+class GeneratedGazeboModels:
+    model_regex: str
+    age_regex: str = ".+_day_([0-9]+)"
+
+    def get_models_by_age(self, days: list[int]) -> dict[str, GazeboModel]:
+        models_folder = Path(__file__).parents[3] / "models"
+        assert models_folder.is_dir(), "Cannot find virtual_maize_field model folder!"
+
+        maize_models = {}
+
+        for model_folder in models_folder.glob("**/"):
+            if match(self.model_regex, model_folder.name):
+                result = search(self.age_regex, model_folder.stem)
+                model_days = result.groups()[0]
+
+                if int(model_days) in map(int, days):
+                    maize_models[model_folder.name] = GazeboModel(model_folder.stem)
+        return maize_models
+
+
+CROP_MODELS = {
     # "cylinder": GazeboModel("cylinder"),
     "maize_01": GazeboModel("maize_01"),
     "maize_02": GazeboModel("maize_02"),
+    "generated_maize": GeneratedGazeboModels("maize_[0-9]+_day_[0-9]+"),
 }
 
-AVAILABLE_WEED_TYPES = {
+WEED_MODELS = {
     "nettle": GazeboModel("nettle"),
     "unknown_weed": GazeboModel("unknown_weed"),
 }
 
-AVAILABLE_LITTER_TYPES = {
+LITTER_MODELS = {
     "ale": GazeboModel("ale", default_roll=1.5707963267948966),
     "beer": GazeboModel("beer", default_roll=1.5707963267948966),
     "coke_can": GazeboModel("coke_can", default_roll=1.5707963267948966),
     "retro_pepsi_can": GazeboModel("retro_pepsi_can", default_roll=1.5707963267948966),
 }
 
-AVAILABLE_OBSTACLES = {
+OBSTACLE_MODELS = {
     "box": GazeboModel("box"),
     "stone_01": GazeboModel("stone_01"),
     "stone_02": GazeboModel("stone_02"),
 }
 
-AVAILABLE_MARKERS = {
+MARKER_MODELS = {
     "location_marker_a": GazeboModel(
         "location_marker_a", static=True, ghostable=False, random_yaw=False
     ),
@@ -72,9 +95,9 @@ AVAILABLE_MARKERS = {
 }
 
 AVAILABLE_MODELS = {
-    **AVAILABLE_CROP_TYPES,
-    **AVAILABLE_WEED_TYPES,
-    **AVAILABLE_LITTER_TYPES,
-    **AVAILABLE_OBSTACLES,
-    **AVAILABLE_MARKERS,
+    **CROP_MODELS,
+    **WEED_MODELS,
+    **LITTER_MODELS,
+    **OBSTACLE_MODELS,
+    **MARKER_MODELS,
 }
