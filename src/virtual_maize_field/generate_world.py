@@ -41,7 +41,7 @@ class WorldGenerator:
             f.write(generated_sdf)
 
         # Save heightmap
-        heightmap_file = pkg_path / "Media/models/virtual_maize_field_heightmap.png"
+        heightmap_file = self.pkg_path / "Media/models/virtual_maize_field_heightmap.png"
         cv2.imwrite(str(heightmap_file), self.fgen.heightmap)
 
     def clear_gazebo_cache(self) -> None:
@@ -53,7 +53,7 @@ class WorldGenerator:
             rmtree(gazebo_cache_pkg)
 
     def save_minimap(self) -> None:
-        minimap_file = pkg_path / "map/map.png"
+        minimap_file = self.pkg_path / "map/map.png"
         self.fgen.minimap.savefig(str(minimap_file), dpi=100)
 
     def save_marker_file(self) -> None:
@@ -79,7 +79,7 @@ class WorldGenerator:
                 )
 
     def save_complete_map(self) -> None:
-        complete_map_file = pkg_path / "map/map.csv"
+        complete_map_file = self.pkg_path / "map/map.csv"
         with complete_map_file.open("w") as f:
             writer = csv_writer(f)
             header = ["X", "Y", "kind"]
@@ -112,7 +112,7 @@ class WorldGenerator:
                 writer.writerow([elm[0], elm[1], "crop"])
 
     def save_launch_file(self) -> None:
-        launch_file = pkg_path / "launch/robot_spawner.launch"
+        launch_file = self.pkg_path / "launch/robot_spawner.launch"
         with launch_file.open("w") as f:
             content = LAUNCH_FILE_TEMPLATE.format(
                 x=float(self.fgen.start_loc[0][0]) + np.random.rand() * 0.1 - 0.05,
