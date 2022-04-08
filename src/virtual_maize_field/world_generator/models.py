@@ -38,6 +38,9 @@ class GazeboModel:
 
         return self.__model_visual
 
+    def __repr__(self) -> str:
+        return f"GazeboModel: {self.model_name}"
+
 
 @dataclass
 class GeneratedGazeboModel:

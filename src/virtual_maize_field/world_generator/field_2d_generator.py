@@ -42,19 +42,20 @@ class Field2DGenerator:
     def gather_available_models(self) -> None:
         def gather_models_of_type(
             models_key: str,
-            age_key: str,
+            age_key: str | None,
             all_models: dict[str, GazeboModel | GeneratedGazeboModel],
         ) -> dict[str, GazeboModel]:
             output_dict = {}
             model_types = self.wd.structure["params"][models_key].split(",")
 
             for mt in model_types:
-                if isinstance(all_models[mt], GeneratedGazeboModel):
+                if age_key is not None and isinstance(
+                    all_models[mt], GeneratedGazeboModel
+                ):
                     generated_models = all_models[mt].get_models_by_age(
                         self.wd.structure["params"][age_key]
                     )
                     output_dict.update(generated_models)
-
                 else:
                     output_dict[mt] = all_models[mt]
 
@@ -62,9 +63,7 @@ class Field2DGenerator:
 
         self.crop_models = gather_models_of_type("crop_types", "crop_ages", CROP_MODELS)
         self.weed_models = gather_models_of_type("weed_types", "weed_ages", WEED_MODELS)
-        self.litter_models = gather_models_of_type(
-            "litter_types", "litter_ages", LITTER_MODELS
-        )
+        self.litter_models = gather_models_of_type("litter_types", None, LITTER_MODELS)
         self.marker_models = MARKER_MODELS
 
     def render_matplotlib(self) -> None:
