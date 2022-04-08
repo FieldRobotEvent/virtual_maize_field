@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from __future__ import annotations
 
 import argparse
 import inspect
@@ -8,6 +9,7 @@ from datetime import datetime
 import numpy as np
 
 from virtual_maize_field.world_generator.models import (
+    AVAILABLE_MODELS,
     CROP_MODELS,
     LITTER_MODELS,
     OBSTACLE_MODELS,
@@ -60,8 +62,13 @@ class WorldDescription:
         load_from_file=None,
         seed=-1,
     ):
+        crop_types = self.unpack_model_types(crop_types)
+        litter_types = self.unpack_model_types(litter_types)
+        weed_types = self.unpack_model_types(weed_types)
+
         crop_ages = crop_ages.split(",")
         weed_ages = weed_ages.split(",")
+
         row_segments = row_segments.split(",")
         hole_prob = self.unpack_param(rows_count, hole_prob)
         hole_size_max = self.unpack_param(rows_count, hole_size_max)
@@ -80,6 +87,15 @@ class WorldDescription:
             self.load()
         else:
             self.random_description()
+
+    def unpack_model_types(self, model_types: str) -> list[str]:
+        model_types = model_types.split(",")
+        for mt in model_types:
+            if mt not in AVAILABLE_MODELS:
+                raise argparse.ArgumentError(
+                    None, f"Error: Gazebo model {mt} is not valid!"
+                )
+        return model_types
 
     def unpack_param(self, rows, value):
         if "," in str(value):

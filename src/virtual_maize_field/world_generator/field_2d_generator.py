@@ -46,9 +46,8 @@ class Field2DGenerator:
             all_models: dict[str, GazeboModel | GeneratedGazeboModel],
         ) -> dict[str, GazeboModel]:
             output_dict = {}
-            model_types = self.wd.structure["params"][models_key].split(",")
 
-            for mt in model_types:
+            for mt in self.wd.structure["params"][models_key]:
                 if age_key is not None and isinstance(
                     all_models[mt], GeneratedGazeboModel
                 ):
