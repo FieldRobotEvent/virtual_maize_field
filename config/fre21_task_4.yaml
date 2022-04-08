@@ -1,0 +1,8 @@
+row_length: 7 
+rows_count: 11 
+row_segments: straight 
+hole_prob: 0.04 
+hole_size_max: 7 
+litters: 5 
+weeds: 5 
+location_markers: true
