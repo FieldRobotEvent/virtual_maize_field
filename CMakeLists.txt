@@ -21,6 +21,6 @@ catkin_package(
 ## Build ##
 ###########
 
-install(DIRECTORY launch models worlds bin
+install(DIRECTORY launch models worlds config
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
