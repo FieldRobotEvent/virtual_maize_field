@@ -40,7 +40,7 @@ class GazeboModel:
 
 
 @dataclass
-class GeneratedGazeboModels:
+class GeneratedGazeboModel:
     model_regex: str
     age_regex: str = ".+_day_([0-9]+)"
 
@@ -64,7 +64,7 @@ CROP_MODELS = {
     # "cylinder": GazeboModel("cylinder"),
     "maize_01": GazeboModel("maize_01"),
     "maize_02": GazeboModel("maize_02"),
-    "generated_maize": GeneratedGazeboModels("maize_[0-9]+_day_[0-9]+"),
+    "generated_maize": GeneratedGazeboModel("maize_[0-9]+_day_[0-9]+"),
 }
 
 WEED_MODELS = {

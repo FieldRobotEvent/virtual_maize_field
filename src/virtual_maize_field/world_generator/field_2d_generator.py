@@ -16,7 +16,7 @@ from virtual_maize_field.world_generator.models import (
     MARKER_MODELS,
     WEED_MODELS,
     GazeboModel,
-    GeneratedGazeboModels,
+    GeneratedGazeboModel,
 )
 from virtual_maize_field.world_generator.row_segments import (
     CurvedSegment,
@@ -43,13 +43,13 @@ class Field2DGenerator:
         def gather_models_of_type(
             models_key: str,
             age_key: str,
-            all_models: dict[str, GazeboModel | GeneratedGazeboModels],
+            all_models: dict[str, GazeboModel | GeneratedGazeboModel],
         ) -> dict[str, GazeboModel]:
             output_dict = {}
             model_types = self.wd.structure["params"][models_key].split(",")
 
             for mt in model_types:
-                if isinstance(all_models[mt], GeneratedGazeboModels):
+                if isinstance(all_models[mt], GeneratedGazeboModel):
                     generated_models = all_models[mt].get_models_by_age(
                         self.wd.structure["params"][age_key]
                     )
