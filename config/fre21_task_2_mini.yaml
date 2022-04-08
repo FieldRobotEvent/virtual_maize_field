@@ -1,0 +1,6 @@
+row_length: 3.5 
+rows_count: 7 
+row_segments: straight 
+hole_prob: 0.04 
+hole_size_max: 7 
+ground_resolution: 0.1
