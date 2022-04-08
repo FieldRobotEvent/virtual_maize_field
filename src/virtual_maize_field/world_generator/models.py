@@ -1,8 +1,8 @@
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from pathlib import Path
-from re import match, search
 from xml.etree import ElementTree
 
 
@@ -44,8 +44,8 @@ class GazeboModel:
 
 @dataclass
 class GeneratedGazeboModel:
-    model_regex: str
-    age_regex: str = ".+_day_([0-9]+)"
+    model_regex: re.Pattern
+    age_regex: re.Pattern = re.compile(".+_day_([0-9]+)")
 
     def get_models_by_age(self, days: list[int]) -> dict[str, GazeboModel]:
         models_folder = Path(__file__).parents[3] / "models"
@@ -54,8 +54,8 @@ class GeneratedGazeboModel:
         maize_models = {}
 
         for model_folder in models_folder.glob("**/"):
-            if match(self.model_regex, model_folder.name):
-                result = search(self.age_regex, model_folder.stem)
+            if re.match(self.model_regex, model_folder.name):
+                result = re.search(self.age_regex, model_folder.stem)
                 model_days = result.groups()[0]
 
                 if int(model_days) in map(int, days):
@@ -67,7 +67,7 @@ CROP_MODELS = {
     # "cylinder": GazeboModel("cylinder"),
     "maize_01": GazeboModel("maize_01"),
     "maize_02": GazeboModel("maize_02"),
-    "generated_maize": GeneratedGazeboModel("maize_[0-9]+_day_[0-9]+"),
+    "generated_maize": GeneratedGazeboModel(re.compile("maize_[0-9]+_day_[0-9]+")),
 }
 
 WEED_MODELS = {
