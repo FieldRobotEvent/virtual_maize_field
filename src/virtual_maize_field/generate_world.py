@@ -41,7 +41,9 @@ class WorldGenerator:
             f.write(generated_sdf)
 
         # Save heightmap
-        heightmap_file = self.pkg_path / "Media/models/virtual_maize_field_heightmap.png"
+        heightmap_file = (
+            self.pkg_path / "Media/models/virtual_maize_field_heightmap.png"
+        )
         cv2.imwrite(str(heightmap_file), self.fgen.heightmap)
 
     def clear_gazebo_cache(self) -> None:
