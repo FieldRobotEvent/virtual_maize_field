@@ -7,7 +7,7 @@ from datetime import datetime
 
 import numpy as np
 
-from virtual_maize_field.world_generator import (
+from virtual_maize_field.world_generator.models import (
     AVAILABLE_CROP_TYPES,
     AVAILABLE_LITTER_TYPES,
     AVAILABLE_OBSTACLES,

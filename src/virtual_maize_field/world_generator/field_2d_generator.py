@@ -8,7 +8,7 @@ import shapely.geometry as geometry
 from matplotlib import pyplot as plt
 
 from virtual_maize_field import world_generator
-from virtual_maize_field.world_generator import AVAILABLE_MODELS
+from virtual_maize_field.world_generator.models import AVAILABLE_MODELS
 from virtual_maize_field.world_generator.row_segments import (
     CurvedSegment,
     IslandSegment,
