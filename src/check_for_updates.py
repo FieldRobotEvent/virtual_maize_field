@@ -39,7 +39,7 @@ def remote_version_to_cache(cache_file: Path, version: version.Version) -> None:
     cache_file.write_text(f"{timestamp}\n{version}", encoding="utf-8")
 
 
-if __name__ == "__main__":
+def main() -> None:
     rospy.init_node("virtual_maize_field_update_checker")
 
     cache_file = Path("/tmp/virtual_maize_field_update_check.tmp")
@@ -74,3 +74,7 @@ if __name__ == "__main__":
         rospy.logwarn(
             f"Your 'virtual_maize_field' package is outdated ({local_version} < {remote_version})! Run 'git submodule update --remote --merge' to update the package and generate new worlds."
         )
+
+
+if __name__ == "__main__":
+    main()
