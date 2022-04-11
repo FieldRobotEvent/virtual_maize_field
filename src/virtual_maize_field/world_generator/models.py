@@ -4,13 +4,13 @@ import os
 import re
 from dataclasses import dataclass, fields
 from pathlib import Path
+from subprocess import check_output
 from xml.etree import ElementTree
 
-VIRTUAL_MAIZE_FIELD_MODELS_FOLDER = Path(__file__).parents[3] / "models"
-LOCAL_MODELS_FOLDER = Path.home() / ".gazebo/models"
-MODEL_DATABASE_CONFIG_URL = (
-    "https://fieldrobotevent.github.io/virtual_maize_field_models/database.config/"
-)
+_PACKAGE_FOLDER = Path(__file__).parents[3]
+_PACKAGE_MODEL_FOLDER = _PACKAGE_FOLDER / "models"
+_PACKAGE_GENERATED_MODEL_FOLDER = _PACKAGE_FOLDER / "virtual_maize_field_models"
+_LOCAL_MODEL_FOLDER = Path.home() / ".gazebo/models"
 _AVAILABLE_MODELS = None
 
 
@@ -20,28 +20,19 @@ def set_available_models() -> None:
 
     offline = bool(os.environ.get("VIRTUAL_MAIZE_FIELD_OFFLINE", False))
 
-    for model_config in VIRTUAL_MAIZE_FIELD_MODELS_FOLDER.glob("**/model.config"):
+    for model_config in _PACKAGE_MODEL_FOLDER.glob("**/model.config"):
         _AVAILABLE_MODELS.append(model_config.parent.name)
 
-    for model_config in LOCAL_MODELS_FOLDER.glob("**/model.config"):
+    for model_config in _LOCAL_MODEL_FOLDER.glob("**/model.config"):
         _AVAILABLE_MODELS.append(model_config.parent.name)
 
     if not offline:
-        from socket import timeout
-        from urllib import request
+        check_output(
+            ["git", "submodule", "update", "--init", "--recursive"], cwd=_PACKAGE_FOLDER
+        )
 
-        try:
-            database_config = request.urlopen(
-                MODEL_DATABASE_CONFIG_URL, timeout=2
-            ).read()
-            root = ElementTree.fromstring(database_config)
-            for model_uri in root.findall("./models/uri"):
-                _AVAILABLE_MODELS.append(re.sub(r"file://", "", model_uri.text))
-
-        except timeout:
-            print(
-                "WARNING: could not retrieve models from virtual_maize_field_models database!"
-            )
+    for model_config in _PACKAGE_GENERATED_MODEL_FOLDER.glob("**/model.config"):
+        _AVAILABLE_MODELS.append(model_config.parent.name)
 
 
 @dataclass
@@ -61,7 +52,7 @@ class GazeboModel:
 
     def get_model_visual(self) -> str:
         if self.__model_visual is None:
-            model_folder = VIRTUAL_MAIZE_FIELD_MODELS_FOLDER / self.model_name
+            model_folder = _PACKAGE_MODEL_FOLDER / self.model_name
             assert model_folder.is_dir(), f"Cannot find model {self.model_name}!"
 
             root = ElementTree.parse(model_folder / "model.sdf").getroot()
