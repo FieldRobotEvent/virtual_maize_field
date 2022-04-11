@@ -20,7 +20,6 @@
   <!-- On ROS Melodic or lower you have to install some deps by hand. See README.md. -->
   <exec_depend>rospy</exec_depend>
   <exec_depend>roslaunch</exec_depend>
-  <exec_depend condition="$ROS_PYTHON_VERSION == 2">python-rospkg</exec_depend>
   <exec_depend condition="$ROS_PYTHON_VERSION == 3">python3-rospkg</exec_depend>
   <exec_depend condition="$ROS_PYTHON_VERSION == 3">python3-jinja2</exec_depend>
   <exec_depend condition="$ROS_PYTHON_VERSION == 3">python3-opencv</exec_depend>
@@ -37,6 +36,7 @@
          GAZEBO_PLUGIN_PATH and GAZEBO_MODEL_PATH when you do this export inside
          the package.xml file. You can than use URIs of type model://my_package/stuff. -->
     <gazebo_ros gazebo_model_path="${prefix}/models"/>
+    <gazebo_ros gazebo_model_path="${prefix}/virtual_maize_field_models"/>
     <gazebo_ros gazebo_media_path="${prefix}"/>
   </export>
 </package>

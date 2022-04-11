@@ -125,10 +125,10 @@ class WorldGenerator:
             f.write(content)
 
     @classmethod
-    def from_config_file(cls, config_file: Path) -> WorldGenerator:
+    def from_config_file(cls, config_file: Path, **kwargs) -> WorldGenerator:
         with config_file.open("r") as f:
             config = yaml.safe_load(f)
-        return cls(**config)
+        return cls(**config, **kwargs)
 
 
 def main() -> None:
@@ -174,7 +174,9 @@ def main() -> None:
             print(f"ERROR: cannot find config: '{config_file_path}'!")
             exit(1)
 
-        generator = WorldGenerator.from_config_file(config_file_path)
+        generator = WorldGenerator.from_config_file(
+            config_file_path, offline=args.offline
+        )
     else:
         # Get a dict representation of the arguments and call our constructor with them as kwargs
         args = vars(parser.parse_args())

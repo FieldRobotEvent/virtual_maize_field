@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import inspect
 import json
+import os
 from datetime import datetime
 
 import numpy as np
@@ -61,7 +62,11 @@ class WorldDescription:
         location_markers=False,
         load_from_file=None,
         seed=-1,
+        offline="false",
     ):
+        if offline is not None and offline.lower() == "true":
+            os.environ["VIRTUAL_MAIZE_FIELD_OFFLINE"] = "true"
+
         crop_types = self.unpack_model_types(crop_types)
         litter_types = self.unpack_model_types(litter_types)
         weed_types = self.unpack_model_types(weed_types)

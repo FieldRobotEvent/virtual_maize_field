@@ -1,15 +1,47 @@
 from __future__ import annotations
 
+import os
 import re
 from dataclasses import dataclass, fields
 from pathlib import Path
 from xml.etree import ElementTree
 
-from cv2 import dft
-from regex import P
+VIRTUAL_MAIZE_FIELD_MODELS_FOLDER = Path(__file__).parents[3] / "models"
+LOCAL_MODELS_FOLDER = Path.home() / ".gazebo/models"
+MODEL_DATABASE_CONFIG_URL = (
+    "https://fieldrobotevent.github.io/virtual_maize_field_models/database.config/"
+)
+_AVAILABLE_MODELS = None
 
 
-VIRTUAL_MAIZE_FIELD_MODELS_FOLDER = models_folder = Path(__file__).parents[3] / "models"
+def set_available_models() -> None:
+    global _AVAILABLE_MODELS
+    _AVAILABLE_MODELS = []
+
+    offline = bool(os.environ.get("VIRTUAL_MAIZE_FIELD_OFFLINE", False))
+
+    for model_config in VIRTUAL_MAIZE_FIELD_MODELS_FOLDER.glob("**/model.config"):
+        _AVAILABLE_MODELS.append(model_config.parent.name)
+
+    for model_config in LOCAL_MODELS_FOLDER.glob("**/model.config"):
+        _AVAILABLE_MODELS.append(model_config.parent.name)
+
+    if not offline:
+        from socket import timeout
+        from urllib import request
+
+        try:
+            database_config = request.urlopen(
+                MODEL_DATABASE_CONFIG_URL, timeout=2
+            ).read()
+            root = ElementTree.fromstring(database_config)
+            for model_uri in root.findall("./models/uri"):
+                _AVAILABLE_MODELS.append(re.sub(r"file://", "", model_uri.text))
+
+        except timeout:
+            print(
+                "WARNING: could not retrieve models from virtual_maize_field_models database!"
+            )
 
 
 @dataclass
@@ -86,9 +118,12 @@ class GazeboGrowthModel(GazeboModel):
     def _gather_models(self) -> None:
         self.__models_by_day = {}
 
-        for model_folder in VIRTUAL_MAIZE_FIELD_MODELS_FOLDER.glob("**/"):
-            if re.match(self.model_name_regex, model_folder.stem):
-                model_days_match = re.search(self.age_regex, model_folder.stem)
+        if _AVAILABLE_MODELS is None:
+            set_available_models()
+
+        for model_name in _AVAILABLE_MODELS:
+            if re.match(self.model_name_regex, model_name):
+                model_days_match = re.search(self.age_regex, model_name)
                 if model_days_match is not None:
                     model_days = int(model_days_match.groups()[0])
 
@@ -103,7 +138,7 @@ class GazeboGrowthModel(GazeboModel):
                         gazebo_model_parameters[field] = getattr(self, field)
 
                     # Set the model name
-                    gazebo_model_parameters["model_name"] = model_folder.name
+                    gazebo_model_parameters["model_name"] = model_name
 
                     self.__models_by_day[model_days] = GazeboModel(
                         **gazebo_model_parameters
@@ -147,8 +182,11 @@ class GazeboModelsFromRegex(GazeboModel):
         self.__models = []
         added_names = []
 
-        for model_folder in VIRTUAL_MAIZE_FIELD_MODELS_FOLDER.glob("**/"):
-            name_match = re.search(self.model_name_regex, model_folder.stem)
+        if _AVAILABLE_MODELS is None:
+            set_available_models()
+
+        for model_name in _AVAILABLE_MODELS:
+            name_match = re.search(self.model_name_regex, model_name)
 
             if name_match is not None:
                 model_name = name_match.groups()[0]
@@ -162,7 +200,7 @@ class GazeboModelsFromRegex(GazeboModel):
                     gazebo_model_parameters[field] = getattr(self, field)
 
                 # Set the model name
-                gazebo_model_parameters["model_name"] = model_folder.name
+                gazebo_model_parameters["model_name"] = model_name
 
                 if self.age_regex is None:
                     self.__models.append(GazeboModel(**gazebo_model_parameters))
