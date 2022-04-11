@@ -16,8 +16,6 @@ from virtual_maize_field.world_generator.models import (
     MARKER_MODELS,
     WEED_MODELS,
     GazeboModel,
-    RegexGazeboModels,
-    GazeboGrowthModel,
     to_gazebo_models,
 )
 from virtual_maize_field.world_generator.row_segments import (

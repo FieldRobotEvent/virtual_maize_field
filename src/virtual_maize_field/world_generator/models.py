@@ -114,7 +114,7 @@ class GazeboGrowthModel(GazeboModel):
 
 
 @dataclass
-class RegexGazeboModels(GazeboModel):
+class GazeboModelsFromRegex(GazeboModel):
     """
     Dataclass that gathers models by a regular expression. If age_regex is defined, GazeboGrowthModels are
     returned instead of GazeboModels.
@@ -181,11 +181,11 @@ class RegexGazeboModels(GazeboModel):
                     added_names.append(model_name)
 
     def __repr__(self) -> str:
-        return f"GeneratedGazeboModel: {self.model_name_regex.pattern} (matched {len(self)} instances)"
+        return f"GazeboModelsFromRegex: {self.model_name_regex.pattern} (matched {len(self)} instances)"
 
 
 def to_gazebo_models(
-    models: dict[str, GazeboModel | GazeboGrowthModel | RegexGazeboModels],
+    models: dict[str, GazeboModel | GazeboGrowthModel | GazeboModelsFromRegex],
     model_names: list[str],
     ages: list[int] | None = None,
 ) -> dict[str, GazeboModel]:
@@ -196,7 +196,7 @@ def to_gazebo_models(
 
     for model_name, model in models.items():
         if model_name in model_names:
-            if isinstance(model, RegexGazeboModels):
+            if isinstance(model, GazeboModelsFromRegex):
                 m_dict = {m.model_name: m for m in model.list}
                 output_dict.update(to_gazebo_models(m_dict, list(m_dict.keys()), ages))
 
@@ -219,7 +219,7 @@ CROP_MODELS = {
     # "cylinder": GazeboModel("cylinder"),
     "maize_01": GazeboModel(model_name="maize_01"),
     "maize_02": GazeboModel(model_name="maize_02"),
-    "generated_maize": RegexGazeboModels(
+    "generated_maize": GazeboModelsFromRegex(
         model_name_regex=re.compile("(maize_[0-9]+)_day_[0-9]+"),
         age_regex=re.compile(".+_day_([0-9]+)"),
     ),
