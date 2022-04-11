@@ -16,7 +16,9 @@ from virtual_maize_field.world_generator.models import (
     MARKER_MODELS,
     WEED_MODELS,
     GazeboModel,
-    GeneratedGazeboModel,
+    RegexGazeboModels,
+    GazeboGrowthModel,
+    to_gazebo_models,
 )
 from virtual_maize_field.world_generator.row_segments import (
     CurvedSegment,
@@ -40,29 +42,19 @@ class Field2DGenerator:
         self.marker_models = None
 
     def gather_available_models(self) -> None:
-        def gather_models_of_type(
-            models_key: str,
-            age_key: str | None,
-            all_models: dict[str, GazeboModel | GeneratedGazeboModel],
-        ) -> dict[str, GazeboModel]:
-            output_dict = {}
-
-            for mt in self.wd.structure["params"][models_key]:
-                if age_key is not None and isinstance(
-                    all_models[mt], GeneratedGazeboModel
-                ):
-                    generated_models = all_models[mt].get_models_by_age(
-                        self.wd.structure["params"][age_key]
-                    )
-                    output_dict.update(generated_models)
-                else:
-                    output_dict[mt] = all_models[mt]
-
-            return output_dict
-
-        self.crop_models = gather_models_of_type("crop_types", "crop_ages", CROP_MODELS)
-        self.weed_models = gather_models_of_type("weed_types", "weed_ages", WEED_MODELS)
-        self.litter_models = gather_models_of_type("litter_types", None, LITTER_MODELS)
+        self.crop_models = to_gazebo_models(
+            CROP_MODELS,
+            self.wd.structure["params"]["crop_types"],
+            self.wd.structure["params"]["crop_ages"],
+        )
+        self.weed_models = to_gazebo_models(
+            WEED_MODELS,
+            self.wd.structure["params"]["weed_types"],
+            self.wd.structure["params"]["weed_ages"],
+        )
+        self.litter_models = to_gazebo_models(
+            LITTER_MODELS, self.wd.structure["params"]["litter_types"]
+        )
         self.marker_models = MARKER_MODELS
 
     def render_matplotlib(self) -> None:

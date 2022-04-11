@@ -30,5 +30,6 @@ worlds/generated.world
 Media/models/virtual_maize_field_heightmap.png
 map/*
 launch/robot_spawner.launch
+models/*_day_*
 
 !map/.gitkeep

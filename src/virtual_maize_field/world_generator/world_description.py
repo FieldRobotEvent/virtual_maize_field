@@ -66,8 +66,8 @@ class WorldDescription:
         litter_types = self.unpack_model_types(litter_types)
         weed_types = self.unpack_model_types(weed_types)
 
-        crop_ages = crop_ages.split(",")
-        weed_ages = weed_ages.split(",")
+        crop_ages = list(map(int, crop_ages.split(",")))
+        weed_ages = list(map(int, weed_ages.split(",")))
 
         row_segments = row_segments.split(",")
         hole_prob = self.unpack_param(rows_count, hole_prob)
