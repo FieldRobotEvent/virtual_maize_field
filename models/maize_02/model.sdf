@@ -44,8 +44,6 @@
             <scale>0.683166466464586 0.683166466464586 0.683166466464586</scale>
           </mesh>
         </geometry>
-        <material>
-        </material>
       </visual>
       <self_collide>0</self_collide>
       <enable_wind>0</enable_wind>
