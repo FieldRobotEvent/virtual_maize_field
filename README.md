@@ -4,7 +4,7 @@
   <img src="https://www.fieldrobot.com/event/wp-content/uploads/2021/05/FRE-logo-v03.png" width="250">
 </p>
 <p float="left" align="middle"> 
-  <img src="https://cdn.freelogovectors.net/wp-content/uploads/2021/04/wageningen-university-and-research-logo-freelogovectors.net_-400x76.png" width="250" style="margin: 10px;"> 
+  <img src="https://www.wur.nl/upload/854757ab-168f-46d7-b415-f8b501eebaa5_WUR_RGB_standard_2021-site.svg" width="250" style="margin: 10px;"> 
   <img src="https://www.uni-hohenheim.de/typo3conf/ext/uni_layout/Resources/Public/Images/uni-logo-en.svg" width="250" style="margin: 10px;">
   <img src="https://kamaro-engineering.de/wp-content/uploads/2015/03/Kamaro_Logo-1.png" width="250" style="margin: 10px;">
 </p>
