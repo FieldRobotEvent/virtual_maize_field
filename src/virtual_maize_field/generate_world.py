@@ -18,7 +18,7 @@ LAUNCH_FILE_TEMPLATE = """<?xml version="1.0"?>
     <!-- Spawn Robot -->
     <arg name="robot_name" default="robot_model" />
     <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model"
-    args="-urdf -model $(arg robot_name) -param robot_description -x {x} -y {y} -z {x} -R 0 -P 0 -Y {yaw}" /> 
+    args="-urdf -model $(arg robot_name) -param robot_description -x {x} -y {y} -z {z} -R 0 -P 0 -Y {yaw}" /> 
 </launch>
 """
 
