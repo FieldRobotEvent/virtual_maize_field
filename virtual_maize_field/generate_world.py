@@ -2,12 +2,12 @@
 from __future__ import annotations
 
 from csv import writer as csv_writer
+from os import environ
 from pathlib import Path
 from shutil import rmtree
 
 import cv2
 import numpy as np
-import rospkg
 import yaml
 
 from virtual_maize_field.world_generator.field_2d_generator import Field2DGenerator
@@ -22,13 +22,24 @@ LAUNCH_FILE_TEMPLATE = """<?xml version="1.0"?>
 </launch>
 """
 
+if environ["ROS_DISTRO"] in ("melodic", "noetic"):
+    # ROS1
+    from rospkg import RosPack
+
+    PACKAGE_PATH = Path(RosPack().get_path("virtual_maize_field"))
+else:
+    # ROS2
+    from ament_index_python.packages import get_package_share_directory
+
+    PACKAGE_PATH = Path(get_package_share_directory("virtual_maize_field"))
+
 
 class WorldGenerator:
     def __init__(self, **kwargs) -> None:
         wd = WorldDescription(**kwargs)
         self.fgen = Field2DGenerator(wd)
 
-        self.pkg_path = Path(rospkg.RosPack().get_path("virtual_maize_field"))
+        self.pkg_path = PACKAGE_PATH
 
     def generate(self) -> None:
         """
@@ -135,8 +146,6 @@ def main() -> None:
     from argparse import ArgumentParser
     from inspect import getfullargspec
 
-    pkg_path = Path(rospkg.RosPack().get_path("virtual_maize_field"))
-
     # Dynamically create argument parser with world description parameters
     argspec = getfullargspec(WorldDescription.__init__)
     possible_kwargs = argspec.args[1:]
@@ -151,7 +160,7 @@ def main() -> None:
         type=str,
         help="Config file name in the config folder",
         default=None,
-        choices=[f.stem for f in (pkg_path / "config").glob("*.yaml")],
+        choices=[f.stem for f in (PACKAGE_PATH / "config").glob("*.yaml")],
     )
     for argname, default in zip(possible_kwargs, defaults):
         # we analyze the default value's type to guess the type for that argument
@@ -166,9 +175,9 @@ def main() -> None:
 
     if args.config_file:
         if ".yaml" in args.config_file:
-            config_file_path = pkg_path / "config" / args.config_file
+            config_file_path = PACKAGE_PATH / "config" / args.config_file
         else:
-            config_file_path = pkg_path / "config" / (args.config_file + ".yaml")
+            config_file_path = PACKAGE_PATH / "config" / (args.config_file + ".yaml")
 
         if not config_file_path.is_file():
             print(f"ERROR: cannot find config: '{config_file_path}'!")
