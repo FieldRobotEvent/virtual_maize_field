@@ -17,7 +17,7 @@ data_files = [
 
 # Add all folders recursively 
 # https://answers.ros.org/question/397319/how-to-copy-folders-with-subfolders-to-package-installation-path/
-for folder_name in ("config", "launch", "map", "models", "worlds"):
+for folder_name in ("config", "launch", "map", "Media", "models", "worlds"):
     _path_dict = {}
 
     for (path_, directories, filenames) in walk(folder_name):
