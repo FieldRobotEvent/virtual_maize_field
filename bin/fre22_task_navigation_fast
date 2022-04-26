@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
->&2 printf "\n\033[0;31mError: this is deprecated. Use 'rosrun virtual_maize_field generate_world.py fre22_task_navigation_fast'.\033[0m\n\n"
