@@ -1,37 +1,26 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import importlib.resources
 from csv import writer as csv_writer
-from os import environ
 from pathlib import Path
 from shutil import rmtree
 
 import cv2
 import numpy as np
 import yaml
+from ament_index_python.packages import get_package_share_directory
+from jinja2 import Template
 
+from virtual_maize_field import world_generator
 from virtual_maize_field.world_generator.field_2d_generator import Field2DGenerator
 from virtual_maize_field.world_generator.world_description import WorldDescription
 
-LAUNCH_FILE_TEMPLATE = """<?xml version="1.0"?>
-<launch>
-    <!-- Spawn Robot -->
-    <arg name="robot_name" default="robot_model" />
-    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model"
-    args="-urdf -model $(arg robot_name) -param robot_description -x {x} -y {y} -z {z} -R 0 -P 0 -Y {yaw}" /> 
-</launch>
-"""
-
-if environ["ROS_DISTRO"] in ("melodic", "noetic"):
-    # ROS1
-    from rospkg import RosPack
-
-    PACKAGE_PATH = Path(RosPack().get_path("virtual_maize_field"))
-else:
-    # ROS2
-    from ament_index_python.packages import get_package_share_directory
-
-    PACKAGE_PATH = Path(get_package_share_directory("virtual_maize_field"))
+PACKAGE_PATH = Path(get_package_share_directory("virtual_maize_field"))
+LAUNCH_FILE_PATH = PACKAGE_PATH / "launch/robot_spawner.launch.py"
+LAUNCH_FILE_TEMPLATE = Template(
+    importlib.resources.read_text(world_generator, "robot_spawner.launch.py.template")
+)
 
 
 class WorldGenerator:
@@ -125,9 +114,8 @@ class WorldGenerator:
                 writer.writerow([elm[0], elm[1], "crop"])
 
     def save_launch_file(self) -> None:
-        launch_file = self.pkg_path / "launch/robot_spawner.launch"
-        with launch_file.open("w") as f:
-            content = LAUNCH_FILE_TEMPLATE.format(
+        with LAUNCH_FILE_PATH.open("w") as f:
+            content = LAUNCH_FILE_TEMPLATE.render(
                 x=float(self.fgen.start_loc[0][0]) + np.random.rand() * 0.1 - 0.05,
                 y=float(self.fgen.start_loc[0][1]) + np.random.rand() * 0.1 - 0.05,
                 z=0.7,
