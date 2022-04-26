@@ -7,9 +7,10 @@ from socket import timeout
 from urllib import request
 from xml.etree import ElementTree
 
-import rospkg
-import rospy
+import rclpy
+from ament_index_python.packages import get_package_share_directory
 from packaging import version
+from rclpy.node import Node
 
 GITHUB_PACKAGE_URL = "https://raw.githubusercontent.com/FieldRobotEvent/virtual_maize_field/main/package.xml"
 
@@ -39,8 +40,10 @@ def remote_version_to_cache(cache_file: Path, version: version.Version) -> None:
     cache_file.write_text(f"{timestamp}\n{version}", encoding="utf-8")
 
 
-def main() -> None:
-    rospy.init_node("virtual_maize_field_update_checker")
+def main(args=None) -> None:
+    rclpy.init(args=args)
+
+    node = Node("virtual_maize_field_update_checker")
 
     cache_file = Path("/tmp/virtual_maize_field_update_check.tmp")
     remote_version = remote_version_from_cache(cache_file)
@@ -55,15 +58,17 @@ def main() -> None:
             remote_version_to_cache(cache_file, remote_version)
 
         except timeout:
-            rospy.logdebug(
+            node.get_logger().debug(
                 "Could not get remote version of the 'virtual_maize_field' package. Probably because there is no internet available."
             )
 
         except Exception:
-            rospy.loginfo("Could not check version of 'virtual_maize_field' package.")
+            node.get_logger().info(
+                "Could not check version of 'virtual_maize_field' package."
+            )
 
     # Get the local version
-    local_package_xml = rospkg.RosPack().get_path("virtual_maize_field")
+    local_package_xml = get_package_share_directory("virtual_maize_field")
     local_package_xml_data = (Path(local_package_xml) / "package.xml").read_text(
         encoding="utf-8"
     )
@@ -71,9 +76,11 @@ def main() -> None:
 
     # Print error if we have an old local version
     if local_version < remote_version:
-        rospy.logwarn(
+        node.get_logger().warn(
             f"Your 'virtual_maize_field' package is outdated ({local_version} < {remote_version})! Run 'git submodule update --remote --merge' to update the package and generate new worlds."
         )
+
+    rclpy.shutdown()
 
 
 if __name__ == "__main__":

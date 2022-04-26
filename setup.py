@@ -15,15 +15,13 @@ data_files = [
     ("share/" + package_name, ["package.xml"]),
 ]
 
-# Add all folders recursively 
+# Add all folders recursively
 # https://answers.ros.org/question/397319/how-to-copy-folders-with-subfolders-to-package-installation-path/
 for folder_name in ("config", "launch", "map", "Media", "models", "worlds"):
     _path_dict = {}
 
     for (path_, directories, filenames) in walk(folder_name):
-
         for filename in filenames:
-
             file_path = path.join(path_, filename)
             install_path = path.join("share", package_name, path_)
 
