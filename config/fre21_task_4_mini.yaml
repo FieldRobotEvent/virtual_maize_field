@@ -8,3 +8,4 @@ weeds: 5
 ground_resolution: 0.1 
 location_markers: true
 crop_types: "maize_01,maize_02"
+weed_types: "nettle,unknown_weed"

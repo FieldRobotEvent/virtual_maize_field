@@ -10,3 +10,4 @@ location_markers: true
 ground_resolution: 0.15 
 ground_elevation_max: 0.05
 crop_types: "maize_01,maize_02"
+weed_types: "dandelion"

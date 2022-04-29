@@ -55,8 +55,8 @@ class GazeboGrowthModel(GazeboModel):
                       have one capturing group matching the day number.
     """
 
-    model_name_regex: re.Pattern = re.compile("maize_001_day_[0-9]+")
-    age_regex: re.Pattern = re.compile(".+_day_([0-9]+)")
+    model_name_regex: re.Pattern = re.compile(r"maize_001_day_[0-9]+")
+    age_regex: re.Pattern = re.compile(r".+_day_([0-9]+)")
 
     __models_by_day: dict[int, GazeboModel] | None = None
 
@@ -125,7 +125,7 @@ class GazeboModelsFromRegex(GazeboModel):
                       use None.
     """
 
-    model_name_regex: re.Pattern = re.compile("(maize_[0-9]+)_.+")
+    model_name_regex: re.Pattern = re.compile(r"(maize_[0-9]+)_.+")
     age_regex: re.Pattern | None = None
 
     __models: list[GazeboModel | GazeboGrowthModel] | None = None
@@ -220,14 +220,15 @@ CROP_MODELS = {
     "maize_01": GazeboModel(model_name="maize_01"),
     "maize_02": GazeboModel(model_name="maize_02"),
     "generated_maize": GazeboModelsFromRegex(
-        model_name_regex=re.compile("(maize_[0-9]+)_day_[0-9]+"),
-        age_regex=re.compile(".+_day_([0-9]+)"),
+        model_name_regex=re.compile(r"(maize_[0-9]+)_day_[0-9]+"),
+        age_regex=re.compile(r".+_day_([0-9]+)"),
     ),
 }
 
 WEED_MODELS = {
     "nettle": GazeboModel(model_name="nettle"),
     "unknown_weed": GazeboModel(model_name="unknown_weed"),
+    "dandelion": GazeboModelsFromRegex(model_name_regex=re.compile(r"(dandelion_[0-9]+)")),
 }
 
 LITTER_MODELS = {

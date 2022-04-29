@@ -8,3 +8,4 @@ weeds: 5
 ghost_objects: true 
 location_markers: true
 crop_types: "maize_01,maize_02"
+weed_types: "dandelion"
