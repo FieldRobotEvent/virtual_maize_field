@@ -8,7 +8,6 @@ from xml.etree import ElementTree
 from cv2 import dft
 from regex import P
 
-
 VIRTUAL_MAIZE_FIELD_MODELS_FOLDER = models_folder = Path(__file__).parents[3] / "models"
 
 
@@ -180,6 +179,14 @@ class GazeboModelsFromRegex(GazeboModel):
                         )
                     )
                     added_names.append(model_name)
+
+        if len(self.__models) == 0:
+            print(
+                "\033[91mError: Cannot find any model matching the regular expression "
+                f"'{self.model_name_regex.pattern}' in the models folder! Did you add "
+                "the models to that folder?\033[0m"
+            )
+            exit(1)
 
     def __repr__(self) -> str:
         return f"GazeboModelsFromRegex: {self.model_name_regex.pattern} (matched {len(self)} instances)"
