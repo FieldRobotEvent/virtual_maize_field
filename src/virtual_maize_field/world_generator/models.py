@@ -33,9 +33,10 @@ class GazeboModel:
             assert model_folder.is_dir(), f"Cannot find model {self.model_name}!"
 
             root = ElementTree.parse(model_folder / "model.sdf").getroot()
-            self.__model_visual = ElementTree.tostring(root.find(".//visual")).decode(
-                "utf-8"
-            )
+
+            self.__model_visual = ""
+            for visual in root.findall(".//visual"):
+                self.__model_visual += ElementTree.tostring(visual).decode("utf-8")
 
         return self.__model_visual
 
@@ -228,7 +229,9 @@ CROP_MODELS = {
 WEED_MODELS = {
     "nettle": GazeboModel(model_name="nettle"),
     "unknown_weed": GazeboModel(model_name="unknown_weed"),
-    "dandelion": GazeboModelsFromRegex(model_name_regex=re.compile(r"(dandelion_[0-9]+)")),
+    "dandelion": GazeboModelsFromRegex(
+        model_name_regex=re.compile(r"(dandelion_[0-9]+)")
+    ),
 }
 
 LITTER_MODELS = {
