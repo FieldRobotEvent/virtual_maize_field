@@ -31,4 +31,11 @@ Media/models/virtual_maize_field_heightmap.png
 map/*
 launch/robot_spawner.launch
 
+# Ignore generated models
+models/*_day_*
+
+# Ignore models that may not be published on Github
+models/dandelion_* 
+
+# Keep specific files
 !map/.gitkeep
