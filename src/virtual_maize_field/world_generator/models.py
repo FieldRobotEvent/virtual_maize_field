@@ -42,93 +42,18 @@ class GazeboModel:
     def __repr__(self) -> str:
         return f"GazeboModel: {self.model_name}"
 
-
-@dataclass
-class GazeboGrowthModel(GazeboModel):
-    """
-    Dataclass containing growth models. This dataclass contains multiple GazeboModels
-    at different stages in growth.
-
-    :param model_name_regex: Regex to match all model folders of a single model with
-                             different growth days.
-    :param age_regex: Regex to match the growth day within the model name. This regex should
-                      have one capturing group matching the day number.
-    """
-
-    model_name_regex: re.Pattern = re.compile(r"maize_001_day_[0-9]+")
-    age_regex: re.Pattern = re.compile(r".+_day_([0-9]+)")
-
-    __models_by_day: dict[int, GazeboModel] | None = None
-
-    def __getitem__(self, day_number: int) -> GazeboModel | None:
-        if self.__models_by_day is None:
-            self._gather_models()
-
-        if day_number not in self.available_days:
-            print(f"WARNING: could not find model day {day_number}!")
-            return None
-
-        return self.__models_by_day[day_number]
-
-    def __len__(self) -> int:
-        if self.__models_by_day is None:
-            self._gather_models()
-
-        return len(self.__models_by_day)
-
-    @property
-    def available_days(self) -> list[int]:
-        if self.__models_by_day is None:
-            self._gather_models()
-
-        return list(self.__models_by_day.keys())
-
-    def _gather_models(self) -> None:
-        self.__models_by_day = {}
-
-        for model_folder in VIRTUAL_MAIZE_FIELD_MODELS_FOLDER.glob("**/"):
-            if re.match(self.model_name_regex, model_folder.stem):
-                model_days_match = re.search(self.age_regex, model_folder.stem)
-                if model_days_match is not None:
-                    model_days = int(model_days_match.groups()[0])
-
-                    # Get the parameters belonging to the GazeboModel class
-                    gazebo_model_parameters = {}
-                    gazebo_model_fields = [
-                        f.name
-                        for f in fields(GazeboModel)
-                        if not f.name.startswith("_")
-                    ]
-                    for field in gazebo_model_fields:
-                        gazebo_model_parameters[field] = getattr(self, field)
-
-                    # Set the model name
-                    gazebo_model_parameters["model_name"] = model_folder.name
-
-                    self.__models_by_day[model_days] = GazeboModel(
-                        **gazebo_model_parameters
-                    )
-
-    def __repr__(self) -> str:
-        return f"GazeboGrowthModel: {self.model_name_regex.pattern} (ages: {[a for a in sorted(self.available_days)]})"
-
-
 @dataclass
 class GazeboModelsFromRegex(GazeboModel):
     """
-    Dataclass that gathers models by a regular expression. If age_regex is defined, GazeboGrowthModels are
-    returned instead of GazeboModels.
+    Dataclass that gathers models by a regular expression.
 
     :param model_name_regex: Regex to match a series of model folder names. This regex should have
                              a single capturing group matching the model name.
-    :param age_regex: Regex to match the age in the model name if the model is a GazeboGrowthModel. Otherwise
-                      use None.
     """
 
     model_name_regex: re.Pattern = re.compile(r"(maize_[0-9]+)_.+")
-    age_regex: re.Pattern | None = None
 
-    __models: list[GazeboModel | GazeboGrowthModel] | None = None
+    __models: list[GazeboModel] | None = None
 
     def __len__(self) -> int:
         if self.__models is None:
@@ -137,7 +62,7 @@ class GazeboModelsFromRegex(GazeboModel):
         return len(self.__models)
 
     @property
-    def list(self) -> list[GazeboModel | GazeboGrowthModel]:
+    def list(self) -> list[GazeboModel]:
         if self.__models is None:
             self._gather_models()
 
@@ -145,7 +70,6 @@ class GazeboModelsFromRegex(GazeboModel):
 
     def _gather_models(self) -> None:
         self.__models = []
-        added_names = []
 
         for model_folder in VIRTUAL_MAIZE_FIELD_MODELS_FOLDER.glob("**/"):
             name_match = re.search(self.model_name_regex, model_folder.stem)
@@ -164,21 +88,7 @@ class GazeboModelsFromRegex(GazeboModel):
                 # Set the model name
                 gazebo_model_parameters["model_name"] = model_folder.name
 
-                if self.age_regex is None:
-                    self.__models.append(GazeboModel(**gazebo_model_parameters))
-                elif model_name not in added_names:
-                    new_regex = re.sub(
-                        r"\([^)]*\)", model_name, self.model_name_regex.pattern
-                    )
-
-                    self.__models.append(
-                        GazeboGrowthModel(
-                            model_name_regex=re.compile(new_regex),
-                            age_regex=self.age_regex,
-                            **gazebo_model_parameters,
-                        )
-                    )
-                    added_names.append(model_name)
+                self.__models.append(GazeboModel(**gazebo_model_parameters))
 
         if len(self.__models) == 0:
             print(
@@ -193,7 +103,7 @@ class GazeboModelsFromRegex(GazeboModel):
 
 
 def to_gazebo_models(
-    models: dict[str, GazeboModel | GazeboGrowthModel | GazeboModelsFromRegex],
+    models: dict[str, GazeboModel | GazeboModelsFromRegex],
     model_names: list[str],
     ages: list[int] | None = None,
 ) -> dict[str, GazeboModel]:
@@ -208,12 +118,6 @@ def to_gazebo_models(
                 m_dict = {m.model_name: m for m in model.list}
                 output_dict.update(to_gazebo_models(m_dict, list(m_dict.keys()), ages))
 
-            elif isinstance(model, GazeboGrowthModel) and ages is not None:
-                for age in ages:
-                    model_at_age = model[age]
-                    if model_at_age is not None:
-                        output_dict[model_at_age.model_name] = model_at_age
-
             elif isinstance(model, GazeboModel):
                 output_dict[model.model_name] = model
 
@@ -227,10 +131,6 @@ CROP_MODELS = {
     # "cylinder": GazeboModel("cylinder"),
     "maize_01": GazeboModel(model_name="maize_01"),
     "maize_02": GazeboModel(model_name="maize_02"),
-    "generated_maize": GazeboModelsFromRegex(
-        model_name_regex=re.compile(r"(maize_[0-9]+)_day_[0-9]+"),
-        age_regex=re.compile(r".+_day_([0-9]+)"),
-    ),
 }
 
 WEED_MODELS = {
