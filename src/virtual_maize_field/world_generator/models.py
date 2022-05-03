@@ -42,6 +42,7 @@ class GazeboModel:
     def __repr__(self) -> str:
         return f"GazeboModel: {self.model_name}"
 
+
 @dataclass
 class GazeboModelsFromRegex(GazeboModel):
     """
