@@ -5,9 +5,6 @@ from dataclasses import dataclass, fields
 from pathlib import Path
 from xml.etree import ElementTree
 
-from cv2 import dft
-from regex import P
-
 VIRTUAL_MAIZE_FIELD_MODELS_FOLDER = models_folder = Path(__file__).parents[3] / "models"
 
 
