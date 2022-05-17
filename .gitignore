@@ -25,9 +25,6 @@ CATKIN_IGNORE
 *.ipynb 
 .vscode
 
-# Ignore custom RVIZ configuration
-rviz/config.rviz
-
 # Ignore generated files
 worlds/generated.world
 Media/models/virtual_maize_field_heightmap.png
