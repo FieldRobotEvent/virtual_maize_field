@@ -45,14 +45,19 @@ class Field2DGenerator:
             self.wd.structure["params"]["crop_types"],
             self.wd.structure["params"]["crop_ages"],
         )
-        self.weed_models = to_gazebo_models(
-            WEED_MODELS,
-            self.wd.structure["params"]["weed_types"],
-            self.wd.structure["params"]["weed_ages"],
-        )
-        self.litter_models = to_gazebo_models(
-            LITTER_MODELS, self.wd.structure["params"]["litter_types"]
-        )
+
+        if self.wd.structure["params"]["weeds"] > 0:
+            self.weed_models = to_gazebo_models(
+                WEED_MODELS,
+                self.wd.structure["params"]["weed_types"],
+                self.wd.structure["params"]["weed_ages"],
+            )
+
+        if self.wd.structure["params"]["litters"] > 0:
+            self.litter_models = to_gazebo_models(
+                LITTER_MODELS, self.wd.structure["params"]["litter_types"]
+            )
+
         self.marker_models = MARKER_MODELS
 
     def render_matplotlib(self) -> None:

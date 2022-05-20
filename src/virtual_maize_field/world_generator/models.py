@@ -84,7 +84,7 @@ class GazeboModelsFromRegex(GazeboModel):
                     gazebo_model_parameters[field] = getattr(self, field)
 
                 # Set the model name
-                gazebo_model_parameters["model_name"] = model_folder.name
+                gazebo_model_parameters["model_name"] = model_name
 
                 self.__models.append(GazeboModel(**gazebo_model_parameters))
 
