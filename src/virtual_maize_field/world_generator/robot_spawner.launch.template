@@ -1,0 +1,12 @@
+<launch>
+    <!-- Spawn Robot -->
+    <arg name="robot_name" default="robot_model" />
+    
+    <!-- Override this argument to initialize a specified robot joint at a specified position -->
+    <!-- https://answers.gazebosim.org//question/20105/setting-initial-joint-position/ -->
+    <!-- <arg name="initial_joint_pose" default="-J ARM/Shoulder/X5_9 1.1" /> -->
+    <arg name="initial_joint_pose" default="" />
+
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model"
+    args="-urdf -model $(arg robot_name) -param robot_description -x {{x}} -y {{y}} -z {{z}} -R {{roll}} -P {{pitch}} -Y {{yaw}} $(arg initial_joint_pose)" /> 
+</launch>
