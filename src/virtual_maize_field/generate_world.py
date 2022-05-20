@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import importlib.resources
 from csv import writer as csv_writer
 from pathlib import Path
 from shutil import rmtree
@@ -9,7 +10,9 @@ import cv2
 import numpy as np
 import rospkg
 import yaml
+from jinja2 import Template
 
+from virtual_maize_field import world_generator
 from virtual_maize_field.world_generator.field_2d_generator import Field2DGenerator
 from virtual_maize_field.world_generator.world_description import WorldDescription
 
@@ -114,9 +117,15 @@ class WorldGenerator:
                 writer.writerow([elm[0], elm[1], "crop"])
 
     def save_launch_file(self) -> None:
+        launch_file_template = Template(
+            importlib.resources.read_text(
+                world_generator, "robot_spawner.launch.template"
+            )
+        )
         launch_file = self.pkg_path / "launch/robot_spawner.launch"
+
         with launch_file.open("w") as f:
-            content = LAUNCH_FILE_TEMPLATE.format(
+            content = launch_file_template.render(
                 x=float(self.fgen.start_loc[0][0]) + np.random.rand() * 0.1 - 0.05,
                 y=float(self.fgen.start_loc[0][1]) + np.random.rand() * 0.1 - 0.05,
                 z=0.7,
