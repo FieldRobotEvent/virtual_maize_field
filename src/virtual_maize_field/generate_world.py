@@ -129,6 +129,8 @@ class WorldGenerator:
                 x=float(self.fgen.start_loc[0][0]) + np.random.rand() * 0.1 - 0.05,
                 y=float(self.fgen.start_loc[0][1]) + np.random.rand() * 0.1 - 0.05,
                 z=0.7,
+                roll=0,
+                pitch=0,
                 yaw=1.5707963267948966 + np.random.rand() * 0.1 - 0.05,
             )
             f.write(content)
