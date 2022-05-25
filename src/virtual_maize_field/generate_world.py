@@ -57,8 +57,8 @@ class WorldGenerator:
         if gazebo_cache_pkg.is_dir():
             rmtree(gazebo_cache_pkg)
 
-    def save_minimap(self) -> None:
-        minimap_file = self.pkg_path / "map/map.png"
+    def save_gt_minimap(self) -> None:
+        minimap_file = self.pkg_path / "gt/map.png"
         self.fgen.minimap.savefig(str(minimap_file), dpi=100)
 
     def save_marker_file(self) -> None:
@@ -83,8 +83,8 @@ class WorldGenerator:
                     ]
                 )
 
-    def save_complete_map(self) -> None:
-        complete_map_file = self.pkg_path / "map/map.csv"
+    def save_gt_map(self) -> None:
+        complete_map_file = self.pkg_path / "gt/map.csv"
         with complete_map_file.open("w") as f:
             writer = csv_writer(f)
             header = ["X", "Y", "kind"]
@@ -194,9 +194,9 @@ def main() -> None:
 
     generator.generate()
     generator.clear_gazebo_cache()
-    generator.save_minimap()
+    generator.save_gt_minimap()
     generator.save_marker_file()
-    generator.save_complete_map()
+    generator.save_gt_map()
     generator.save_launch_file()
 
 
