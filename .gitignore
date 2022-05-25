@@ -29,6 +29,7 @@ CATKIN_IGNORE
 worlds/generated.world
 Media/models/virtual_maize_field_heightmap.png
 map/*
+gt/*
 launch/robot_spawner.launch
 
 # Ignore generated models
@@ -39,3 +40,4 @@ models/dandelion_*
 
 # Keep specific files
 !map/.gitkeep
+!gt/.gitkeep
