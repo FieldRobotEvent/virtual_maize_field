@@ -16,15 +16,6 @@ from virtual_maize_field import world_generator
 from virtual_maize_field.world_generator.field_2d_generator import Field2DGenerator
 from virtual_maize_field.world_generator.world_description import WorldDescription
 
-LAUNCH_FILE_TEMPLATE = """<?xml version="1.0"?>
-<launch>
-    <!-- Spawn Robot -->
-    <arg name="robot_name" default="robot_model" />
-    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model"
-    args="-urdf -model $(arg robot_name) -param robot_description -x {x} -y {y} -z {z} -R 0 -P 0 -Y {yaw}" /> 
-</launch>
-"""
-
 
 class WorldGenerator:
     def __init__(self, **kwargs) -> None:
@@ -128,7 +119,7 @@ class WorldGenerator:
             content = launch_file_template.render(
                 x=float(self.fgen.start_loc[0][0]) + np.random.rand() * 0.1 - 0.05,
                 y=float(self.fgen.start_loc[0][1]) + np.random.rand() * 0.1 - 0.05,
-                z=0.7,
+                z=0.35,
                 roll=0,
                 pitch=0,
                 yaw=1.5707963267948966 + np.random.rand() * 0.1 - 0.05,
