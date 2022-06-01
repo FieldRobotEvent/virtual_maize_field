@@ -19,9 +19,9 @@ from virtual_maize_field.world_generator.world_description import WorldDescripti
 
 class WorldGenerator:
     def __init__(self, **kwargs) -> None:
-        wd = WorldDescription(**kwargs)
-        self.fgen = Field2DGenerator(wd)
+        self.wd = WorldDescription(**kwargs)
 
+        self.fgen = Field2DGenerator(self.wd)
         self.pkg_path = Path(rospkg.RosPack().get_path("virtual_maize_field"))
 
     def generate(self) -> None:
@@ -117,12 +117,12 @@ class WorldGenerator:
 
         with launch_file.open("w") as f:
             content = launch_file_template.render(
-                x=float(self.fgen.start_loc[0][0]) + np.random.rand() * 0.1 - 0.05,
-                y=float(self.fgen.start_loc[0][1]) + np.random.rand() * 0.1 - 0.05,
+                x=float(self.fgen.start_loc[0][0]) + self.wd.rng.random() * 0.1 - 0.05,
+                y=float(self.fgen.start_loc[0][1]) + self.wd.rng.random() * 0.1 - 0.05,
                 z=0.35,
                 roll=0,
                 pitch=0,
-                yaw=1.5707963267948966 + np.random.rand() * 0.1 - 0.05,
+                yaw=1.5707963267948966 + self.wd.rng.random() * 0.1 - 0.05,
             )
             f.write(content)
 

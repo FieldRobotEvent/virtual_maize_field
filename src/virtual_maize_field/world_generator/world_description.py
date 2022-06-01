@@ -81,7 +81,7 @@ class WorldDescription:
         for k, v in locals().items():
             self.__setattr__(k, v)
 
-        np.random.seed(self.seed)
+        self.rng = np.random.default_rng(seed)
 
         if self.load_from_file is not None:
             self.load()
@@ -145,11 +145,11 @@ class WorldDescription:
 
         while current_row_length < self.row_length:
             # Choose rendom segment
-            segment_name = np.random.choice(self.row_segments)
+            segment_name = self.rng.choice(self.row_segments)
 
             if segment_name == "straight":
                 length = (
-                    np.random.rand()
+                    self.rng.random()
                     * (
                         self.row_segment_straight_length_max
                         - self.row_segment_straight_length_min
@@ -163,7 +163,7 @@ class WorldDescription:
 
             elif segment_name == "curved":
                 radius = (
-                    np.random.rand()
+                    self.rng.random()
                     * (
                         self.row_segment_curved_radius_max
                         - self.row_segment_curved_radius_min
@@ -171,14 +171,14 @@ class WorldDescription:
                     + self.row_segment_curved_radius_min
                 )
                 arc_measure = (
-                    np.random.rand()
+                    self.rng.random()
                     * (
                         self.row_segment_curved_arc_measure_max
                         - self.row_segment_curved_arc_measure_min
                     )
                     + self.row_segment_curved_arc_measure_min
                 )
-                curve_dir = np.random.randint(2)
+                curve_dir = self.rng.integers(2)
                 if current_curve + arc_measure > self.rows_curve_budget:
                     curve_dir = 1
                 elif current_curve - arc_measure < -self.rows_curve_budget:
@@ -198,14 +198,14 @@ class WorldDescription:
 
             elif segment_name == "island":
                 radius = (
-                    np.random.rand()
+                    self.rng.random()
                     * (
                         self.row_segment_island_radius_max
                         - self.row_segment_island_radius_min
                     )
                     + self.row_segment_island_radius_min
                 )
-                island_row = np.random.randint(self.rows_count - 1) + 1
+                island_row = self.rng.integers(self.rows_count - 1) + 1
 
                 segment = {
                     "type": "island",

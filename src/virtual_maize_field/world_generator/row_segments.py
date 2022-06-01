@@ -1,4 +1,7 @@
+from __future__ import annotations
+
 from abc import ABC, abstractmethod
+from typing import Any
 
 import numpy as np
 from matplotlib import pyplot as plt
@@ -8,7 +11,15 @@ from virtual_maize_field.world_generator.utils import BoundedGaussian, Geometry
 
 
 class BaseSegment(ABC):
-    def __init__(self, start_p, start_dir, plant_params):
+    def __init__(
+        self,
+        start_p: np.ndarray,
+        start_dir: np.ndarray,
+        plant_params: dict[str, Any],
+        rng: np.random.Generator = np.random.default_rng(),
+    ):
+        self._rng = rng
+
         self.start_p = start_p
         self.start_dir = start_dir
         self.start_dir = self.start_dir / np.linalg.norm(self.start_dir)
@@ -16,17 +27,18 @@ class BaseSegment(ABC):
         self.bounded_gaussian = BoundedGaussian(
             self.plant_params["plant_spacing_min"],
             self.plant_params["plant_spacing_max"],
+            rng=self._rng,
         )
 
-    # Must return a touple of the end points from the implemented segment
+    # Must return a tuple of the end points from the implemented segment
     # and the new direction for the next segment
     @abstractmethod
-    def end(self):
+    def end(self) -> tuple[np.ndarray, ...]:
         raise NotImplementedError
 
     # returns a list of 2D coordinates for all plants in the segment and
     # a vector containing the offset to the next segment
-    def placements(self, offset=None):
+    def placements(self, offset: np.ndarray | None = None):
         # Assuming the first plant should be roughly at the start of each row if no offset is given
         if offset == None:
             offset = np.full(
@@ -51,7 +63,7 @@ class BaseSegment(ABC):
     # for the specified line and a distance left to the end point
     @abstractmethod
     def get_plant_row(self, row_number, offset):
-        raise NotADirectoryError
+        raise NotImplementedError
 
     # returns a list of all racing_lines from the segment
     def racing_lines(self, spacing):
@@ -83,8 +95,15 @@ class BaseSegment(ABC):
 
 
 class StraightSegment(BaseSegment):
-    def __init__(self, start_p, start_dir, plant_params, length):
-        super(StraightSegment, self).__init__(start_p, start_dir, plant_params)
+    def __init__(
+        self,
+        start_p: np.ndarray,
+        start_dir: np.ndarray,
+        plant_params: dict[str, Any],
+        length: float,
+        rng: np.random.RandomState = np.random.default_rng(),
+    ):
+        super().__init__(start_p, start_dir, plant_params, rng=rng)
         self.length = length
 
     def end(self):
@@ -112,7 +131,7 @@ class StraightSegment(BaseSegment):
         return np.array(placements), dist
 
     def racing_line(self, row_number, spacing):
-        super(StraightSegment, self).racing_line(row_number, spacing)
+        super().racing_line(row_number, spacing)
 
         start = self.start_p[row_number] + 0.5 * (
             self.start_p[row_number + 1] - self.start_p[row_number]
@@ -129,7 +148,7 @@ class StraightSegment(BaseSegment):
         return np.array(line)
 
     def render(self):
-        super(StraightSegment, self).render()
+        super().render()
 
         for x1, y1 in self.start_p:
             x2 = x1 + self.length * self.start_dir[0]
@@ -139,9 +158,17 @@ class StraightSegment(BaseSegment):
 
 class CurvedSegment(BaseSegment):
     def __init__(
-        self, start_p, start_dir, plant_params, radius, curve_dir, arc_measure
+        self,
+        start_p: np.ndarray,
+        start_dir: np.ndarray,
+        plant_params: dict[str, Any],
+        radius: float,
+        curve_dir: int,
+        arc_measure: float,
+        rng: np.random.Generator = np.random.default_rng(),
     ):
-        super(CurvedSegment, self).__init__(start_p, start_dir, plant_params)
+        super().__init__(start_p, start_dir, plant_params, rng=rng)
+
         self.radius = radius
         self.curve_dir = curve_dir
         self.arc_measure = arc_measure * (1 if self.curve_dir else -1)
@@ -183,7 +210,7 @@ class CurvedSegment(BaseSegment):
         return np.array(placements), dist
 
     def racing_line(self, row_number, spacing):
-        super(CurvedSegment, self).racing_line(row_number, spacing)
+        super().racing_line(row_number, spacing)
 
         start = self.start_p[row_number] + 0.5 * (
             self.start_p[row_number + 1] - self.start_p[row_number]
@@ -203,7 +230,7 @@ class CurvedSegment(BaseSegment):
         return np.array(line)
 
     def render(self):
-        super(CurvedSegment, self).render()
+        super().render()
 
         for x1, y1 in self.start_p:
             r = np.linalg.norm([x1, y1] - self.center)
@@ -234,15 +261,17 @@ class CurvedSegment(BaseSegment):
 class IslandSegment(BaseSegment):
     def __init__(
         self,
-        start_p,
-        start_dir,
-        plant_params,
-        radius,
-        island_model,
-        island_model_radius,
-        island_row,
+        start_p: np.ndarray,
+        start_dir: np.ndarray,
+        plant_params: dict[str, Any],
+        radius: float,
+        island_model: str,
+        island_model_radius: float,
+        island_row: int,
+        rng: np.random.Generator = np.random.default_rng(),
     ):
-        super(IslandSegment, self).__init__(start_p, start_dir, plant_params)
+        super().__init__(start_p, start_dir, plant_params, rng=rng)
+
         self.radius = radius
         self.island_model = island_model
         self.island_model_radius = island_model_radius
@@ -376,7 +405,7 @@ class IslandSegment(BaseSegment):
         raise NotImplementedError
 
     def render(self):
-        super(IslandSegment, self).render()
+        super().render()
 
         # center clearance
         arc = Arc(

@@ -29,10 +29,10 @@ from virtual_maize_field.world_generator.world_description import WorldDescripti
 
 class Field2DGenerator:
     def __init__(
-        self, world_description: WorldDescription = WorldDescription()
+        self,
+        world_description: WorldDescription = WorldDescription(),
     ) -> None:
         self.wd = world_description
-        np.random.seed(self.wd.structure["params"]["seed"])
 
         self.crop_models = None
         self.weed_models = None
@@ -197,6 +197,7 @@ class Field2DGenerator:
                     current_dir,
                     self.wd.structure["params"],
                     segment["length"],
+                    rng=self.wd.rng,
                 )
             elif segment["type"] == "curved":
                 seg = CurvedSegment(
@@ -206,6 +207,7 @@ class Field2DGenerator:
                     segment["radius"],
                     segment["curve_dir"],
                     segment["arc_measure"],
+                    rng=self.wd.rng,
                 )
             elif segment["type"] == "island":
                 seg = IslandSegment(
@@ -216,6 +218,7 @@ class Field2DGenerator:
                     segment["island_model"],
                     segment["island_model_radius"],
                     segment["island_row"],
+                    rng=self.wd.rng,
                 )
             else:
                 raise ValueError("Unknown segment type. [" + segment["type"] + "]")
@@ -235,14 +238,14 @@ class Field2DGenerator:
             row = np.vstack(row)
 
             # generate indexes of the end of the hole
-            probs = np.random.sample(row.shape[0])
+            probs = self.wd.rng.random(row.shape[0])
             probs = probs < self.wd.structure["params"]["hole_prob"][index]
 
             # iterate in reverse order, and remove plants in the holes
             i = probs.shape[0] - 1
             while i > 0:
                 if probs[i]:
-                    hole_size = np.random.randint(
+                    hole_size = self.wd.rng.integers(
                         1, self.wd.structure["params"]["hole_size_max"][index]
                     )
                     row = np.delete(row, slice(max(1, i - hole_size), i), axis=0)
@@ -255,6 +258,7 @@ class Field2DGenerator:
         bg = BoundedGaussian(
             -self.wd.structure["params"]["plant_placement_error_max"],
             self.wd.structure["params"]["plant_placement_error_max"],
+            rng=self.wd.rng,
         )
 
         # TODO There is a better way to do this
@@ -291,8 +295,8 @@ class Field2DGenerator:
 
             while len(points) < num_points:
                 np_point = [
-                    np.random.uniform(min_x, max_x),
-                    np.random.uniform(min_y, max_y),
+                    self.wd.rng.uniform(min_x, max_x),
+                    self.wd.rng.uniform(min_y, max_y),
                 ]
                 random_point = Point(np_point)
                 if random_point.within(poly):
@@ -309,7 +313,7 @@ class Field2DGenerator:
             self.weed_placements = random_points_within(
                 self.field_poly, self.wd.structure["params"]["weeds"]
             )
-            random_weed_models = np.random.choice(
+            random_weed_models = self.wd.rng.choice(
                 list(self.weed_models.values()),
                 self.wd.structure["params"]["weeds"],
             )
@@ -322,7 +326,7 @@ class Field2DGenerator:
             self.litter_placements = random_points_within(
                 self.field_poly, self.wd.structure["params"]["litters"]
             )
-            random_litter_models = np.random.choice(
+            random_litter_models = self.wd.rng.choice(
                 list(self.litter_models.values()),
                 self.wd.structure["params"]["litters"],
             )
@@ -420,7 +424,7 @@ class Field2DGenerator:
         while 2**n < image_size:
             heightmap += (
                 cv2.resize(
-                    np.random.random((image_size // 2**n, image_size // 2**n)),
+                    self.wd.rng.random((image_size // 2**n, image_size // 2**n)),
                     (image_size, image_size),
                 )
                 * (n + 1) ** 2
@@ -531,11 +535,11 @@ class Field2DGenerator:
             coordinate["pitch"] = model.default_pitch
             coordinate["yaw"] = model.default_yaw
             if model.random_yaw:
-                coordinate["yaw"] += np.random.rand() * 2.0 * np.pi
+                coordinate["yaw"] += self.wd.rng.random() * 2.0 * np.pi
 
             coordinate["radius"] = (
                 radius
-                + (2 * np.random.rand() - 1)
+                + (2 * self.wd.rng.random() - 1)
                 * self.wd.structure["params"]["plant_radius_noise"]
             )
             if coordinate["type"] == "cylinder":
@@ -551,7 +555,7 @@ class Field2DGenerator:
                 self.wd.structure["params"]["plant_radius"],
                 self.wd.structure["params"]["plant_height_min"],
                 self.wd.structure["params"]["plant_mass"],
-                np.random.choice(list(self.crop_models.values())),
+                self.wd.rng.choice(list(self.crop_models.values())),
                 i,
             )
             for i, plant in enumerate(self.crop_placements)

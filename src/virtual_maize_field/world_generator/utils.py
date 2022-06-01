@@ -11,15 +11,19 @@ class Geometry:
 
 
 class BoundedGaussian:
-    def __init__(self, lower, upper, span=1):
+    def __init__(
+        self, lower, upper, span=1, rng: np.random.Generator = np.random.default_rng()
+    ):
         self.lower = lower
         self.upper = upper
         self.span = span
+
+        self._rng = rng
 
     def get(self, offset=0.0):
         mean = (self.upper + self.lower) / 2
         sigma = self.upper - mean
         while True:
-            num = np.random.normal(mean, sigma / self.span)
+            num = self._rng.normal(mean, sigma / self.span)
             if num > self.lower and num < self.upper:
                 return num + offset
