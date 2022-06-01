@@ -134,18 +134,13 @@ class WorldGenerator:
 
 
 def main() -> None:
-    from argparse import ArgumentParser
-    from inspect import getfullargspec
+    from world_generator.utils import parser_from_function
 
     pkg_path = Path(rospkg.RosPack().get_path("virtual_maize_field"))
 
-    # Dynamically create argument parser with world description parameters
-    argspec = getfullargspec(WorldDescription.__init__)
-    possible_kwargs = argspec.args[1:]
-    defaults = argspec.defaults
-
-    parser = ArgumentParser(
-        description="Generate a virtual maize field world for Gazebo."
+    parser = parser_from_function(
+        WorldDescription.__init__,
+        description="Generate a virtual maize field world for Gazebo.",
     )
     parser.add_argument(
         "config_file",
@@ -155,15 +150,6 @@ def main() -> None:
         default=None,
         choices=[f.stem for f in (pkg_path / "config").glob("*.yaml")],
     )
-    for argname, default in zip(possible_kwargs, defaults):
-        # we analyze the default value's type to guess the type for that argument
-        parser.add_argument(
-            "--" + argname,
-            type=type(default),
-            help="default_value: {}".format(default),
-            required=False,
-        )
-
     args = parser.parse_args()
 
     if args.config_file:

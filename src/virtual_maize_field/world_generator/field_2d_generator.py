@@ -43,14 +43,12 @@ class Field2DGenerator:
         self.crop_models = to_gazebo_models(
             CROP_MODELS,
             self.wd.structure["params"]["crop_types"],
-            self.wd.structure["params"]["crop_ages"],
         )
 
         if self.wd.structure["params"]["weeds"] > 0:
             self.weed_models = to_gazebo_models(
                 WEED_MODELS,
                 self.wd.structure["params"]["weed_types"],
-                self.wd.structure["params"]["weed_ages"],
             )
 
         if self.wd.structure["params"]["litters"] > 0:
