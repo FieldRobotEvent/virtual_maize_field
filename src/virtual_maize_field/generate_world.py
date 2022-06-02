@@ -19,9 +19,9 @@ from virtual_maize_field.world_generator.world_description import WorldDescripti
 
 class WorldGenerator:
     def __init__(self, **kwargs) -> None:
-        wd = WorldDescription(**kwargs)
-        self.fgen = Field2DGenerator(wd)
+        self.wd = WorldDescription(**kwargs)
 
+        self.fgen = Field2DGenerator(self.wd)
         self.pkg_path = Path(rospkg.RosPack().get_path("virtual_maize_field"))
 
     def generate(self) -> None:
@@ -117,12 +117,12 @@ class WorldGenerator:
 
         with launch_file.open("w") as f:
             content = launch_file_template.render(
-                x=float(self.fgen.start_loc[0][0]) + np.random.rand() * 0.1 - 0.05,
-                y=float(self.fgen.start_loc[0][1]) + np.random.rand() * 0.1 - 0.05,
+                x=float(self.fgen.start_loc[0][0]) + self.wd.rng.random() * 0.1 - 0.05,
+                y=float(self.fgen.start_loc[0][1]) + self.wd.rng.random() * 0.1 - 0.05,
                 z=0.35,
                 roll=0,
                 pitch=0,
-                yaw=1.5707963267948966 + np.random.rand() * 0.1 - 0.05,
+                yaw=1.5707963267948966 + self.wd.rng.random() * 0.1 - 0.05,
             )
             f.write(content)
 
@@ -134,18 +134,13 @@ class WorldGenerator:
 
 
 def main() -> None:
-    from argparse import ArgumentParser
-    from inspect import getfullargspec
+    from world_generator.utils import parser_from_function
 
     pkg_path = Path(rospkg.RosPack().get_path("virtual_maize_field"))
 
-    # Dynamically create argument parser with world description parameters
-    argspec = getfullargspec(WorldDescription.__init__)
-    possible_kwargs = argspec.args[1:]
-    defaults = argspec.defaults
-
-    parser = ArgumentParser(
-        description="Generate a virtual maize field world for Gazebo."
+    parser = parser_from_function(
+        WorldDescription.__init__,
+        description="Generate a virtual maize field world for Gazebo.",
     )
     parser.add_argument(
         "config_file",
@@ -155,15 +150,9 @@ def main() -> None:
         default=None,
         choices=[f.stem for f in (pkg_path / "config").glob("*.yaml")],
     )
-    for argname, default in zip(possible_kwargs, defaults):
-        # we analyze the default value's type to guess the type for that argument
-        parser.add_argument(
-            "--" + argname,
-            type=type(default),
-            help="default_value: {}".format(default),
-            required=False,
-        )
-
+    parser.add_argument(
+        "--show_map", action="store_true", help="Show map after generation."
+    )
     args = parser.parse_args()
 
     if args.config_file:
@@ -189,6 +178,10 @@ def main() -> None:
     generator.save_marker_file()
     generator.save_gt_map()
     generator.save_launch_file()
+
+    # Show minimap after generation
+    if args.show_map:
+        generator.fgen.minimap.show()
 
 
 if __name__ == "__main__":

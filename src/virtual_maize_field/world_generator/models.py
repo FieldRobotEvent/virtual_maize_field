@@ -103,7 +103,6 @@ class GazeboModelsFromRegex(GazeboModel):
 def to_gazebo_models(
     models: dict[str, GazeboModel | GazeboModelsFromRegex],
     model_names: list[str],
-    ages: list[int] | None = None,
 ) -> dict[str, GazeboModel]:
     """
     Converts dict of different types of Gazebo models to dict with only Gazebo models.
@@ -114,13 +113,13 @@ def to_gazebo_models(
         if model_name in model_names:
             if isinstance(model, GazeboModelsFromRegex):
                 m_dict = {m.model_name: m for m in model.list}
-                output_dict.update(to_gazebo_models(m_dict, list(m_dict.keys()), ages))
+                output_dict.update(to_gazebo_models(m_dict, list(m_dict.keys())))
 
             elif isinstance(model, GazeboModel):
                 output_dict[model.model_name] = model
 
             else:
-                print(f"ERROR: unknown instance {type(model)} with ages {ages}!")
+                print(f"ERROR: unknown instance {type(model)}!")
 
     return output_dict
 
