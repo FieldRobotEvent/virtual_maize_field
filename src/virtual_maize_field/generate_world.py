@@ -150,6 +150,9 @@ def main() -> None:
         default=None,
         choices=[f.stem for f in (pkg_path / "config").glob("*.yaml")],
     )
+    parser.add_argument(
+        "--show_map", action="store_true", help="Show map after generation."
+    )
     args = parser.parse_args()
 
     if args.config_file:
@@ -175,6 +178,10 @@ def main() -> None:
     generator.save_marker_file()
     generator.save_gt_map()
     generator.save_launch_file()
+
+    # Show minimap after generation
+    if args.show_map:
+        generator.fgen.minimap.show()
 
 
 if __name__ == "__main__":

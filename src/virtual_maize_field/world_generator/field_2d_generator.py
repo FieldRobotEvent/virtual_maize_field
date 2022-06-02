@@ -18,9 +18,10 @@ from virtual_maize_field.world_generator.models import (
     GazeboModel,
     to_gazebo_models,
 )
-from virtual_maize_field.world_generator.row_segments import (
+from virtual_maize_field.world_generator.segments import (
     CurvedSegment,
     IslandSegment,
+    SCurvedSegment,
     StraightSegment,
 )
 from virtual_maize_field.world_generator.utils import BoundedGaussian
@@ -195,6 +196,16 @@ class Field2DGenerator:
                     current_dir,
                     self.wd.structure["params"],
                     segment["length"],
+                    rng=self.wd.rng,
+                )
+            elif segment["type"] == "scurved":
+                seg = SCurvedSegment(
+                    current_p,
+                    current_dir,
+                    self.wd.structure["params"],
+                    segment["offset"],
+                    segment["length"],
+                    segment["curve_dir"],
                     rng=self.wd.rng,
                 )
             elif segment["type"] == "curved":
