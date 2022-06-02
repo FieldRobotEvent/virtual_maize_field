@@ -1,17 +1,17 @@
 row_length: 10
 rows_count: 11
-rows_curve_budget: 0.78539816339
 row_segments:
   - straight
-  - curved
-row_segment_curved_radius_min: 4.0
-row_segment_curved_radius_max: 5.0
-hole_prob: [0.04, 0.04, 0.03, 0.03, 0.02, 0.02, 0.01, 0.01, 0.0, 0.0, 0.0]
-hole_size_max: [8, 5, 6, 4, 5, 5, 3, 2, 0, 0, 0]
+  - scurved
+row_segment_scurved_offset_min: 0.5
+row_segment_scurved_offset_max: 1.0
+row_segment_scurved_length_min: 5.0
+row_segment_scurved_length_max: 7.0
+hole_prob: [0.06, 0.06, 0.05, 0.03, 0.02, 0.02, 0.01, 0.01, 0.0, 0.0, 0.0]
+hole_size_max: [10, 9, 7, 4, 5, 5, 3, 2, 0, 0, 0]
 litters: 5
 weeds: 5
 ghost_objects: true
 location_markers: true
 weed_types:
   - dandelion
-seed: 1
