@@ -19,7 +19,7 @@ class SCurvedSegment(BaseSegment):
         step_size: float = 0.01,
         step_range: float = 50.0,
         steepness_step_size: float = 0.01,
-        max_length_difference: float = 0.01,
+        max_length_difference: float = 0.02,
         max_steps: int = 1e7,
         rng: np.random.Generator = np.random.default_rng(),
     ):
@@ -59,7 +59,7 @@ class SCurvedSegment(BaseSegment):
                     )
 
             coordinates = np.array(coordinates)
-            current_length = self.coordinates_2_distance(coordinates)
+            current_length = coordinates[:, 1].max() - coordinates[:, 1].min()
             current_steepness += steepness_step_size
 
         if self.curve_dir == 0:
