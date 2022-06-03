@@ -1,14 +1,13 @@
 row_length: 10
-rows_count: 11
+rows_count: 12
 row_segments:
-  - straight
   - scurved
-row_segment_scurved_offset_min: 0.5
-row_segment_scurved_offset_max: 1.0
-row_segment_scurved_length_min: 5.0
-row_segment_scurved_length_max: 7.0
-hole_prob: [0.06, 0.06, 0.05, 0.03, 0.02, 0.02, 0.01, 0.01, 0.0, 0.0, 0.0]
-hole_size_max: [10, 9, 7, 4, 5, 5, 3, 2, 0, 0, 0]
+row_segment_scurved_offset_min: 0.7
+row_segment_scurved_offset_max: 1.2
+row_segment_scurved_length_min: 10.0
+row_segment_scurved_length_max: 10.0
+hole_prob: [0.06, 0.06, 0.06, 0.05, 0.03, 0.02, 0.02, 0.01, 0.0, 0.0, 0.0, 0.0]
+hole_size_max: [10, 10, 9, 7, 4, 5, 5, 3, 2, 0, 0, 0]
 ground_resolution: 0.15
 ground_elevation_max: 0.05
 weeds: 5
