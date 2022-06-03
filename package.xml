@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="3">
   <name>virtual_maize_field</name>
-  <version>4.5.0</version>
+  <version>4.6.0</version>
   <description>A virtual maize field for agricultural robot simulation in Gazebo.</description>
 
   <maintainer email="info@fieldrobot.com">Field Robot Event Organization</maintainer>
