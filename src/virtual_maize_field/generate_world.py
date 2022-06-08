@@ -168,9 +168,8 @@ def main() -> None:
         generator = WorldGenerator.from_config_file(config_file_path)
     else:
         # Get a dict representation of the arguments and call our constructor with them as kwargs
-        args = vars(parser.parse_args())
-        args = {k: v for k, v in args.items() if v is not None}
-        generator = WorldGenerator(**args)
+        args_dict = {k: v for k, v in vars(args).items() if v is not None}
+        generator = WorldGenerator(**args_dict)
 
     generator.generate()
     generator.clear_gazebo_cache()
