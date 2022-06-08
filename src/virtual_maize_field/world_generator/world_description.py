@@ -62,6 +62,7 @@ class WorldDescription:
         location_markers: bool = False,
         load_from_file: str | None = None,
         seed: int = -1,
+        **kwargs,
     ) -> None:
         crop_types = self.unpack_model_types(crop_types)
         litter_types = self.unpack_model_types(litter_types)
