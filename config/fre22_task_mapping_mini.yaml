@@ -15,3 +15,6 @@ ghost_objects: true
 location_markers: true
 weed_types: 
   - dandelion
+litter_types: 
+  - coke_can
+  - retro_pepsi_can
