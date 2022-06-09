@@ -141,9 +141,13 @@ WEED_MODELS = {
 LITTER_MODELS = {
     "ale": GazeboModel(model_name="ale", default_roll=1.5707963267948966),
     "beer": GazeboModel(model_name="beer", default_roll=1.5707963267948966),
-    "coke_can": GazeboModel(model_name="coke_can", default_roll=1.5707963267948966),
+    "coke_can": GazeboModel(
+        model_name="coke_can", default_roll=1.5707963267948966, default_z=0.025
+    ),
     "retro_pepsi_can": GazeboModel(
-        model_name="retro_pepsi_can", default_roll=1.5707963267948966
+        model_name="retro_pepsi_can",
+        default_roll=1.5707963267948966,
+        default_z=0.025,
     ),
 }
 
