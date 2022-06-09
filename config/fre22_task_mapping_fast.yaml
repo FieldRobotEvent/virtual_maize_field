@@ -10,8 +10,12 @@ hole_prob: [0.06, 0.06, 0.06, 0.05, 0.03, 0.02, 0.02, 0.01, 0.0, 0.0, 0.0, 0.0]
 hole_size_max: [10, 10, 9, 7, 4, 5, 5, 3, 2, 0, 0, 0]
 ground_resolution: 0.15
 ground_elevation_max: 0.05
+litters: 5
 weeds: 5
 ghost_objects: true
 location_markers: true
 weed_types:
   - dandelion
+litter_types: 
+  - coke_can
+  - retro_pepsi_can
