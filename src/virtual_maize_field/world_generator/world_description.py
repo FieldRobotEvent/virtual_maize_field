@@ -16,7 +16,7 @@ from virtual_maize_field.world_generator.models import (
 )
 
 AVAILABLE_ILANDS = []
-AVAILABLE_SEGMENTS = ["straight", "curved", "scurved", "island"]
+AVAILABLE_SEGMENTS = ["straight", "curved", "sincurved", "island"]
 
 
 class WorldDescription:
@@ -29,10 +29,10 @@ class WorldDescription:
         row_segments: list[str] = AVAILABLE_SEGMENTS[:2],
         row_segment_straight_length_min: int = 0.5,
         row_segment_straight_length_max: float = 1,
-        row_segment_scurved_offset_min: float = 0.5,
-        row_segment_scurved_offset_max: float = 1.5,
-        row_segment_scurved_length_min: float = 3,
-        row_segment_scurved_length_max: float = 5,
+        row_segment_sincurved_offset_min: float = 0.5,
+        row_segment_sincurved_offset_max: float = 1.5,
+        row_segment_sincurved_length_min: float = 3,
+        row_segment_sincurved_length_max: float = 5,
         row_segment_curved_radius_min: float = 3.0,
         row_segment_curved_radius_max: float = 10.0,
         row_segment_curved_arc_measure_min: float = 0.3,
@@ -152,22 +152,22 @@ class WorldDescription:
 
                 current_row_length += length
 
-            elif segment_name == "scurved":
+            elif segment_name == "sincurved":
                 offset = (
                     self.rng.random()
                     * (
-                        self.row_segment_scurved_offset_max
-                        - self.row_segment_scurved_offset_min
+                        self.row_segment_sincurved_offset_max
+                        - self.row_segment_sincurved_offset_min
                     )
-                    + self.row_segment_scurved_offset_min
+                    + self.row_segment_sincurved_offset_min
                 )
                 length = (
                     self.rng.random()
                     * (
-                        self.row_segment_scurved_length_max
-                        - self.row_segment_scurved_length_min
+                        self.row_segment_sincurved_length_max
+                        - self.row_segment_sincurved_length_min
                     )
-                    + self.row_segment_scurved_length_min
+                    + self.row_segment_sincurved_length_min
                 )
 
                 if current_row_length + length > self.row_length:
@@ -176,7 +176,7 @@ class WorldDescription:
                 curve_dir = self.rng.integers(2)
 
                 segment = {
-                    "type": "scurved",
+                    "type": "sincurved",
                     "offset": offset,
                     "length": length,
                     "curve_dir": curve_dir,
