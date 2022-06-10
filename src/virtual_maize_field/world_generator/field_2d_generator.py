@@ -85,29 +85,31 @@ class Field2DGenerator:
             color="g",
             marker=".",
         )
-        labels.append("crops")
+        labels.append("crop plants")
 
         # weeds
-        plt.scatter(
-            self.weed_placements[:, 0],
-            self.weed_placements[:, 1],
-            color="r",
-            marker=".",
-            s=100,
-            alpha=0.5,
-        )
-        labels.append("weeds")
+        if self.weed_placements.shape[0] > 0:
+            plt.scatter(
+                self.weed_placements[:, 0],
+                self.weed_placements[:, 1],
+                color="r",
+                marker=".",
+                s=100,
+                alpha=0.5,
+            )
+            labels.append("weeds")
 
         # litter
-        plt.scatter(
-            self.litter_placements[:, 0],
-            self.litter_placements[:, 1],
-            color="b",
-            marker=".",
-            s=100,
-            alpha=0.5,
-        )
-        labels.append("litter")
+        if self.litter_placements.shape[0] > 0:
+            plt.scatter(
+                self.litter_placements[:, 0],
+                self.litter_placements[:, 1],
+                color="b",
+                marker=".",
+                s=100,
+                alpha=0.5,
+            )
+            labels.append("litter")
 
         # start
         plt.scatter(
@@ -155,6 +157,10 @@ class Field2DGenerator:
                 ha="center",
                 va="center",
             )
+
+        # Axis
+        plt.xlabel("x")
+        plt.ylabel("y")
 
         plt.legend(labels)
         self.minimap = plt
