@@ -21,7 +21,7 @@ from virtual_maize_field.world_generator.models import (
 from virtual_maize_field.world_generator.segments import (
     CurvedSegment,
     IslandSegment,
-    SCurvedSegment,
+    SinCurvedSegment,
     StraightSegment,
 )
 from virtual_maize_field.world_generator.utils import BoundedGaussian
@@ -198,8 +198,8 @@ class Field2DGenerator:
                     segment["length"],
                     rng=self.wd.rng,
                 )
-            elif segment["type"] == "scurved":
-                seg = SCurvedSegment(
+            elif segment["type"] == "sincurved":
+                seg = SinCurvedSegment(
                     current_p,
                     current_dir,
                     self.wd.structure["params"],
