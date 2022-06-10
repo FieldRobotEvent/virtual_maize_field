@@ -173,7 +173,7 @@ class Field2DGenerator:
     def chain_segments(self) -> None:
         # Generate start points
         x_start = 0
-        x_end = self.wd.rows_count * self.wd.row_width
+        x_end = (self.wd.rows_count - 1) * self.wd.row_width
 
         current_p = np.array(
             [
