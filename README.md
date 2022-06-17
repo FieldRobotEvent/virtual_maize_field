@@ -48,115 +48,134 @@ The resulting file will be placed in `worlds/generated.world`. You can use this 
   <summary>Click to show all possible arguments</summary>
   
   ```
-  usage: generate_world.py [-h] [--row_length ROW_LENGTH]
-                          [--rows_curve_budget ROWS_CURVE_BUDGET]
-                          [--row_width ROW_WIDTH] [--rows_count ROWS_COUNT]
-                          [--row_segments ROW_SEGMENTS]
-                          [--row_segment_straight_length_min ROW_SEGMENT_STRAIGHT_LENGTH_MIN]
-                          [--row_segment_straight_length_max ROW_SEGMENT_STRAIGHT_LENGTH_MAX]
-                          [--row_segment_curved_radius_min ROW_SEGMENT_CURVED_RADIUS_MIN]
-                          [--row_segment_curved_radius_max ROW_SEGMENT_CURVED_RADIUS_MAX]
-                          [--row_segment_curved_arc_measure_min ROW_SEGMENT_CURVED_ARC_MEASURE_MIN]
-                          [--row_segment_curved_arc_measure_max ROW_SEGMENT_CURVED_ARC_MEASURE_MAX]
-                          [--row_segment_island_radius_min ROW_SEGMENT_ISLAND_RADIUS_MIN]
-                          [--row_segment_island_radius_max ROW_SEGMENT_ISLAND_RADIUS_MAX]
-                          [--ground_resolution GROUND_RESOLUTION]
-                          [--ground_elevation_max GROUND_ELEVATION_MAX]
-                          [--ground_headland GROUND_HEADLAND]
-                          [--ground_ditch_depth GROUND_DITCH_DEPTH]
-                          [--plant_spacing_min PLANT_SPACING_MIN]
-                          [--plant_spacing_max PLANT_SPACING_MAX]
-                          [--plant_height_min PLANT_HEIGHT_MIN]
-                          [--plant_height_max PLANT_HEIGHT_MAX]
-                          [--plant_radius PLANT_RADIUS]
-                          [--plant_radius_noise PLANT_RADIUS_NOISE]
-                          [--plant_placement_error_max PLANT_PLACEMENT_ERROR_MAX]
-                          [--plant_mass PLANT_MASS] [--hole_prob HOLE_PROB]
-                          [--hole_size_max HOLE_SIZE_MAX]
-                          [--crop_types CROP_TYPES] [--litters LITTERS]
-                          [--litter_types LITTER_TYPES] [--weeds WEEDS]
-                          [--weed_types WEED_TYPES]
-                          [--ghost_objects GHOST_OBJECTS]
-                          [--location_markers LOCATION_MARKERS]
-                          [--load_from_file LOAD_FROM_FILE] [--seed SEED]
-                          [config_file]
+  usage: generate_world [-h] [--row_length ROW_LENGTH]
+                      [--rows_curve_budget ROWS_CURVE_BUDGET]
+                      [--row_width ROW_WIDTH] [--rows_count ROWS_COUNT]
+                      [--row_segments [ROW_SEGMENTS [ROW_SEGMENTS ...]]]
+                      [--row_segment_straight_length_min ROW_SEGMENT_STRAIGHT_LENGTH_MIN]
+                      [--row_segment_straight_length_max ROW_SEGMENT_STRAIGHT_LENGTH_MAX]
+                      [--row_segment_sincurved_offset_min ROW_SEGMENT_SINCURVED_OFFSET_MIN]
+                      [--row_segment_sincurved_offset_max ROW_SEGMENT_SINCURVED_OFFSET_MAX]
+                      [--row_segment_sincurved_length_min ROW_SEGMENT_SINCURVED_LENGTH_MIN]
+                      [--row_segment_sincurved_length_max ROW_SEGMENT_SINCURVED_LENGTH_MAX]
+                      [--row_segment_curved_radius_min ROW_SEGMENT_CURVED_RADIUS_MIN]
+                      [--row_segment_curved_radius_max ROW_SEGMENT_CURVED_RADIUS_MAX]
+                      [--row_segment_curved_arc_measure_min ROW_SEGMENT_CURVED_ARC_MEASURE_MIN]
+                      [--row_segment_curved_arc_measure_max ROW_SEGMENT_CURVED_ARC_MEASURE_MAX]
+                      [--row_segment_island_radius_min ROW_SEGMENT_ISLAND_RADIUS_MIN]
+                      [--row_segment_island_radius_max ROW_SEGMENT_ISLAND_RADIUS_MAX]
+                      [--ground_resolution GROUND_RESOLUTION]
+                      [--ground_elevation_max GROUND_ELEVATION_MAX]
+                      [--ground_headland GROUND_HEADLAND]
+                      [--ground_ditch_depth GROUND_DITCH_DEPTH]
+                      [--plant_spacing_min PLANT_SPACING_MIN]
+                      [--plant_spacing_max PLANT_SPACING_MAX]
+                      [--plant_height_min PLANT_HEIGHT_MIN]
+                      [--plant_height_max PLANT_HEIGHT_MAX]
+                      [--plant_radius PLANT_RADIUS]
+                      [--plant_radius_noise PLANT_RADIUS_NOISE]
+                      [--plant_placement_error_max PLANT_PLACEMENT_ERROR_MAX]
+                      [--plant_mass PLANT_MASS]
+                      [--hole_prob [HOLE_PROB [HOLE_PROB ...]]]
+                      [--hole_size_max [HOLE_SIZE_MAX [HOLE_SIZE_MAX ...]]]
+                      [--crop_types [CROP_TYPES [CROP_TYPES ...]]]
+                      [--litters LITTERS]
+                      [--litter_types [LITTER_TYPES [LITTER_TYPES ...]]]
+                      [--weeds WEEDS]
+                      [--weed_types [WEED_TYPES [WEED_TYPES ...]]]
+                      [--ghost_objects GHOST_OBJECTS]
+                      [--location_markers LOCATION_MARKERS]
+                      [--load_from_file LOAD_FROM_FILE] [--seed SEED]
+                      [--show_map]
+                      [{fre21_task_2_mini,fre21_task_2_fast,fre21_task_1_mini,fre22_task_mapping_mini,fre22_task_navigation,fre21_task_3_fast,fre22_task_mapping,fre21_task_4_fast,fre21_task_2,fre21_task_3_mini,fre22_task_mapping_fast,fre21_task_1,fre21_task_3,fre22_task_navigation_fast,fre21_task_1_fast,fre21_task_4,fre22_task_navigation_mini,fre21_task_4_mini}]
 
-  Generate a virtual maize field world for Gazebo.
+Generate a virtual maize field world for Gazebo.
 
-  positional arguments:
-    config_file           Config file name in the config folder
+positional arguments:
+  {fre21_task_2_mini,fre21_task_2_fast,fre21_task_1_mini,fre22_task_mapping_mini,fre22_task_navigation,fre21_task_3_fast,fre22_task_mapping,fre21_task_4_fast,fre21_task_2,fre21_task_3_mini,fre22_task_mapping_fast,fre21_task_1,fre21_task_3,fre22_task_navigation_fast,fre21_task_1_fast,fre21_task_4,fre22_task_navigation_mini,fre21_task_4_mini}
+                        Config file name in the config folder
 
-  optional arguments:
-    -h, --help            show this help message and exit
-    --row_length ROW_LENGTH
-                          default_value: 12.0
-    --rows_curve_budget ROWS_CURVE_BUDGET
-                          default_value: 1.5707963267948966
-    --row_width ROW_WIDTH
-                          default_value: 0.75
-    --rows_count ROWS_COUNT
-                          default_value: 6
-    --row_segments ROW_SEGMENTS
-                          default_value: straight,curved
-    --row_segment_straight_length_min ROW_SEGMENT_STRAIGHT_LENGTH_MIN
-                          default_value: 1
-    --row_segment_straight_length_max ROW_SEGMENT_STRAIGHT_LENGTH_MAX
-                          default_value: 2.5
-    --row_segment_curved_radius_min ROW_SEGMENT_CURVED_RADIUS_MIN
-                          default_value: 3.0
-    --row_segment_curved_radius_max ROW_SEGMENT_CURVED_RADIUS_MAX
-                          default_value: 10.0
-    --row_segment_curved_arc_measure_min ROW_SEGMENT_CURVED_ARC_MEASURE_MIN
-                          default_value: 0.3
-    --row_segment_curved_arc_measure_max ROW_SEGMENT_CURVED_ARC_MEASURE_MAX
-                          default_value: 1.0
-    --row_segment_island_radius_min ROW_SEGMENT_ISLAND_RADIUS_MIN
-                          default_value: 1.0
-    --row_segment_island_radius_max ROW_SEGMENT_ISLAND_RADIUS_MAX
-                          default_value: 3.0
-    --ground_resolution GROUND_RESOLUTION
-                          default_value: 0.02
-    --ground_elevation_max GROUND_ELEVATION_MAX
-                          default_value: 0.2
-    --ground_headland GROUND_HEADLAND
-                          default_value: 2.0
-    --ground_ditch_depth GROUND_DITCH_DEPTH
-                          default_value: 0.3
-    --plant_spacing_min PLANT_SPACING_MIN
-                          default_value: 0.13
-    --plant_spacing_max PLANT_SPACING_MAX
-                          default_value: 0.19
-    --plant_height_min PLANT_HEIGHT_MIN
-                          default_value: 0.3
-    --plant_height_max PLANT_HEIGHT_MAX
-                          default_value: 0.6
-    --plant_radius PLANT_RADIUS
-                          default_value: 0.3
-    --plant_radius_noise PLANT_RADIUS_NOISE
-                          default_value: 0.05
-    --plant_placement_error_max PLANT_PLACEMENT_ERROR_MAX
-                          default_value: 0.02
-    --plant_mass PLANT_MASS
-                          default_value: 0.3
-    --hole_prob HOLE_PROB
-                          default_value: 0.06,0.06,0.04,0.04,0.0,0.0
-    --hole_size_max HOLE_SIZE_MAX
-                          default_value: 7,5,5,3,0,0
-    --crop_types CROP_TYPES
-                          default_value: maize_01,maize_02
-    --litters LITTERS     default_value: 0
-    --litter_types LITTER_TYPES
-                          default_value: ale,beer,coke_can,retro_pepsi_can
-    --weeds WEEDS         default_value: 0
-    --weed_types WEED_TYPES
-                          default_value: nettle,unknown_weed
-    --ghost_objects GHOST_OBJECTS
-                          default_value: False
-    --location_markers LOCATION_MARKERS
-                          default_value: False
-    --load_from_file LOAD_FROM_FILE
-                          default_value: None
-    --seed SEED           default_value: -1
+optional arguments:
+  -h, --help            show this help message and exit
+  --row_length ROW_LENGTH
+                        default_value: 12.0
+  --rows_curve_budget ROWS_CURVE_BUDGET
+                        default_value: 1.5707963267948966
+  --row_width ROW_WIDTH
+                        default_value: 0.75
+  --rows_count ROWS_COUNT
+                        default_value: 6
+  --row_segments [ROW_SEGMENTS [ROW_SEGMENTS ...]]
+                        default_value: ['straight', 'curved']
+  --row_segment_straight_length_min ROW_SEGMENT_STRAIGHT_LENGTH_MIN
+                        default_value: 0.5
+  --row_segment_straight_length_max ROW_SEGMENT_STRAIGHT_LENGTH_MAX
+                        default_value: 1
+  --row_segment_sincurved_offset_min ROW_SEGMENT_SINCURVED_OFFSET_MIN
+                        default_value: 0.5
+  --row_segment_sincurved_offset_max ROW_SEGMENT_SINCURVED_OFFSET_MAX
+                        default_value: 1.5
+  --row_segment_sincurved_length_min ROW_SEGMENT_SINCURVED_LENGTH_MIN
+                        default_value: 3
+  --row_segment_sincurved_length_max ROW_SEGMENT_SINCURVED_LENGTH_MAX
+                        default_value: 5
+  --row_segment_curved_radius_min ROW_SEGMENT_CURVED_RADIUS_MIN
+                        default_value: 3.0
+  --row_segment_curved_radius_max ROW_SEGMENT_CURVED_RADIUS_MAX
+                        default_value: 10.0
+  --row_segment_curved_arc_measure_min ROW_SEGMENT_CURVED_ARC_MEASURE_MIN
+                        default_value: 0.3
+  --row_segment_curved_arc_measure_max ROW_SEGMENT_CURVED_ARC_MEASURE_MAX
+                        default_value: 1.0
+  --row_segment_island_radius_min ROW_SEGMENT_ISLAND_RADIUS_MIN
+                        default_value: 1.0
+  --row_segment_island_radius_max ROW_SEGMENT_ISLAND_RADIUS_MAX
+                        default_value: 3.0
+  --ground_resolution GROUND_RESOLUTION
+                        default_value: 0.02
+  --ground_elevation_max GROUND_ELEVATION_MAX
+                        default_value: 0.2
+  --ground_headland GROUND_HEADLAND
+                        default_value: 2.0
+  --ground_ditch_depth GROUND_DITCH_DEPTH
+                        default_value: 0.3
+  --plant_spacing_min PLANT_SPACING_MIN
+                        default_value: 0.13
+  --plant_spacing_max PLANT_SPACING_MAX
+                        default_value: 0.19
+  --plant_height_min PLANT_HEIGHT_MIN
+                        default_value: 0.3
+  --plant_height_max PLANT_HEIGHT_MAX
+                        default_value: 0.6
+  --plant_radius PLANT_RADIUS
+                        default_value: 0.3
+  --plant_radius_noise PLANT_RADIUS_NOISE
+                        default_value: 0.05
+  --plant_placement_error_max PLANT_PLACEMENT_ERROR_MAX
+                        default_value: 0.02
+  --plant_mass PLANT_MASS
+                        default_value: 0.3
+  --hole_prob [HOLE_PROB [HOLE_PROB ...]]
+                        default_value: [0.06, 0.06, 0.04, 0.04, 0.0, 0.0]
+  --hole_size_max [HOLE_SIZE_MAX [HOLE_SIZE_MAX ...]]
+                        default_value: [7, 5, 5, 3, 0, 0]
+  --crop_types [CROP_TYPES [CROP_TYPES ...]]
+                        default_value: ['maize_01', 'maize_02']
+  --litters LITTERS     default_value: 0
+  --litter_types [LITTER_TYPES [LITTER_TYPES ...]]
+                        default_value: ['ale', 'beer', 'coke_can',
+                        'retro_pepsi_can']
+  --weeds WEEDS         default_value: 0
+  --weed_types [WEED_TYPES [WEED_TYPES ...]]
+                        default_value: ['nettle', 'unknown_weed', 'dandelion']
+  --ghost_objects GHOST_OBJECTS
+                        default_value: False
+  --location_markers LOCATION_MARKERS
+                        default_value: False
+  --load_from_file LOAD_FROM_FILE
+                        default_value: None
+  --seed SEED           default_value: -1
+  --show_map            Show map after generation.
   ```
 </details>
 
