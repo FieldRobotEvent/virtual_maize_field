@@ -1,9 +1,19 @@
-row_length: 7 
-rows_count: 11 
-row_segments: straight 
-hole_prob: 0.04 
-hole_size_max: 7 
-litters: 5 
-weeds: 5 
-ghost_objects: true 
+row_length: 10
+rows_count: 12
+row_segments:
+  - sincurved
+row_segment_sincurved_offset_min: 0.7
+row_segment_sincurved_offset_max: 1.2
+row_segment_sincurved_length_min: 10.0
+row_segment_sincurved_length_max: 10.0
+hole_prob: [0.06, 0.06, 0.06, 0.05, 0.03, 0.02, 0.02, 0.01, 0.0, 0.0, 0.0, 0.0]
+hole_size_max: [10, 10, 9, 7, 4, 5, 5, 3, 2, 0, 0, 0]
+litters: 5
+weeds: 5
+ghost_objects: true
 location_markers: true
+weed_types:
+  - dandelion
+litter_types: 
+  - coke_can
+  - retro_pepsi_can

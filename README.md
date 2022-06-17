@@ -22,17 +22,11 @@
 ![Screenshot of a generated map with maize plants and pumpkins](./misc/screenshot_v4.0.png)
 
 ## Installation
-This package has been tested on ROS melodic and ROS noetic.
+This package has been tested on ROS galactic.
 
 Additional you'll need the following packages:
 
 ```commandline
-# melodic
-rosdep install virtual_maize_field
-sudo apt install python3-pip
-sudo pip3 install -U jinja2 rospkg opencv-python matplotlib shapely
-
-# noetic
 rosdep install virtual_maize_field
 ```
 
@@ -41,7 +35,7 @@ This package includes a script (`src/world_generator/generate_world.py`) that ca
 
 You can call the script using
 ```bash
-rosrun virtual_maize_field generate_world.py
+ros2 run virtual_maize_field generate_world.py
 ```
 The resulting file will be placed in `worlds/generated.world`. You can use this script by one of the defined config files or specifying the parameters below:
 <details>
@@ -179,11 +173,11 @@ Other sample Worlds:
 
 You can use these config files when generating worlds, e.g.:
 ```commandline
-rosrun virtual_maize_field generate_world.py fre22_task_navigation_mini
+ros2 run virtual_maize_field generate_world.py fre22_task_navigation_mini
 ```
 
 ## Launching worlds
-The launch file to launch the worlds is called `simulation.launch`. You can launch the launch file by running `roslaunch virtual_maize_field jackal_simulation.launch`. By default the launch file will launch `generated_world.world`. You can launch any world by using the `world_name` arg. e.g. `roslaunch virtual_maize_field jackal_simulation.launch world_name:=simple_row_level_1.world`.
+The launch file to launch the worlds is called `simulation.launch`. You can launch the launch file by running `ros2 launch virtual_maize_field simulation.launch`. By default the launch file will launch `generated_world.world`. You can launch any world by using the `world_name` arg. e.g. `ros2 launch virtual_maize_field simulation.launch world_name:=simple_row_level_1.world`.
 
 ## License
 Virtual Maize Field is copyright (C) 2021 *Farm Technology Group of Wageningen University & Research* and *Kamaro Engineering e.V.* and licensed under [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0).
