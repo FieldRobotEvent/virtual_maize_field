@@ -4,7 +4,7 @@ from os import path, walk
 from pathlib import Path
 from xml.etree import ElementTree
 
-from setuptools import setup
+from setuptools import find_packages, setup
 
 package_data = ElementTree.parse(Path(__file__).parent / "package.xml")
 package_name = package_data.find("./name").text
@@ -17,7 +17,16 @@ data_files = [
 
 # Add all folders recursively
 # https://answers.ros.org/question/397319/how-to-copy-folders-with-subfolders-to-package-installation-path/
-for folder_name in ("config", "launch", "map", "Media", "models", "worlds"):
+for folder_name in (
+    "config",
+    "gt",
+    "launch",
+    "map",
+    "Media",
+    "models",
+    "rviz",
+    "worlds",
+):
     _path_dict = {}
 
     for (path_, directories, filenames) in walk(folder_name):
@@ -38,7 +47,7 @@ for folder_name in ("config", "launch", "map", "Media", "models", "worlds"):
 setup(
     name=package_name,
     version=package_data.find("./version").text,
-    packages=[package_name, package_name + "/world_generator"],
+    packages=find_packages(),
     data_files=data_files,
     package_data={"": ["*.template"]},
     include_package_data=True,

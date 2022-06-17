@@ -12,23 +12,17 @@ import yaml
 from ament_index_python.packages import get_package_share_directory
 from jinja2 import Template
 
-from virtual_maize_field import world_generator
-from virtual_maize_field.world_generator.field_2d_generator import Field2DGenerator
-from virtual_maize_field.world_generator.world_description import WorldDescription
-
-PACKAGE_PATH = Path(get_package_share_directory("virtual_maize_field"))
-LAUNCH_FILE_PATH = PACKAGE_PATH / "launch/robot_spawner.launch.py"
-LAUNCH_FILE_TEMPLATE = Template(
-    importlib.resources.read_text(world_generator, "robot_spawner.launch.py.template")
-)
+from . import world_generator
+from .world_generator.field_2d_generator import Field2DGenerator
+from .world_generator.world_description import WorldDescription
 
 
 class WorldGenerator:
     def __init__(self, **kwargs) -> None:
-        wd = WorldDescription(**kwargs)
-        self.fgen = Field2DGenerator(wd)
+        self.wd = WorldDescription(**kwargs)
 
-        self.pkg_path = PACKAGE_PATH
+        self.fgen = Field2DGenerator(self.wd)
+        self.pkg_path = Path(get_package_share_directory("virtual_maize_field"))
 
     def generate(self) -> None:
         """
@@ -54,8 +48,8 @@ class WorldGenerator:
         if gazebo_cache_pkg.is_dir():
             rmtree(gazebo_cache_pkg)
 
-    def save_minimap(self) -> None:
-        minimap_file = self.pkg_path / "map/map.png"
+    def save_gt_minimap(self) -> None:
+        minimap_file = self.pkg_path / "gt/map.png"
         self.fgen.minimap.savefig(str(minimap_file), dpi=100)
 
     def save_marker_file(self) -> None:
@@ -80,8 +74,8 @@ class WorldGenerator:
                     ]
                 )
 
-    def save_complete_map(self) -> None:
-        complete_map_file = self.pkg_path / "map/map.csv"
+    def save_gt_map(self) -> None:
+        complete_map_file = self.pkg_path / "gt/map.csv"
         with complete_map_file.open("w") as f:
             writer = csv_writer(f)
             header = ["X", "Y", "kind"]
@@ -114,12 +108,21 @@ class WorldGenerator:
                 writer.writerow([elm[0], elm[1], "crop"])
 
     def save_launch_file(self) -> None:
-        with LAUNCH_FILE_PATH.open("w") as f:
-            content = LAUNCH_FILE_TEMPLATE.render(
-                x=float(self.fgen.start_loc[0][0]) + np.random.rand() * 0.1 - 0.05,
-                y=float(self.fgen.start_loc[0][1]) + np.random.rand() * 0.1 - 0.05,
-                z=0.7,
-                yaw=1.5707963267948966 + np.random.rand() * 0.1 - 0.05,
+        launch_file_template = Template(
+            importlib.resources.read_text(
+                world_generator, "robot_spawner.launch.py.template"
+            )
+        )
+        launch_file = self.pkg_path / "launch/robot_spawner.launch.py"
+
+        with launch_file.open("w") as f:
+            content = launch_file_template.render(
+                x=float(self.fgen.start_loc[0][0]) + self.wd.rng.random() * 0.1 - 0.05,
+                y=float(self.fgen.start_loc[0][1]) + self.wd.rng.random() * 0.1 - 0.05,
+                z=0.35,
+                roll=0,
+                pitch=0,
+                yaw=1.5707963267948966 + self.wd.rng.random() * 0.1 - 0.05,
             )
             f.write(content)
 
@@ -131,16 +134,13 @@ class WorldGenerator:
 
 
 def main() -> None:
-    from argparse import ArgumentParser
-    from inspect import getfullargspec
+    from .world_generator.utils import parser_from_function
 
-    # Dynamically create argument parser with world description parameters
-    argspec = getfullargspec(WorldDescription.__init__)
-    possible_kwargs = argspec.args[1:]
-    defaults = argspec.defaults
+    pkg_path = Path(get_package_share_directory("virtual_maize_field"))
 
-    parser = ArgumentParser(
-        description="Generate a virtual maize field world for Gazebo."
+    parser = parser_from_function(
+        WorldDescription.__init__,
+        description="Generate a virtual maize field world for Gazebo.",
     )
     parser.add_argument(
         "config_file",
@@ -148,24 +148,18 @@ def main() -> None:
         type=str,
         help="Config file name in the config folder",
         default=None,
-        choices=[f.stem for f in (PACKAGE_PATH / "config").glob("*.yaml")],
+        choices=[f.stem for f in (pkg_path / "config").glob("*.yaml")],
     )
-    for argname, default in zip(possible_kwargs, defaults):
-        # we analyze the default value's type to guess the type for that argument
-        parser.add_argument(
-            "--" + argname,
-            type=type(default),
-            help="default_value: {}".format(default),
-            required=False,
-        )
-
+    parser.add_argument(
+        "--show_map", action="store_true", help="Show map after generation."
+    )
     args = parser.parse_args()
 
     if args.config_file:
         if ".yaml" in args.config_file:
-            config_file_path = PACKAGE_PATH / "config" / args.config_file
+            config_file_path = pkg_path / "config" / args.config_file
         else:
-            config_file_path = PACKAGE_PATH / "config" / (args.config_file + ".yaml")
+            config_file_path = pkg_path / "config" / (args.config_file + ".yaml")
 
         if not config_file_path.is_file():
             print(f"ERROR: cannot find config: '{config_file_path}'!")
@@ -174,16 +168,19 @@ def main() -> None:
         generator = WorldGenerator.from_config_file(config_file_path)
     else:
         # Get a dict representation of the arguments and call our constructor with them as kwargs
-        args = vars(parser.parse_args())
-        args = {k: v for k, v in args.items() if v is not None}
-        generator = WorldGenerator(**args)
+        args_dict = {k: v for k, v in vars(args).items() if v is not None}
+        generator = WorldGenerator(**args_dict)
 
     generator.generate()
     generator.clear_gazebo_cache()
-    generator.save_minimap()
+    generator.save_gt_minimap()
     generator.save_marker_file()
-    generator.save_complete_map()
+    generator.save_gt_map()
     generator.save_launch_file()
+
+    # Show minimap after generation
+    if args.show_map:
+        generator.fgen.minimap.show()
 
 
 if __name__ == "__main__":
