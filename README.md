@@ -31,13 +31,13 @@ rosdep install virtual_maize_field
 ```
 
 ## Generating new maize field worlds
-This package includes a script (`src/world_generator/generate_world.py`) that can generate randomized agricultural worlds. All parameters are optional and have default values. All comma separated arguments can be scaler as well. 
+This package includes a script (`virtual_maize_field/generate_world.py`) that can generate randomized agricultural worlds. All parameters are optional and have default values. All comma separated arguments can be scaler as well. 
 
 You can call the script using
 ```bash
 ros2 run virtual_maize_field generate_world.py
 ```
-The resulting file will be placed in `worlds/generated.world`. You can use this script by one of the defined config files or specifying the parameters below:
+The resulting file will be placed in `<workspace folder>/install/virtual_maize_field/share/virtual_maize_field/worlds/generated.world`. You can use this script by one of the defined config files or specifying the parameters below:
 <details>
   <summary>Click to show all possible arguments</summary>
   
