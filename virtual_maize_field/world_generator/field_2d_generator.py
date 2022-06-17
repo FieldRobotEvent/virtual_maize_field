@@ -1,29 +1,59 @@
+from __future__ import annotations
+
 import importlib.resources
+from typing import Any
 
 import cv2
 import jinja2
 import numpy as np
-import shapely
-import shapely.geometry as geometry
 from matplotlib import pyplot as plt
+from shapely.geometry import LineString, Point, Polygon
 
-from virtual_maize_field import world_generator
-from virtual_maize_field.world_generator import AVAILABLE_MODELS
-from virtual_maize_field.world_generator.row_segments import (
-    CurvedSegment,
-    IslandSegment,
-    StraightSegment,
+from .models import (
+    CROP_MODELS,
+    LITTER_MODELS,
+    MARKER_MODELS,
+    WEED_MODELS,
+    GazeboModel,
+    to_gazebo_models,
 )
-from virtual_maize_field.world_generator.utils import BoundedGaussian
-from virtual_maize_field.world_generator.world_description import WorldDescription
+from .segments import CurvedSegment, IslandSegment, SinCurvedSegment, StraightSegment
+from .utils import BoundedGaussian
+from .world_description import WorldDescription
 
 
 class Field2DGenerator:
-    def __init__(self, world_description=WorldDescription()):
+    def __init__(
+        self,
+        world_description: WorldDescription = WorldDescription(),
+    ) -> None:
         self.wd = world_description
-        np.random.seed(self.wd.structure["params"]["seed"])
 
-    def render_matplotlib(self):
+        self.crop_models = None
+        self.weed_models = None
+        self.litter_models = None
+        self.marker_models = None
+
+    def gather_available_models(self) -> None:
+        self.crop_models = to_gazebo_models(
+            CROP_MODELS,
+            self.wd.structure["params"]["crop_types"],
+        )
+
+        if self.wd.structure["params"]["weeds"] > 0:
+            self.weed_models = to_gazebo_models(
+                WEED_MODELS,
+                self.wd.structure["params"]["weed_types"],
+            )
+
+        if self.wd.structure["params"]["litters"] > 0:
+            self.litter_models = to_gazebo_models(
+                LITTER_MODELS, self.wd.structure["params"]["litter_types"]
+            )
+
+        self.marker_models = MARKER_MODELS
+
+    def render_matplotlib(self) -> None:
         # Segments
         for segment in self.segments:
             segment.render()
@@ -49,29 +79,31 @@ class Field2DGenerator:
             color="g",
             marker=".",
         )
-        labels.append("crops")
+        labels.append("crop plants")
 
         # weeds
-        plt.scatter(
-            self.weed_placements[:, 0],
-            self.weed_placements[:, 1],
-            color="r",
-            marker=".",
-            s=100,
-            alpha=0.5,
-        )
-        labels.append("weeds")
+        if self.weed_placements.shape[0] > 0:
+            plt.scatter(
+                self.weed_placements[:, 0],
+                self.weed_placements[:, 1],
+                color="r",
+                marker=".",
+                s=100,
+                alpha=0.5,
+            )
+            labels.append("weeds")
 
         # litter
-        plt.scatter(
-            self.litter_placements[:, 0],
-            self.litter_placements[:, 1],
-            color="b",
-            marker=".",
-            s=100,
-            alpha=0.5,
-        )
-        labels.append("litter")
+        if self.litter_placements.shape[0] > 0:
+            plt.scatter(
+                self.litter_placements[:, 0],
+                self.litter_placements[:, 1],
+                color="b",
+                marker=".",
+                s=100,
+                alpha=0.5,
+            )
+            labels.append("litter")
 
         # start
         plt.scatter(
@@ -120,10 +152,15 @@ class Field2DGenerator:
                 va="center",
             )
 
+        # Axis
+        plt.xlabel("x")
+        plt.ylabel("y")
+
         plt.legend(labels)
         self.minimap = plt
 
-    def generate(self):
+    def generate(self) -> tuple[str, np.ndarray]:
+        self.gather_available_models()
         self.chain_segments()
         self.center_plants()
         self.place_objects()
@@ -131,12 +168,12 @@ class Field2DGenerator:
         self.fix_gazebo()
         self.render_to_template()
         self.plot_field()
-        return [self.sdf, self.heightmap]
+        return self.sdf, self.heightmap
 
-    def chain_segments(self):
+    def chain_segments(self) -> None:
         # Generate start points
         x_start = 0
-        x_end = self.wd.rows_count * self.wd.row_width
+        x_end = (self.wd.rows_count - 1) * self.wd.row_width
 
         current_p = np.array(
             [
@@ -159,6 +196,17 @@ class Field2DGenerator:
                     current_dir,
                     self.wd.structure["params"],
                     segment["length"],
+                    rng=self.wd.rng,
+                )
+            elif segment["type"] == "sincurved":
+                seg = SinCurvedSegment(
+                    current_p,
+                    current_dir,
+                    self.wd.structure["params"],
+                    segment["offset"],
+                    segment["length"],
+                    segment["curve_dir"],
+                    rng=self.wd.rng,
                 )
             elif segment["type"] == "curved":
                 seg = CurvedSegment(
@@ -168,6 +216,7 @@ class Field2DGenerator:
                     segment["radius"],
                     segment["curve_dir"],
                     segment["arc_measure"],
+                    rng=self.wd.rng,
                 )
             elif segment["type"] == "island":
                 seg = IslandSegment(
@@ -178,6 +227,7 @@ class Field2DGenerator:
                     segment["island_model"],
                     segment["island_model_radius"],
                     segment["island_row"],
+                    rng=self.wd.rng,
                 )
             else:
                 raise ValueError("Unknown segment type. [" + segment["type"] + "]")
@@ -197,14 +247,14 @@ class Field2DGenerator:
             row = np.vstack(row)
 
             # generate indexes of the end of the hole
-            probs = np.random.sample(row.shape[0])
+            probs = self.wd.rng.random(row.shape[0])
             probs = probs < self.wd.structure["params"]["hole_prob"][index]
 
             # iterate in reverse order, and remove plants in the holes
             i = probs.shape[0] - 1
             while i > 0:
                 if probs[i]:
-                    hole_size = np.random.randint(
+                    hole_size = self.wd.rng.integers(
                         1, self.wd.structure["params"]["hole_size_max"][index]
                     )
                     row = np.delete(row, slice(max(1, i - hole_size), i), axis=0)
@@ -217,6 +267,7 @@ class Field2DGenerator:
         bg = BoundedGaussian(
             -self.wd.structure["params"]["plant_placement_error_max"],
             self.wd.structure["params"]["plant_placement_error_max"],
+            rng=self.wd.rng,
         )
 
         # TODO There is a better way to do this
@@ -231,7 +282,7 @@ class Field2DGenerator:
 
     # Because the heightmap must be square and has to have a side length of 2^n + 1
     # this means that we could have smaller maps, by centering the placements around 0,0
-    def center_plants(self):
+    def center_plants(self) -> None:
         self.crop_placements = np.vstack(self.rows)
 
         x_min = self.crop_placements[:, 0].min()
@@ -245,18 +296,18 @@ class Field2DGenerator:
             self.rows[i] -= np.array([x_max, y_max]) / 2
 
     # The function calculates the placements of the weed plants and
-    def place_objects(self):
-        def random_points_within(poly, num_points):
+    def place_objects(self) -> None:
+        def random_points_within(poly: Polygon, num_points: int) -> np.ndarray:
             min_x, min_y, max_x, max_y = poly.bounds
 
             points = []
 
             while len(points) < num_points:
                 np_point = [
-                    np.random.uniform(min_x, max_x),
-                    np.random.uniform(min_y, max_y),
+                    self.wd.rng.uniform(min_x, max_x),
+                    self.wd.rng.uniform(min_y, max_y),
                 ]
-                random_point = shapely.geometry.Point(np_point)
+                random_point = Point(np_point)
                 if random_point.within(poly):
                     points.append(np_point)
 
@@ -264,37 +315,37 @@ class Field2DGenerator:
 
         # Get outher boundary of the of the crops
         outer_plants = np.concatenate((self.rows[0], np.flipud(self.rows[-1])))
-        self.field_poly = geometry.Polygon(outer_plants)
+        self.field_poly = Polygon(outer_plants)
 
         # place x_nr of weeds within the field area
         if self.wd.structure["params"]["weeds"] > 0:
             self.weed_placements = random_points_within(
                 self.field_poly, self.wd.structure["params"]["weeds"]
             )
-            self.weed_types = np.random.choice(
-                self.wd.structure["params"]["weed_types"].split(","),
+            random_weed_models = self.wd.rng.choice(
+                list(self.weed_models.values()),
                 self.wd.structure["params"]["weeds"],
             )
         else:
             self.weed_placements = np.array([]).reshape(0, 2)
-            self.weed_types = np.array([])
+            random_weed_models = []
 
         # place y_nr of litter within the field area
         if self.wd.structure["params"]["litters"] > 0:
             self.litter_placements = random_points_within(
                 self.field_poly, self.wd.structure["params"]["litters"]
             )
-            self.litter_types = np.random.choice(
-                self.wd.structure["params"]["litter_types"].split(","),
+            random_litter_models = self.wd.rng.choice(
+                list(self.litter_models.values()),
                 self.wd.structure["params"]["litters"],
             )
 
         else:
             self.litter_placements = np.array([]).reshape(0, 2)
-            self.litter_types = np.array([])
+            random_litter_models = []
 
         # place start marker at the beginning of the field
-        line = geometry.LineString([self.rows[0][0], self.rows[-1][0]])
+        line = LineString([self.rows[0][0], self.rows[-1][0]])
         offset_start = line.parallel_offset(1, "right", join_style=2, mitre_limit=0.1)
         self.start_loc = np.array(
             [
@@ -307,23 +358,26 @@ class Field2DGenerator:
 
         # place location markers at the desginated locations
         if self.wd.structure["params"]["location_markers"]:
-            line = geometry.LineString([self.rows[0][0], self.rows[-1][0]])
+            line = LineString([self.rows[0][0], self.rows[-1][0]])
             offset_a = line.parallel_offset(2.5, "right", join_style=2, mitre_limit=0.1)
             self.marker_a_loc = np.array(
                 [[offset_a.centroid.xy[0][0], offset_a.centroid.xy[1][0]]]
             )
 
-            line = geometry.LineString([self.rows[0][-1], self.rows[-1][-1]])
+            line = LineString([self.rows[0][-1], self.rows[-1][-1]])
             offset_b = line.parallel_offset(2.5, "left", join_style=2, mitre_limit=0.1)
             self.marker_b_loc = np.array(
                 [[offset_b.centroid.xy[0][0], offset_b.centroid.xy[1][0]]]
             )
 
-            self.marker_types = np.array(["location_marker_a", "location_marker_b"])
+            added_marker_models = [
+                self.marker_models["location_marker_a"],
+                self.marker_models["location_marker_b"],
+            ]
         else:
             self.marker_a_loc = np.array([]).reshape(0, 2)
             self.marker_b_loc = np.array([]).reshape(0, 2)
-            self.marker_types = np.array([])
+            added_marker_models = []
 
         self.object_placements = np.concatenate(
             (
@@ -334,11 +388,13 @@ class Field2DGenerator:
             )
         )
 
-        self.object_types = np.concatenate(
-            (self.weed_types, self.litter_types, self.marker_types)
-        )
+        self.object_types = [
+            *random_weed_models,
+            *random_litter_models,
+            *added_marker_models,
+        ]
 
-    def generate_ground(self):
+    def generate_ground(self) -> None:
         ditch_depth = self.wd.structure["params"]["ground_ditch_depth"]
         ditch_distance = self.wd.structure["params"]["ground_headland"]
 
@@ -377,7 +433,7 @@ class Field2DGenerator:
         while 2**n < image_size:
             heightmap += (
                 cv2.resize(
-                    np.random.random((image_size // 2**n, image_size // 2**n)),
+                    self.wd.rng.random((image_size // 2**n, image_size // 2**n)),
                     (image_size, image_size),
                 )
                 * (n + 1) ** 2
@@ -399,7 +455,7 @@ class Field2DGenerator:
 
         offset = image_size // 2
 
-        def metric_to_pixel(pos):
+        def metric_to_pixel(pos: int) -> int:
             return int(pos // self.resolution) + offset
 
         # Make plant placements flat and save the heights for the sdf renderer
@@ -444,7 +500,7 @@ class Field2DGenerator:
             metric_y_min - 2 + 0.5 * self.metric_size,
         ]
 
-    def fix_gazebo(self):
+    def fix_gazebo(self) -> None:
         # move the plants to the center of the flat circles
         self.crop_placements -= self.resolution / 2
         self.object_placements -= self.resolution / 2
@@ -452,15 +508,20 @@ class Field2DGenerator:
         # set heightmap position to origin
         self.heightmap_position = [0, 0]
 
-    def render_to_template(self):
+    def render_to_template(self) -> None:
         def into_dict(
-            xy, ground_height, radius, height, mass, m_type, index, ghost=False
-        ):
-            model = AVAILABLE_MODELS[m_type]
-
+            xy: np.ndarray,
+            ground_height: float,
+            radius: float,
+            height: float,
+            mass: float,
+            model: GazeboModel,
+            index: int,
+            ghost: bool = False,
+        ) -> dict[str, Any]:
             coordinate = dict()
             coordinate["type"] = model.model_name
-            coordinate["name"] = f"{m_type}_{index:04d}"
+            coordinate["name"] = f"{model.model_name}_{index:04d}"
             coordinate["static"] = str(model.static).lower()
 
             if ghost and model.ghostable:
@@ -483,11 +544,11 @@ class Field2DGenerator:
             coordinate["pitch"] = model.default_pitch
             coordinate["yaw"] = model.default_yaw
             if model.random_yaw:
-                coordinate["yaw"] += np.random.rand() * 2.0 * np.pi
+                coordinate["yaw"] += self.wd.rng.random() * 2.0 * np.pi
 
             coordinate["radius"] = (
                 radius
-                + (2 * np.random.rand() - 1)
+                + (2 * self.wd.rng.random() - 1)
                 * self.wd.structure["params"]["plant_radius_noise"]
             )
             if coordinate["type"] == "cylinder":
@@ -503,7 +564,7 @@ class Field2DGenerator:
                 self.wd.structure["params"]["plant_radius"],
                 self.wd.structure["params"]["plant_height_min"],
                 self.wd.structure["params"]["plant_mass"],
-                np.random.choice(self.wd.structure["params"]["crop_types"].split(",")),
+                self.wd.rng.choice(list(self.crop_models.values())),
                 i,
             )
             for i, plant in enumerate(self.crop_placements)
@@ -526,9 +587,7 @@ class Field2DGenerator:
 
         coordinates.extend(object_coordinates)
 
-        template = importlib.resources.read_text(
-            world_generator, "field.world.template"
-        )
+        template = importlib.resources.read_text(__package__, "field.world.template")
         template = jinja2.Template(template)
         self.sdf = template.render(
             coordinates=coordinates,

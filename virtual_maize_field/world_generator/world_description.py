@@ -1,65 +1,73 @@
 #!/usr/bin/env python3
+from __future__ import annotations
 
-import argparse
-import inspect
-import json
+from argparse import ArgumentError
 from datetime import datetime
+from json import dump, dumps, load
 
 import numpy as np
 
-from virtual_maize_field.world_generator import (
-    AVAILABLE_CROP_TYPES,
-    AVAILABLE_LITTER_TYPES,
-    AVAILABLE_OBSTACLES,
-    AVAILABLE_WEED_TYPES,
+from .models import (
+    AVAILABLE_MODELS,
+    CROP_MODELS,
+    LITTER_MODELS,
+    OBSTACLE_MODELS,
+    WEED_MODELS,
 )
 
 AVAILABLE_ILANDS = []
-AVAILABLE_SEGMENTS = ["straight", "curved", "island"]
+AVAILABLE_SEGMENTS = ["straight", "curved", "sincurved", "island"]
 
 
 class WorldDescription:
     def __init__(
         self,
-        row_length=12.0,
-        rows_curve_budget=np.pi / 2,
-        row_width=0.75,
-        rows_count=6,
-        row_segments=",".join(AVAILABLE_SEGMENTS[:2]),
-        row_segment_straight_length_min=1,
-        row_segment_straight_length_max=2.5,
-        row_segment_curved_radius_min=3.0,
-        row_segment_curved_radius_max=10.0,
-        row_segment_curved_arc_measure_min=0.3,
-        row_segment_curved_arc_measure_max=1.0,
-        row_segment_island_radius_min=1.0,
-        row_segment_island_radius_max=3.0,
-        ground_resolution=0.02,
-        ground_elevation_max=0.2,
-        ground_headland=2.0,
-        ground_ditch_depth=0.3,
-        plant_spacing_min=0.13,
-        plant_spacing_max=0.19,
-        plant_height_min=0.3,
-        plant_height_max=0.6,
-        plant_radius=0.3,
-        plant_radius_noise=0.05,
-        plant_placement_error_max=0.02,
-        plant_mass=0.3,
-        hole_prob="0.06,0.06,0.04,0.04,0.0,0.0",
-        hole_size_max="7,5,5,3,0,0",
-        crop_types=",".join(list(AVAILABLE_CROP_TYPES.keys())),
-        litters=0,
-        litter_types=",".join(list(AVAILABLE_LITTER_TYPES.keys())),
-        weeds=0,
-        weed_types=",".join(list(AVAILABLE_WEED_TYPES.keys())),
-        ghost_objects=False,
-        location_markers=False,
-        load_from_file=None,
-        seed=-1,
-    ):
+        row_length: float = 12.0,
+        rows_curve_budget: float = np.pi / 2,
+        row_width: float = 0.75,
+        rows_count: int = 6,
+        row_segments: list[str] = AVAILABLE_SEGMENTS[:2],
+        row_segment_straight_length_min: int = 0.5,
+        row_segment_straight_length_max: float = 1,
+        row_segment_sincurved_offset_min: float = 0.5,
+        row_segment_sincurved_offset_max: float = 1.5,
+        row_segment_sincurved_length_min: float = 3,
+        row_segment_sincurved_length_max: float = 5,
+        row_segment_curved_radius_min: float = 3.0,
+        row_segment_curved_radius_max: float = 10.0,
+        row_segment_curved_arc_measure_min: float = 0.3,
+        row_segment_curved_arc_measure_max: float = 1.0,
+        row_segment_island_radius_min: float = 1.0,
+        row_segment_island_radius_max: float = 3.0,
+        ground_resolution: float = 0.02,
+        ground_elevation_max: float = 0.2,
+        ground_headland: float = 2.0,
+        ground_ditch_depth: float = 0.3,
+        plant_spacing_min: float = 0.13,
+        plant_spacing_max: float = 0.19,
+        plant_height_min: float = 0.3,
+        plant_height_max: float = 0.6,
+        plant_radius: float = 0.3,
+        plant_radius_noise: float = 0.05,
+        plant_placement_error_max: float = 0.02,
+        plant_mass: float = 0.3,
+        hole_prob: float | list[float] = [0.06, 0.06, 0.04, 0.04, 0.0, 0.0],
+        hole_size_max: int | list[int] = [7, 5, 5, 3, 0, 0],
+        crop_types: list[str] = list(CROP_MODELS.keys()),
+        litters: int = 0,
+        litter_types: list[str] = list(LITTER_MODELS.keys()),
+        weeds: int = 0,
+        weed_types: list[str] = list(WEED_MODELS.keys()),
+        ghost_objects: bool = False,
+        location_markers: bool = False,
+        load_from_file: str | None = None,
+        seed: int = -1,
+        **kwargs,
+    ) -> None:
+        crop_types = self.unpack_model_types(crop_types)
+        litter_types = self.unpack_model_types(litter_types)
+        weed_types = self.unpack_model_types(weed_types)
 
-        row_segments = row_segments.split(",")
         hole_prob = self.unpack_param(rows_count, hole_prob)
         hole_size_max = self.unpack_param(rows_count, hole_size_max)
 
@@ -71,27 +79,31 @@ class WorldDescription:
         for k, v in locals().items():
             self.__setattr__(k, v)
 
-        np.random.seed(self.seed)
+        self.rng = np.random.default_rng(seed)
 
         if self.load_from_file is not None:
             self.load()
         else:
             self.random_description()
 
-    def unpack_param(self, rows, value):
-        if "," in str(value):
-            array = value.split(",")
-            if len(array) != rows:
-                raise argparse.ArgumentError(
+    def unpack_model_types(self, model_types: list[str]) -> list[str]:
+        for mt in model_types:
+            if mt not in AVAILABLE_MODELS:
+                raise ArgumentError(None, f"Error: Gazebo model {mt} is not valid!")
+        return model_types
+
+    def unpack_param(self, rows: int, value: list[float | int]) -> list[float | int]:
+        if len(value) > 1:
+            if len(value) != rows:
+                raise ArgumentError(
                     None,
                     "List argument must either be scalar or have one value for each row. See row_count.",
                 )
         else:
-            array = [value] * rows
-        array = list(map(float, array))
-        return array
+            value = [value] * rows
+        return value
 
-    def random_description(self):
+    def random_description(self) -> None:
         self.structure = dict()
         self.structure["params"] = {
             "ground_resolution": self.ground_resolution,
@@ -123,12 +135,12 @@ class WorldDescription:
         current_curve = 0
 
         while current_row_length < self.row_length:
-            # Choose rendom segment
-            segment_name = np.random.choice(self.row_segments)
+            # Choose random segment
+            segment_name = self.rng.choice(self.row_segments)
 
             if segment_name == "straight":
                 length = (
-                    np.random.rand()
+                    self.rng.random()
                     * (
                         self.row_segment_straight_length_max
                         - self.row_segment_straight_length_min
@@ -140,9 +152,41 @@ class WorldDescription:
 
                 current_row_length += length
 
+            elif segment_name == "sincurved":
+                offset = (
+                    self.rng.random()
+                    * (
+                        self.row_segment_sincurved_offset_max
+                        - self.row_segment_sincurved_offset_min
+                    )
+                    + self.row_segment_sincurved_offset_min
+                )
+                length = (
+                    self.rng.random()
+                    * (
+                        self.row_segment_sincurved_length_max
+                        - self.row_segment_sincurved_length_min
+                    )
+                    + self.row_segment_sincurved_length_min
+                )
+
+                if current_row_length + length > self.row_length:
+                    continue
+
+                curve_dir = self.rng.integers(2)
+
+                segment = {
+                    "type": "sincurved",
+                    "offset": offset,
+                    "length": length,
+                    "curve_dir": curve_dir,
+                }
+
+                current_row_length += length
+
             elif segment_name == "curved":
                 radius = (
-                    np.random.rand()
+                    self.rng.random()
                     * (
                         self.row_segment_curved_radius_max
                         - self.row_segment_curved_radius_min
@@ -150,14 +194,14 @@ class WorldDescription:
                     + self.row_segment_curved_radius_min
                 )
                 arc_measure = (
-                    np.random.rand()
+                    self.rng.random()
                     * (
                         self.row_segment_curved_arc_measure_max
                         - self.row_segment_curved_arc_measure_min
                     )
                     + self.row_segment_curved_arc_measure_min
                 )
-                curve_dir = np.random.randint(2)
+                curve_dir = self.rng.integers(2)
                 if current_curve + arc_measure > self.rows_curve_budget:
                     curve_dir = 1
                 elif current_curve - arc_measure < -self.rows_curve_budget:
@@ -177,14 +221,14 @@ class WorldDescription:
 
             elif segment_name == "island":
                 radius = (
-                    np.random.rand()
+                    self.rng.random()
                     * (
                         self.row_segment_island_radius_max
                         - self.row_segment_island_radius_min
                     )
                     + self.row_segment_island_radius_min
                 )
-                island_row = np.random.randint(self.rows_count - 1) + 1
+                island_row = self.rng.integers(self.rows_count - 1) + 1
 
                 segment = {
                     "type": "island",
@@ -202,34 +246,20 @@ class WorldDescription:
 
             self.structure["segments"].append(segment)
 
-    def __str__(self):
-        return json.dumps(self.structure, indent=2)
+    def __str__(self) -> str:
+        return dumps(self.structure, indent=2)
 
-    def load(self):
-        self.structure = json.load(open(self.load_from_file))
+    def load(self) -> None:
+        self.structure = load(open(self.load_from_file))
 
-    def save(self, path):
-        json.dump(self.structure, open(path, "w"), indent=2)
+    def save(self, path: str) -> None:
+        dump(self.structure, open(path, "w"), indent=2)
 
 
 if __name__ == "__main__":
-    # get the possible arguments of the generator and default values
-    argspec = inspect.getfullargspec(WorldDescription.__init__)
-    possible_kwargs = argspec.args[1:]
-    defaults = argspec.defaults
+    from world_generator.utils import parser_from_function
 
-    # construct an ArgumentParser that takes these arguments
-    parser = argparse.ArgumentParser(
-        description="Generate the json description for a virtual maize field."
-    )
-    for argname, default in zip(possible_kwargs, defaults):
-        # we analyze the default value's type to guess the type for that argument
-        parser.add_argument(
-            "--" + argname,
-            type=type(default),
-            help="default_value: {}".format(default),
-            required=False,
-        )
+    parser = parser_from_function(WorldDescription.__init__)
 
     # get a dict representation of the arguments and call our constructor with them as kwargs
     args = vars(parser.parse_args())

@@ -4,7 +4,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib.patches import Arc
 
-from virtual_maize_field.world_generator.utils import BoundedGaussian, Geometry
+from .utils import BoundedGaussian, Geometry
 
 
 class BaseSegment(ABC):

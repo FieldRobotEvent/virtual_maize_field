@@ -1,9 +1,11 @@
-row_length: 5 
-rows_count: 5 
-rows_curve_budget: 0.78539816339 
-row_segments: straight,curved 
-row_segment_curved_radius_min: 4.0 
-row_segment_curved_radius_max: 5.0 
-ground_resolution: 0.1 
-hole_prob: "0.04,0.03,0.02,0.0,0.0" 
-hole_size_max: "8,6,4,0,0"
+row_length: 5
+rows_count: 6
+row_segments:
+  - sincurved
+row_segment_sincurved_offset_min: 0.2
+row_segment_sincurved_offset_max: 0.5
+row_segment_sincurved_length_min: 5.0
+row_segment_sincurved_length_max: 5.0
+hole_prob: [0.08, 0.08, 0.05, 0.02, 0.0, 0.0]
+hole_size_max: [8, 8, 6, 4, 0, 0]
+ground_resolution: 0.1

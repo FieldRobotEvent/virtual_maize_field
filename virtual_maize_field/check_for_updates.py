@@ -12,7 +12,7 @@ from ament_index_python.packages import get_package_share_directory
 from packaging import version
 from rclpy.node import Node
 
-GITHUB_PACKAGE_URL = "https://raw.githubusercontent.com/FieldRobotEvent/virtual_maize_field/main/package.xml"
+GITHUB_PACKAGE_URL = "https://raw.githubusercontent.com/FieldRobotEvent/virtual_maize_field/ros2/package.xml"
 
 
 def version_from_xml(xml_data: str) -> version.Version:
