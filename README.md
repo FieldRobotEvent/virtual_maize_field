@@ -196,7 +196,7 @@ ros2 run virtual_maize_field generate_world.py fre22_task_navigation_mini
 ```
 
 ## Launching worlds
-The launch file to launch the worlds is called `simulation.launch`. You can launch the launch file by running `ros2 launch virtual_maize_field simulation.launch`. By default the launch file will launch `generated_world.world`. You can launch any world by using the `world_name` arg. e.g. `ros2 launch virtual_maize_field simulation.launch world_name:=simple_row_level_1.world`.
+The launch file to launch the worlds is called `simulation.launch`. You can launch the launch file by running `ros2 launch virtual_maize_field simulation.launch.py`. By default the launch file will launch `generated_world.world`. You can launch any world by using the `world_name` arg. e.g. `ros2 launch virtual_maize_field simulation.launch.py world_name:=simple_row_level_1.world`.
 
 ## License
 Virtual Maize Field is copyright (C) 2021 *Farm Technology Group of Wageningen University & Research* and *Kamaro Engineering e.V.* and licensed under [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0).
