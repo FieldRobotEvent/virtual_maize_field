@@ -35,7 +35,7 @@ This package includes a script (`virtual_maize_field/generate_world.py`) that ca
 
 You can call the script using
 ```bash
-ros2 run virtual_maize_field generate_world.py
+ros2 run virtual_maize_field generate_world
 ```
 The resulting file will be placed in `<workspace folder>/install/virtual_maize_field/share/virtual_maize_field/worlds/generated.world`. You can use this script by one of the defined config files or specifying the parameters below:
 <details>
