@@ -192,7 +192,7 @@ Other sample Worlds:
 
 You can use these config files when generating worlds, e.g.:
 ```commandline
-ros2 run virtual_maize_field generate_world.py fre22_task_navigation_mini
+ros2 run virtual_maize_field generate_world fre22_task_navigation_mini
 ```
 
 ## Launching worlds
