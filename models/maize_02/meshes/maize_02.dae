@@ -103,7 +103,7 @@
   </library_lights>
   <library_images>
     <image id="maize_02_png" name="maize_02_png">
-      <init_from>../textures/maize_02.png</init_from>
+      <init_from>../materials/textures/maize_02.png</init_from>
     </image>
   </library_images>
   <library_effects>

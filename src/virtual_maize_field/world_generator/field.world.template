@@ -33,6 +33,7 @@
       </sky>
       <ambient>0.4 0.4 0.4 1</ambient>
       <background>0.7 0.7 0.7 1</background>
+      <grid>false</grid>
       <shadows>1</shadows>
     </scene>
     <audio>
@@ -78,8 +79,8 @@
                 <size>4</size>
               </texture>
               <texture>
-                <diffuse>file://media/materials/textures/dirt_diffusespecular.png</diffuse>
-                <normal>file://media/materials/textures/flat_normal.png</normal>
+                <diffuse>file://materials/textures/dirt_diffusespecular.png</diffuse>
+                <normal>file://materials/textures/flat_normal.png</normal>
                 <size>1</size>
               </texture>
               <!-- <texture>
@@ -89,8 +90,8 @@
               </texture> -->
               <!-- Without this unused 3. texture the blend between the first 2 doesn't work -->
               <texture>
-                <diffuse>file://media/materials/textures/fungus_diffusespecular.png</diffuse>
-                <normal>file://media/materials/textures/flat_normal.png</normal>
+                <diffuse>file://materials/textures/fungus_diffusespecular.png</diffuse>
+                <normal>file://materials/textures/flat_normal.png</normal>
                 <size>1</size>
               </texture>
               <blend>
@@ -228,8 +229,6 @@
               <scale>{{ 2*coordinate.radius }} {{ 2*coordinate.radius }} {{ 2*coordinate.radius }}</scale>
             </mesh>
           </geometry>
-          <material>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -282,8 +281,6 @@
               <scale>{{ 2*coordinate.radius }} {{ 2*coordinate.radius }} {{ 2*coordinate.radius }}</scale>
             </mesh>
           </geometry>
-          <material>
-          </material>
         </visual>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -368,8 +365,6 @@
             <scale>1 1 1</scale>
           </mesh>
         </geometry>
-        <material>
-        </material>
       </visual>
       <self_collide>0</self_collide>
       <enable_wind>0</enable_wind>
@@ -538,8 +533,6 @@
             <scale>1 1 1</scale>
           </mesh>
         </geometry>
-        <material>
-        </material>
       </visual>
       <self_collide>0</self_collide>
       <enable_wind>0</enable_wind>
@@ -714,8 +707,6 @@
             <scale>1 1 1</scale>
           </mesh>
         </geometry>
-        <material>
-        </material>
       </visual>
       <self_collide>0</self_collide>
       <enable_wind>0</enable_wind>
@@ -777,8 +768,6 @@
             <scale>1 1 1</scale>
           </mesh>
         </geometry>
-        <material>
-        </material>
       </visual>
       <self_collide>0</self_collide>
       <enable_wind>0</enable_wind>

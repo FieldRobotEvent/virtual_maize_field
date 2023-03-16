@@ -1,15 +1,20 @@
+import importlib.resources
+
+import cv2
 import jinja2
 import numpy as np
-import cv2
-import os
-import rospkg
-from matplotlib import pyplot as plt
 import shapely
 import shapely.geometry as geometry
+from matplotlib import pyplot as plt
 
-from world_description import WorldDescription
-from row_segments import StraightSegment, CurvedSegment, IslandSegment
-from utils import BoundedGaussian
+from virtual_maize_field import world_generator
+from virtual_maize_field.world_generator.row_segments import (
+    CurvedSegment,
+    IslandSegment,
+    StraightSegment,
+)
+from virtual_maize_field.world_generator.utils import BoundedGaussian
+from virtual_maize_field.world_generator.world_description import WorldDescription
 
 
 class Field2DGenerator:
@@ -23,7 +28,12 @@ class Field2DGenerator:
             segment.render()
 
         # Plants
-        plt.scatter(self.crop_placements[:, 0], self.crop_placements[:, 1], color="c", marker=".")
+        plt.scatter(
+            self.crop_placements[:, 0],
+            self.crop_placements[:, 1],
+            color="c",
+            marker=".",
+        )
 
     def plot_field(self):
         plt.plot()
@@ -32,7 +42,12 @@ class Field2DGenerator:
         labels = []
 
         # crops
-        plt.scatter(self.crop_placements[:, 0], self.crop_placements[:, 1], color="g", marker=".")
+        plt.scatter(
+            self.crop_placements[:, 0],
+            self.crop_placements[:, 1],
+            color="g",
+            marker=".",
+        )
         labels.append("crops")
 
         # weeds
@@ -73,7 +88,11 @@ class Field2DGenerator:
         # location markers
         if self.wd.structure["params"]["location_markers"]:
             plt.scatter(
-                self.marker_a_loc[:, 0], self.marker_a_loc[:, 1], color="r", marker=".", alpha=0
+                self.marker_a_loc[:, 0],
+                self.marker_a_loc[:, 1],
+                color="r",
+                marker=".",
+                alpha=0,
             )  # just to extend the axis of the plot
             plt.text(
                 self.marker_a_loc[:, 0],
@@ -85,7 +104,11 @@ class Field2DGenerator:
             )
 
             plt.scatter(
-                self.marker_b_loc[:, 0], self.marker_b_loc[:, 1], color="r", marker=".", alpha=0
+                self.marker_b_loc[:, 0],
+                self.marker_b_loc[:, 1],
+                color="r",
+                marker=".",
+                alpha=0,
             )  # just to extend the axis of the plot
             plt.text(
                 self.marker_b_loc[:, 0],
@@ -134,7 +157,10 @@ class Field2DGenerator:
         for segment in self.wd.structure["segments"]:
             if segment["type"] == "straight":
                 seg = StraightSegment(
-                    current_p, current_dir, self.wd.structure["params"], segment["length"]
+                    current_p,
+                    current_dir,
+                    self.wd.structure["params"],
+                    segment["length"],
                 )
             elif segment["type"] == "curved":
                 seg = CurvedSegment(
@@ -180,7 +206,9 @@ class Field2DGenerator:
             i = probs.shape[0] - 1
             while i > 0:
                 if probs[i]:
-                    hole_size = np.random.randint(1, self.wd.structure["params"]["hole_size_max"])
+                    hole_size = np.random.randint(
+                        1, self.wd.structure["params"]["hole_size_max"]
+                    )
                     row = np.delete(row, slice(max(1, i - hole_size), i), axis=0)
                     i = i - hole_size
 
@@ -226,7 +254,10 @@ class Field2DGenerator:
             points = []
 
             while len(points) < num_points:
-                np_point = [np.random.uniform(min_x, max_x), np.random.uniform(min_y, max_y)]
+                np_point = [
+                    np.random.uniform(min_x, max_x),
+                    np.random.uniform(min_y, max_y),
+                ]
                 random_point = shapely.geometry.Point(np_point)
                 if random_point.within(poly):
                     points.append(np_point)
@@ -280,11 +311,15 @@ class Field2DGenerator:
         if self.wd.structure["params"]["location_markers"]:
             line = geometry.LineString([self.rows[0][0], self.rows[-1][0]])
             offset_a = line.parallel_offset(2.5, "right", join_style=2, mitre_limit=0.1)
-            self.marker_a_loc = np.array([[offset_a.centroid.xy[0][0], offset_a.centroid.xy[1][0]]])
+            self.marker_a_loc = np.array(
+                [[offset_a.centroid.xy[0][0], offset_a.centroid.xy[1][0]]]
+            )
 
             line = geometry.LineString([self.rows[0][-1], self.rows[-1][-1]])
             offset_b = line.parallel_offset(2.5, "left", join_style=2, mitre_limit=0.1)
-            self.marker_b_loc = np.array([[offset_b.centroid.xy[0][0], offset_b.centroid.xy[1][0]]])
+            self.marker_b_loc = np.array(
+                [[offset_b.centroid.xy[0][0], offset_b.centroid.xy[1][0]]]
+            )
 
             self.marker_types = np.array(["location_marker_a", "location_marker_b"])
         else:
@@ -293,10 +328,17 @@ class Field2DGenerator:
             self.marker_types = np.array([])
 
         self.object_placements = np.concatenate(
-            (self.weed_placements, self.litter_placements, self.marker_a_loc, self.marker_b_loc)
+            (
+                self.weed_placements,
+                self.litter_placements,
+                self.marker_a_loc,
+                self.marker_b_loc,
+            )
         )
 
-        self.object_types = np.concatenate((self.weed_types, self.litter_types, self.marker_types))
+        self.object_types = np.concatenate(
+            (self.weed_types, self.litter_types, self.marker_types)
+        )
 
     def generate_ground(self):
         ditch_depth = self.wd.structure["params"]["ground_ditch_depth"]
@@ -305,7 +347,9 @@ class Field2DGenerator:
         self.crop_placements = np.vstack(self.rows)
 
         if self.object_placements.ndim == 2:
-            self.placements = np.concatenate((self.crop_placements, self.object_placements), axis=0)
+            self.placements = np.concatenate(
+                (self.crop_placements, self.object_placements), axis=0
+            )
         else:
             self.placements = self.crop_placements
         # Calculate image resolution
@@ -317,7 +361,9 @@ class Field2DGenerator:
         metric_width = metric_x_max - metric_x_min + 2 * ditch_distance + 1
         metric_height = metric_y_max - metric_y_min + 2 * ditch_distance + 1
 
-        min_resolution = self.wd.structure["params"]["ground_resolution"]  # min resolution
+        min_resolution = self.wd.structure["params"][
+            "ground_resolution"
+        ]  # min resolution
         min_image_size = int(
             np.ceil(max(metric_width / min_resolution, metric_height / min_resolution))
         )
@@ -369,7 +415,9 @@ class Field2DGenerator:
 
             height = heightmap[py, px]
             heightmap = cv2.circle(heightmap, (px, py), flatspot_radius, height, -1)
-            self.placements_ground_height.append((field_height + height) * self.heightmap_elevation)
+            self.placements_ground_height.append(
+                (field_height + height) * self.heightmap_elevation
+            )
 
         # create ditch around the crop field
         for mx, my in self.crop_placements:
@@ -421,7 +469,8 @@ class Field2DGenerator:
             coordinate["z"] = ground_height
             coordinate["radius"] = (
                 radius
-                + (2 * np.random.rand() - 1) * self.wd.structure["params"]["plant_radius_noise"]
+                + (2 * np.random.rand() - 1)
+                * self.wd.structure["params"]["plant_radius_noise"]
             )
             if coordinate["type"] == "cylinder":
                 coordinate["height"] = height
@@ -461,16 +510,19 @@ class Field2DGenerator:
 
         coordinates.extend(object_coordinates)
 
-        pkg_path = rospkg.RosPack().get_path("virtual_maize_field")
-        template_path = os.path.join(pkg_path, "scripts/field.world.template")
-        template = open(template_path).read()
+        template = importlib.resources.read_text(
+            world_generator, "field.world.template"
+        )
         template = jinja2.Template(template)
         self.sdf = template.render(
             coordinates=coordinates,
             seed=self.wd.structure["params"]["seed"],
             heightmap={
                 "size": self.metric_size,
-                "pos": {"x": self.heightmap_position[0], "y": self.heightmap_position[1]},
+                "pos": {
+                    "x": self.heightmap_position[0],
+                    "y": self.heightmap_position[1],
+                },
                 "max_elevation": self.wd.structure["params"]["ground_elevation_max"],
                 "ditch_depth": self.wd.structure["params"]["ground_ditch_depth"],
                 "total_height": self.heightmap_elevation,

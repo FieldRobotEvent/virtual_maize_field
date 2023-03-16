@@ -228,7 +228,7 @@
   </library_effects>
   <library_images>
     <image id="beerbottle_blinn_baseColor_png" name="beerbottle_blinn_baseColor_png">
-      <init_from>../textures/beerbottle_blinn_baseColor.png</init_from>
+      <init_from>../materials/textures/beerbottle_blinn_baseColor.png</init_from>
     </image>
   </library_images>
   <library_materials>

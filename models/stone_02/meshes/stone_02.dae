@@ -11,7 +11,7 @@
     </asset>
     <library_images>
         <image id="texture0" name="texture0">
-            <init_from>../textures/stone_02.jpeg</init_from>
+            <init_from>../materials/textures/stone_02.jpeg</init_from>
         </image>
     </library_images>
     <library_materials>

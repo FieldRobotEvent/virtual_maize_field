@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 
-import numpy as np
-import json
 import argparse
 import inspect
+import json
 from datetime import datetime
+
+import numpy as np
 
 AVAILABLE_CROP_TYPES = ["cylinder", "maize_01", "maize_02"]
 AVAILABLE_WEED_TYPES = ["nettle", "unknown_weed"]
@@ -109,7 +110,10 @@ class WorldDescription:
             if segment_name == "straight":
                 length = (
                     np.random.rand()
-                    * (self.row_segment_straight_length_max - self.row_segment_straight_length_min)
+                    * (
+                        self.row_segment_straight_length_max
+                        - self.row_segment_straight_length_min
+                    )
                     + self.row_segment_straight_length_min
                 )
 
@@ -120,7 +124,10 @@ class WorldDescription:
             elif segment_name == "curved":
                 radius = (
                     np.random.rand()
-                    * (self.row_segment_curved_radius_max - self.row_segment_curved_radius_min)
+                    * (
+                        self.row_segment_curved_radius_max
+                        - self.row_segment_curved_radius_min
+                    )
                     + self.row_segment_curved_radius_min
                 )
                 arc_measure = (
@@ -145,14 +152,19 @@ class WorldDescription:
                 }
 
                 current_row_length += (
-                    arc_measure * ((self.rows_left + self.rows_right) * self.row_width + radius) / 2
+                    arc_measure
+                    * ((self.rows_left + self.rows_right) * self.row_width + radius)
+                    / 2
                 )
                 current_curve = arc_measure if not curve_dir else -arc_measure
 
             elif segment_name == "island":
                 radius = (
                     np.random.rand()
-                    * (self.row_segment_island_radius_max - self.row_segment_island_radius_min)
+                    * (
+                        self.row_segment_island_radius_max
+                        - self.row_segment_island_radius_min
+                    )
                     + self.row_segment_island_radius_min
                 )
                 island_row = np.random.randint(self.rows_left + self.rows_right - 1) + 1

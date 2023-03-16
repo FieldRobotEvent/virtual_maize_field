@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 
-import rospkg
 import argparse
+import csv
 import inspect
 import os
 import shutil
-import numpy as np
+
 import cv2
-import csv
+import numpy as np
+import rospkg
 
-from field_2d_generator import Field2DGenerator
-from world_description import WorldDescription
-
+from virtual_maize_field.world_generator.field_2d_generator import Field2DGenerator
+from virtual_maize_field.world_generator.world_description import WorldDescription
 
 if __name__ == "__main__":
     # get the possible arguments of the generator and default values
@@ -20,7 +20,9 @@ if __name__ == "__main__":
     defaults = argspec.defaults
 
     # construct an ArgumentParser that takes these arguments
-    parser = argparse.ArgumentParser(description="Generate a virtual maize field world for gazebo")
+    parser = argparse.ArgumentParser(
+        description="Generate a virtual maize field world for gazebo"
+    )
     for argname, default in zip(possible_kwargs, defaults):
         # we analyze the default value's type to guess the type for that argument
         parser.add_argument(
@@ -43,12 +45,16 @@ if __name__ == "__main__":
     with open(sdf_path, "w") as f:
         f.write(generated_sdf)
     # save heightmap
-    heightmap_path = os.path.join(pkg_path, "Media/models/virtual_maize_field_heightmap.png")
+    heightmap_path = os.path.join(
+        pkg_path, "Media/models/virtual_maize_field_heightmap.png"
+    )
     cv2.imwrite(heightmap_path, fgen.heightmap)
 
     # clear the gazbeo cache for old heightmap
     home_dir = os.path.expanduser("~")
-    gazebo_cache_pkg = os.path.join(home_dir, ".gazebo/paging/virtual_maize_field_heightmap")
+    gazebo_cache_pkg = os.path.join(
+        home_dir, ".gazebo/paging/virtual_maize_field_heightmap"
+    )
     if os.path.isdir(gazebo_cache_pkg):
         shutil.rmtree(gazebo_cache_pkg)
 
@@ -63,8 +69,12 @@ if __name__ == "__main__":
         header = ["X", "Y", "kind"]
         writer.writerow(header)
         if fgen.marker_a_loc.shape[0] != 0:
-            writer.writerow([fgen.marker_a_loc[0][0], fgen.marker_a_loc[0][1], "location_marker_a"])
-            writer.writerow([fgen.marker_b_loc[0][0], fgen.marker_b_loc[0][1], "location_marker_b"])
+            writer.writerow(
+                [fgen.marker_a_loc[0][0], fgen.marker_a_loc[0][1], "location_marker_a"]
+            )
+            writer.writerow(
+                [fgen.marker_b_loc[0][0], fgen.marker_b_loc[0][1], "location_marker_b"]
+            )
 
     # complete map
     f_path = os.path.join(pkg_path, "map/map.csv")
@@ -75,8 +85,12 @@ if __name__ == "__main__":
 
         # marker
         if fgen.marker_a_loc.shape[0] != 0:
-            writer.writerow([fgen.marker_a_loc[0][0], fgen.marker_a_loc[0][1], "location_marker_a"])
-            writer.writerow([fgen.marker_b_loc[0][0], fgen.marker_b_loc[0][1], "location_marker_b"])
+            writer.writerow(
+                [fgen.marker_a_loc[0][0], fgen.marker_a_loc[0][1], "location_marker_a"]
+            )
+            writer.writerow(
+                [fgen.marker_b_loc[0][0], fgen.marker_b_loc[0][1], "location_marker_b"]
+            )
 
         for elm in fgen.weed_placements:
             writer.writerow([elm[0], elm[1], "weed"])
