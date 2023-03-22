@@ -22,13 +22,13 @@
 ![Screenshot of a generated map with maize plants and pumpkins](./misc/screenshot_v4.0.png)
 
 ## Installation
-This package has been tested on ROS galactic.
-
-Additional you'll need the following packages:
+Clone this package and build using colcon. Additional you'll need the following packages:
 
 ```commandline
 rosdep install virtual_maize_field
 ```
+
+This package has been tested on ROS 2 Foxy, ROS 2 Humble and ROS 2 Rolling.
 
 ## Generating new maize field worlds
 This package includes a script (`virtual_maize_field/generate_world.py`) that can generate randomized agricultural worlds. All parameters are optional and have default values. All comma separated arguments can be scaler as well. 
