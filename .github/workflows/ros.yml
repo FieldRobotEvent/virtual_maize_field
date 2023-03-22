@@ -42,4 +42,5 @@ jobs:
       with:
         package-name: virtual_maize_field
         target-ros2-distro: ${{ matrix.ros_distribution }}
-        skip-tests: true
+        skip-tests: true       
+        post-test: ros2 run virtual_maize_field generate_world fre22_task_navigation
