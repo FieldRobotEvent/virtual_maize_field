@@ -6,9 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: rickstaa/action-black@v1
-        with:
-          black_args: ". --check"
+      - uses: psf/black@stable
   
   lint-isort:
     runs-on: ubuntu-latest
@@ -18,4 +16,3 @@ jobs:
         with:
           python-version: 3.8
       - uses: isort/isort-action@master
-
