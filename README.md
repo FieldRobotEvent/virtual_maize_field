@@ -9,7 +9,7 @@
   <img src="https://kamaro-engineering.de/wp-content/uploads/2015/03/Kamaro_Logo-1.png" width="250" style="margin: 10px;">
 </p>
 <p align="middle">
-  <a href="https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros.yml"><img src="https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros.yml/badge.svg" alt="Build status" /></a>
+  <a href="https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros.yml"><img src="https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros.yml/badge.svg?branch=ros2" alt="Build status" /></a>
   <a href="https://github.com/psf/black"><img src="https://img.shields.io/badge/code%20style-black-000000.svg" alt="Code style: black"/></a>
    <a href="https://pycqa.github.io/isort/"><img src="https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336"/></a>
   <a href="https://github.com/FieldRobotEvent/Virtual_Field_Robot_Event/discussions"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="contributions welcome"/></a>
