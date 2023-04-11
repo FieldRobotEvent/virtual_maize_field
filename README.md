@@ -9,7 +9,7 @@
   <img src="https://kamaro-engineering.de/wp-content/uploads/2015/03/Kamaro_Logo-1.png" width="250" style="margin: 10px;">
 </p>
 <p align="middle">
-  <a href="https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros.yml"><img src="https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros.yml/badge.svg" alt="Build status" /></a>
+  <a href="https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros.yml"><img src="https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros.yml/badge.svg?branch=ros2" alt="Build status" /></a>
   <a href="https://github.com/psf/black"><img src="https://img.shields.io/badge/code%20style-black-000000.svg" alt="Code style: black"/></a>
    <a href="https://pycqa.github.io/isort/"><img src="https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336"/></a>
   <a href="https://github.com/FieldRobotEvent/Virtual_Field_Robot_Event/discussions"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="contributions welcome"/></a>
@@ -22,13 +22,13 @@
 ![Screenshot of a generated map with maize plants and pumpkins](./misc/screenshot_v4.0.png)
 
 ## Installation
-This package has been tested on ROS galactic.
-
-Additional you'll need the following packages:
+Clone this repository and build the workspace. Additional you'll need the following packages:
 
 ```commandline
 rosdep install virtual_maize_field
 ```
+
+This package has been tested on ROS 2 Foxy, Humble and Rolling.
 
 ## Generating new maize field worlds
 This package includes a script (`virtual_maize_field/generate_world.py`) that can generate randomized agricultural worlds. All parameters are optional and have default values. All comma separated arguments can be scaler as well. 

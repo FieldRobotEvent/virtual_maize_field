@@ -29,7 +29,7 @@ for folder_name in (
 ):
     _path_dict = {}
 
-    for (path_, directories, filenames) in walk(folder_name):
+    for path_, directories, filenames in walk(folder_name):
         for filename in filenames:
             file_path = path.join(path_, filename)
             install_path = path.join("share", package_name, path_)
