@@ -92,8 +92,8 @@ class WorldDescription:
                 raise ArgumentError(None, f"Error: Gazebo model {mt} is not valid!")
         return model_types
 
-    def unpack_param(self, rows: int, value: list[float | int]) -> list[float | int]:
-        if len(value) > 1:
+    def unpack_param(self, rows: int, value: list[float] | int) -> list[float | int]:
+        if isinstance(value, list) and len(value) > 1:
             if len(value) != rows:
                 raise ArgumentError(
                     None,
