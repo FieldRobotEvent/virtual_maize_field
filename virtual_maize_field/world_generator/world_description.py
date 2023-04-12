@@ -4,6 +4,7 @@ from __future__ import annotations
 from argparse import ArgumentError
 from datetime import datetime
 from json import dump, dumps, load
+from dataclasses import dataclass, asdict
 
 import numpy as np
 
@@ -18,6 +19,43 @@ from .models import (
 AVAILABLE_ILANDS = []
 AVAILABLE_SEGMENTS = ["straight", "curved", "sincurved", "island"]
 
+
+@dataclass
+class RandomWorldDescription:
+    ground_resolution: float
+    ground_elevation_max: float
+    ground_headland: float
+    ground_ditch_depth: float
+    plant_spacing_min: float
+    plant_spacing_max: float
+    plant_height_min: float
+    plant_height_max: float
+    plant_radius: float
+    plant_radius_noise: float
+    plant_placement_error_max: float
+    plant_mass: float
+    hole_prob: list[float]
+    hole_size_max: list[float]
+    crop_types: list[str]
+    litter_types: list[str]
+    litters: int
+    weed_types: list[str]
+    weeds: int
+    ghost_objects: bool
+    location_markers: bool
+    seed: int
+    segments: list[dict[str, str | float | int]]
+
+    def __str__(self) -> str:
+        return dumps(asdict(self), indent=2)
+
+    def save(self, file_path: str) -> None:
+        dumps(asdict(self), open(file_path, "w"), indent=2)
+
+    @classmethod
+    def load_from_file(self, file_path: str) -> WorldDescription:
+        structure = load(open(file_path, "r"))
+        return RandomWorldDescription(**structure)
 
 class WorldDescription:
     def __init__(
@@ -64,27 +102,56 @@ class WorldDescription:
         seed: int = -1,
         **kwargs,
     ) -> None:
-        crop_types = self.unpack_model_types(crop_types)
-        litter_types = self.unpack_model_types(litter_types)
-        weed_types = self.unpack_model_types(weed_types)
-
-        hole_prob = self.unpack_param(rows_count, hole_prob)
-        hole_size_max = self.unpack_param(rows_count, hole_size_max)
-
-        # accept array or single param
+        self.row_length = row_length
+        self.rows_curve_budget = rows_curve_budget
+        self.row_width = row_width
+        self.rows_count = rows_count
+        self.row_segments = row_segments
+        self.row_segment_straight_length_min = row_segment_straight_length_min
+        self.row_segment_straight_length_max = row_segment_straight_length_max
+        self.row_segment_sincurved_offset_min = row_segment_sincurved_offset_min
+        self.row_segment_sincurved_offset_max = row_segment_sincurved_offset_max
+        self.row_segment_sincurved_length_min = row_segment_sincurved_length_min
+        self.row_segment_sincurved_length_max = row_segment_sincurved_length_max
+        self.row_segment_curved_radius_min = row_segment_curved_radius_min
+        self.row_segment_curved_radius_max = row_segment_curved_radius_max
+        self.row_segment_curved_arc_measure_min = row_segment_curved_arc_measure_min
+        self.row_segment_curved_arc_measure_max = row_segment_curved_arc_measure_max
+        self.row_segment_island_radius_min = row_segment_island_radius_min
+        self.row_segment_island_radius_max = row_segment_island_radius_max
+        self.ground_resolution = ground_resolution
+        self.ground_elevation_max = ground_elevation_max
+        self.ground_headland = ground_headland
+        self.ground_ditch_depth = ground_ditch_depth
+        self.plant_spacing_min = plant_spacing_min
+        self.plant_spacing_max = plant_spacing_max
+        self.plant_height_min = plant_height_min
+        self.plant_height_max = plant_height_max
+        self.plant_radius = plant_radius
+        self.plant_radius_noise = plant_radius_noise
+        self.plant_placement_error_max = plant_placement_error_max
+        self.plant_mass = plant_mass
+        self.hole_prob = self.unpack_param(rows_count, hole_prob)
+        self.hole_size_max = self.unpack_param(rows_count, hole_size_max)
+        self.crop_types = self.unpack_model_types(crop_types)
+        self.litters = litters
+        self.litter_types = self.unpack_model_types(litter_types)
+        self.weeds = weeds
+        self.weed_types = self.unpack_model_types(weed_types)
+        self.ghost_objects = ghost_objects
+        self.location_markers = location_markers
+        self.load_from_file = load_from_file
 
         if seed == -1:
             seed = int(datetime.now().timestamp() * 1000) % 8192
 
-        for k, v in locals().items():
-            self.__setattr__(k, v)
-
+        self.seed = seed
         self.rng = np.random.default_rng(seed)
 
         if self.load_from_file is not None:
-            self.load()
+            self.structure = RandomWorldDescription.load_from_file(self.load_from_file)
         else:
-            self.random_description()
+            self.structure = self.generate_random_description()
 
     def unpack_model_types(self, model_types: list[str]) -> list[str]:
         for mt in model_types:
@@ -103,34 +170,8 @@ class WorldDescription:
             value = [value] * rows
         return value
 
-    def random_description(self) -> None:
-        self.structure = dict()
-        self.structure["params"] = {
-            "ground_resolution": self.ground_resolution,
-            "ground_elevation_max": self.ground_elevation_max,
-            "ground_headland": self.ground_headland,
-            "ground_ditch_depth": self.ground_ditch_depth,
-            "plant_spacing_min": self.plant_spacing_min,
-            "plant_spacing_max": self.plant_spacing_max,
-            "plant_height_min": self.plant_height_min,
-            "plant_height_max": self.plant_height_max,
-            "plant_radius": self.plant_radius,
-            "plant_radius_noise": self.plant_radius_noise,
-            "plant_placement_error_max": self.plant_placement_error_max,
-            "plant_mass": self.plant_mass,
-            "hole_prob": self.hole_prob,
-            "hole_size_max": self.hole_size_max,
-            "crop_types": self.crop_types,
-            "litter_types": self.litter_types,
-            "litters": self.litters,
-            "weed_types": self.weed_types,
-            "weeds": self.weeds,
-            "ghost_objects": self.ghost_objects,
-            "location_markers": self.location_markers,
-            "seed": self.seed,
-        }
-
-        self.structure["segments"] = []
+    def generate_random_description(self) -> RandomWorldDescription:
+        segments = []
         current_row_length = 0
         current_curve = 0
 
@@ -243,18 +284,37 @@ class WorldDescription:
 
             else:
                 raise ValueError("Unknown segment type. [" + segment_name + "]")
+            
+            segments.append(segment)
 
-            self.structure["segments"].append(segment)
+            return RandomWorldDescription(
+                self.ground_resolution,
+                self.ground_elevation_max,
+                self.ground_headland,
+                self.ground_ditch_depth,
+                self.plant_spacing_min,
+                self.plant_spacing_max,
+                self.plant_height_min,
+                self.plant_height_max,
+                self.plant_radius,
+                self.plant_radius_noise,
+                self.plant_placement_error_max,
+                self.plant_mass,
+                self.hole_prob,
+                self.hole_size_max,
+                self.crop_types,
+                self.litter_types,
+                self.litters,
+                self.weed_types,
+                self.weeds,
+                self.ghost_objects,
+                self.location_markers, 
+                self.seed,
+                segments,
+            )
 
     def __str__(self) -> str:
-        return dumps(self.structure, indent=2)
-
-    def load(self) -> None:
-        self.structure = load(open(self.load_from_file))
-
-    def save(self, path: str) -> None:
-        dump(self.structure, open(path, "w"), indent=2)
-
+        return str(self.structure)
 
 if __name__ == "__main__":
     from world_generator.utils import parser_from_function

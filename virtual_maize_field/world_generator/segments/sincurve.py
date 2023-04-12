@@ -1,10 +1,13 @@
 from __future__ import annotations
 
-from typing import Any
+from typing import TYPE_CHECKING
 
 import numpy as np
 
-from .base import BaseSegment
+from virtual_maize_field.world_generator.segments.base import BaseSegment
+
+if TYPE_CHECKING:
+    from virtual_maize_field.world_generator.world_description import RandomWorldDescription
 
 
 class SinCurvedSegment(BaseSegment):
@@ -12,7 +15,7 @@ class SinCurvedSegment(BaseSegment):
         self,
         start_p: np.ndarray,
         start_dir: np.ndarray,
-        plant_params: dict[str, Any],
+        plant_params: RandomWorldDescription,
         offset: float,
         length: float,
         curve_dir: int,
@@ -51,7 +54,7 @@ class SinCurvedSegment(BaseSegment):
         for i in range(1, row_coordinates.shape[0]):
             spacing += np.linalg.norm(row_coordinates[i - 1, :] - row_coordinates[i, :])
 
-            if spacing >= self.plant_params["plant_spacing_min"]:
+            if spacing >= self.plant_params.plant_spacing_min:
                 placements.append(row_coordinates[i, :])
                 spacing = 0
 

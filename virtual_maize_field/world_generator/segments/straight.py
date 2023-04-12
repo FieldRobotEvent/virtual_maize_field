@@ -1,19 +1,21 @@
 from __future__ import annotations
 
-from typing import Any
+from typing import TYPE_CHECKING
 
 import numpy as np
 from matplotlib import pyplot as plt
 
-from .base import BaseSegment
+from virtual_maize_field.world_generator.segments.base import BaseSegment
 
+if TYPE_CHECKING:
+    from virtual_maize_field.world_generator.world_description import RandomWorldDescription
 
 class StraightSegment(BaseSegment):
     def __init__(
         self,
         start_p: np.ndarray,
         start_dir: np.ndarray,
-        plant_params: dict[str, Any],
+        plant_params: RandomWorldDescription,
         length: float,
         rng: np.random.RandomState = np.random.default_rng(),
     ):
@@ -34,7 +36,7 @@ class StraightSegment(BaseSegment):
 
         cur_placement = start + self.start_dir * c
         placements = [cur_placement]
-        while self.length - c > self.plant_params["plant_spacing_min"]:
+        while self.length - c > self.plant_params.plant_spacing_min:
             step = self.bounded_gaussian.get()
             cur_placement = cur_placement + self.start_dir * step
             placements.append(cur_placement)

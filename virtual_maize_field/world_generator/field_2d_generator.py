@@ -37,18 +37,18 @@ class Field2DGenerator:
     def gather_available_models(self) -> None:
         self.crop_models = to_gazebo_models(
             CROP_MODELS,
-            self.wd.structure["params"]["crop_types"],
+            self.wd.structure.crop_types,
         )
 
-        if self.wd.structure["params"]["weeds"] > 0:
+        if self.wd.structure.weeds > 0:
             self.weed_models = to_gazebo_models(
                 WEED_MODELS,
-                self.wd.structure["params"]["weed_types"],
+                self.wd.structure.weed_types,
             )
 
-        if self.wd.structure["params"]["litters"] > 0:
+        if self.wd.structure.litters > 0:
             self.litter_models = to_gazebo_models(
-                LITTER_MODELS, self.wd.structure["params"]["litter_types"]
+                LITTER_MODELS, self.wd.structure.litter_types
             )
 
         self.marker_models = MARKER_MODELS
@@ -119,7 +119,7 @@ class Field2DGenerator:
         )
 
         # location markers
-        if self.wd.structure["params"]["location_markers"]:
+        if self.wd.structure.location_markers:
             plt.scatter(
                 self.marker_a_loc[:, 0],
                 self.marker_a_loc[:, 1],
@@ -189,12 +189,12 @@ class Field2DGenerator:
 
         # Chain all segments from the world description
         self.segments = []
-        for segment in self.wd.structure["segments"]:
+        for segment in self.wd.structure.segments:
             if segment["type"] == "straight":
                 seg = StraightSegment(
                     current_p,
                     current_dir,
-                    self.wd.structure["params"],
+                    self.wd.structure,
                     segment["length"],
                     rng=self.wd.rng,
                 )
@@ -202,7 +202,7 @@ class Field2DGenerator:
                 seg = SinCurvedSegment(
                     current_p,
                     current_dir,
-                    self.wd.structure["params"],
+                    self.wd.structure,
                     segment["offset"],
                     segment["length"],
                     segment["curve_dir"],
@@ -212,7 +212,7 @@ class Field2DGenerator:
                 seg = CurvedSegment(
                     current_p,
                     current_dir,
-                    self.wd.structure["params"],
+                    self.wd.structure,
                     segment["radius"],
                     segment["curve_dir"],
                     segment["arc_measure"],
@@ -222,7 +222,7 @@ class Field2DGenerator:
                 seg = IslandSegment(
                     current_p,
                     current_dir,
-                    self.wd.structure["params"],
+                    self.wd.structure,
                     segment["radius"],
                     segment["island_model"],
                     segment["island_model_radius"],
@@ -248,14 +248,14 @@ class Field2DGenerator:
 
             # generate indexes of the end of the hole
             probs = self.wd.rng.random(row.shape[0])
-            probs = probs < self.wd.structure["params"]["hole_prob"][index]
+            probs = probs < self.wd.structure.hole_prob[index]
 
             # iterate in reverse order, and remove plants in the holes
             i = probs.shape[0] - 1
             while i > 0:
                 if probs[i]:
                     hole_size = self.wd.rng.integers(
-                        1, self.wd.structure["params"]["hole_size_max"][index]
+                        1, self.wd.structure.hole_size_max[index]
                     )
                     row = np.delete(row, slice(max(1, i - hole_size), i), axis=0)
                     i = i - hole_size
@@ -265,8 +265,8 @@ class Field2DGenerator:
 
         # Add bounden noise to placements
         bg = BoundedGaussian(
-            -self.wd.structure["params"]["plant_placement_error_max"],
-            self.wd.structure["params"]["plant_placement_error_max"],
+            -self.wd.structure.plant_placement_error_max,
+            self.wd.structure.plant_placement_error_max,
             rng=self.wd.rng,
         )
 
@@ -318,26 +318,26 @@ class Field2DGenerator:
         self.field_poly = Polygon(outer_plants)
 
         # place x_nr of weeds within the field area
-        if self.wd.structure["params"]["weeds"] > 0:
+        if self.wd.structure.weeds > 0:
             self.weed_placements = random_points_within(
-                self.field_poly, self.wd.structure["params"]["weeds"]
+                self.field_poly, self.wd.structure.weeds
             )
             random_weed_models = self.wd.rng.choice(
                 list(self.weed_models.values()),
-                self.wd.structure["params"]["weeds"],
+                self.wd.structure.weeds,
             )
         else:
             self.weed_placements = np.array([]).reshape(0, 2)
             random_weed_models = []
 
         # place y_nr of litter within the field area
-        if self.wd.structure["params"]["litters"] > 0:
+        if self.wd.structure.litters > 0:
             self.litter_placements = random_points_within(
-                self.field_poly, self.wd.structure["params"]["litters"]
+                self.field_poly, self.wd.structure.litters
             )
             random_litter_models = self.wd.rng.choice(
                 list(self.litter_models.values()),
-                self.wd.structure["params"]["litters"],
+                self.wd.structure.litters,
             )
 
         else:
@@ -357,7 +357,7 @@ class Field2DGenerator:
         )
 
         # place location markers at the desginated locations
-        if self.wd.structure["params"]["location_markers"]:
+        if self.wd.structure.location_markers:
             line = LineString([self.rows[0][0], self.rows[-1][0]])
             offset_a = line.parallel_offset(2.5, "right", join_style=2, mitre_limit=0.1)
             self.marker_a_loc = np.array(
@@ -395,8 +395,8 @@ class Field2DGenerator:
         ]
 
     def generate_ground(self) -> None:
-        ditch_depth = self.wd.structure["params"]["ground_ditch_depth"]
-        ditch_distance = self.wd.structure["params"]["ground_headland"]
+        ditch_depth = self.wd.structure.ground_ditch_depth
+        ditch_distance = self.wd.structure.ground_headland
 
         self.crop_placements = np.vstack(self.rows)
 
@@ -415,9 +415,7 @@ class Field2DGenerator:
         metric_width = metric_x_max - metric_x_min + 2 * ditch_distance + 1
         metric_height = metric_y_max - metric_y_min + 2 * ditch_distance + 1
 
-        min_resolution = self.wd.structure["params"][
-            "ground_resolution"
-        ]  # min resolution
+        min_resolution = self.wd.structure.ground_resolution # min resolution
         min_image_size = int(
             np.ceil(max(metric_width / min_resolution, metric_height / min_resolution))
         )
@@ -444,7 +442,7 @@ class Field2DGenerator:
         heightmap -= heightmap.min()
         heightmap /= heightmap.max()
 
-        max_elevation = self.wd.structure["params"]["ground_elevation_max"]
+        max_elevation = self.wd.structure.ground_elevation_max
 
         self.heightmap_elevation = ditch_depth + (max_elevation / 2)
 
@@ -549,7 +547,7 @@ class Field2DGenerator:
             coordinate["radius"] = (
                 radius
                 + (2 * self.wd.rng.random() - 1)
-                * self.wd.structure["params"]["plant_radius_noise"]
+                * self.wd.structure.plant_radius_noise
             )
             if coordinate["type"] == "cylinder":
                 coordinate["height"] = height
@@ -561,9 +559,9 @@ class Field2DGenerator:
             into_dict(
                 plant,
                 self.placements_ground_height[i],
-                self.wd.structure["params"]["plant_radius"],
-                self.wd.structure["params"]["plant_height_min"],
-                self.wd.structure["params"]["plant_mass"],
+                self.wd.structure.plant_radius,
+                self.wd.structure.plant_height_min,
+                self.wd.structure.plant_mass,
                 self.wd.rng.choice(list(self.crop_models.values())),
                 i,
             )
@@ -575,12 +573,12 @@ class Field2DGenerator:
             into_dict(
                 plant,
                 self.placements_ground_height[i + len(self.crop_placements)],
-                self.wd.structure["params"]["plant_radius"],
-                self.wd.structure["params"]["plant_height_min"],
-                self.wd.structure["params"]["plant_mass"],
+                self.wd.structure.plant_radius,
+                self.wd.structure.plant_height_min,
+                self.wd.structure.plant_mass,
                 self.object_types[i],
                 i,
-                ghost=self.wd.structure["params"]["ghost_objects"],
+                ghost=self.wd.structure.ghost_objects,
             )
             for i, plant in enumerate(self.object_placements)
         ]
@@ -591,15 +589,15 @@ class Field2DGenerator:
         template = jinja2.Template(template)
         self.sdf = template.render(
             coordinates=coordinates,
-            seed=self.wd.structure["params"]["seed"],
+            seed=self.wd.structure.seed,
             heightmap={
                 "size": self.metric_size,
                 "pos": {
                     "x": self.heightmap_position[0],
                     "y": self.heightmap_position[1],
                 },
-                "max_elevation": self.wd.structure["params"]["ground_elevation_max"],
-                "ditch_depth": self.wd.structure["params"]["ground_ditch_depth"],
+                "max_elevation": self.wd.structure.ground_elevation_max,
+                "ditch_depth": self.wd.structure.ground_ditch_depth,
                 "total_height": self.heightmap_elevation,
             },
         )

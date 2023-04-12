@@ -1,13 +1,15 @@
 from __future__ import annotations
 
-from typing import Any
+from typing import TYPE_CHECKING
 
 import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib.patches import Arc
 
-from .base import BaseSegment
-from .curve import CurvedSegment
+from virtual_maize_field.world_generator.segments.base import BaseSegment
+
+if TYPE_CHECKING:
+    from virtual_maize_field.world_generator.world_description import RandomWorldDescription
 
 
 class IslandSegment(BaseSegment):
@@ -15,7 +17,7 @@ class IslandSegment(BaseSegment):
         self,
         start_p: np.ndarray,
         start_dir: np.ndarray,
-        plant_params: dict[str, Any],
+        plant_params: RandomWorldDescription,
         radius: float,
         island_model: str,
         island_model_radius: float,

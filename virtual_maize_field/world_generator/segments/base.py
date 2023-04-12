@@ -1,20 +1,22 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Any
+from typing import TYPE_CHECKING
 
 import numpy as np
 from matplotlib import pyplot as plt
 
-from ..utils import BoundedGaussian
+from virtual_maize_field.world_generator.utils import BoundedGaussian
 
+if TYPE_CHECKING:
+    from virtual_maize_field.world_generator.world_description import RandomWorldDescription
 
 class BaseSegment(ABC):
     def __init__(
         self,
         start_p: np.ndarray,
         start_dir: np.ndarray,
-        plant_params: dict[str, Any],
+        plant_params: RandomWorldDescription,
         rng: np.random.Generator = np.random.default_rng(),
     ):
         self._rng = rng
@@ -24,8 +26,8 @@ class BaseSegment(ABC):
         self.start_dir = self.start_dir / np.linalg.norm(self.start_dir)
         self.plant_params = plant_params
         self.bounded_gaussian = BoundedGaussian(
-            self.plant_params["plant_spacing_min"],
-            self.plant_params["plant_spacing_max"],
+            self.plant_params.plant_spacing_min,
+            self.plant_params.plant_spacing_max,
             rng=self._rng,
         )
 
@@ -43,8 +45,8 @@ class BaseSegment(ABC):
             offset = np.full(
                 (len(self.start_p)),
                 -(
-                    self.plant_params["plant_spacing_max"]
-                    + self.plant_params["plant_spacing_min"]
+                    self.plant_params.plant_spacing_max
+                    + self.plant_params.plant_spacing_min
                 )
                 / 2,
             )
