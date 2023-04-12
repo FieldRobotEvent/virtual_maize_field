@@ -19,7 +19,7 @@
   This is a package to procedurally generate randomized fields with rows of plants for Gazebo.
 </p>
 
-![Screenshot of a generated map with maize plants and pumpkins](./misc/screenshot_v4.0.png)
+![Screenshot of a generated map with maize plants](./misc/screenshot_v4.7.jpg)
 
 ## Installation
 This package has been tested on ROS melodic and ROS noetic. For the ROS2 version of this repository, see the [ros2](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2) branch.
