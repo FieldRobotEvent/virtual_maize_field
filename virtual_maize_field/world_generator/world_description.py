@@ -2,9 +2,9 @@
 from __future__ import annotations
 
 from argparse import ArgumentError
+from dataclasses import asdict, dataclass
 from datetime import datetime
 from json import dump, dumps, load
-from dataclasses import dataclass, asdict
 
 import numpy as np
 
@@ -56,6 +56,7 @@ class RandomWorldDescription:
     def load_from_file(self, file_path: str) -> WorldDescription:
         structure = load(open(file_path, "r"))
         return RandomWorldDescription(**structure)
+
 
 class WorldDescription:
     def __init__(
@@ -284,7 +285,7 @@ class WorldDescription:
 
             else:
                 raise ValueError("Unknown segment type. [" + segment_name + "]")
-            
+
             segments.append(segment)
 
             return RandomWorldDescription(
@@ -308,13 +309,14 @@ class WorldDescription:
                 self.weed_types,
                 self.weeds,
                 self.ghost_objects,
-                self.location_markers, 
+                self.location_markers,
                 self.seed,
                 segments,
             )
 
     def __str__(self) -> str:
         return str(self.structure)
+
 
 if __name__ == "__main__":
     from world_generator.utils import parser_from_function

@@ -8,7 +8,10 @@ from matplotlib import pyplot as plt
 from virtual_maize_field.world_generator.segments.base import BaseSegment
 
 if TYPE_CHECKING:
-    from virtual_maize_field.world_generator.world_description import RandomWorldDescription
+    from virtual_maize_field.world_generator.world_description import (
+        RandomWorldDescription,
+    )
+
 
 class StraightSegment(BaseSegment):
     def __init__(

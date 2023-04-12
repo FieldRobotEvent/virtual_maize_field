@@ -9,7 +9,10 @@ from matplotlib import pyplot as plt
 from virtual_maize_field.world_generator.utils import BoundedGaussian
 
 if TYPE_CHECKING:
-    from virtual_maize_field.world_generator.world_description import RandomWorldDescription
+    from virtual_maize_field.world_generator.world_description import (
+        RandomWorldDescription,
+    )
+
 
 class BaseSegment(ABC):
     def __init__(

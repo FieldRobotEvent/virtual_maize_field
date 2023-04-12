@@ -415,7 +415,7 @@ class Field2DGenerator:
         metric_width = metric_x_max - metric_x_min + 2 * ditch_distance + 1
         metric_height = metric_y_max - metric_y_min + 2 * ditch_distance + 1
 
-        min_resolution = self.wd.structure.ground_resolution # min resolution
+        min_resolution = self.wd.structure.ground_resolution  # min resolution
         min_image_size = int(
             np.ceil(max(metric_width / min_resolution, metric_height / min_resolution))
         )
@@ -546,8 +546,7 @@ class Field2DGenerator:
 
             coordinate["radius"] = (
                 radius
-                + (2 * self.wd.rng.random() - 1)
-                * self.wd.structure.plant_radius_noise
+                + (2 * self.wd.rng.random() - 1) * self.wd.structure.plant_radius_noise
             )
             if coordinate["type"] == "cylinder":
                 coordinate["height"] = height
@@ -585,8 +584,8 @@ class Field2DGenerator:
 
         coordinates.extend(object_coordinates)
 
-        template = importlib.resources.read_text(__package__, "field.world.template")
-        template = jinja2.Template(template)
+        template_str = importlib.resources.read_text(__package__, "field.world.template")
+        template = jinja2.Template(template_str)
         self.sdf = template.render(
             coordinates=coordinates,
             seed=self.wd.structure.seed,

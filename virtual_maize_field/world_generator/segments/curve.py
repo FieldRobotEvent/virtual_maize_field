@@ -6,11 +6,13 @@ import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib.patches import Arc
 
-from virtual_maize_field.world_generator.utils import Geometry
 from virtual_maize_field.world_generator.segments.base import BaseSegment
+from virtual_maize_field.world_generator.utils import Geometry
 
 if TYPE_CHECKING:
-    from virtual_maize_field.world_generator.world_description import RandomWorldDescription
+    from virtual_maize_field.world_generator.world_description import (
+        RandomWorldDescription,
+    )
 
 
 class CurvedSegment(BaseSegment):
@@ -54,9 +56,9 @@ class CurvedSegment(BaseSegment):
 
         cur_placement = Geometry.rotate(start, self.center, c / r)
         placements = [cur_placement]
-        while (
-            c < l - self.plant_params.plant_spacing_min or not self.curve_dir
-        ) and (c > l + self.plant_params.plant_spacing_min or self.curve_dir):
+        while (c < l - self.plant_params.plant_spacing_min or not self.curve_dir) and (
+            c > l + self.plant_params.plant_spacing_min or self.curve_dir
+        ):
             step = rot * self.bounded_gaussian.get(0.0)
             cur_placement = Geometry.rotate(cur_placement, self.center, step / r)
             placements.append(cur_placement)
