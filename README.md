@@ -19,7 +19,7 @@
   This is a package to procedurally generate randomized fields with rows of plants for Gazebo.
 </p>
 
-![Screenshot of a generated map with maize plants](./misc/screenshot_v4.7.png)
+![Screenshot of a generated map with maize plants](./misc/screenshot_v4.7.jpg)
 
 ## Installation
 Clone this repository and build the workspace. Additional you'll need the following packages:
