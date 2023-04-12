@@ -584,7 +584,9 @@ class Field2DGenerator:
 
         coordinates.extend(object_coordinates)
 
-        template_str = importlib.resources.read_text(__package__, "field.world.template")
+        template_str = importlib.resources.read_text(
+            __package__, "field.world.template"
+        )
         template = jinja2.Template(template_str)
         self.sdf = template.render(
             coordinates=coordinates,
