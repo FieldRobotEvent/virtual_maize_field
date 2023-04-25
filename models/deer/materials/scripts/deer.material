@@ -1,0 +1,18 @@
+material deer/texture
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        // Relative to the location of the material script
+        texture ../textures/deer.png
+        // Repeat the texture over the surface (1 per face)
+        scale 1 1
+      }
+    }
+  }
+}
+
+
