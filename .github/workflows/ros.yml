@@ -42,4 +42,4 @@ jobs:
       with:
         package-name: virtual_maize_field
         target-ros2-distro: ${{ matrix.ros_distribution }}
-        skip-tests: true
+        skip-tests: false
