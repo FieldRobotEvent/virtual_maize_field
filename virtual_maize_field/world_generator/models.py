@@ -5,7 +5,11 @@ from dataclasses import dataclass, fields
 from pathlib import Path
 from xml.etree import ElementTree
 
-VIRTUAL_MAIZE_FIELD_MODELS_FOLDER = models_folder = Path(__file__).parents[3] / "models"
+from ament_index_python import get_package_share_directory
+
+VIRTUAL_MAIZE_FIELD_MODELS_FOLDER = (
+    Path(get_package_share_directory("virtual_maize_field")) / "models"
+)
 
 
 @dataclass
@@ -21,20 +25,20 @@ class GazeboModel:
     ghostable: bool = True
     random_yaw: bool = True
 
-    __model_visual: str | None = None
+    _model_visual: str | None = None
 
     def get_model_visual(self) -> str:
-        if self.__model_visual is None:
+        if self._model_visual is None:
             model_folder = VIRTUAL_MAIZE_FIELD_MODELS_FOLDER / self.model_name
             assert model_folder.is_dir(), f"Cannot find model {self.model_name}!"
 
             root = ElementTree.parse(model_folder / "model.sdf").getroot()
 
-            self.__model_visual = ""
+            self._model_visual = ""
             for visual in root.findall(".//visual"):
-                self.__model_visual += ElementTree.tostring(visual).decode("utf-8")
+                self._model_visual += ElementTree.tostring(visual).decode("utf-8")
 
-        return self.__model_visual
+        return self._model_visual
 
     def __repr__(self) -> str:
         return f"GazeboModel: {self.model_name}"
@@ -51,23 +55,23 @@ class GazeboModelsFromRegex(GazeboModel):
 
     model_name_regex: re.Pattern = re.compile(r"(maize_[0-9]+)_.+")
 
-    __models: list[GazeboModel] | None = None
+    _models: list[GazeboModel] | None = None
 
     def __len__(self) -> int:
-        if self.__models is None:
+        if self._models is None:
             self._gather_models()
 
-        return len(self.__models)
+        return len(self._models)
 
     @property
     def list(self) -> list[GazeboModel]:
-        if self.__models is None:
+        if self._models is None:
             self._gather_models()
 
-        return self.__models
+        return self._models
 
     def _gather_models(self) -> None:
-        self.__models = []
+        self._models = []
 
         for model_folder in VIRTUAL_MAIZE_FIELD_MODELS_FOLDER.glob("**/"):
             name_match = re.search(self.model_name_regex, model_folder.stem)
@@ -86,9 +90,9 @@ class GazeboModelsFromRegex(GazeboModel):
                 # Set the model name
                 gazebo_model_parameters["model_name"] = model_name
 
-                self.__models.append(GazeboModel(**gazebo_model_parameters))
+                self._models.append(GazeboModel(**gazebo_model_parameters))
 
-        if len(self.__models) == 0:
+        if len(self._models) == 0:
             print(
                 "\033[91mError: Cannot find any model matching the regular expression "
                 f"'{self.model_name_regex.pattern}' in the models folder! Did you add "
