@@ -182,6 +182,8 @@ Worlds for the Field Robot Event 2022:
 | *fre22_task_navigation* | Task navigation, curved rows that get more difficult (eg. have more and larger holes) to the left |
 | *fre22_task_mapping* | Task mapping, field with random holes, bottles and weeds spread throughout the field. The cans, bottles and weeds have no collision box and are static. |
 
+> **_NOTE:_** For the `fre22_task_mapping` worlds, dandelion models are needed which were only distributed among competitors of the Field Robot Event 2022. They are not uploaded to Github since they cannot be open-sourced. If you don't have these models, check out the `fre21_task_3` worlds.
+
 Other sample Worlds:
 | Name | Description |
 |:---- |:----------- |
