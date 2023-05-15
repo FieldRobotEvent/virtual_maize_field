@@ -184,6 +184,7 @@ Worlds for the Field Robot Event 2022:
 
 ---
 **NOTE**
+
 For the `fre22_task_mapping` worlds, dandelion models are needed which were only distributed among competitors of the Field Robot Event 2022. They are not uploaded to Github since they cannot be open-sourced. If you don't have these models, check out the `fre21_task_3` worlds.
 ---
 
