@@ -1,5 +1,5 @@
 # Rolling Ridley (June 2020 - )
-name: Build and Test ROS Rolling
+name: ros
 
 on:
   push:
