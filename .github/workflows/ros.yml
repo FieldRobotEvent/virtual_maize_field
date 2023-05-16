@@ -1,3 +1,20 @@
+# Rolling Ridley (June 2020 - )
+name: Build and Test ROS Rolling
+
+on:
+  push:
+    branches: [ ros2 ]
+  pull_request:
+    branches: [ ros2 ]
+
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        uses: ichiro-its/ros2-ci@v1.0.0
 # name: ros
 
 # on:
