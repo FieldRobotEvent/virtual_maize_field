@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        uses: ichiro-its/ros2-ci@v1.0.0
+      - uses: ichiro-its/ros2-ci@v1.0.0
 # name: ros
 
 # on:
