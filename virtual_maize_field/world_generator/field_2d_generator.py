@@ -9,7 +9,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 from shapely.geometry import LineString, Point, Polygon
 
-from .models import (
+from virtual_maize_field.world_generator.models import (
     CROP_MODELS,
     LITTER_MODELS,
     MARKER_MODELS,
@@ -17,9 +17,14 @@ from .models import (
     GazeboModel,
     to_gazebo_models,
 )
-from .segments import CurvedSegment, IslandSegment, SinCurvedSegment, StraightSegment
-from .utils import BoundedGaussian
-from .world_description import WorldDescription
+from virtual_maize_field.world_generator.segments import (
+    CurvedSegment,
+    IslandSegment,
+    SinCurvedSegment,
+    StraightSegment,
+)
+from virtual_maize_field.world_generator.utils import BoundedGaussian
+from virtual_maize_field.world_generator.world_description import WorldDescription
 
 
 class Field2DGenerator:

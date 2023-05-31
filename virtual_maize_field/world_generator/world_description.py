@@ -7,7 +7,7 @@ from json import dump, dumps, load
 
 import numpy as np
 
-from .models import (
+from virtual_maize_field.world_generator.models import (
     AVAILABLE_MODELS,
     CROP_MODELS,
     LITTER_MODELS,

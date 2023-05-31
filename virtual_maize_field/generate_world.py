@@ -12,9 +12,9 @@ import yaml
 from ament_index_python.packages import get_package_share_directory
 from jinja2 import Template
 
-from . import world_generator
-from .world_generator.field_2d_generator import Field2DGenerator
-from .world_generator.world_description import WorldDescription
+from virtual_maize_field import world_generator
+from virtual_maize_field.world_generator.field_2d_generator import Field2DGenerator
+from virtual_maize_field.world_generator.world_description import WorldDescription
 
 
 class WorldGenerator:
