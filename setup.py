@@ -24,7 +24,6 @@ for folder_name in (
     "map",
     "Media",
     "models",
-    "rviz",
     "worlds",
 ):
     _path_dict = {}
