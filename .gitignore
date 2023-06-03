@@ -32,11 +32,11 @@ map/*
 gt/*
 launch/robot_spawner.launch.py
 
-# Ignore generated models
-models/*_day_*
-
 # Ignore models that may not be published on Github
 models/dandelion_* 
+
+# Ignore saved world descriptions
+*.json
 
 # Keep specific files
 !map/.gitkeep
