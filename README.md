@@ -37,7 +37,7 @@ You can call the script using
 ```bash
 ros2 run virtual_maize_field generate_world
 ```
-The resulting file will be placed in `<workspace folder>/install/virtual_maize_field/share/virtual_maize_field/worlds/generated.world`. You can use this script by one of the defined config files or specifying the parameters below:
+The resulting file will be placed in `$ROS_HOME/virtual_maize_field/generated.world`. You can use this script by one of the defined config files or specifying the parameters below:
 <details>
   <summary>Click to show all possible arguments</summary>
   
@@ -195,8 +195,44 @@ You can use these config files when generating worlds, e.g.:
 ros2 run virtual_maize_field generate_world fre22_task_navigation_mini
 ```
 
-## Launching worlds
+## Launching and using generated worlds
 The launch file to launch the worlds is called `simulation.launch`. You can launch the launch file by running `ros2 launch virtual_maize_field simulation.launch.py`. By default the launch file will launch `generated_world.world`. You can launch any world by using the `world_name` arg. e.g. `ros2 launch virtual_maize_field simulation.launch.py world_name:=simple_row_level_1.world`.
+
+To add your own robot in the world, use the generated `robot_spawner.launch.py`. This launches your robot at the correct position in the generated world. Your launch file to launch your robot should look like (replace `<<robot_name>>` with your robot name):
+
+```python
+from __future__ import annotations
+
+from launch import LaunchDescription
+from launch.actions import IncludeLaunchDescription
+from launch.launch_description_sources import PythonLaunchDescriptionSource
+
+from virtual_maize_field import get_spawner_launch_file
+
+
+def generate_launch_description() -> LaunchDescription:
+    robot_spawner_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([get_spawner_launch_file()]),
+        launch_arguments={"robot_name": "<<robot_name>>"}.items(),
+    )
+
+    return LaunchDescription([robot_spawner_launch])
+```
+
+Use the function `get_driving_pattern()` to get the path of the generated driving pattern:
+
+```
+from __future__ import annotations
+
+from pathlib import Path
+
+from virtual_maize_field import get_driving_pattern
+
+def read_driving_pattern() -> None:
+    driving_pattern = Path(get_driving_pattern()).read_text("utf-8")
+    print(f"The driving pattern is {driving_pattern}")
+
+```
 
 ## License
 Virtual Maize Field is copyright (C) 2021 *Farm Technology Group of Wageningen University & Research* and *Kamaro Engineering e.V.* and licensed under [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0).

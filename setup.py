@@ -19,12 +19,9 @@ data_files = [
 # https://answers.ros.org/question/397319/how-to-copy-folders-with-subfolders-to-package-installation-path/
 for folder_name in (
     "config",
-    "gt",
     "launch",
-    "map",
     "Media",
     "models",
-    "worlds",
 ):
     _path_dict = {}
 
