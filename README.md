@@ -20,7 +20,7 @@
 
 ![Screenshot of a generated map with maize plants](./misc/screenshot_v4.7.jpg)
 
-ROS2 Distro | Branch | Build status
+ROS Distro | Branch | Build status
 :---------: | :----: | :----------: 
 **Rolling** | [`ros2`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2) | [![ros-rolling](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-rolling-test.yaml/badge.svg?branch=ros2)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-rolling-test.yaml)
 **Iron** | [`ros2`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2) | [![ros-iron](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-iron-test.yaml/badge.svg?branch=ros2)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-iron-test.yaml)
