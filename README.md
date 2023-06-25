@@ -22,17 +22,11 @@
 ![Screenshot of a generated map with maize plants](./misc/screenshot_v4.7.jpg)
 
 ## Installation
-This package has been tested on ROS melodic and ROS noetic. For the ROS2 version of this repository, see the [ros2](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2) branch.
+This package has been tested on ROS noetic. For the ROS2 version of this repository, see the [ros2](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2) branch.
 
 Additional you'll need the following packages:
 
 ```commandline
-# melodic
-rosdep install virtual_maize_field
-sudo apt install python3-pip
-sudo pip3 install -U jinja2 rospkg opencv-python matplotlib shapely
-
-# noetic
 rosdep install virtual_maize_field
 ```
 
@@ -188,7 +182,7 @@ Worlds for the Field Robot Event 2022:
 | *fre22_task_navigation* | Task navigation, curved rows that get more difficult (eg. have more and larger holes) to the left |
 | *fre22_task_mapping* | Task mapping, field with random holes, bottles and weeds spread throughout the field. The cans, bottles and weeds have no collision box and are static. |
 
-Other sample Worlds:
+Worlds for the Field Robot Event 2021:
 | Name | Description |
 |:---- |:----------- |
 | *fre21_task_1* | Task 1, curved rows without holes |
