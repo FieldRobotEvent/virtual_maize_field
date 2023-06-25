@@ -28,17 +28,11 @@ ROS Distro | Branch | Build status
 **Noetic** | [`main`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/main) | [![ros-noetic](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-noetic-test.yaml/badge.svg?branch=main)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-noetic-test.yaml?branch=main)
 
 ## Installation
-This package has been tested on ROS melodic and ROS noetic. For the ROS2 version of this repository, see the [ros2](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2) branch.
+This package has been tested on ROS noetic. For the ROS2 version of this repository, see the [ros2](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2) branch.
 
 Additional you'll need the following packages:
 
 ```commandline
-# melodic
-rosdep install virtual_maize_field
-sudo apt install python3-pip
-sudo pip3 install -U jinja2 rospkg opencv-python matplotlib shapely
-
-# noetic
 rosdep install virtual_maize_field
 ```
 
