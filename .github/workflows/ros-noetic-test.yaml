@@ -1,5 +1,5 @@
 # Noetic Ninjemys (May 2020 - May 2025)
-name: ros-noetic-test
+name: ros-noetic
 
 on:
   workflow_dispatch:

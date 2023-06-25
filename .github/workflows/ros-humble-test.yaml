@@ -1,5 +1,5 @@
 # Humble Hawksbill (May 2022 - May 2027)
-name: ros-humble-test
+name: ros-humble
 
 on:
   workflow_dispatch:

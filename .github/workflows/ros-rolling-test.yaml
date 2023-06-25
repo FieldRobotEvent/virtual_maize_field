@@ -1,5 +1,5 @@
 # Rolling Ridley (June 2020 - )
-name: ros-rolling-test
+name: ros-rolling
 
 on:
   workflow_dispatch:

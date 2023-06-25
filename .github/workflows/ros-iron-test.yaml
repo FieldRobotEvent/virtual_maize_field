@@ -1,5 +1,5 @@
 # Iron Irwini (May 2023 - November 2024)
-name: ros-iron-test
+name: ros-iron
 
 on:
   workflow_dispatch:

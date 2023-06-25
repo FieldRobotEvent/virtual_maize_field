@@ -22,10 +22,10 @@
 
 ROS2 Distro | Branch | Build status
 :---------: | :----: | :----------: 
-**Rolling** | [`ros2`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2) | [![ros-rolling](https://github.com/Rick-v-E/virtual_maize_field/actions/workflows/ros-iron-test.yaml/badge.svg?branch=ros2)](https://github.com/Rick-v-E/virtual_maize_field/actions/workflows/ros-rolling-test.yaml?branch=ros2)
+**Rolling** | [`ros2`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2) | [![ros-rolling](https://github.com/Rick-v-E/virtual_maize_field/actions/workflows/ros-rolling-test.yaml/badge.svg?branch=ros2)](https://github.com/Rick-v-E/virtual_maize_field/actions/workflows/ros-rolling-test.yaml?branch=ros2)
 **Iron** | [`ros2`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2) | [![ros-iron](https://github.com/Rick-v-E/virtual_maize_field/actions/workflows/ros-iron-test.yaml/badge.svg?branch=ros2)](https://github.com/Rick-v-E/virtual_maize_field/actions/workflows/ros-iron-test.yaml?branch=ros2)
-**Humble** | [`ros2`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2) | [![ros-humble](https://github.com/Rick-v-E/virtual_maize_field/actions/workflows/ros-iron-test.yaml/badge.svg?branch=ros2)](https://github.com/Rick-v-E/virtual_maize_field/actions/workflows/ros-humble-test.yaml?branch=ros2)
-**Noetic** | [`main`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/main) | [![ros-noetic](https://github.com/Rick-v-E/virtual_maize_field/actions/workflows/ros-iron-test.yaml/badge.svg?branch=main)](https://github.com/Rick-v-E/virtual_maize_field/actions/workflows/ros-noetic-test.yaml?branch=main)
+**Humble** | [`ros2`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2) | [![ros-humble](https://github.com/Rick-v-E/virtual_maize_field/actions/workflows/ros-humble-test.yaml/badge.svg?branch=ros2)](https://github.com/Rick-v-E/virtual_maize_field/actions/workflows/ros-humble-test.yaml?branch=ros2)
+**Noetic** | [`main`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/main) | [![ros-noetic](https://github.com/Rick-v-E/virtual_maize_field/actions/workflows/ros-noetic-test.yaml/badge.svg?branch=main)](https://github.com/Rick-v-E/virtual_maize_field/actions/workflows/ros-noetic-test.yaml?branch=main)
 
 
 ## Installation
