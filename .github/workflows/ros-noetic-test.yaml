@@ -22,4 +22,4 @@ jobs:
       - uses: ros-tooling/action-ros-ci@v0.3
         with:
           package-name: virtual_maize_field
-          target-ros-distro: noetic
+          target-ros1-distro: noetic
