@@ -1,7 +1,0 @@
-<launch>
-  <node name="virtual_maize_field_fre21_task_1_mini" type="generate_world.py" pkg="virtual_maize_field" args="fre21_task_1_mini" />
-  <node name="virtual_maize_field_fre21_task_2_mini" type="generate_world.py" pkg="virtual_maize_field" args="fre21_task_2_mini" />
-  <node name="virtual_maize_field_fre21_task_3_mini" type="generate_world.py" pkg="virtual_maize_field" args="fre21_task_3_mini" />
-  <node name="virtual_maize_field_fre21_task_4_mini" type="generate_world.py" pkg="virtual_maize_field" args="fre21_task_4_mini" />
-  <node name="virtual_maize_field_fre22_navigation_mini" type="generate_world.py" pkg="virtual_maize_field" args="ffre22_navigation_mini" />
-</launch>
