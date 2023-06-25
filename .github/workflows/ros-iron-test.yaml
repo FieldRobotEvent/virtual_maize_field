@@ -5,12 +5,15 @@ on:
   workflow_dispatch:
     branches:
       - ros2
+      - fix-ci
   pull_request:
     branches:
       - ros2
+      - fix-ci
   push:
     branches:
       - ros2
+      - fix-ci
 
 jobs:
   build:
