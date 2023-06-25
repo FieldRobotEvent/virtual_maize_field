@@ -9,7 +9,6 @@
   <img src="https://kamaro-engineering.de/wp-content/uploads/2015/03/Kamaro_Logo-1.png" width="250" style="margin: 10px;">
 </p>
 <p align="middle">
-  <a href="https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros.yml"><img src="https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros.yml/badge.svg?branch=ros2" alt="Build status" /></a>
   <a href="https://github.com/psf/black"><img src="https://img.shields.io/badge/code%20style-black-000000.svg" alt="Code style: black"/></a>
    <a href="https://pycqa.github.io/isort/"><img src="https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336"/></a>
   <a href="https://github.com/FieldRobotEvent/Virtual_Field_Robot_Event/discussions"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="contributions welcome"/></a>
@@ -20,6 +19,14 @@
 </p>
 
 ![Screenshot of a generated map with maize plants](./misc/screenshot_v4.7.jpg)
+
+ROS2 Distro | Branch | Build status
+:---------: | :----: | :----------: 
+**Rolling** | [`ros2`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2) | [![ros-rolling](https://github.com/Rick-v-E/virtual_maize_field/actions/workflows/ros-iron-test.yaml/badge.svg?branch=ros2)](https://github.com/Rick-v-E/virtual_maize_field/actions/workflows/ros-rolling-test.yaml?branch=ros2)
+**Iron** | [`ros2`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2) | [![ros-iron](https://github.com/Rick-v-E/virtual_maize_field/actions/workflows/ros-iron-test.yaml/badge.svg?branch=ros2)](https://github.com/Rick-v-E/virtual_maize_field/actions/workflows/ros-iron-test.yaml?branch=ros2)
+**Humble** | [`ros2`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2) | [![ros-humble](https://github.com/Rick-v-E/virtual_maize_field/actions/workflows/ros-iron-test.yaml/badge.svg?branch=ros2)](https://github.com/Rick-v-E/virtual_maize_field/actions/workflows/ros-humble-test.yaml?branch=ros2)
+**Noetic** | [`main`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/main) | [![ros-noetic](https://github.com/Rick-v-E/virtual_maize_field/actions/workflows/ros-iron-test.yaml/badge.svg?branch=main)](https://github.com/Rick-v-E/virtual_maize_field/actions/workflows/ros-noetic-test.yaml?branch=main)
+
 
 ## Installation
 Clone this repository and build the workspace. Additional you'll need the following packages:
