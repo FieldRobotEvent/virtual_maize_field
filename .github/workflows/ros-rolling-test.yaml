@@ -12,11 +12,14 @@ on:
     branches:
       - ros2
 
-steps:
-  - uses: ros-tooling/setup-ros@v0.6
-    with:
-      required-ros-distributions: rolling
-  - uses: ros-tooling/action-ros-ci@v0.3
-    with:
-      package-name: virtual_maize_field
-      target-ros2-distro: rolling
+jobs:
+  build:
+    runs_on: ubuntu-22.04
+    steps:
+      - uses: ros-tooling/setup-ros@v0.6
+        with:
+          required-ros-distributions: rolling
+      - uses: ros-tooling/action-ros-ci@v0.3
+        with:
+          package-name: virtual_maize_field
+          target-ros2-distro: rolling

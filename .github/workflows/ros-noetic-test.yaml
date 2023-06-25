@@ -12,11 +12,14 @@ on:
     branches:
       - main
 
-steps:
-  - uses: ros-tooling/setup-ros@v0.6
-    with:
-      required-ros-distributions: noetic
-  - uses: ros-tooling/action-ros-ci@v0.3
-    with:
-      package-name: virtual_maize_field
-      target-ros-distro: noetic
+jobs:
+  build:
+    runs_on: ubuntu-20.04
+    steps:
+      - uses: ros-tooling/setup-ros@v0.6
+        with:
+          required-ros-distributions: noetic
+      - uses: ros-tooling/action-ros-ci@v0.3
+        with:
+          package-name: virtual_maize_field
+          target-ros-distro: noetic
