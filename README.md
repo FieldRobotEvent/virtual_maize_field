@@ -221,7 +221,7 @@ def generate_launch_description() -> LaunchDescription:
 
 Use the function `get_driving_pattern()` to get the path of the generated driving pattern:
 
-```
+```python
 from __future__ import annotations
 
 from pathlib import Path
@@ -231,7 +231,6 @@ from virtual_maize_field import get_driving_pattern
 def read_driving_pattern() -> None:
     driving_pattern = Path(get_driving_pattern()).read_text("utf-8")
     print(f"The driving pattern is {driving_pattern}")
-
 ```
 
 ## License
