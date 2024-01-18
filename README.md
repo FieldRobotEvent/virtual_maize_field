@@ -205,7 +205,7 @@ ros2 run virtual_maize_field generate_world fre22_task_navigation_mini
 ```
 
 ## Launching and using generated worlds
-The launch file to launch the worlds is called `simulation.launch`. You can launch the launch file by running `ros2 launch virtual_maize_field simulation.launch.py`. By default the launch file will launch `generated_world.world`. You can launch any world by using the `world_name` arg. e.g. `ros2 launch virtual_maize_field simulation.launch.py world_name:=simple_row_level_1.world`. The generated world will be saved in $ROS_HOME/virtual_maize_field (usually, this will be ~/.ros/virtual_maize_field).
+The launch file to launch the worlds is called `simulation.launch`. You can launch the launch file by running `ros2 launch virtual_maize_field simulation.launch.py`. By default the launch file will launch `generated_world.world`. You can launch any world by using the `world_name` arg. e.g. `ros2 launch virtual_maize_field simulation.launch.py world_name:=simple_row_level_1.world`. The generated world will be saved in `$ROS_HOME/virtual_maize_field` (usually, this will be `~/.ros/virtual_maize_field`).
 
 To add your own robot in the world, use the generated `robot_spawner.launch.py`. This launches your robot at the correct position in the generated world. Your launch file to launch your robot should look like (replace `<<robot_name>>` with your robot name):
 
