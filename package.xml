@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="3">
   <name>virtual_maize_field</name>
-  <version>4.7.3</version>
+  <version>5.0.0</version>
   <description>A virtual maize field for agricultural robot simulation in Gazebo.</description>
 
   <maintainer email="info@fieldrobot.com">Field Robot Event Organization</maintainer>
@@ -17,10 +17,8 @@
   <build_export_depend>roslaunch</build_export_depend>
   <build_export_depend>rospy</build_export_depend>
   
-  <!-- On ROS Melodic or lower you have to install some deps by hand. See README.md. -->
   <exec_depend>rospy</exec_depend>
   <exec_depend>roslaunch</exec_depend>
-  <exec_depend condition="$ROS_PYTHON_VERSION == 2">python-rospkg</exec_depend>
   <exec_depend condition="$ROS_PYTHON_VERSION == 3">python3-rospkg</exec_depend>
   <exec_depend condition="$ROS_PYTHON_VERSION == 3">python3-jinja2</exec_depend>
   <exec_depend condition="$ROS_PYTHON_VERSION == 3">python3-opencv</exec_depend>
