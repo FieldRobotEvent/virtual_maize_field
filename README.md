@@ -228,18 +228,29 @@ def generate_launch_description() -> LaunchDescription:
     return LaunchDescription([robot_spawner_launch])
 ```
 
-Use the function `get_driving_pattern()` to get the path of the generated driving pattern:
+Use the function `get_driving_pattern_file()` to get the path of the generated driving pattern and `get_markers_file` to get the path of the generated markers:
 
 ```python
 from __future__ import annotations
 
+from csv import reader
 from pathlib import Path
 
-from virtual_maize_field import get_driving_pattern
+from virtual_maize_field import get_driving_pattern_file, get_markers_file
 
 def read_driving_pattern() -> None:
-    driving_pattern = Path(get_driving_pattern()).read_text("utf-8")
+    driving_pattern = Path(get_driving_pattern_file()).read_text("utf-8")
     print(f"The driving pattern is {driving_pattern}")
+
+def read_markers_file() -> None:
+    with open(get_markers_file(), "r") as f:
+        reader = csv.reader(f)
+
+        # Skip header
+        next(reader)
+
+        for row in reader:
+            print(f"Position {row[2]}: x={float(row[0]):.3f} y={float(row[1]):.3f}")
 ```
 
 ## License
