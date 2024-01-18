@@ -4,7 +4,7 @@
   <arg name="gui" default="true" />
   <arg name="paused" default="false" />
   <arg name="headless" default="false" />
-  <arg name="world_path" default="$(optenv ROS_HOME ~/.ros)/virtual_maize_field/"/>
+  <arg name="world_path" default="$(eval optenv('ROS_HOME', env('HOME')+'/.ros')+'/virtual_maize_field/')" />
   <arg name="world_name" default="generated.world"/>
 
   <!-- Launch Gazebo with the specified world -->

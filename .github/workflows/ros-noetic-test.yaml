@@ -3,8 +3,6 @@ name: ros-noetic
 
 on:
   workflow_dispatch:
-    branches:
-      - main
   pull_request:
     branches:
       - main
