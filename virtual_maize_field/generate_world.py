@@ -43,6 +43,8 @@ class WorldGenerator:
         )
         cv2.imwrite(str(heightmap_file), self.fgen.heightmap)
 
+        print(f"Saved world (sdf) to {sdf_file}")
+
     def clear_gazebo_cache(self) -> None:
         """
         Clear the Gazebo cache for old heightmap.
@@ -60,6 +62,8 @@ class WorldGenerator:
     def save_gt_minimap(self) -> None:
         minimap_file = self.cache_folder / "gt_map.png"
         self.fgen.minimap.savefig(str(minimap_file), dpi=100)
+
+        print(f"Saved ground truth minimap to {minimap_file}")
 
     def save_marker_file(self) -> None:
         marker_file = self.cache_folder / "markers.csv"
@@ -82,6 +86,8 @@ class WorldGenerator:
                         "location_marker_b",
                     ]
                 )
+
+        print(f"Saved marker locations to {marker_file}")
 
     def save_gt_map(self) -> None:
         complete_map_file = self.cache_folder / "gt_map.csv"
@@ -115,6 +121,8 @@ class WorldGenerator:
 
             for elm in self.fgen.crop_placements:
                 writer.writerow([elm[0], elm[1], "crop"])
+        
+        print(f"Saved ground truth locations to {complete_map_file}")
 
     def save_launch_file(self) -> None:
         launch_file_template = Template(
@@ -134,6 +142,8 @@ class WorldGenerator:
                 yaw=1.5707963267948966 + self.wd.rng.random() * 0.1 - 0.05,
             )
             f.write(content)
+        
+        print(f"Saved robot spawner launch file to {launch_file}")
 
     @classmethod
     def from_config_file(cls, config_file: Path) -> WorldGenerator:
