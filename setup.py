@@ -19,13 +19,9 @@ data_files = [
 # https://answers.ros.org/question/397319/how-to-copy-folders-with-subfolders-to-package-installation-path/
 for folder_name in (
     "config",
-    "gt",
     "launch",
-    "map",
     "Media",
     "models",
-    "rviz",
-    "worlds",
 ):
     _path_dict = {}
 
@@ -61,7 +57,6 @@ setup(
     entry_points={
         "console_scripts": [
             "generate_world = virtual_maize_field.generate_world:main",
-            "check_for_updates = virtual_maize_field.check_for_updates:main",
         ],
     },
 )
