@@ -43,7 +43,7 @@ class WorldGenerator:
         cv2.imwrite(str(heightmap_file), self.fgen.heightmap)
 
         print(f"Saved world (sdf) to {sdf_file}")
-    
+
     def generate_driving_pattern(self) -> None:
         # TODO: generate realistic pattern
         pattern = "S – 1L – 1R – 1L – 1R – 1L – 1R – 1L – 1R – 1L – 1R – F"
