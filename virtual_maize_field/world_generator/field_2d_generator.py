@@ -17,7 +17,12 @@ from virtual_maize_field.world_generator.models import (
     GazeboModel,
     to_gazebo_models,
 )
-from virtual_maize_field.world_generator.segments import CurvedSegment, IslandSegment, SinCurvedSegment, StraightSegment
+from virtual_maize_field.world_generator.segments import (
+    CurvedSegment,
+    IslandSegment,
+    SinCurvedSegment,
+    StraightSegment,
+)
 from virtual_maize_field.world_generator.utils import BoundedGaussian
 from virtual_maize_field.world_generator.world_description import WorldDescription
 

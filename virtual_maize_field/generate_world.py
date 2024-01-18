@@ -38,9 +38,7 @@ class WorldGenerator:
             f.write(generated_sdf)
 
         # Save heightmap
-        heightmap_file = (
-            self.cache_folder / "virtual_maize_field_heightmap.png"
-        )
+        heightmap_file = self.cache_folder / "virtual_maize_field_heightmap.png"
         cv2.imwrite(str(heightmap_file), self.fgen.heightmap)
 
         print(f"Saved world (sdf) to {sdf_file}")
@@ -121,7 +119,7 @@ class WorldGenerator:
 
             for elm in self.fgen.crop_placements:
                 writer.writerow([elm[0], elm[1], "crop"])
-        
+
         print(f"Saved ground truth locations to {complete_map_file}")
 
     def save_launch_file(self) -> None:
@@ -142,7 +140,7 @@ class WorldGenerator:
                 yaw=1.5707963267948966 + self.wd.rng.random() * 0.1 - 0.05,
             )
             f.write(content)
-        
+
         print(f"Saved robot spawner launch file to {launch_file}")
 
     @classmethod
