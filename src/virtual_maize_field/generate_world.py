@@ -61,7 +61,7 @@ class WorldGenerator:
             rmtree(gazebo_cache_pkg)
 
     def save_gt_minimap(self) -> None:
-        minimap_file = self.cache_folder / "map.png"
+        minimap_file = self.cache_folder / "gt_map.png"
         self.fgen.minimap.savefig(str(minimap_file), dpi=100)
 
         print(f"Saved ground truth minimap to {minimap_file}")
@@ -91,7 +91,7 @@ class WorldGenerator:
         print(f"Saved marker locations to {marker_file}")
 
     def save_gt_map(self) -> None:
-        complete_map_file = self.cache_folder / "map.csv"
+        complete_map_file = self.cache_folder / "gt_map.csv"
         with complete_map_file.open("w") as f:
             writer = csv_writer(f)
             header = ["X", "Y", "kind"]
