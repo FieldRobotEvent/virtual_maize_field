@@ -209,7 +209,7 @@ To add your own robot in the world, use the generated `robot_spawner.launch`. Th
 ```xml
 <?xml version='1.0'?>
 <launch>
-  <include file="$(optenv ROS_HOME ~/.ros)/virtual_maize_field/robot_spawner.launch">
+  <include file="$(eval optenv('ROS_HOME', env('HOME')+'/.ros')+'/virtual_maize_field/robot_spawner.launch')">
     <arg name="robot_name" value="<<robot_name>>"/>
   </include>
 </launch>
