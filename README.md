@@ -44,7 +44,9 @@ You can call the script using
 ```bash
 ros2 run virtual_maize_field generate_world
 ```
-The resulting file will be placed in `<workspace folder>/install/virtual_maize_field/share/virtual_maize_field/worlds/generated.world`. You can use this script by one of the defined config files or specifying the parameters below:
+The resulting file will be placed in `$ROS_HOME/virtual_maize_field/generated.world`. 
+
+You can use this script by one of the defined config files or specifying the parameters below:
 <details>
   <summary>Click to show all possible arguments</summary>
   
@@ -189,7 +191,7 @@ Worlds for the Field Robot Event 2022:
 | *fre22_task_navigation* | Task navigation, curved rows that get more difficult (eg. have more and larger holes) to the left |
 | *fre22_task_mapping* | Task mapping, field with random holes, bottles and weeds spread throughout the field. The cans, bottles and weeds have no collision box and are static. <br /><sub>This world needs dandelion models which were only distributed among competitors of the Field Robot Event 2022. They are not uploaded to Github because they cannot be open-sourced. If you don't have access to these models, check out the `fre21_task_3` worlds.</sub>|
 
-Other sample Worlds:
+Worlds for the Field Robot Event 2021:
 | Name | Description |
 |:---- |:----------- |
 | *fre21_task_1* | Task 1, curved rows without holes |
@@ -202,8 +204,43 @@ You can use these config files when generating worlds, e.g.:
 ros2 run virtual_maize_field generate_world fre22_task_navigation_mini
 ```
 
-## Launching worlds
-The launch file to launch the worlds is called `simulation.launch`. You can launch the launch file by running `ros2 launch virtual_maize_field simulation.launch.py`. By default the launch file will launch `generated_world.world`. You can launch any world by using the `world_name` arg. e.g. `ros2 launch virtual_maize_field simulation.launch.py world_name:=simple_row_level_1.world`.
+## Launching and using generated worlds
+The launch file to launch the worlds is called `simulation.launch`. You can launch the launch file by running `ros2 launch virtual_maize_field simulation.launch.py`. By default the launch file will launch `generated_world.world`. You can launch any world by using the `world_name` arg. e.g. `ros2 launch virtual_maize_field simulation.launch.py world_name:=simple_row_level_1.world`. The generated world will be saved in $ROS_HOME/virtual_maize_field (usually, this will be ~/.ros/virtual_maize_field).
+
+To add your own robot in the world, use the generated `robot_spawner.launch.py`. This launches your robot at the correct position in the generated world. Your launch file to launch your robot should look like (replace `<<robot_name>>` with your robot name):
+
+```python
+from __future__ import annotations
+
+from launch import LaunchDescription
+from launch.actions import IncludeLaunchDescription
+from launch.launch_description_sources import PythonLaunchDescriptionSource
+
+from virtual_maize_field import get_spawner_launch_file
+
+
+def generate_launch_description() -> LaunchDescription:
+    robot_spawner_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([get_spawner_launch_file()]),
+        launch_arguments={"robot_name": "<<robot_name>>"}.items(),
+    )
+
+    return LaunchDescription([robot_spawner_launch])
+```
+
+Use the function `get_driving_pattern()` to get the path of the generated driving pattern:
+
+```python
+from __future__ import annotations
+
+from pathlib import Path
+
+from virtual_maize_field import get_driving_pattern
+
+def read_driving_pattern() -> None:
+    driving_pattern = Path(get_driving_pattern()).read_text("utf-8")
+    print(f"The driving pattern is {driving_pattern}")
+```
 
 ## License
 Virtual Maize Field is copyright (C) 2021 *Farm Technology Group of Wageningen University & Research* and *Kamaro Engineering e.V.* and licensed under [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0).
