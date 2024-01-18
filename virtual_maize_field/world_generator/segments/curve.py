@@ -7,7 +7,7 @@ from matplotlib import pyplot as plt
 from matplotlib.patches import Arc
 
 from ..utils import Geometry
-from .base import BaseSegment
+from virtual_maize_field.world_generator.segments.base import BaseSegment
 
 
 class CurvedSegment(BaseSegment):

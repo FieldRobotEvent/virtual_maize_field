@@ -5,7 +5,7 @@ from typing import Any
 import numpy as np
 from matplotlib import pyplot as plt
 
-from .base import BaseSegment
+from virtual_maize_field.world_generator.segments.base import BaseSegment
 
 
 class StraightSegment(BaseSegment):
