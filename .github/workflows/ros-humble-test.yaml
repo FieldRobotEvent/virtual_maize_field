@@ -1,0 +1,23 @@
+# Humble Hawksbill (May 2022 - May 2027)
+name: ros-humble
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - ros2
+  push:
+    branches:
+      - ros2
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: ros-tooling/setup-ros@v0.7
+        with:
+          required-ros-distributions: humble
+      - uses: ros-tooling/action-ros-ci@v0.3
+        with:
+          package-name: virtual_maize_field
+          target-ros2-distro: humble

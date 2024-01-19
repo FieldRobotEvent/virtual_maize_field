@@ -1,0 +1,23 @@
+# Iron Irwini (May 2023 - November 2024)
+name: ros-iron
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - ros2
+  push:
+    branches:
+      - ros2
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: ros-tooling/setup-ros@v0.7
+        with:
+          required-ros-distributions: iron
+      - uses: ros-tooling/action-ros-ci@v0.3
+        with:
+          package-name: virtual_maize_field
+          target-ros2-distro: iron
