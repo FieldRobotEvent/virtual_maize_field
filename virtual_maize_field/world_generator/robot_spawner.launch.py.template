@@ -16,12 +16,12 @@ def generate_launch_description() -> LaunchDescription:
     )
 
     start_spawn_entity_cmd = Node(
-        package="gazebo_ros",
-        executable="spawn_entity.py",
+        package="ros_gz_sim",
+        executable="create",
         arguments=[
             "-topic",
             "robot_description",
-            "-entity",
+            "-name",
             robot_name,
             "-x",
             "{{ x }}",

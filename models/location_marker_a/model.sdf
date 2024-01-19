@@ -32,6 +32,11 @@
             <uri>model://location_marker_a/materials/textures</uri>
             <name>location_marker_a/logo</name>
           </script>
+          <pbr>
+            <metal>
+              <albedo_map>model://location_marker_a/materials/textures/fre_logo.png</albedo_map>
+            </metal>
+          </pbr>
         </material>
       </visual>
       <visual name="visual_top">
@@ -47,6 +52,11 @@
             <uri>model://location_marker_a/materials/textures</uri>
             <name>location_marker_a/logo</name>
           </script>
+          <pbr>
+            <metal>
+              <albedo_map>model://location_marker_a/materials/textures/fre_logo.png</albedo_map>
+            </metal>
+          </pbr>
         </material>
       </visual>
       <visual name="visual_code">
@@ -62,6 +72,11 @@
             <uri>model://location_marker_a/materials/textures</uri>
             <name>location_marker_a/qr_code</name>
           </script>
+          <pbr>
+            <metal>
+              <albedo_map>model://location_marker_a/materials/textures/location_marker_a.png</albedo_map>
+            </metal>
+          </pbr>
         </material>
       </visual>
     </link>

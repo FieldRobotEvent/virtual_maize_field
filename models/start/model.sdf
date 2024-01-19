@@ -18,6 +18,11 @@
             <uri>model://start/materials/textures</uri>
             <name>start/texture</name>
           </script>
+          <pbr>
+            <metal>
+              <albedo_map>model://start/materials/textures/arrow.png</albedo_map>
+            </metal>
+          </pbr>
         </material>
       </visual>
 

@@ -1,87 +1,148 @@
-<?xml version='1.0'?>
+<?xml version="1.0" ?>
 <!-- Seed: {{ seed }} -->
-<sdf version='1.6'>
-  <world name='default'>
-    <light name='sun' type='directional'>
-      <cast_shadows>1</cast_shadows>
-      <pose frame=''>0 0 10 0 -0 0</pose>
-      <diffuse>0.8 0.8 0.8 1</diffuse>
-      <specular>0.2 0.2 0.2 1</specular>
-      <attenuation>
+<sdf version="1.9">
+  <world name="virtual_maize_field">
+    <plugin
+      filename="ignition-gazebo-physics-system"
+      name="ignition::gazebo::systems::Physics">
+    </plugin>
+    <plugin
+      filename="ignition-gazebo-user-commands-system"
+      name="ignition::gazebo::systems::UserCommands">
+    </plugin>
+    <plugin
+      filename="ignition-gazebo-scene-broadcaster-system"
+      name="ignition::gazebo::systems::SceneBroadcaster">
+    </plugin>
+
+    <gui fullscreen="0">
+
+      <!-- 3D scene -->
+      <plugin filename="GzScene3D" name="3D View">
+        <ignition-gui>
+          <title>3D View</title>
+          <property type="bool" key="showTitleBar">false</property>
+          <property type="string" key="state">docked</property>
+        </ignition-gui>
+
+        <engine>ogre2</engine>
+        <scene>scene</scene>
+        <ambient_light>0.4 0.4 0.4</ambient_light>
+        <background_color>0.5 0.8 0.95</background_color>
+        <!--camera_pose>276.46 -130.36 5.27 0 0.43 -1.24</camera_pose-->
+        <camera_follow>
+          <target>prius_hybrid</target>
+          <p_gain>0.5</p_gain>
+          <offset>0.5 5 2</offset>
+        </camera_follow>
+      </plugin>
+
+      <!-- World control -->
+      <plugin filename="WorldControl" name="World control">
+        <ignition-gui>
+          <title>World control</title>
+          <property type="bool" key="showTitleBar">false</property>
+          <property type="bool" key="resizable">false</property>
+          <property type="double" key="height">72</property>
+          <property type="double" key="width">121</property>
+          <property type="double" key="z">1</property>
+
+          <property type="string" key="state">floating</property>
+          <anchors target="3D View">
+            <line own="left" target="left"/>
+            <line own="bottom" target="bottom"/>
+          </anchors>
+        </ignition-gui>
+
+        <play_pause>true</play_pause>
+        <step>true</step>
+        <start_paused>true</start_paused>
+
+      </plugin>
+
+      <!-- World statistics -->
+      <plugin filename="WorldStats" name="World stats">
+        <ignition-gui>
+          <title>World stats</title>
+          <property type="bool" key="showTitleBar">false</property>
+          <property type="bool" key="resizable">false</property>
+          <property type="double" key="height">110</property>
+          <property type="double" key="width">290</property>
+          <property type="double" key="z">1</property>
+
+          <property type="string" key="state">floating</property>
+          <anchors target="3D View">
+            <line own="right" target="right"/>
+            <line own="bottom" target="bottom"/>
+          </anchors>
+        </ignition-gui>
+
+        <sim_time>true</sim_time>
+        <real_time>true</real_time>
+        <real_time_factor>true</real_time_factor>
+        <iterations>true</iterations>
+      </plugin>
+    </gui>
+
+  <!-- Entity tree -->
+  <!-- <plugin filename="EntityTree" name="Entity tree">
+  </plugin> -->
+
+  <light type="directional" name="sun">
+    <cast_shadows>false</cast_shadows>  <!-- https://community.gazebosim.org/t/weird-flickering-when-cast-shadow-is-set-to-true/2452 -->
+    <pose>0 0 10 0 0 0</pose>
+    <diffuse>0.8 0.8 0.8 1</diffuse>
+    <specular>0.2 0.2 0.2 1</specular>
+    <attenuation>
         <range>1000</range>
         <constant>0.9</constant>
         <linear>0.01</linear>
         <quadratic>0.001</quadratic>
-      </attenuation>
-      <direction>-0.5 0.1 -0.9</direction>
-    </light>
-    <gravity>0 0 -9.8</gravity>
-    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
-    <atmosphere type='adiabatic' />
+    </attenuation>
+    <direction>-0.5 0.1 -0.9</direction>
+  </light>
+  
+  <scene>
+    <sky></sky>
+    <grid>false</grid>
+    <ambient>1.0 1.0 1.0</ambient>
+    <background>0.8 0.8 0.8</background>
+  </scene>
 
-    <physics name='default_physics' default='0' type='ode'>
-      <max_step_size>0.005</max_step_size>
-      <real_time_factor>1</real_time_factor>
-      <real_time_update_rate>200</real_time_update_rate>
-    </physics>
+  <spherical_coordinates>
+    <surface_model>EARTH_WGS84</surface_model>
+    <latitude_deg>0</latitude_deg>
+    <longitude_deg>0</longitude_deg>
+    <elevation>0</elevation>
+    <heading_deg>0</heading_deg>
+  </spherical_coordinates>
 
-    <scene>
-      <sky>
-        <clouds>
-          <speed>12</speed>
-        </clouds>
-      </sky>
-      <ambient>0.4 0.4 0.4 1</ambient>
-      <background>0.7 0.7 0.7 1</background>
-      <grid>false</grid>
-      <shadows>1</shadows>
-    </scene>
-    <audio>
-      <device>default</device>
-    </audio>
-    <wind />
-    <spherical_coordinates>
-      <surface_model>EARTH_WGS84</surface_model>
-      <latitude_deg>0</latitude_deg>
-      <longitude_deg>0</longitude_deg>
-      <elevation>0</elevation>
-      <heading_deg>0</heading_deg>
-    </spherical_coordinates>
-    <state world_name='default'>
-      <sim_time>0</sim_time>
-      <real_time>0</real_time>
-      <wall_time>0</wall_time>
-      <iterations>0</iterations>
-      <light name='sun'>
-        <pose frame=''>0 0 10 0 -0 0</pose>
-      </light>
-    </state>
     <model name="heightmap">
       <static>true</static>
       <link name="link">
-        <visual name="visual_abcedf">
+        <visual name="ground_plane">
           <geometry>
             <heightmap>
               <use_terrain_paging>false</use_terrain_paging>
               <texture>
-                <diffuse>file://materials/textures/grass_color.jpg</diffuse>
-                <normal>file://materials/textures/grass_normal.jpg</normal>
+                <diffuse>model://materials/textures/grass_color.jpg</diffuse>
+                <normal>model://materials/textures/grass_normal.jpg</normal>
                 <size>4</size>
               </texture>
               <texture>
-                <diffuse>file://materials/textures/dirt_diffusespecular.png</diffuse>
-                <normal>file://materials/textures/flat_normal.png</normal>
+                <diffuse>model://materials/textures/dirt_diffusespecular.png</diffuse>
+                <normal>model://materials/textures/flat_normal.png</normal>
                 <size>1</size>
               </texture>
               <!-- <texture>
-                <diffuse>file://materials/textures/grass_color.jpg</diffuse>
-                <normal>file://materials/textures/grass_normal.jpg</normal>
+                <diffuse>model://materials/textures/grass_color.jpg</diffuse>
+                <normal>model://materials/textures/grass_normal.jpg</normal>
                 <size>4</size>
               </texture> -->
-              <!-- Without this unused 3. texture the blend between the first 2 doesn't work -->
+              <!-- Without this unused 3. texture the blend between the first 2 doesn"t work -->
               <texture>
-                <diffuse>file://materials/textures/fungus_diffusespecular.png</diffuse>
-                <normal>file://materials/textures/flat_normal.png</normal>
+                <diffuse>model://materials/textures/fungus_diffusespecular.png</diffuse>
+                <normal>model://materials/textures/flat_normal.png</normal>
                 <size>1</size>
               </texture>
               <blend>
@@ -92,12 +153,12 @@
                 <min_height>{{ heightmap.total_height - (heightmap.max_elevation / 2) }}</min_height>
                 <fade_dist>0.05</fade_dist>
               </blend> -->
-              <!-- Without this unused 3. texture the blend between the first 2 doesn't work -->
+              <!-- Without this unused 3. texture the blend between the first 2 doesn"t work -->
               <blend>
                 <min_height>4</min_height>
                 <fade_dist>5</fade_dist>
               </blend>
-              <uri>file://{{ heightmap.cache_dir }}/virtual_maize_field_heightmap.png</uri>
+              <uri>{{ heightmap.cache_dir }}/virtual_maize_field_heightmap.png</uri>
               <size>{{ heightmap.size }} {{ heightmap.size }} {{ heightmap.total_height }}</size>
               <pos>{{ heightmap.pos.x }} {{ heightmap.pos.y }} 0</pos>
             </heightmap>
@@ -106,7 +167,7 @@
         <collision name="collision">
           <geometry>
             <heightmap>
-              <uri>file://{{ heightmap.cache_dir }}/virtual_maize_field_heightmap.png</uri>
+              <uri>{{ heightmap.cache_dir }}/virtual_maize_field_heightmap.png</uri>
               <size>{{ heightmap.size }} {{ heightmap.size }} {{ heightmap.total_height }}</size>
               <pos>{{ heightmap.pos.x }} {{ heightmap.pos.y }} 0</pos>
             </heightmap>
@@ -115,11 +176,11 @@
       </link>
     </model>
     {% for coordinate in coordinates -%}
-    {% if coordinate.type == 'cylinder' -%}
+    {% if coordinate.type == "cylinder" -%}
     {# Cylinder model #}
-    <model name='{{ coordinate.name }}'>
-      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 -0 0</pose>
-      <link name='{{ coordinate.name }}_link'>
+    <model name="{{ coordinate.name }}">
+      <pose frame="">{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} 0 -0 0</pose>
+      <link name="{{ coordinate.name }}_link">
         <inertial>
           <mass>{{ coordinate.mass }}</mass>
           <inertia>
@@ -131,7 +192,7 @@
             <izz>{{ coordinate.inertia.izz }}</izz>
           </inertia>
         </inertial>
-        <collision name='collision'>
+        <collision name="collision">
           <geometry>
             <cylinder>
               <radius>{{ coordinate.radius }}</radius>
@@ -152,7 +213,7 @@
             </friction>
           </surface>
         </collision>
-        <visual name='visual'>
+        <visual name="visual">
           <geometry>
             <cylinder>
               <radius>{{ coordinate.radius }}</radius>
@@ -173,10 +234,10 @@
     </model>
     {# All ghost models have to be defined manually, since the SDF files already contains the collisions. #}
     {% elif coordinate.ghost == true -%}
-    <model name='ghost_{{coordinate.name}}'>
-      <pose frame=''>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} {{ coordinate.roll }} {{ coordinate.pitch }} {{ coordinate.yaw }}</pose>
+    <model name="ghost_{{coordinate.name}}">
+      <pose frame="">{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} {{ coordinate.roll }} {{ coordinate.pitch }} {{ coordinate.yaw }}</pose>
       <static>true</static>
-      <link name='{{ coordinate.name }}_link'>
+      <link name="{{ coordinate.name }}_link">
         {{ coordinate.custom_visual -}}
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
@@ -193,12 +254,5 @@
     </include>
     {% endif -%}
 {% endfor -%}
-    <gui fullscreen='0'>
-      <camera name='user_camera'>
-        <pose frame=''>5.45099 -4.71679 1.58055 0 0.275643 2.35619</pose>
-        <view_controller>orbit</view_controller>
-        <projection_type>perspective</projection_type>
-      </camera>
-    </gui>
   </world>
 </sdf>

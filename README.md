@@ -18,7 +18,7 @@
   This is a package to procedurally generate randomized fields with rows of plants for Gazebo.
 </p>
 
-![Screenshot of a generated map with maize plants](./misc/screenshot_v5.0_classic.png)
+![Screenshot of a generated map with maize plants](./misc/screenshot_v5.0_ign.png)
 
 ROS Distro | Gazebo version | Branch | Build status
 :---------: | :----: | :----: | :----------: 

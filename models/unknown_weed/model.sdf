@@ -69,6 +69,11 @@
             <uri>model://unknown_weed/materials/textures/</uri>
             <name>unknown_weed_leaf</name>
           </script>
+          <pbr>
+            <metal>
+              <albedo_map>model://unknown_weed/materials/textures/unknown_weed.png</albedo_map>
+            </metal>
+          </pbr>
         </material>
       </visual>
     </link>

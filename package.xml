@@ -2,13 +2,16 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>virtual_maize_field</name>
-  <version>5.0.0</version>
+  <version>4.7.4</version>
   <description>A virtual maize field for agricultural robot simulation in Gazebo.</description>
 
   <maintainer email="info@fieldrobot.com">Field Robot Event Organization</maintainer>
 
   <license file="LICENSE">GPLv3</license>
   <url type="website">https://www.fieldrobot.com/event/</url>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>ament_cmake_python</buildtool_depend>
 
   <depend>python3-rospkg</depend>
   <depend>python3-jinja2</depend>
@@ -19,12 +22,10 @@
   <depend>python3-yaml</depend>
 
   <depend>ros2launch</depend>
-  <depend>gazebo_ros</depend>
-  <depend>gazebo_ros_pkgs</depend>
+  <depend>ros-gz</depend>
+  <depend>ros-gz-sim</depend>
 
   <export>
-    <build_type>ament_python</build_type>
-    <gazebo_ros gazebo_model_path="${prefix}/models"/>
-    <gazebo_ros gazebo_media_path="${prefix}"/>
+    <build_type>ament_cmake</build_type>
   </export>
 </package>
