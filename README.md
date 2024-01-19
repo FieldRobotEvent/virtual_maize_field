@@ -38,7 +38,7 @@ Clone this repository and build the workspace. Additional you'll need the follow
 rosdep install virtual_maize_field
 ```
 
-This package has been tested on ROS 2 Foxy, Humble and Rolling.
+This package has been tested on ROS 2 Humble, Iron and Rolling.
 
 ## Generating new maize field worlds
 This package includes a script (`virtual_maize_field/generate_world.py`) that can generate randomized agricultural worlds. All parameters are optional and have default values. All comma separated arguments can be scaler as well. 
