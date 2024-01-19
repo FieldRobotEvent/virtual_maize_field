@@ -20,12 +20,15 @@
 
 ![Screenshot of a generated map with maize plants](./misc/screenshot_v4.7.jpg)
 
-ROS Distro | Branch | Build status
-:---------: | :----: | :----------: 
-**Rolling** | [`ros2`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2) | [![ros-rolling](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-rolling-test.yaml/badge.svg?branch=ros2)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-rolling-test.yaml)
-**Iron** | [`ros2`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2) | [![ros-iron](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-iron-test.yaml/badge.svg?branch=ros2)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-iron-test.yaml)
-**Humble** | [`ros2`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2) | [![ros-humble](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-humble-test.yaml/badge.svg?branch=ros2)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-humble-test.yaml)
-**Noetic** | [`main`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/main) | [![ros-noetic](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-noetic-test.yaml/badge.svg?branch=main)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-noetic-test.yaml?branch=main)
+ROS Distro | Gazebo version | Branch | Build status
+:---------: | :----: | :----: | :----------: 
+**Rolling** | **Gazebo** | [`ros2-gz`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2-gz) | [![ros-rolling-gz](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-rolling-gz-test.yaml/badge.svg?branch=ros2-gz)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-rolling-gz-test.yaml)
+**Rolling** | **Gazebo Classic** | [`ros2`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2) | [![ros-rolling](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-rolling-test.yaml/badge.svg?branch=ros2)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-rolling-test.yaml)
+**Iron** | **Gazebo** | [`ros2-gz`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2-gz) | [![ros-iron-gz](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-iron-gz-test.yaml/badge.svg?branch=ros2-gz)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-iron-gz-test.yaml)
+**Iron** | **Gazebo Classic** | [`ros2`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2) | [![ros-iron](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-iron-test.yaml/badge.svg?branch=ros2)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-iron-test.yaml)
+**Humble** | **Ignition Gazebo** | [`ros2-ign`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2-ign) | [![ros-humble-ign](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-humble-ign-test.yaml/badge.svg?branch=ros2-ign)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-humble-ign-test.yaml)
+**Humble** | **Gazebo Classic** | [`ros2`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2) | [![ros-humble](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-humble-test.yaml/badge.svg?branch=ros2)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-humble-test.yaml)
+**Noetic** | **Gazebo Classic** | [`main`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/main) | [![ros-noetic](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-noetic-test.yaml/badge.svg?branch=main)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-noetic-test.yaml?branch=main)
 
 ## Installation
 This package has been tested on ROS noetic. For the ROS2 version of this repository, see the [ros2](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2) branch.
@@ -201,8 +204,44 @@ You can use these config files when generating worlds, e.g.:
 rosrun virtual_maize_field generate_world.py fre22_task_navigation_mini
 ```
 
-## Launching worlds
-The launch file to launch the worlds is called `simulation.launch`. You can launch the launch file by running `roslaunch virtual_maize_field simulation.launch`. By default the launch file will launch `generated_world.world`. You can launch any world by using the `world_name` arg. e.g. `roslaunch virtual_maize_field simulation.launch world_name:=simple_row_level_1.world`.
+# Launching and using generated worlds
+The launch file to launch the worlds is called `simulation.launch`. You can launch the launch file by running `roslaunch virtual_maize_field simulation.launch`. By default the launch file will launch `generated_world.world`. You can launch any world by using the `world_name` arg. e.g. `roslaunch virtual_maize_field simulation.launch world_name:=simple_row_level_1.world`. The generated world will be saved in `$ROS_HOME/virtual_maize_field` (usually, this will be `~/.ros/virtual_maize_field`).
+
+To add your own robot in the world, use the generated `robot_spawner.launch`. This launches your robot at the correct position in the generated world. Your launch file to launch your robot should look like (replace `<<robot_name>>` with your robot name):
+
+```xml
+<?xml version='1.0'?>
+<launch>
+  <include file="$(eval optenv('ROS_HOME', env('HOME')+'/.ros')+'/virtual_maize_field/robot_spawner.launch')">
+    <arg name="robot_name" value="<<robot_name>>"/>
+  </include>
+</launch>
+```
+
+Use the function `get_driving_pattern_file()` to get the path of the generated driving pattern and `get_markers_file` to get the path of the generated markers:
+
+```python
+from __future__ import annotations
+
+from csv import reader
+from pathlib import Path
+
+from virtual_maize_field import get_driving_pattern_file, get_markers_file
+
+def read_driving_pattern() -> None:
+    driving_pattern = Path(get_driving_pattern_file()).read_text("utf-8")
+    print(f"The driving pattern is {driving_pattern}")
+
+def read_markers_file() -> None:
+    with open(get_markers_file(), "r") as f:
+        reader = csv.reader(f)
+
+        # Skip header
+        next(reader)
+
+        for row in reader:
+            print(f"Position {row[2]}: x={float(row[0]):.3f} y={float(row[1]):.3f}")
+```
 
 ## License
 Virtual Maize Field is copyright (C) 2021 *Farm Technology Group of Wageningen University & Research* and *Kamaro Engineering e.V.* and licensed under [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0).

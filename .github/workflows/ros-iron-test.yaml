@@ -3,8 +3,6 @@ name: ros-iron
 
 on:
   workflow_dispatch:
-    branches:
-      - ros2
   pull_request:
     branches:
       - ros2
@@ -16,7 +14,7 @@ jobs:
   build:
     runs-on: ubuntu-22.04
     steps:
-      - uses: ros-tooling/setup-ros@v0.6
+      - uses: ros-tooling/setup-ros@v0.7
         with:
           required-ros-distributions: iron
       - uses: ros-tooling/action-ros-ci@v0.3
