@@ -4,6 +4,7 @@
     <static>false</static>
     <link name="link">
       <inertial>
+        <pose>0 0 0.005 0 0 0</pose>
         <mass>0.1</mass>
         <inertia>
           <ixx>0.0000658333</ixx>
@@ -13,7 +14,6 @@
           <iyz>0</iyz>
           <izz>0.000125</izz>
         </inertia>
-        <pose>0 0 0.005 0 0 0 0 0</pose>
       </inertial>
       <collision name="collision_leaves">
         <geometry>
@@ -36,7 +36,7 @@
         </surface>
       </collision>
       <collision name="collision_stem">
-        <pose>0 0 0 0 0 0 0 0</pose>
+        <pose>0 0 0 0 0 0</pose>
         <geometry>
           <cylinder>
             <radius>0.03</radius>
@@ -64,11 +64,6 @@
           </mesh>
         </geometry>
         <material>
-          <script>
-            <uri>model://unknown_weed/materials/scripts/</uri>
-            <uri>model://unknown_weed/materials/textures/</uri>
-            <name>unknown_weed_leaf</name>
-          </script>
           <pbr>
             <metal>
               <albedo_map>model://unknown_weed/materials/textures/unknown_weed.png</albedo_map>

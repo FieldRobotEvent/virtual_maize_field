@@ -4,7 +4,7 @@
     <pose frame=''>0 0 0 0 0 0</pose>
     <link name='retro_pepsi_can_link'>
       <inertial>
-        <pose>0 0 0 0 0 0 0</pose>
+        <pose>0 0 0 0 0 0</pose>
         <mass>0.390</mass>
         <inertia>
           <ixx>0.00055575</ixx>
