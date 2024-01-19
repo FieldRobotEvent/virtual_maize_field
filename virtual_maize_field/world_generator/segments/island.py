@@ -6,8 +6,8 @@ import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib.patches import Arc
 
-from .base import BaseSegment
-from .curve import CurvedSegment
+from virtual_maize_field.world_generator.segments.base import BaseSegment
+from virtual_maize_field.world_generator.segments.curve import CurvedSegment
 
 
 class IslandSegment(BaseSegment):

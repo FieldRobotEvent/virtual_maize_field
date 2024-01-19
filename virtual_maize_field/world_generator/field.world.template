@@ -97,7 +97,7 @@
                 <min_height>4</min_height>
                 <fade_dist>5</fade_dist>
               </blend>
-              <uri>file://virtual_maize_field_heightmap.png</uri>
+              <uri>file://{{ heightmap.cache_dir }}/virtual_maize_field_heightmap.png</uri>
               <size>{{ heightmap.size }} {{ heightmap.size }} {{ heightmap.total_height }}</size>
               <pos>{{ heightmap.pos.x }} {{ heightmap.pos.y }} 0</pos>
             </heightmap>
@@ -106,7 +106,7 @@
         <collision name="collision">
           <geometry>
             <heightmap>
-              <uri>file://virtual_maize_field_heightmap.png</uri>
+              <uri>file://{{ heightmap.cache_dir }}/virtual_maize_field_heightmap.png</uri>
               <size>{{ heightmap.size }} {{ heightmap.size }} {{ heightmap.total_height }}</size>
               <pos>{{ heightmap.pos.x }} {{ heightmap.pos.y }} 0</pos>
             </heightmap>

@@ -4,7 +4,7 @@ from typing import Any
 
 import numpy as np
 
-from .base import BaseSegment
+from virtual_maize_field.world_generator.segments.base import BaseSegment
 
 
 class SinCurvedSegment(BaseSegment):

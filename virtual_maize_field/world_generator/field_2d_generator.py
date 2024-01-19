@@ -9,7 +9,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 from shapely.geometry import LineString, Point, Polygon
 
-from .models import (
+from virtual_maize_field.world_generator.models import (
     CROP_MODELS,
     LITTER_MODELS,
     MARKER_MODELS,
@@ -17,9 +17,14 @@ from .models import (
     GazeboModel,
     to_gazebo_models,
 )
-from .segments import CurvedSegment, IslandSegment, SinCurvedSegment, StraightSegment
-from .utils import BoundedGaussian
-from .world_description import WorldDescription
+from virtual_maize_field.world_generator.segments import (
+    CurvedSegment,
+    IslandSegment,
+    SinCurvedSegment,
+    StraightSegment,
+)
+from virtual_maize_field.world_generator.utils import BoundedGaussian
+from virtual_maize_field.world_generator.world_description import WorldDescription
 
 
 class Field2DGenerator:
@@ -159,14 +164,14 @@ class Field2DGenerator:
         plt.legend(labels)
         self.minimap = plt
 
-    def generate(self) -> tuple[str, np.ndarray]:
+    def generate(self, cache_dir: str) -> tuple[str, np.ndarray]:
         self.gather_available_models()
         self.chain_segments()
         self.center_plants()
         self.place_objects()
         self.generate_ground()
         self.fix_gazebo()
-        self.render_to_template()
+        self.render_to_template(cache_dir)
         self.plot_field()
         return self.sdf, self.heightmap
 
@@ -508,7 +513,7 @@ class Field2DGenerator:
         # set heightmap position to origin
         self.heightmap_position = [0, 0]
 
-    def render_to_template(self) -> None:
+    def render_to_template(self, cache_dir: str) -> None:
         def into_dict(
             xy: np.ndarray,
             ground_height: float,
@@ -601,5 +606,6 @@ class Field2DGenerator:
                 "max_elevation": self.wd.structure["params"]["ground_elevation_max"],
                 "ditch_depth": self.wd.structure["params"]["ground_ditch_depth"],
                 "total_height": self.heightmap_elevation,
+                "cache_dir": cache_dir,
             },
         )

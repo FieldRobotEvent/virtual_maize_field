@@ -6,7 +6,7 @@ from typing import Any
 import numpy as np
 from matplotlib import pyplot as plt
 
-from ..utils import BoundedGaussian
+from virtual_maize_field.world_generator.utils import BoundedGaussian
 
 
 class BaseSegment(ABC):

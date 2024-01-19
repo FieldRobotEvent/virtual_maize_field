@@ -3,18 +3,18 @@ from __future__ import annotations
 
 import importlib.resources
 from csv import writer as csv_writer
+from os import environ
 from pathlib import Path
 from shutil import rmtree
 
 import cv2
-import numpy as np
 import yaml
 from ament_index_python.packages import get_package_share_directory
 from jinja2 import Template
 
-from . import world_generator
-from .world_generator.field_2d_generator import Field2DGenerator
-from .world_generator.world_description import WorldDescription
+from virtual_maize_field import world_generator
+from virtual_maize_field.world_generator.field_2d_generator import Field2DGenerator
+from virtual_maize_field.world_generator.world_description import WorldDescription
 
 
 class WorldGenerator:
@@ -23,22 +23,25 @@ class WorldGenerator:
 
         self.fgen = Field2DGenerator(self.wd)
         self.pkg_path = Path(get_package_share_directory("virtual_maize_field"))
+        _ros_home_path = environ.get("ROS_HOME", str(Path.home() / ".ros"))
+        self.cache_folder = Path(_ros_home_path) / "virtual_maize_field"
+        self.cache_folder.mkdir(parents=True, exist_ok=True)
 
     def generate(self) -> None:
         """
         Generate the template and write it to a file.
         """
-        generated_sdf, heightmap = self.fgen.generate()
+        generated_sdf, _ = self.fgen.generate(self.cache_folder)
 
-        sdf_file = self.pkg_path / "worlds/generated.world"
+        sdf_file = self.cache_folder / "generated.world"
         with sdf_file.open("w") as f:
             f.write(generated_sdf)
 
         # Save heightmap
-        heightmap_file = (
-            self.pkg_path / "Media/models/virtual_maize_field_heightmap.png"
-        )
+        heightmap_file = self.cache_folder / "virtual_maize_field_heightmap.png"
         cv2.imwrite(str(heightmap_file), self.fgen.heightmap)
+
+        print(f"Saved world (sdf) to {sdf_file}")
 
     def clear_gazebo_cache(self) -> None:
         """
@@ -48,12 +51,20 @@ class WorldGenerator:
         if gazebo_cache_pkg.is_dir():
             rmtree(gazebo_cache_pkg)
 
+    def generate_driving_pattern(self) -> None:
+        # TODO: generate realistic pattern
+        pattern = "S – 1L – 1R – 1L – 1R – 1L – 1R – 1L – 1R – 1L – 1R – F"
+        pattern_file = self.cache_folder / "driving_pattern.txt"
+        pattern_file.write_text(pattern)
+
     def save_gt_minimap(self) -> None:
-        minimap_file = self.pkg_path / "gt/map.png"
+        minimap_file = self.cache_folder / "gt_map.png"
         self.fgen.minimap.savefig(str(minimap_file), dpi=100)
 
+        print(f"Saved ground truth minimap to {minimap_file}")
+
     def save_marker_file(self) -> None:
-        marker_file = self.pkg_path / "map/markers.csv"
+        marker_file = self.cache_folder / "markers.csv"
         with marker_file.open("w") as f:
             writer = csv_writer(f)
             header = ["X", "Y", "kind"]
@@ -74,8 +85,10 @@ class WorldGenerator:
                     ]
                 )
 
+        print(f"Saved marker locations to {marker_file}")
+
     def save_gt_map(self) -> None:
-        complete_map_file = self.pkg_path / "gt/map.csv"
+        complete_map_file = self.cache_folder / "gt_map.csv"
         with complete_map_file.open("w") as f:
             writer = csv_writer(f)
             header = ["X", "Y", "kind"]
@@ -107,13 +120,15 @@ class WorldGenerator:
             for elm in self.fgen.crop_placements:
                 writer.writerow([elm[0], elm[1], "crop"])
 
+        print(f"Saved ground truth locations to {complete_map_file}")
+
     def save_launch_file(self) -> None:
         launch_file_template = Template(
             importlib.resources.read_text(
                 world_generator, "robot_spawner.launch.py.template"
             )
         )
-        launch_file = self.pkg_path / "launch/robot_spawner.launch.py"
+        launch_file = self.cache_folder / "robot_spawner.launch.py"
 
         with launch_file.open("w") as f:
             content = launch_file_template.render(
@@ -126,6 +141,8 @@ class WorldGenerator:
             )
             f.write(content)
 
+        print(f"Saved robot spawner launch file to {launch_file}")
+
     @classmethod
     def from_config_file(cls, config_file: Path) -> WorldGenerator:
         with config_file.open("r") as f:
@@ -134,7 +151,7 @@ class WorldGenerator:
 
 
 def main() -> None:
-    from .world_generator.utils import parser_from_function
+    from virtual_maize_field.world_generator.utils import parser_from_function
 
     pkg_path = Path(get_package_share_directory("virtual_maize_field"))
 
@@ -177,6 +194,7 @@ def main() -> None:
     generator.save_marker_file()
     generator.save_gt_map()
     generator.save_launch_file()
+    generator.generate_driving_pattern()
 
     # Show minimap after generation
     if args.show_map:
