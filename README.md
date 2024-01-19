@@ -20,12 +20,15 @@
 
 ![Screenshot of a generated map with maize plants](./misc/screenshot_v4.7.jpg)
 
-ROS Distro | Branch | Build status
-:---------: | :----: | :----------: 
-**Rolling** | [`ros2`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2) | [![ros-rolling](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-rolling-test.yaml/badge.svg?branch=ros2)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-rolling-test.yaml)
-**Iron** | [`ros2`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2) | [![ros-iron](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-iron-test.yaml/badge.svg?branch=ros2)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-iron-test.yaml)
-**Humble** | [`ros2`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2) | [![ros-humble](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-humble-test.yaml/badge.svg?branch=ros2)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-humble-test.yaml)
-**Noetic** | [`main`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/main) | [![ros-noetic](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-noetic-test.yaml/badge.svg?branch=main)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-noetic-test.yaml?branch=main)
+ROS Distro | Gazebo version | Branch | Build status
+:---------: | :----: | :----: | :----------: 
+**Rolling** | **Gazebo** | [`ros2-gz`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2-gz) | [![ros-rolling-gz](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-rolling-gz-test.yaml/badge.svg?branch=ros2-gz)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-rolling-gz-test.yaml)
+**Rolling** | **Gazebo Classic** | [`ros2`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2) | [![ros-rolling](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-rolling-test.yaml/badge.svg?branch=ros2)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-rolling-test.yaml)
+**Iron** | **Gazebo** | [`ros2-gz`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2-gz) | [![ros-iron-gz](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-iron-gz-test.yaml/badge.svg?branch=ros2-gz)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-iron-gz-test.yaml)
+**Iron** | **Gazebo Classic** | [`ros2`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2) | [![ros-iron](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-iron-test.yaml/badge.svg?branch=ros2)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-iron-test.yaml)
+**Humble** | **Ignition Gazebo** | [`ros2-ign`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2-ign) | [![ros-humble-ign](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-humble-ign-test.yaml/badge.svg?branch=ros2-ign)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-humble-ign-test.yaml)
+**Humble** | **Gazebo Classic** | [`ros2`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2) | [![ros-humble](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-humble-test.yaml/badge.svg?branch=ros2)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-humble-test.yaml)
+**Noetic** | **Gazebo Classic** | [`main`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/main) | [![ros-noetic](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-noetic-test.yaml/badge.svg?branch=main)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-noetic-test.yaml?branch=main)
 
 ## Installation
 This package has been tested on ROS noetic. For the ROS2 version of this repository, see the [ros2](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2) branch.
