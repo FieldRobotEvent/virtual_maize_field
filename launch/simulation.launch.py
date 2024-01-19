@@ -55,7 +55,7 @@ def generate_launch_description() -> LaunchDescription:
     )
     declare_world_name_cmd = DeclareLaunchArgument(
         name="world_name",
-        default_value="generated_field.sdf",
+        default_value="generated.world",
         description="Name of the world file.",
     )
 
