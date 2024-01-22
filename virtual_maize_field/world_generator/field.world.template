@@ -235,7 +235,7 @@
     {# All ghost models have to be defined manually, since the SDF files already contains the collisions. #}
     {% elif coordinate.ghost == true -%}
     <model name="ghost_{{coordinate.name}}">
-      <pose frame="">{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} {{ coordinate.roll }} {{ coordinate.pitch }} {{ coordinate.yaw }}</pose>
+      <pose>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} {{ coordinate.roll }} {{ coordinate.pitch }} {{ coordinate.yaw }}</pose>
       <static>true</static>
       <link name="{{ coordinate.name }}_link">
         {{ coordinate.custom_visual -}}
