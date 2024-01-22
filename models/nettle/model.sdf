@@ -65,18 +65,6 @@
             <uri>model://nettle/meshes/nettle.dae</uri>
           </mesh>
         </geometry>
-        <material>
-          <script>
-            <uri>model://nettle/materials/scripts/</uri>
-            <uri>model://nettle/materials/textures/</uri>
-            <name>nettle_leaf</name>
-          </script>
-          <pbr>
-            <metal>
-              <albedo_map>model://nettle/materials/textures/nettle.png</albedo_map>
-            </metal>
-          </pbr>
-        </material>
       </visual>
     </link>
   </model>

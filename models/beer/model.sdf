@@ -29,11 +29,6 @@
           </cylinder>
         </geometry>
         <material>
-          <script>
-            <uri>model://beer/materials/scripts</uri>
-            <uri>model://beer/materials/textures</uri>
-            <name>Beer/Diffuse</name>
-          </script>
           <pbr>
             <metal>
               <albedo_map>model://beer/materials/textures/beer.png</albedo_map>

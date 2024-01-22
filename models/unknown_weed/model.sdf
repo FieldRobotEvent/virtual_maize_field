@@ -63,13 +63,6 @@
             <uri>model://unknown_weed/meshes/unknown_weed.dae</uri>
           </mesh>
         </geometry>
-        <material>
-          <pbr>
-            <metal>
-              <albedo_map>model://unknown_weed/materials/textures/unknown_weed.png</albedo_map>
-            </metal>
-          </pbr>
-        </material>
       </visual>
     </link>
   </model>
