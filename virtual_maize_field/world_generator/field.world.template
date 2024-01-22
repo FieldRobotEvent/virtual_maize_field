@@ -15,6 +15,12 @@
       name="ignition::gazebo::systems::SceneBroadcaster">
     </plugin>
 
+    <plugin
+    filename="libignition-gazebo-sensors-system.so"
+    name="ignition::gazebo::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+
     <gui fullscreen="0">
 
       <!-- 3D scene -->
