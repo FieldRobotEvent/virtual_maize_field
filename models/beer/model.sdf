@@ -23,18 +23,11 @@
       </collision>
       <visual name="visual">
         <geometry>
-          <cylinder>
-            <radius>0.035000</radius>
-            <length>0.150000</length>
-          </cylinder>
+          <mesh>
+            <uri>model://beer/meshes/beer.dae</uri>
+            <scale>0.5 0.5 0.5</scale>
+          </mesh>
         </geometry>
-        <material>
-          <pbr>
-            <metal>
-              <albedo_map>model://beer/materials/textures/beer.png</albedo_map>
-            </metal>
-          </pbr>
-        </material>
       </visual>
     </link>
   </model>
