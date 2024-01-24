@@ -5,12 +5,15 @@ from os import environ, path
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription, SomeSubstitutionsType
 from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, LogInfo
+from launch.conditions import IfCondition
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import (
     LaunchConfiguration,
     PathJoinSubstitution,
     PythonExpression,
 )
+
+from launch_ros.actions import Node
 
 
 def construct_gz_args(
@@ -80,6 +83,14 @@ def generate_launch_description() -> LaunchDescription:
         }.items(),
     )
 
+    sim_time_bridge = Node(
+        package="ros_gz_bridge",
+        executable="parameter_bridge",
+        name="clock_bridge",        
+        condition=IfCondition(use_sim_time),
+        arguments=["/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock"],
+    )
+
     ld = LaunchDescription()
 
     # Declare the launch options
@@ -92,5 +103,6 @@ def generate_launch_description() -> LaunchDescription:
     # Add nodes
     ld.add_action(log_gz_args)
     ld.add_action(gz)
+    ld.add_action(sim_time_bridge)
 
     return ld
