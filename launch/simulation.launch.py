@@ -86,7 +86,7 @@ def generate_launch_description() -> LaunchDescription:
     sim_time_bridge = Node(
         package="ros_gz_bridge",
         executable="parameter_bridge",
-        name="clock_bridge",        
+        name="clock_bridge",
         condition=IfCondition(use_sim_time),
         arguments=["/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock"],
     )
