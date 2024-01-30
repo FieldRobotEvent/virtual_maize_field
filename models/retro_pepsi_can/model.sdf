@@ -4,7 +4,7 @@
     <pose frame=''>0 0 0 0 0 0</pose>
     <link name='retro_pepsi_can_link'>
       <inertial>
-        <pose>0 0 0 0 0 0 0</pose>
+        <pose>0 0 0 0 0 0</pose>
         <mass>0.390</mass>
         <inertia>
           <ixx>0.00055575</ixx>
@@ -48,8 +48,6 @@
             <scale>1 1 1</scale>
           </mesh>
         </geometry>
-        <material>
-        </material>
       </visual>
       <self_collide>0</self_collide>
       <enable_wind>0</enable_wind>
