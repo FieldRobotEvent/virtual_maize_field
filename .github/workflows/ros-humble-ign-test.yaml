@@ -1,14 +1,14 @@
 # Humble Hawksbill (May 2022 - May 2027)
-name: ros-humble
+name: ros-humble-ign
 
 on:
   workflow_dispatch:
   pull_request:
     branches:
-      - ros2
+      - ros2-ign
   push:
     branches:
-      - ros2
+      - ros2-ign
 
 jobs:
   build:
