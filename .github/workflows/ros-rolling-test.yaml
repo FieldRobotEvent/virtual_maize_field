@@ -3,8 +3,6 @@ name: ros-rolling
 
 on:
   workflow_dispatch:
-    branches:
-      - ros2
   pull_request:
     branches:
       - ros2
@@ -14,9 +12,11 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
+    container:
+      image: ubuntu:noble
     steps:
-      - uses: ros-tooling/setup-ros@v0.6
+      - uses: ros-tooling/setup-ros@master
         with:
           required-ros-distributions: rolling
       - uses: ros-tooling/action-ros-ci@v0.3
