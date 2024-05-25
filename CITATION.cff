@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+title: Virtual Maize Field
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - family-names: Barthel
+    given-names: Johannes
+  - family-names: Bier
+    given-names: Johannes
+  - given-names: Thomas
+    family-names: Friedel
+  - family-names: Ruigrok
+    given-names: Thijs
+  - family-names: Tuschla
+    given-names: Leon
+  - given-names: Rick
+    family-names: van Essen
+repository-code: 'https://github.com/FieldRobotEvent/virtual_maize_field'
+abstract: >-
+  ROS package to procedural generate randomized fields with
+  rows of plants for Gazebo.
+keywords:
+  - simulation
+  - agriculture
+  - ros
+  - ros2
+  - gazebo
+  - ignition-gazebo
+  - maize
+  - fieldrobotevent
+license: GPL-3.0
