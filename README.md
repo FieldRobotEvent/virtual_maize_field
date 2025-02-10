@@ -166,7 +166,7 @@ optional arguments:
   --hole_size_max [HOLE_SIZE_MAX [HOLE_SIZE_MAX ...]]
                         default_value: [7, 5, 5, 3, 0, 0]
   --crop_types [CROP_TYPES [CROP_TYPES ...]]
-                        default_value: ['maize_01', 'maize_02']
+                        default_value: ['maize_01', 'maize_02','orange_tree']
   --litters LITTERS     default_value: 0
   --litter_types [LITTER_TYPES [LITTER_TYPES ...]]
                         default_value: ['ale', 'beer', 'coke_can',
