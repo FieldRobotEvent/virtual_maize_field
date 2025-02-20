@@ -11,58 +11,13 @@
           </box>
         </geometry>
       </collision>
-      <visual name="foot">
-        <pose>0 0 -1.5 0 0 0</pose>
+      <visual name="visual">
         <geometry>
-          <box>
-            <size>1 1 1</size>
-          </box>
+          <mesh>
+            <uri>model://location_marker_b/meshes/location_marker_b.dae</uri>
+            <scale>0.5 0.5 0.5</scale>
+          </mesh>
         </geometry>
-      </visual>
-      <visual name="visual_bottom">
-        <pose>0 0 -0.75 0 0 0</pose>
-        <geometry>
-          <box>
-            <size>1 1 0.5</size>
-          </box>
-        </geometry>
-        <material>
-          <script>
-            <uri>model://location_marker_b/materials/scripts</uri>
-            <uri>model://location_marker_b/materials/textures</uri>
-            <name>location_marker_b/logo</name>
-          </script>
-        </material>
-      </visual>
-      <visual name="visual_top">
-        <pose>0 0 0.75 0 0 0</pose>
-        <geometry>
-          <box>
-            <size>1 1 0.5</size>
-          </box>
-        </geometry>
-        <material>
-          <script>
-            <uri>model://location_marker_b/materials/scripts</uri>
-            <uri>model://location_marker_b/materials/textures</uri>
-            <name>location_marker_b/logo</name>
-          </script>
-        </material>
-      </visual>
-      <visual name="visual_code">
-        <pose>0 0 0 0 0 0</pose>
-        <geometry>
-          <box>
-            <size>1 1 1</size>
-          </box>
-        </geometry>
-        <material>
-          <script>
-            <uri>model://location_marker_b/materials/scripts</uri>
-            <uri>model://location_marker_b/materials/textures</uri>
-            <name>location_marker_b/qr_code</name>
-          </script>
-        </material>
       </visual>
     </link>
   </model>

@@ -68,7 +68,6 @@
             <scale>1 1 1</scale>
           </mesh>
         </geometry>
-        <material></material>
       </visual>
       <self_collide>0</self_collide>
       <enable_wind>0</enable_wind>
