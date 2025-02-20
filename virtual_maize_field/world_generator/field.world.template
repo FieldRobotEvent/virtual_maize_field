@@ -4,22 +4,21 @@
   <world name="virtual_maize_field">
 
     <!-- Change max step size to increase the simulation speed but decrease the accuracy. -->
-    <physics name="10ms" type="ignored">
-      <max_step_size>0.01</max_step_size>
+    <physics type="ode">
+      <max_step_size>0.004</max_step_size>
       <real_time_factor>1.0</real_time_factor>
+      <real_time_update_rate>250</real_time_update_rate>
     </physics>
-  
-    <plugin
-      filename="libignition-gazebo-physics-system.so"
-      name="ignition::gazebo::systems::Physics">
-    </plugin>
-    <plugin
-      filename="libignition-gazebo-user-commands-system.so"
-      name="ignition::gazebo::systems::UserCommands">
-    </plugin>
-    <plugin
-      filename="libignition-gazebo-scene-broadcaster-system.so"
-      name="ignition::gazebo::systems::SceneBroadcaster">
+    <render_engine>ogre</render_engine>
+    <!-- <plugin name='gz::sim::systems::JointController' filename='gz-sim-joint-controller-system'/> -->
+    <plugin name='gz::sim::systems::Physics' filename='gz-sim-physics-system'/>
+    <plugin name='gz::sim::systems::UserCommands' filename='gz-sim-user-commands-system'/>
+    <plugin name='gz::sim::systems::SceneBroadcaster' filename='gz-sim-scene-broadcaster-system'/>
+    <plugin name='gz::sim::systems::Contact' filename='gz-sim-contact-system'/>
+    <plugin name='gz::sim::systems::Imu' filename='gz-sim-imu-system'/>
+    <plugin name='gz::sim::systems::AirPressure' filename='gz-sim-air-pressure-system'/>
+    <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors">
+      <render_engine>ogre2</render_engine>
     </plugin>
 
     <gui fullscreen="0">
@@ -31,7 +30,7 @@
           <property type="string" key="state">docked</property>
       </ignition-gui>
 
-    <engine>ogre2</engine>
+    <engine>ogre</engine>
       <scene>scene</scene>
       <ambient_light>1.0 1.0 1.0</ambient_light>
       <background_color>0.8 0.8 0.8</background_color>
@@ -251,7 +250,7 @@
       <uri>model://{{ coordinate.type }}</uri>
       <pose>{{ coordinate.x }} {{ coordinate.y }} {{ coordinate.z }} {{ coordinate.roll }} {{ coordinate.pitch }} {{ coordinate.yaw }}</pose>
       <name>{{ coordinate.name }}</name>
-      <static>{{ coordinate.static }}</static>
+      <static>true</static>
     </include> 
     {% endif -%} 
     {% endfor -%}
