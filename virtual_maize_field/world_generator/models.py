@@ -132,7 +132,6 @@ CROP_MODELS = {
     # "cylinder": GazeboModel("cylinder"),
     "maize_01": GazeboModel(model_name="maize_01"),
     "maize_02": GazeboModel(model_name="maize_02"),
-    "maize_03": GazeboModel(model_name="maize_03"),
     "orange_tree": GazeboModel(model_name="orange_tree"),
 }
 

@@ -1,15 +1,10 @@
 from __future__ import annotations
-
+import os
 from os import environ, path
 
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription, SomeSubstitutionsType
-from launch.actions import (
-    AppendEnvironmentVariable,
-    DeclareLaunchArgument,
-    IncludeLaunchDescription,
-    LogInfo,
-)
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, LogInfo, SetEnvironmentVariable
 from launch.conditions import IfCondition
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import (
@@ -17,7 +12,7 @@ from launch.substitutions import (
     PathJoinSubstitution,
     PythonExpression,
 )
-
+from pathlib import Path
 from launch_ros.actions import Node
 
 
@@ -25,29 +20,23 @@ def construct_gz_args(
     world_file: SomeSubstitutionsType,
     paused: SomeSubstitutionsType,
     headless: SomeSubstitutionsType,
-    verbose: SomeSubstitutionsType,
 ) -> SomeSubstitutionsType:
     paused_arg = PythonExpression(['"" if "', paused, '".lower() == "true" else "-r "'])
     headless_arg = PythonExpression(
         ['"-s " if "', headless, '".lower() == "true" else ""']
     )
-    verbose_arg = PythonExpression(
-        ['"-v4 " if "', verbose, '".lower() == "true" else ""']
-    )
 
-    return PythonExpression(
-        ["'", headless_arg, verbose_arg, paused_arg, world_file, "'"]
-    )
+    return PythonExpression(["'", headless_arg, paused_arg, world_file, "'"])
 
 
 def generate_launch_description() -> LaunchDescription:
+    Pkg_directory = get_package_share_directory('virtual_maize_field')
     _ros_home_path = environ.get("ROS_HOME", path.join(path.expanduser("~"), ".ros"))
     cache_dir = path.join(_ros_home_path, "virtual_maize_field/")
 
     use_sim_time = LaunchConfiguration("use_sim_time")
     paused = LaunchConfiguration("paused")
     headless = LaunchConfiguration("headless")
-    verbose = LaunchConfiguration("verbose")
     world_path = LaunchConfiguration("world_path")
     world_name = LaunchConfiguration("world_name")
 
@@ -62,11 +51,6 @@ def generate_launch_description() -> LaunchDescription:
         name="headless",
         default_value="False",
         description="Start headless simulation (without rendering).",
-    )
-    declare_verbose_cmd = DeclareLaunchArgument(
-        name="verbose",
-        default_value="False",
-        description="Increase verbosity of Gazebo",
     )
     declare_world_path_cmd = DeclareLaunchArgument(
         name="world_path",
@@ -83,12 +67,22 @@ def generate_launch_description() -> LaunchDescription:
         PathJoinSubstitution([world_path, world_name]),
         paused,
         headless,
-        verbose,
     )
 
-    environment = AppendEnvironmentVariable(
-        "GZ_SIM_RESOURCE_PATH",
-        path.join(get_package_share_directory("virtual_maize_field"), "models"),
+    gz_resource_path = SetEnvironmentVariable(
+        name='GZ_SIM_RESOURCE_PATH',
+        value=':'.join([
+            os.path.join(Pkg_directory, 'models'),
+            str(Path(Pkg_directory).parent.resolve())
+        ])
+    )
+
+    gz_model_path = SetEnvironmentVariable(
+        name='GZ_SIM_MODEL_PATH',
+        value=':'.join([
+            os.path.join(Pkg_directory, 'models'),
+            str(Path(Pkg_directory).parent.resolve())
+        ])
     )
 
     log_gz_args = LogInfo(msg=["Start Ignition Gazebo with gz_args: '", gz_args, "'"])
@@ -102,10 +96,17 @@ def generate_launch_description() -> LaunchDescription:
         ),
         launch_arguments={
             "gz_args": gz_args,
+            "gz_args": gz_args,
             "use_sim_time": use_sim_time,
         }.items(),
     )
 
+    sim_time_bridge = Node(
+        package="ros_gz_bridge",
+        executable="parameter_bridge",
+        name="clock_bridge",
+        condition=IfCondition(use_sim_time),
+        arguments=["/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock"],
     sim_time_bridge = Node(
         package="ros_gz_bridge",
         executable="parameter_bridge",
@@ -117,15 +118,13 @@ def generate_launch_description() -> LaunchDescription:
     ld = LaunchDescription()
 
     # Declare the launch options
+    ld.add_action(gz_resource_path)
+    ld.add_action(gz_model_path)
     ld.add_action(declare_use_sim_time_cmd)
     ld.add_action(declare_paused_cmd)
     ld.add_action(declare_headless_cmd)
-    ld.add_action(declare_verbose_cmd)
     ld.add_action(declare_world_path_cmd)
     ld.add_action(declare_world_name_cmd)
-
-    # Append models to environment
-    ld.add_action(environment)
 
     # Add nodes
     ld.add_action(log_gz_args)
