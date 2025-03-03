@@ -54,19 +54,6 @@
             <scale>1 1 1</scale>
           </mesh>
         </geometry>
-        <material>
-          <!--<shader type="normal_map_object_space">
-          <shader type="normal_map_tangent_space">
-            <normal_map>model://stone_01/textures/stone_01_normal.jpg</normal_map>
-          </shader>-->
-          <pbr>
-            <metal>
-              <albedo_map>model://stone_01/textures/stone_01.jpg</albedo_map>
-              <ambient_occlusion_map>model://stone_01/textures/stone_01_occlusion.jpg</ambient_occlusion_map>
-              <normal_map type="tangent">model://stone_01/textures/stone_01_normal.jpg</normal_map>
-            </metal>
-          </pbr>
-        </material>
       </visual>
       <self_collide>0</self_collide>
       <enable_wind>0</enable_wind>

@@ -1,0 +1,816 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 4.0.2 commit date:2023-12-05, commit time:07:41, hash:9be62e85b727</authoring_tool>
+    </contributor>
+    <created>2024-01-22T15:11:02</created>
+    <modified>2024-01-22T15:11:02</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="location_marker_b-effect">
+      <profile_COMMON>
+        <newparam sid="location_marker_b_png-surface">
+          <surface type="2D">
+            <init_from>location_marker_b_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="location_marker_b_png-sampler">
+          <sampler2D>
+            <source>location_marker_b_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <texture texture="location_marker_b_png-sampler" texcoord="UVMap"/>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="Material_001-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">0.910176 1 0.9629291 1</color>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="fre_logo-effect">
+      <profile_COMMON>
+        <newparam sid="fre_logo_png-surface">
+          <surface type="2D">
+            <init_from>fre_logo_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="fre_logo_png-sampler">
+          <sampler2D>
+            <source>fre_logo_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <texture texture="fre_logo_png-sampler" texcoord="UVMap"/>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_images>
+    <image id="fre_logo_png" name="fre_logo_png">
+      <init_from>../materials/textures/fre_logo.png</init_from>
+    </image>
+    <image id="location_marker_b_png" name="location_marker_b_png">
+      <init_from>../materials/textures/location_marker_b.png</init_from>
+    </image>
+  </library_images>
+  <library_materials>
+    <material id="location_marker_b-material" name="location_marker_b">
+      <instance_effect url="#location_marker_b-effect"/>
+    </material>
+    <material id="Material_001-material" name="Material.001">
+      <instance_effect url="#Material_001-effect"/>
+    </material>
+    <material id="fre_logo-material" name="fre_logo">
+      <instance_effect url="#fre_logo-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="fre_logo_011-mesh" name="fre_logo.011">
+      <mesh>
+        <source id="fre_logo_011-mesh-positions">
+          <float_array id="fre_logo_011-mesh-positions-array" count="12">-1.030793 -0.5 0 1.030793 -0.5 0 -1.030793 0.5 0 1.030793 0.5 0</float_array>
+          <technique_common>
+            <accessor source="#fre_logo_011-mesh-positions-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="fre_logo_011-mesh-normals">
+          <float_array id="fre_logo_011-mesh-normals-array" count="3">0 0 1</float_array>
+          <technique_common>
+            <accessor source="#fre_logo_011-mesh-normals-array" count="1" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="fre_logo_011-mesh-map-0">
+          <float_array id="fre_logo_011-mesh-map-0-array" count="12">1 0 0 1 0 0 1 0 1 1 0 1</float_array>
+          <technique_common>
+            <accessor source="#fre_logo_011-mesh-map-0-array" count="6" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="fre_logo_011-mesh-vertices">
+          <input semantic="POSITION" source="#fre_logo_011-mesh-positions"/>
+        </vertices>
+        <triangles material="fre_logo-material" count="2">
+          <input semantic="VERTEX" source="#fre_logo_011-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#fre_logo_011-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#fre_logo_011-mesh-map-0" offset="2" set="0"/>
+          <p>1 0 0 2 0 1 0 0 2 1 0 3 3 0 4 2 0 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="fre_logo_010-mesh" name="fre_logo.010">
+      <mesh>
+        <source id="fre_logo_010-mesh-positions">
+          <float_array id="fre_logo_010-mesh-positions-array" count="12">-1.030793 -0.5 0 1.030793 -0.5 0 -1.030793 0.5 0 1.030793 0.5 0</float_array>
+          <technique_common>
+            <accessor source="#fre_logo_010-mesh-positions-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="fre_logo_010-mesh-normals">
+          <float_array id="fre_logo_010-mesh-normals-array" count="3">0 0 1</float_array>
+          <technique_common>
+            <accessor source="#fre_logo_010-mesh-normals-array" count="1" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="fre_logo_010-mesh-map-0">
+          <float_array id="fre_logo_010-mesh-map-0-array" count="12">1 0 0 1 0 0 1 0 1 1 0 1</float_array>
+          <technique_common>
+            <accessor source="#fre_logo_010-mesh-map-0-array" count="6" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="fre_logo_010-mesh-vertices">
+          <input semantic="POSITION" source="#fre_logo_010-mesh-positions"/>
+        </vertices>
+        <triangles material="fre_logo-material" count="2">
+          <input semantic="VERTEX" source="#fre_logo_010-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#fre_logo_010-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#fre_logo_010-mesh-map-0" offset="2" set="0"/>
+          <p>1 0 0 2 0 1 0 0 2 1 0 3 3 0 4 2 0 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="location_marker_b_004-mesh" name="location_marker_b.004">
+      <mesh>
+        <source id="location_marker_b_004-mesh-positions">
+          <float_array id="location_marker_b_004-mesh-positions-array" count="12">-0.5 -0.5 0 0.5 -0.5 0 -0.5 0.5 0 0.5 0.5 0</float_array>
+          <technique_common>
+            <accessor source="#location_marker_b_004-mesh-positions-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="location_marker_b_004-mesh-normals">
+          <float_array id="location_marker_b_004-mesh-normals-array" count="3">0 0 1</float_array>
+          <technique_common>
+            <accessor source="#location_marker_b_004-mesh-normals-array" count="1" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="location_marker_b_004-mesh-map-0">
+          <float_array id="location_marker_b_004-mesh-map-0-array" count="12">1 0 0 1 0 0 1 0 1 1 0 1</float_array>
+          <technique_common>
+            <accessor source="#location_marker_b_004-mesh-map-0-array" count="6" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="location_marker_b_004-mesh-vertices">
+          <input semantic="POSITION" source="#location_marker_b_004-mesh-positions"/>
+        </vertices>
+        <triangles material="location_marker_b-material" count="2">
+          <input semantic="VERTEX" source="#location_marker_b_004-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#location_marker_b_004-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#location_marker_b_004-mesh-map-0" offset="2" set="0"/>
+          <p>1 0 0 2 0 1 0 0 2 1 0 3 3 0 4 2 0 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="location_marker_b_003-mesh" name="location_marker_b.003">
+      <mesh>
+        <source id="location_marker_b_003-mesh-positions">
+          <float_array id="location_marker_b_003-mesh-positions-array" count="12">-0.5 -0.5 0 0.5 -0.5 0 -0.5 0.5 0 0.5 0.5 0</float_array>
+          <technique_common>
+            <accessor source="#location_marker_b_003-mesh-positions-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="location_marker_b_003-mesh-normals">
+          <float_array id="location_marker_b_003-mesh-normals-array" count="3">0 0 1</float_array>
+          <technique_common>
+            <accessor source="#location_marker_b_003-mesh-normals-array" count="1" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="location_marker_b_003-mesh-map-0">
+          <float_array id="location_marker_b_003-mesh-map-0-array" count="12">1 0 0 1 0 0 1 0 1 1 0 1</float_array>
+          <technique_common>
+            <accessor source="#location_marker_b_003-mesh-map-0-array" count="6" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="location_marker_b_003-mesh-vertices">
+          <input semantic="POSITION" source="#location_marker_b_003-mesh-positions"/>
+        </vertices>
+        <triangles material="location_marker_b-material" count="2">
+          <input semantic="VERTEX" source="#location_marker_b_003-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#location_marker_b_003-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#location_marker_b_003-mesh-map-0" offset="2" set="0"/>
+          <p>1 0 0 2 0 1 0 0 2 1 0 3 3 0 4 2 0 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="fre_logo_009-mesh" name="fre_logo.009">
+      <mesh>
+        <source id="fre_logo_009-mesh-positions">
+          <float_array id="fre_logo_009-mesh-positions-array" count="12">-1.030793 -0.5 0 1.030793 -0.5 0 -1.030793 0.5 0 1.030793 0.5 0</float_array>
+          <technique_common>
+            <accessor source="#fre_logo_009-mesh-positions-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="fre_logo_009-mesh-normals">
+          <float_array id="fre_logo_009-mesh-normals-array" count="3">0 0 1</float_array>
+          <technique_common>
+            <accessor source="#fre_logo_009-mesh-normals-array" count="1" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="fre_logo_009-mesh-map-0">
+          <float_array id="fre_logo_009-mesh-map-0-array" count="12">1 0 0 1 0 0 1 0 1 1 0 1</float_array>
+          <technique_common>
+            <accessor source="#fre_logo_009-mesh-map-0-array" count="6" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="fre_logo_009-mesh-vertices">
+          <input semantic="POSITION" source="#fre_logo_009-mesh-positions"/>
+        </vertices>
+        <triangles material="fre_logo-material" count="2">
+          <input semantic="VERTEX" source="#fre_logo_009-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#fre_logo_009-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#fre_logo_009-mesh-map-0" offset="2" set="0"/>
+          <p>1 0 0 2 0 1 0 0 2 1 0 3 3 0 4 2 0 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="fre_logo_008-mesh" name="fre_logo.008">
+      <mesh>
+        <source id="fre_logo_008-mesh-positions">
+          <float_array id="fre_logo_008-mesh-positions-array" count="12">-1.030793 -0.5 0 1.030793 -0.5 0 -1.030793 0.5 0 1.030793 0.5 0</float_array>
+          <technique_common>
+            <accessor source="#fre_logo_008-mesh-positions-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="fre_logo_008-mesh-normals">
+          <float_array id="fre_logo_008-mesh-normals-array" count="3">0 0 1</float_array>
+          <technique_common>
+            <accessor source="#fre_logo_008-mesh-normals-array" count="1" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="fre_logo_008-mesh-map-0">
+          <float_array id="fre_logo_008-mesh-map-0-array" count="12">1 0 0 1 0 0 1 0 1 1 0 1</float_array>
+          <technique_common>
+            <accessor source="#fre_logo_008-mesh-map-0-array" count="6" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="fre_logo_008-mesh-vertices">
+          <input semantic="POSITION" source="#fre_logo_008-mesh-positions"/>
+        </vertices>
+        <triangles material="fre_logo-material" count="2">
+          <input semantic="VERTEX" source="#fre_logo_008-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#fre_logo_008-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#fre_logo_008-mesh-map-0" offset="2" set="0"/>
+          <p>1 0 0 2 0 1 0 0 2 1 0 3 3 0 4 2 0 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="location_marker_b_002-mesh" name="location_marker_b.002">
+      <mesh>
+        <source id="location_marker_b_002-mesh-positions">
+          <float_array id="location_marker_b_002-mesh-positions-array" count="12">-0.5 -0.5 0 0.5 -0.5 0 -0.5 0.5 0 0.5 0.5 0</float_array>
+          <technique_common>
+            <accessor source="#location_marker_b_002-mesh-positions-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="location_marker_b_002-mesh-normals">
+          <float_array id="location_marker_b_002-mesh-normals-array" count="3">0 0 1</float_array>
+          <technique_common>
+            <accessor source="#location_marker_b_002-mesh-normals-array" count="1" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="location_marker_b_002-mesh-map-0">
+          <float_array id="location_marker_b_002-mesh-map-0-array" count="12">1 0 0 1 0 0 1 0 1 1 0 1</float_array>
+          <technique_common>
+            <accessor source="#location_marker_b_002-mesh-map-0-array" count="6" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="location_marker_b_002-mesh-vertices">
+          <input semantic="POSITION" source="#location_marker_b_002-mesh-positions"/>
+        </vertices>
+        <triangles material="location_marker_b-material" count="2">
+          <input semantic="VERTEX" source="#location_marker_b_002-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#location_marker_b_002-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#location_marker_b_002-mesh-map-0" offset="2" set="0"/>
+          <p>1 0 0 2 0 1 0 0 2 1 0 3 3 0 4 2 0 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="fre_logo_007-mesh" name="fre_logo.007">
+      <mesh>
+        <source id="fre_logo_007-mesh-positions">
+          <float_array id="fre_logo_007-mesh-positions-array" count="12">-1.030793 -0.5 0 1.030793 -0.5 0 -1.030793 0.5 0 1.030793 0.5 0</float_array>
+          <technique_common>
+            <accessor source="#fre_logo_007-mesh-positions-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="fre_logo_007-mesh-normals">
+          <float_array id="fre_logo_007-mesh-normals-array" count="3">0 0 1</float_array>
+          <technique_common>
+            <accessor source="#fre_logo_007-mesh-normals-array" count="1" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="fre_logo_007-mesh-map-0">
+          <float_array id="fre_logo_007-mesh-map-0-array" count="12">1 0 0 1 0 0 1 0 1 1 0 1</float_array>
+          <technique_common>
+            <accessor source="#fre_logo_007-mesh-map-0-array" count="6" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="fre_logo_007-mesh-vertices">
+          <input semantic="POSITION" source="#fre_logo_007-mesh-positions"/>
+        </vertices>
+        <triangles material="fre_logo-material" count="2">
+          <input semantic="VERTEX" source="#fre_logo_007-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#fre_logo_007-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#fre_logo_007-mesh-map-0" offset="2" set="0"/>
+          <p>1 0 0 2 0 1 0 0 2 1 0 3 3 0 4 2 0 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="fre_logo_006-mesh" name="fre_logo.006">
+      <mesh>
+        <source id="fre_logo_006-mesh-positions">
+          <float_array id="fre_logo_006-mesh-positions-array" count="12">-1.030793 -0.5 0 1.030793 -0.5 0 -1.030793 0.5 0 1.030793 0.5 0</float_array>
+          <technique_common>
+            <accessor source="#fre_logo_006-mesh-positions-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="fre_logo_006-mesh-normals">
+          <float_array id="fre_logo_006-mesh-normals-array" count="3">0 0 1</float_array>
+          <technique_common>
+            <accessor source="#fre_logo_006-mesh-normals-array" count="1" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="fre_logo_006-mesh-map-0">
+          <float_array id="fre_logo_006-mesh-map-0-array" count="12">1 0 0 1 0 0 1 0 1 1 0 1</float_array>
+          <technique_common>
+            <accessor source="#fre_logo_006-mesh-map-0-array" count="6" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="fre_logo_006-mesh-vertices">
+          <input semantic="POSITION" source="#fre_logo_006-mesh-positions"/>
+        </vertices>
+        <triangles material="fre_logo-material" count="2">
+          <input semantic="VERTEX" source="#fre_logo_006-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#fre_logo_006-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#fre_logo_006-mesh-map-0" offset="2" set="0"/>
+          <p>1 0 0 2 0 1 0 0 2 1 0 3 3 0 4 2 0 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="location_marker_b-mesh" name="location_marker_b">
+      <mesh>
+        <source id="location_marker_b-mesh-positions">
+          <float_array id="location_marker_b-mesh-positions-array" count="12">-0.5 -0.5 0 0.5 -0.5 0 -0.5 0.5 0 0.5 0.5 0</float_array>
+          <technique_common>
+            <accessor source="#location_marker_b-mesh-positions-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="location_marker_b-mesh-normals">
+          <float_array id="location_marker_b-mesh-normals-array" count="3">0 0 1</float_array>
+          <technique_common>
+            <accessor source="#location_marker_b-mesh-normals-array" count="1" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="location_marker_b-mesh-map-0">
+          <float_array id="location_marker_b-mesh-map-0-array" count="12">1 0 0 1 0 0 1 0 1 1 0 1</float_array>
+          <technique_common>
+            <accessor source="#location_marker_b-mesh-map-0-array" count="6" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="location_marker_b-mesh-vertices">
+          <input semantic="POSITION" source="#location_marker_b-mesh-positions"/>
+        </vertices>
+        <triangles material="location_marker_b-material" count="2">
+          <input semantic="VERTEX" source="#location_marker_b-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#location_marker_b-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#location_marker_b-mesh-map-0" offset="2" set="0"/>
+          <p>1 0 0 2 0 1 0 0 2 1 0 3 3 0 4 2 0 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="fre_logo_003-mesh" name="fre_logo.003">
+      <mesh>
+        <source id="fre_logo_003-mesh-positions">
+          <float_array id="fre_logo_003-mesh-positions-array" count="12">-1.030793 -0.5 0 1.030793 -0.5 0 -1.030793 0.5 0 1.030793 0.5 0</float_array>
+          <technique_common>
+            <accessor source="#fre_logo_003-mesh-positions-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="fre_logo_003-mesh-normals">
+          <float_array id="fre_logo_003-mesh-normals-array" count="3">0 0 1</float_array>
+          <technique_common>
+            <accessor source="#fre_logo_003-mesh-normals-array" count="1" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="fre_logo_003-mesh-map-0">
+          <float_array id="fre_logo_003-mesh-map-0-array" count="12">1 0 0 1 0 0 1 0 1 1 0 1</float_array>
+          <technique_common>
+            <accessor source="#fre_logo_003-mesh-map-0-array" count="6" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="fre_logo_003-mesh-vertices">
+          <input semantic="POSITION" source="#fre_logo_003-mesh-positions"/>
+        </vertices>
+        <triangles material="fre_logo-material" count="2">
+          <input semantic="VERTEX" source="#fre_logo_003-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#fre_logo_003-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#fre_logo_003-mesh-map-0" offset="2" set="0"/>
+          <p>1 0 0 2 0 1 0 0 2 1 0 3 3 0 4 2 0 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Cube_003-mesh" name="Cube.003">
+      <mesh>
+        <source id="Cube_003-mesh-positions">
+          <float_array id="Cube_003-mesh-positions-array" count="24">-1 -1 -1 -1 -1 1 -1 1 -1 -1 1 1 1 -1 -1 1 -1 1 1 1 -1 1 1 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_003-mesh-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cube_003-mesh-normals">
+          <float_array id="Cube_003-mesh-normals-array" count="18">-1 0 0 0 1 0 1 0 0 0 -1 0 0 0 -1 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_003-mesh-normals-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cube_003-mesh-map-0">
+          <float_array id="Cube_003-mesh-map-0-array" count="72">0.625 0 0.375 0.25 0.375 0 0.625 0.25 0.375 0.5 0.375 0.25 0.625 0.5 0.375 0.75 0.375 0.5 0.625 0.75 0.375 1 0.375 0.75 0.375 0.5 0.125 0.75 0.125 0.5 0.875 0.5 0.625 0.75 0.625 0.5 0.625 0 0.625 0.25 0.375 0.25 0.625 0.25 0.625 0.5 0.375 0.5 0.625 0.5 0.625 0.75 0.375 0.75 0.625 0.75 0.625 1 0.375 1 0.375 0.5 0.375 0.75 0.125 0.75 0.875 0.5 0.875 0.75 0.625 0.75</float_array>
+          <technique_common>
+            <accessor source="#Cube_003-mesh-map-0-array" count="36" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cube_003-mesh-vertices">
+          <input semantic="POSITION" source="#Cube_003-mesh-positions"/>
+        </vertices>
+        <triangles material="Material_001-material" count="12">
+          <input semantic="VERTEX" source="#Cube_003-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_003-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cube_003-mesh-map-0" offset="2" set="0"/>
+          <p>1 0 0 2 0 1 0 0 2 3 1 3 6 1 4 2 1 5 7 2 6 4 2 7 6 2 8 5 3 9 0 3 10 4 3 11 6 4 12 0 4 13 2 4 14 3 5 15 5 5 16 7 5 17 1 0 18 3 0 19 2 0 20 3 1 21 7 1 22 6 1 23 7 2 24 5 2 25 4 2 26 5 3 27 1 3 28 0 3 29 6 4 30 4 4 31 0 4 32 3 5 33 1 5 34 5 5 35</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="fre_logo-mesh" name="fre_logo">
+      <mesh>
+        <source id="fre_logo-mesh-positions">
+          <float_array id="fre_logo-mesh-positions-array" count="12">-1.030793 -0.5 0 1.030793 -0.5 0 -1.030793 0.5 0 1.030793 0.5 0</float_array>
+          <technique_common>
+            <accessor source="#fre_logo-mesh-positions-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="fre_logo-mesh-normals">
+          <float_array id="fre_logo-mesh-normals-array" count="3">0 0 1</float_array>
+          <technique_common>
+            <accessor source="#fre_logo-mesh-normals-array" count="1" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="fre_logo-mesh-map-0">
+          <float_array id="fre_logo-mesh-map-0-array" count="12">1 0 0 1 0 0 1 0 1 1 0 1</float_array>
+          <technique_common>
+            <accessor source="#fre_logo-mesh-map-0-array" count="6" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="fre_logo-mesh-vertices">
+          <input semantic="POSITION" source="#fre_logo-mesh-positions"/>
+        </vertices>
+        <triangles material="fre_logo-material" count="2">
+          <input semantic="VERTEX" source="#fre_logo-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#fre_logo-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#fre_logo-mesh-map-0" offset="2" set="0"/>
+          <p>1 0 0 2 0 1 0 0 2 1 0 3 3 0 4 2 0 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="Cube" name="Cube" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 2 0 0 0 0 1</matrix>
+        <instance_geometry url="#Cube_003-mesh" name="Cube">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Material_001-material" target="#Material_001-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+        <node id="fre_logo" name="fre_logo" type="NODE">
+          <matrix sid="transform">0.95 0 0 0 0 -2.18557e-8 -1 -1.0001 0 0.5 -4.37114e-8 -0.75 0 0 0 1</matrix>
+          <instance_geometry url="#fre_logo-mesh" name="fre_logo">
+            <bind_material>
+              <technique_common>
+                <instance_material symbol="fre_logo-material" target="#fre_logo-material">
+                  <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+                </instance_material>
+              </technique_common>
+            </bind_material>
+          </instance_geometry>
+        </node>
+        <node id="fre_logo_001" name="fre_logo.001" type="NODE">
+          <matrix sid="transform">0.95 0 0 0 0 -2.18557e-8 -1 -1.0001 0 0.5 -4.37114e-8 0.75 0 0 0 1</matrix>
+          <instance_geometry url="#fre_logo_003-mesh" name="fre_logo.001">
+            <bind_material>
+              <technique_common>
+                <instance_material symbol="fre_logo-material" target="#fre_logo-material">
+                  <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+                </instance_material>
+              </technique_common>
+            </bind_material>
+          </instance_geometry>
+        </node>
+        <node id="location_marker_b" name="location_marker_b" type="NODE">
+          <matrix sid="transform">2 0 0 0 0 -4.37114e-8 -1 -1.0001 0 1 -4.37114e-8 0 0 0 0 1</matrix>
+          <instance_geometry url="#location_marker_b-mesh" name="location_marker_b">
+            <bind_material>
+              <technique_common>
+                <instance_material symbol="location_marker_b-material" target="#location_marker_b-material">
+                  <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+                </instance_material>
+              </technique_common>
+            </bind_material>
+          </instance_geometry>
+        </node>
+        <node id="fre_logo_002" name="fre_logo.002" type="NODE">
+          <matrix sid="transform">-4.15258e-8 2.18557e-8 1 1.0001 0.95 9.55343e-16 4.37114e-8 0 0 0.5 -4.37114e-8 -0.75 0 0 0 1</matrix>
+          <instance_geometry url="#fre_logo_006-mesh" name="fre_logo.002">
+            <bind_material>
+              <technique_common>
+                <instance_material symbol="fre_logo-material" target="#fre_logo-material">
+                  <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+                </instance_material>
+              </technique_common>
+            </bind_material>
+          </instance_geometry>
+        </node>
+        <node id="fre_logo_003" name="fre_logo.003" type="NODE">
+          <matrix sid="transform">-4.15258e-8 2.18557e-8 1 1.0001 0.95 9.55343e-16 4.37114e-8 0 0 0.5 -4.37114e-8 0.75 0 0 0 1</matrix>
+          <instance_geometry url="#fre_logo_007-mesh" name="fre_logo.003">
+            <bind_material>
+              <technique_common>
+                <instance_material symbol="fre_logo-material" target="#fre_logo-material">
+                  <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+                </instance_material>
+              </technique_common>
+            </bind_material>
+          </instance_geometry>
+        </node>
+        <node id="location_marker_b_001" name="location_marker_b.001" type="NODE">
+          <matrix sid="transform">-8.74228e-8 4.37114e-8 1 1.0001 2 1.91069e-15 4.37114e-8 0 0 1 -4.37114e-8 0 0 0 0 1</matrix>
+          <instance_geometry url="#location_marker_b_002-mesh" name="location_marker_b.001">
+            <bind_material>
+              <technique_common>
+                <instance_material symbol="location_marker_b-material" target="#location_marker_b-material">
+                  <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+                </instance_material>
+              </technique_common>
+            </bind_material>
+          </instance_geometry>
+        </node>
+        <node id="fre_logo_004" name="fre_logo.004" type="NODE">
+          <matrix sid="transform">-4.15258e-8 -2.18557e-8 -1 -1.0001 -0.95 9.55343e-16 4.37114e-8 0 0 0.5 -4.37114e-8 0.75 0 0 0 1</matrix>
+          <instance_geometry url="#fre_logo_008-mesh" name="fre_logo.004">
+            <bind_material>
+              <technique_common>
+                <instance_material symbol="fre_logo-material" target="#fre_logo-material">
+                  <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+                </instance_material>
+              </technique_common>
+            </bind_material>
+          </instance_geometry>
+        </node>
+        <node id="fre_logo_005" name="fre_logo.005" type="NODE">
+          <matrix sid="transform">-4.15258e-8 -2.18557e-8 -1 -1.0001 -0.95 9.55343e-16 4.37114e-8 0 0 0.5 -4.37114e-8 -0.75 0 0 0 1</matrix>
+          <instance_geometry url="#fre_logo_009-mesh" name="fre_logo.005">
+            <bind_material>
+              <technique_common>
+                <instance_material symbol="fre_logo-material" target="#fre_logo-material">
+                  <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+                </instance_material>
+              </technique_common>
+            </bind_material>
+          </instance_geometry>
+        </node>
+        <node id="location_marker_b_002" name="location_marker_b.002" type="NODE">
+          <matrix sid="transform">-8.74228e-8 -4.37114e-8 -1 -1.0001 -2 1.91069e-15 4.37114e-8 0 0 1 -4.37114e-8 0 0 0 0 1</matrix>
+          <instance_geometry url="#location_marker_b_003-mesh" name="location_marker_b.002">
+            <bind_material>
+              <technique_common>
+                <instance_material symbol="location_marker_b-material" target="#location_marker_b-material">
+                  <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+                </instance_material>
+              </technique_common>
+            </bind_material>
+          </instance_geometry>
+        </node>
+        <node id="location_marker_b_003" name="location_marker_b.003" type="NODE">
+          <matrix sid="transform">-2 -3.82137e-15 -8.74228e-8 0 -1.74846e-7 4.37114e-8 1 1.0001 0 1 -4.37114e-8 0 0 0 0 1</matrix>
+          <instance_geometry url="#location_marker_b_004-mesh" name="location_marker_b.003">
+            <bind_material>
+              <technique_common>
+                <instance_material symbol="location_marker_b-material" target="#location_marker_b-material">
+                  <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+                </instance_material>
+              </technique_common>
+            </bind_material>
+          </instance_geometry>
+        </node>
+        <node id="fre_logo_006" name="fre_logo.006" type="NODE">
+          <matrix sid="transform">-0.95 -1.91069e-15 -8.74228e-8 0 -8.30516e-8 2.18557e-8 1 1.0001 0 0.5 -4.37114e-8 -0.75 0 0 0 1</matrix>
+          <instance_geometry url="#fre_logo_010-mesh" name="fre_logo.006">
+            <bind_material>
+              <technique_common>
+                <instance_material symbol="fre_logo-material" target="#fre_logo-material">
+                  <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+                </instance_material>
+              </technique_common>
+            </bind_material>
+          </instance_geometry>
+        </node>
+        <node id="fre_logo_007" name="fre_logo.007" type="NODE">
+          <matrix sid="transform">-0.95 -1.91069e-15 -8.74228e-8 0 -8.30516e-8 2.18557e-8 1 1.0001 0 0.5 -4.37114e-8 0.75 0 0 0 1</matrix>
+          <instance_geometry url="#fre_logo_011-mesh" name="fre_logo.007">
+            <bind_material>
+              <technique_common>
+                <instance_material symbol="fre_logo-material" target="#fre_logo-material">
+                  <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+                </instance_material>
+              </technique_common>
+            </bind_material>
+          </instance_geometry>
+        </node>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>
