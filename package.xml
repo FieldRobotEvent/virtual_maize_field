@@ -22,8 +22,8 @@
   <depend>python3-yaml</depend>
 
   <depend>ros2launch</depend>
-  <depend>ros-gz</depend>
-  <depend>ros-gz-sim</depend>
+  <depend>ros_gz_sim</depend>
+  <depend>ros_gz_bridge</depend>
 
   <export>
     <build_type>ament_cmake</build_type>
