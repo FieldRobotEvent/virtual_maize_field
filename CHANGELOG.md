@@ -1,4 +1,6 @@
-## Virtual Maize Field (ROS 2 Ignition Gazebo)
+## Virtual Maize Field (ROS 2 Gazebo)
+
+### Version 5.1.0 (2025-03-03)
 
 ### Version 5.0.0 (2024-01-20)
 * Refactor to Ignition Gazebo ([#57](https://github.com/FieldRobotEvent/virtual_maize_field/pull/57))
