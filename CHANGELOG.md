@@ -1,6 +1,12 @@
 ## Virtual Maize Field (ROS 2 Gazebo)
 
-### Version 5.1.0 (2025-03-03)
+### Version 6.0.0 (2025-03-03)
+* Change default to Gazebo from Gazebo classic ([#76](https://github.com/FieldRobotEvent/virtual_maize_field/pull/76))
+* Add new launch parameter `verbose` to increase Gazebo verbosity
+* robot_spawner.launch.py is now more flexible with parameter overwrites and can also load models from file
+
+> [!IMPORTANT]
+> This is a breaking change. You need to update all Gazebo plugins used in your robot model.
 
 ### Version 5.0.0 (2024-01-20)
 * Refactor to Ignition Gazebo ([#57](https://github.com/FieldRobotEvent/virtual_maize_field/pull/57))
