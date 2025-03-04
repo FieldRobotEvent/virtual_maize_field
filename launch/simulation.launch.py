@@ -30,6 +30,7 @@ def construct_gz_args(
 
 
 def generate_launch_description() -> LaunchDescription:
+    ld = LaunchDescription()
     Pkg_directory = get_package_share_directory('virtual_maize_field')
     _ros_home_path = environ.get("ROS_HOME", path.join(path.expanduser("~"), ".ros"))
     cache_dir = path.join(_ros_home_path, "virtual_maize_field/")
@@ -79,6 +80,9 @@ def generate_launch_description() -> LaunchDescription:
         nvidia_ = SetEnvironmentVariable(
             name='__GLX_VENDOR_LIBRARY_NAME',
             value='nvidia')
+        
+        ld.add_action(nvidia_prime)
+        ld.add_action(nvidia_)
     except Exception:
         pass
     #end of line responsible for nvidia gpu 
@@ -122,11 +126,9 @@ def generate_launch_description() -> LaunchDescription:
         arguments=["/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock"],
     )
 
-    ld = LaunchDescription()
+    
 
     # Declare the launch options
-    ld.add_action(nvidia_prime)
-    ld.add_action(nvidia_)
     ld.add_action(gz_resource_path)
     ld.add_action(gz_model_path)
     ld.add_action(declare_use_sim_time_cmd)
