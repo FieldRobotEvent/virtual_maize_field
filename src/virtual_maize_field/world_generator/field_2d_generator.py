@@ -299,7 +299,7 @@ class Field2DGenerator:
 
         for i in range(len(self.rows)):
             self.rows[i] -= np.array([x_min, y_min])
-            self.rows[i] -= np.array([x_max, y_max]) / 2
+            self.rows[i] -= np.array([x_max - x_min, y_max - y_min]) / 2
 
     # The function calculates the placements of the weed plants and
     def place_objects(self) -> None:
