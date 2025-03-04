@@ -14,7 +14,7 @@ from launch.substitutions import (
 )
 from pathlib import Path
 from launch_ros.actions import Node
-
+import subprocess
 
 def construct_gz_args(
     world_file: SomeSubstitutionsType,
@@ -69,14 +69,18 @@ def generate_launch_description() -> LaunchDescription:
         headless,
     )
 
-    #if your gpu is nvidia keep those lines if not comment them
-    nvidia_prime = SetEnvironmentVariable(
-        name='__NV_PRIME_RENDER_OFFLOAD',
-        value='1')
+    #this line use to detect automatiacly if gpu is detected or not 
+    try:
+        subprocess.check_output("nvidia-smi")
+        nvidia_prime = SetEnvironmentVariable(
+            name='__NV_PRIME_RENDER_OFFLOAD',
+            value='1')
     
-    nvidia_ = SetEnvironmentVariable(
-        name='__GLX_VENDOR_LIBRARY_NAME',
-        value='nvidia')
+        nvidia_ = SetEnvironmentVariable(
+            name='__GLX_VENDOR_LIBRARY_NAME',
+            value='nvidia')
+    except:
+        pass
     #end of line responsible for nvidia gpu 
 
     gz_resource_path = SetEnvironmentVariable(
