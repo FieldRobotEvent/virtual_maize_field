@@ -426,8 +426,8 @@ class Field2DGenerator:
         min_image_size = int(
             np.ceil(max(metric_width / min_resolution, metric_height / min_resolution))
         )
-        # gazebo expects heightmap in format 2**n -1
-        image_size = int(2 ** np.ceil(np.log2(min_image_size))) + 1
+        # gazebo expects heightmap in format 2**n
+        image_size = int(2 ** np.ceil(np.log2(min_image_size)))
 
         self.resolution = min_resolution * (min_image_size / image_size)
 
