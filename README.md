@@ -23,9 +23,8 @@
 ROS Distro | Gazebo version | Branch | Build status
 :---------: | :----: | :----: | :----------: 
 **Rolling** | **Gazebo** | [`ros2-gz`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2-gz) | [![ros-rolling-gz](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-rolling-gz-test.yaml/badge.svg?branch=ros2-gz)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-rolling-gz-test.yaml)
+**Jazzy** | **Gazebo** | [`ros2-gz`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2-gz) | [![ros-jazzy-gz](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-jazzy-gz-test.yaml/badge.svg?branch=ros2-gz)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-jazzy-gz-test.yaml)
 **Rolling** | **Gazebo Classic** | [`ros2`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2) | [![ros-rolling](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-rolling-test.yaml/badge.svg?branch=ros2)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-rolling-test.yaml)
-**Iron** | **Gazebo** | [`ros2-gz`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2-gz) | [![ros-iron-gz](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-iron-gz-test.yaml/badge.svg?branch=ros2-gz)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-iron-gz-test.yaml)
-**Iron** | **Gazebo Classic** | [`ros2`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2) | [![ros-iron](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-iron-test.yaml/badge.svg?branch=ros2)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-iron-test.yaml)
 **Humble** | **Ignition Gazebo** | [`ros2-ign`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2-ign) | [![ros-humble-ign](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-humble-ign-test.yaml/badge.svg?branch=ros2-ign)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-humble-ign-test.yaml)
 **Humble** | **Gazebo Classic** | [`ros2`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2) | [![ros-humble](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-humble-test.yaml/badge.svg?branch=ros2)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-humble-test.yaml)
 **Noetic** | **Gazebo Classic** | [`main`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/main) | [![ros-noetic](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-noetic-test.yaml/badge.svg?branch=main)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-noetic-test.yaml?branch=main)
@@ -38,7 +37,7 @@ Clone this repository and build the workspace. Additional you'll need the follow
 rosdep install virtual_maize_field
 ```
 
-This package has been tested on ROS 2 Humble, Iron and Rolling.
+This package has been tested on ROS 2 Humble, Jazzy and Rolling.
 
 ## Generating new maize field worlds
 This package includes a script (`virtual_maize_field/generate_world.py`) that can generate randomized agricultural worlds. All parameters are optional and have default values. All comma separated arguments can be scaler as well. 
