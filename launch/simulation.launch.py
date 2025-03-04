@@ -79,7 +79,7 @@ def generate_launch_description() -> LaunchDescription:
         nvidia_ = SetEnvironmentVariable(
             name='__GLX_VENDOR_LIBRARY_NAME',
             value='nvidia')
-    except:
+    except Exception:
         pass
     #end of line responsible for nvidia gpu 
 
