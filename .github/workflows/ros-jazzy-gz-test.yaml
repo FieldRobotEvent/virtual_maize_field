@@ -1,5 +1,5 @@
 # Jazzy Jalisco (May 2024 - November 2029)
-name: ros-iron
+name: ros-jazzy
 
 on:
   workflow_dispatch:
