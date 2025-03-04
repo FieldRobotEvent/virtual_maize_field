@@ -18,11 +18,14 @@
   This is a package to procedurally generate randomized fields with rows of plants for Gazebo.
 </p>
 
-![Screenshot of a generated map with maize plants](./misc/screenshot_v5.0_ign.png)
+![Screenshot of a generated map with maize plants](./misc/screenshot_v5.0_classic.png)
+![Screenshot from 2025-02-10 10-05-21-fotor-20250210135115](https://github.com/user-attachments/assets/52965321-7c54-4228-bc79-865bfeb19302)
+
+
 
 ROS Distro | Gazebo version | Branch | Build status
 :---------: | :----: | :----: | :----------: 
-**Rolling** | **Gazebo** | [`ros2-gz`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2-gz) | [![ros-rolling-gz](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-rolling-gz-test.yaml/badge.svg?branch=ros2-gz)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-rolling-gz-test.yaml)
+**Rolling** | **Gazebo** | [`ros2-gz`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2-gz) | [![ros-jazzy-gz](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-rolling-gz-test.yaml/badge.svg?branch=ros2-gz)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-rolling-gz-test.yaml)
 **Rolling** | **Gazebo Classic** | [`ros2`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2) | [![ros-rolling](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-rolling-test.yaml/badge.svg?branch=ros2)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-rolling-test.yaml)
 **Iron** | **Gazebo** | [`ros2-gz`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2-gz) | [![ros-iron-gz](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-iron-gz-test.yaml/badge.svg?branch=ros2-gz)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-iron-gz-test.yaml)
 **Iron** | **Gazebo Classic** | [`ros2`](https://github.com/FieldRobotEvent/virtual_maize_field/tree/ros2) | [![ros-iron](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-iron-test.yaml/badge.svg?branch=ros2)](https://github.com/FieldRobotEvent/virtual_maize_field/actions/workflows/ros-iron-test.yaml)
@@ -166,7 +169,7 @@ optional arguments:
   --hole_size_max [HOLE_SIZE_MAX [HOLE_SIZE_MAX ...]]
                         default_value: [7, 5, 5, 3, 0, 0]
   --crop_types [CROP_TYPES [CROP_TYPES ...]]
-                        default_value: ['maize_01', 'maize_02']
+                        default_value: ['maize_01', 'maize_02','orange_tree']
   --litters LITTERS     default_value: 0
   --litter_types [LITTER_TYPES [LITTER_TYPES ...]]
                         default_value: ['ale', 'beer', 'coke_can',
@@ -262,6 +265,7 @@ Virtual Maize Field is copyright (C) 2021 *Farm Technology Group of Wageningen U
 ### Models
 | Name | Path | Copyright | License |
 |:---- |:---- |:--------- |:------- |
+| [orange_tree](models/orange_tree/model.config) | `models/orange_tree/` | 2025 *Dakahlia group* | [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/) |
 | [Maize 01](models/maize_01/model.config) | `models/maize_01/` | 2021 *Kamaro Engineering e.V.* | [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/) |
 | [Maize 02](models/maize_02/model.config) | `models/maize_02/` | 2021 *Kamaro Engineering e.V.* | [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/) |
 | [Stone 01](models/stone_01/model.config) | `models/stone_01/` | 2020 *Andrea Spognetta* | [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/) |

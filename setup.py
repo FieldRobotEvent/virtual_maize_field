@@ -3,7 +3,7 @@ from __future__ import annotations
 from os import path, walk
 from pathlib import Path
 from xml.etree import ElementTree
-
+from glob import glob
 from setuptools import find_packages, setup
 
 package_data = ElementTree.parse(Path(__file__).parent / "package.xml")
@@ -13,6 +13,8 @@ package_name = package_data.find("./name").text
 data_files = [
     ("share/ament_index/resource_index/packages", ["resource/" + package_name]),
     ("share/" + package_name, ["package.xml"]),
+    ('share/' + package_name+'/models/', glob('models/*')),
+    ('share/' + package_name+'/models/meshes', glob('models/meshes/*')),
 ]
 
 # Add all folders recursively

@@ -12,77 +12,33 @@ from launch_ros.substitutions import FindPackageShare
 
 
 def generate_launch_description() -> LaunchDescription:
+    robot_name = LaunchConfiguration("robot_name")
 
-    world = LaunchConfiguration("world")
-    file = LaunchConfiguration("file")
-    model_string = LaunchConfiguration("model_string")
-    topic = LaunchConfiguration("topic")
-    entity_name = LaunchConfiguration("entity_name")
-    allow_renaming = LaunchConfiguration("allow_renaming")
-    x = LaunchConfiguration("x", default="{{ x }}")
-    y = LaunchConfiguration("y", default="{{ y }}")
-    z = LaunchConfiguration("z", default="{{ z }}")
-    roll = LaunchConfiguration("R", default="0.0")
-    pitch = LaunchConfiguration("P", default="0.0")
-    yaw = LaunchConfiguration("Y", default="{{ yaw }}")
-
-    declare_world_cmd = DeclareLaunchArgument(
-        "world", default_value=TextSubstitution(text="virtual_maize_field"), description="World name"
+    # Create launch arguments
+    declare_robot_name_cmd = DeclareLaunchArgument(
+        name="robot_name", default_value="robot_model"
     )
 
-    declare_file_cmd = DeclareLaunchArgument(
-        "file", default_value=TextSubstitution(text=""), description="SDF filename"
-    )
-
-    declare_model_string_cmd = DeclareLaunchArgument(
-        "model_string",
-        default_value="",
-        description="XML(SDF) string",
-    )
-
-    declare_topic_cmd = DeclareLaunchArgument(
-        "topic",
-        default_value=TextSubstitution(text=""),
-        description="Get XML from this topic",
-    )
-
-    declare_entity_name_cmd = DeclareLaunchArgument(
-        "entity_name",
-        default_value=TextSubstitution(text=""),
-        description="Name of the entity",
-    )
-
-    declare_allow_renaming_cmd = DeclareLaunchArgument(
-        "allow_renaming",
-        default_value="False",
-        description="Whether the entity allows renaming or not",
-    )
-
-    spawn_model_description = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            [
-                PathJoinSubstitution(
-                    [
-                        FindPackageShare("ros_gz_sim"),
-                        "launch",
-                        "gz_spawn_model.launch.py",
-                    ]
-                )
-            ]
-        ),
-        launch_arguments=[
-            ("world", world),
-            ("file", file),
-            ("model_string", model_string),
-            ("topic", topic),
-            ("entity_name", entity_name),
-            ("allow_renaming", allow_renaming),
-            ("x", x),
-            ("y", y),
-            ("z", z),
-            ("R", roll),
-            ("P", pitch),
-            ("Y", yaw),
+    start_spawn_entity_cmd = Node(
+        package="ros_gz_sim",
+        executable="create",
+        arguments=[
+            "-topic",
+            "robot_description",
+            "-name",
+            robot_name,
+            "-x",
+            "{{ x }}",
+            "-y",
+            "{{ y }}",
+            "-z",
+            "{{ z }}",
+            "-R",
+            "0",
+            "-P",
+            "0",
+            "-Y",
+            "{{ yaw }}",
         ],
     )
 
