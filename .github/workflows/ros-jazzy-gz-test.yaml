@@ -1,14 +1,14 @@
-# Iron Irwini (May 2023 - November 2024)
-name: ros-iron
+# Jazzy Jalisco (May 2024 - November 2029)
+name: ros-jazzy
 
 on:
   workflow_dispatch:
   pull_request:
     branches:
-      - ros2
+      - ros2-gz
   push:
     branches:
-      - ros2
+      - ros2-gz
 
 jobs:
   build:
@@ -16,8 +16,8 @@ jobs:
     steps:
       - uses: ros-tooling/setup-ros@v0.7
         with:
-          required-ros-distributions: iron
+          required-ros-distributions: jazzy
       - uses: ros-tooling/action-ros-ci@v0.3
         with:
           package-name: virtual_maize_field
-          target-ros2-distro: iron
+          target-ros2-distro: jazzy
