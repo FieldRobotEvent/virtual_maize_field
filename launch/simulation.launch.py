@@ -69,6 +69,16 @@ def generate_launch_description() -> LaunchDescription:
         headless,
     )
 
+    #if your gpu is nvidia keep those lines if not comment them
+    nvidia_prime = SetEnvironmentVariable(
+        name='__NV_PRIME_RENDER_OFFLOAD',
+        value='1')
+    
+    nvidia_ = SetEnvironmentVariable(
+        name='__GLX_VENDOR_LIBRARY_NAME',
+        value='nvidia')
+    #end of line responsible for nvidia gpu 
+
     gz_resource_path = SetEnvironmentVariable(
         name='GZ_SIM_RESOURCE_PATH',
         value=':'.join([
@@ -118,6 +128,8 @@ def generate_launch_description() -> LaunchDescription:
     ld = LaunchDescription()
 
     # Declare the launch options
+    ld.add_action(nvidia_prime)
+    ld.add_action(nvidia_)
     ld.add_action(gz_resource_path)
     ld.add_action(gz_model_path)
     ld.add_action(declare_use_sim_time_cmd)

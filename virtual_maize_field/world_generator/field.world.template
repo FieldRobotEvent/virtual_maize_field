@@ -10,7 +10,7 @@
       <real_time_factor>1.0</real_time_factor>
       <real_time_update_rate>250</real_time_update_rate>
     </physics>
-    <render_engine>ogre</render_engine>
+    <render_engine>ogre2</render_engine>
     <!-- <plugin name='gz::sim::systems::JointController' filename='gz-sim-joint-controller-system'/> -->
     <plugin name='gz::sim::systems::Physics' filename='gz-sim-physics-system'/>
     <plugin name='gz::sim::systems::UserCommands' filename='gz-sim-user-commands-system'/>
@@ -31,7 +31,7 @@
           <property type="string" key="state">docked</property>
       </ignition-gui>
 
-    <engine>ogre</engine>
+    <engine>ogre2</engine>
       <scene>scene</scene>
       <ambient_light>1.0 1.0 1.0</ambient_light>
       <background_color>0.8 0.8 0.8</background_color>
