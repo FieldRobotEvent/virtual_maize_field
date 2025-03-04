@@ -25,7 +25,6 @@
   <depend>ros-gz</depend>
   <depend>ros_gz_bridge</depend>
   <depend>ros-gz-sim</depend>
-  
   <export>
     <build_type>ament_cmake</build_type>
   </export>
