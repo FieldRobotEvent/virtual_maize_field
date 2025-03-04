@@ -123,7 +123,7 @@ def generate_launch_description() -> LaunchDescription:
         name="clock_bridge",
         condition=IfCondition(use_sim_time),
         arguments=["/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock"],
-    )
+    ))
 
     ld = LaunchDescription()
 
