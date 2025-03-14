@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> Gazebo Classic reached [end-of-life](https://community.gazebosim.org/t/gazebo-classic-end-of-life/2563) in January 2025, so this branch will no longer receive updates.
+
 # Virtual Maize Field
 
 <p float="left" align="middle">
